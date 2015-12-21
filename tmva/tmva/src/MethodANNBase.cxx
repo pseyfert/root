@@ -1074,10 +1074,11 @@ void TMVA::MethodANNBase::MakeClassSpecific( std::ostream& fout, const TString& 
    fout << "{" << std::endl;
    fout << "   // build network structure" << std::endl;
    fout << "   fLayers = " << numLayers << ";" << std::endl;
-   for (Int_t lIdx = 0; lIdx < numLayers; lIdx++) {
+   for (Int_t lIdx = 1; lIdx < numLayers; lIdx++) { // fLayerSize[0] and fWeights[0] obsolete
       TObjArray* layer = (TObjArray*)fNetwork->At(lIdx);
       int numNodes = layer->GetEntries();
-      fout << "   fLayerSize[" << lIdx << "] = " << numNodes << "; fWeights["<<lIdx<<"] = new double["<<numNodes<<"]; " << std::endl;
+      fout << "   fLayerSize[" << lIdx << "] = " << numNodes << ";";
+      fout << "   fWeights["<<lIdx<<"] = new double["<<numNodes<<"]; " << std::endl;
    }
 
    for (Int_t i = 0; i < numLayers-1; i++) {
@@ -1169,7 +1170,7 @@ void TMVA::MethodANNBase::MakeClassSpecific( std::ostream& fout, const TString& 
    fout << "inline void " << className << "::Clear() " << std::endl;
    fout << "{" << std::endl;
    fout << "   // clean up the arrays" << std::endl;
-   fout << "   for (int lIdx = 0; lIdx < "<<numLayers<<"; lIdx++) {" << std::endl;
+   fout << "   for (int lIdx = 1; lIdx < "<<numLayers<<"; lIdx++) {" << std::endl;
    fout << "      delete[] fWeights[lIdx];" << std::endl;
    fout << "   }" << std::endl;
    fout << "}" << std::endl;
