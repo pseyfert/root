@@ -42,7 +42,7 @@ protected:
 
   // Function evaluation
   virtual Double_t evaluate() const ;
-  RooCategoryProxy _cat ; // Accept/reject categort
+  RooCategoryProxy _cat ; // Accept/reject category
   RooRealProxy _effFunc ; // Efficiency modeling function
   TString _sigCatName ;   // Name of accept state of accept/reject category
 
