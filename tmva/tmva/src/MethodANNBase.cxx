@@ -1111,6 +1111,7 @@ void TMVA::MethodANNBase::MakeClassSpecific( std::ostream& fout, const TString& 
    fout << std::endl;
    fout << "   for (int l=1; l<fLayers-1; l++)" << std::endl;
    fout << "      fWeights[l][fLayerSize[l]-1]=1;" << std::endl;
+   fout << "   fWeights[" << numLayers-1 << "][0]=0;" << std::endl;   
    fout << std::endl;
    fout << std::endl;
    for (Int_t i = 0; i < numLayers-1; i++) {
