@@ -1122,19 +1122,28 @@ void TMVA::MethodANNBase::MakeClassSpecific( std::ostream& fout, const TString& 
       else {
          fout << "   for (int o=0; o<" << ((TObjArray*)fNetwork->At(i+1))->GetEntries()-1 << "; o++) {" << std::endl;
       }
+      fout << "      double buffer[" << ((TObjArray*)fNetwork->At(i))->GetEntries() << "];" << std::endl;
       fout << "      for (int i=0; i<" << ((TObjArray*)fNetwork->At(i))->GetEntries() << "; i++) {" << std::endl;
-      fout << "         double inputVal = fWeightMatrix" << i << "to" << i+1 << "[o][i] * fWeights[" << i << "][i];" << std::endl;
-
+      fout << "         buffer[i] = fWeightMatrix" << i << "to" << i+1 << "[o][i] * fWeights[" << i << "][i];" << std::endl;
+      foud << "      }" << std::endl;
+      fout << "      for (int i=0; i<" << ((TObjArray*)fNetwork->At(i))->GetEntries() << "; i++) {" << std::endl;
       if ( fNeuronInputType == "sum") {
-         fout << "         fWeights[" << i+1 << "][o] += inputVal;" << std::endl;
+         fout << "         fWeights[" << i+1 << "][o] += buffer[i];" << std::endl;
       } 
       else if ( fNeuronInputType == "sqsum") {
-         fout << "         fWeights[" << i+1 << "][o] += inputVal*inputVal;" << std::endl;
+         fout << "         fWeights[" << i+1 << "][o] += buffer[i]*buffer[i];" << std::endl;
       } 
       else { // fNeuronInputType == TNeuronInputChooser::kAbsSum
-         fout << "         fWeights[" << i+1 << "][o] += fabs(inputVal);" << std::endl;
+         fout << "         fWeights[" << i+1 << "][o] += fabs(buffer[i]);" << std::endl;
       }
       fout << "      }" << std::endl;
+      fout << "    }" << std::endl;
+      if (i+1 == numLayers-1) {
+         fout << "   for (int o=0; o<" << ((TObjArray*)fNetwork->At(i+1))->GetEntries() << "; o++) {" << std::endl;
+      } 
+      else {
+         fout << "   for (int o=0; o<" << ((TObjArray*)fNetwork->At(i+1))->GetEntries()-1 << "; o++) {" << std::endl;
+      }
       if (i+1 != numLayers-1) // in the last layer no activation function is applied
          fout << "      fWeights[" << i+1 << "][o] = ActivationFnc(fWeights[" << i+1 << "][o]);" << std::endl;
       else	fout << "      fWeights[" << i+1 << "][o] = OutputActivationFnc(fWeights[" << i+1 << "][o]);" << std::endl; //zjh
