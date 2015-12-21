@@ -1106,7 +1106,7 @@ void TMVA::MethodANNBase::MakeClassSpecific( std::ostream& fout, const TString& 
    fout << "   }" << std::endl;
    fout << std::endl;
    fout << "   for (int l=0; l<fLayers; l++)" << std::endl;
-   fout << "      for (int i=0; i<fLayerSize[l]; i++) fWeights[l][i]=0;" << std::endl;
+   fout << "      for (int i=0; i<fLayerSize[l]-1; i++) fWeights[l][i]=0;" << std::endl;
    fout << std::endl;
    fout << "   for (int l=0; l<fLayers-1; l++)" << std::endl;
    fout << "      fWeights[l][fLayerSize[l]-1]=1;" << std::endl;
