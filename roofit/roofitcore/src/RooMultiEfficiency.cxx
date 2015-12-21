@@ -5,6 +5,7 @@
  * Authors:                                                                  *
  *   WV, Wouter Verkerke, UC Santa Barbara, verkerke@slac.stanford.edu       *
  *   DK, David Kirkby,    UC Irvine,         dkirkby@uci.edu                 *
+ *   PS, Paul Seyfert,    IT INFN-MIB,      pseyfert@cern.ch                 *
  *                                                                           *
  * Copyright (c) 2000-2005, Regents of the University of California          *
  *                          and Stanford University. All rights reserved.    *
@@ -48,12 +49,18 @@ ClassImp(RooMultiEfficiency)
 /// function and a category cat with two states (0,1) that indicate if a given
 /// event should be counted as rejected or accepted respectively
 
-RooMultiEfficiency::RooMultiEfficiency(const char *name, const char *title, const RooAbsReal& effFunc, const RooAbsCategory& cat, const char* sigCatName) :
+RooMultiEfficiency::RooMultiEfficiency(const char *name, const char *title, const RooArgList& effFuncList, const RooAbsCategory& cat, vector<TString> sigCatNames) :
   RooAbsPdf(name,title),
-  _cat("cat","Signal/Background category",this,(RooAbsCategory&)cat),
-  _effFunc("effFunc","Efficiency modeling function",this,(RooAbsReal&)effFunc),
-  _sigCatName(sigCatName)
+  _cat("cat","category",this,(RooAbsCategory&)cat),
+  _effFuncList("effFuncList","List of efficiency functions",this),
+  _sigCatNames(sigCatNames)
 {  
+  _effFuncList.add(effFuncList);
+
+  if (_sigCatNames.size() != effFuncList.getSize()) {
+    coutE(InputArguments) << "RooMultiEfficiency::ctor(" << GetName() << ") ERROR: Wrong input, should have equal number of category names and efficiencies." << endl;
+    throw string("RooMultiEfficiency::ctor() ERROR: Wrong input, should have equal number of category names and efficiencies") ;
+  }
 }
 
 
@@ -64,8 +71,8 @@ RooMultiEfficiency::RooMultiEfficiency(const char *name, const char *title, cons
 RooMultiEfficiency::RooMultiEfficiency(const RooMultiEfficiency& other, const char* name) : 
   RooAbsPdf(other, name),
   _cat("cat",this,other._cat),
-  _effFunc("effFunc",this,other._effFunc),
-  _sigCatName(other._sigCatName)
+  _effFuncList("effFunc",this,other._effFuncList),
+  _sigCatNames(other._sigCatNames)
 {
 }
 
@@ -86,22 +93,43 @@ RooMultiEfficiency::~RooMultiEfficiency()
 
 Double_t RooMultiEfficiency::evaluate() const
 {
-  Double_t effFuncVal = _effFunc ;
+  Int_t effFuncListSize = _effFuncList.getSize();
 
-  // Truncate efficiency function in range 0.0-1.0
-  if (_effFunc>1) {
-    effFuncVal = 1.0 ;
-  } else if (_effFunc<0) {
-    effFuncVal = 0.0 ;
+  // Get efficiency function for category i
+
+  vector<Double_t> effFuncVal(effFuncListSize);
+  for (int i=0; i<effFuncListSize; ++i) {
+    effFuncVal[i] = ((RooAbsReal&)_effFuncList[i]).getVal() ;
   }
 
-  if (_cat.label() == _sigCatName) {
-    // Accept case
-    return effFuncVal ;
-  } else {
-    // Reject case
-    return 1 - effFuncVal ;
+  // Truncate efficiency functions in range 0.0-1.0
+
+  for (int i=0; i<effFuncListSize; ++i) {
+    if (effFuncVal[i]>1.) {
+      coutW(Eval) << "WARNING: Efficency >1 (equal to " << effFuncVal[i] 
+		  << " ), for i = " << i << "...TRUNCATED" << endl;
+      effFuncVal[i] = 1.0 ;
+    } else if (effFuncVal[i]<0) {
+      effFuncVal[i] = 0.0 ;
+      coutW(Eval) << "WARNING: Efficency <0 (equal to " << effFuncVal[i] 
+		  << " ), for i = " << i << "...TRUNCATED" << endl;
+    }
   }
+
+  Double_t sum = std::accumulate(effFuncVal.begin(),effFuncVal.end(),0.);
+  if (sum>1. || sum<0.) {
+    coutW(Eval) << "WARNING: Efficency sum out of range (equal to " << sum
+		<< " )  ...TRUNCATED" << endl;
+  }
+
+  for (size_t l = 0 ; l < _sigCatNames.size() ; ++l) {
+    if (_cat.label() == _sigCatNames[l]) {
+      return effFuncVal[l];
+    }
+  }
+
+  coutE(Eval) << "Category label not found!" << endl;
+  return 0.;
 }
 
 

@@ -5,6 +5,7 @@
  * Authors:                                                                  *
  *   WV, Wouter Verkerke, UC Santa Barbara, verkerke@slac.stanford.edu       *
  *   DK, David Kirkby,    UC Irvine,         dkirkby@uci.edu                 *
+ *   PS, Paul Seyfert,    IT INFN-MIB,      pseyfert@cern.ch                 *
  *                                                                           *
  * Copyright (c) 2000-2005, Regents of the University of California          *
  *                          and Stanford University. All rights reserved.    *
@@ -18,8 +19,9 @@
 
 #include "RooAbsPdf.h"
 #include "RooCategoryProxy.h"
-#include "RooRealProxy.h"
+#include "RooListProxy.h"
 #include "TString.h" 
+#include <vector>
 
 class RooArgList ;
 
@@ -30,7 +32,7 @@ public:
   inline RooMultiEfficiency() { 
     // Default constructor
   }
-  RooMultiEfficiency(const char *name, const char *title, const RooAbsReal& effFunc, const RooAbsCategory& cat, const char* sigCatName);
+  RooMultiEfficiency(const char *name, const char *title, const RooArgList& effFuncList, const RooAbsCategory& cat, std::vector<TString> sigCatNames);
   RooMultiEfficiency(const RooMultiEfficiency& other, const char* name=0);
   virtual TObject* clone(const char* newname) const { return new RooMultiEfficiency(*this,newname); }
   virtual ~RooMultiEfficiency();
@@ -42,9 +44,9 @@ protected:
 
   // Function evaluation
   virtual Double_t evaluate() const ;
-  RooCategoryProxy _cat ; // Accept/reject categort
-  RooRealProxy _effFunc ; // Efficiency modeling function
-  TString _sigCatName ;   // Name of accept state of accept/reject category
+  RooCategoryProxy _cat ; // category
+  RooListProxy _effFuncList ; // Efficiency modeling functions
+  std::vector<TString> _sigCatNames ;   // Name of accept state of accept/reject category
 
   ClassDef(RooMultiEfficiency,1) // Generic PDF defined by string expression and list of variables
 };
