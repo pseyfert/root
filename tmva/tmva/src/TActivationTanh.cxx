@@ -23,15 +23,11 @@
   
 //_______________________________________________________________________
 //                                                                      
-//  Tanh activation function for ANN. This really simple implementation
-//  uses TFormulas and should probably be replaced with something more
-//  efficient later.
-//                                                                      
+//  Tanh activation function for ANN.
 //_______________________________________________________________________
 
 #include <iostream>
 
-#include "TFormula.h"
 #include "TString.h"
 #include "TMath.h"
 
