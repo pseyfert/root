@@ -1123,9 +1123,10 @@ void TMVA::MethodANNBase::MakeClassSpecific( std::ostream& fout, const TString& 
          fout << "   for (int o=0; o<" << ((TObjArray*)fNetwork->At(i+1))->GetEntries()-1 << "; o++) {" << std::endl;
       }
       fout << "      double buffer[" << ((TObjArray*)fNetwork->At(i))->GetEntries() << "];" << std::endl;
-      fout << "      for (int i=0; i<" << ((TObjArray*)fNetwork->At(i))->GetEntries() << "; i++) {" << std::endl;
-      fout << "         buffer[i] = fWeightMatrix" << i << "to" << i+1 << "[o][i] * fWeights[" << i << "][i];" << std::endl;
+      fout << "      for (int i=0; i<" << ((TObjArray*)fNetwork->At(i))->GetEntries()-1 << "; i++) {" << std::endl;
+      fout << "         buffer[i] = fWeightMatrix" << i << "to" << i+1 << "[o][i] * inputValues[i];" << std::endl;
       foud << "      }" << std::endl;
+      fout << "      buffer[" << ((TObjArray*)fNetwork->At(i))->GetEntries()-1 << "] = fWeightMatrix" << i << "to" << i+1 << "[o][" << ((TObjArray*)fNetwork->At(i))->GetEntries()-1 << "];" << std::endl; // offset node
       fout << "      for (int i=0; i<" << ((TObjArray*)fNetwork->At(i))->GetEntries() << "; i++) {" << std::endl;
       if ( fNeuronInputType == "sum") {
          fout << "         fWeights[" << i+1 << "][o] += buffer[i];" << std::endl;
