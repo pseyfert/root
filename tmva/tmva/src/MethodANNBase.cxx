@@ -1125,11 +1125,11 @@ void TMVA::MethodANNBase::MakeClassSpecific( std::ostream& fout, const TString& 
       if (0 != i) {
          fout << "      for (int i=0; i<" << ((TObjArray*)fNetwork->At(i))->GetEntries() << "; i++) {" << std::endl;
          fout << "         buffer[i] = fWeightMatrix" << i << "to" << i+1 << "[o][i] * fWeights[" << i << "][i];" << std::endl;
-         foud << "      }" << std::endl;
+         fout << "      }" << std::endl;
       } else {
          fout << "      for (int i=0; i<" << ((TObjArray*)fNetwork->At(i))->GetEntries()-1 << "; i++) {" << std::endl;
          fout << "         buffer[i] = fWeightMatrix0to1[o][i] * inputValues[i];" << std::endl;
-         foud << "      }" << std::endl;
+         fout << "      }" << std::endl;
          fout << "      buffer[" << ((TObjArray*)fNetwork->At(i))->GetEntries()-1 << "] = fWeightMatrix0to1[o][" << ((TObjArray*)fNetwork->At(i))->GetEntries()-1 << "];" << std::endl; // offset node
       }
       fout << "      for (int i=0; i<" << ((TObjArray*)fNetwork->At(i))->GetEntries() << "; i++) {" << std::endl;
