@@ -25,7 +25,6 @@ Exponential p.d.f
 #include "RooFit.h"
 
 #include "Riostream.h"
-#include "Riostream.h"
 #include <math.h>
 
 #include "RooExponential.h"

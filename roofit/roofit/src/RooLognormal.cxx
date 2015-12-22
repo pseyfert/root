@@ -28,7 +28,6 @@ The parametrization here is physics driven and differs from the ROOT::Math::logn
 #include "RooFit.h"
 
 #include "Riostream.h"
-#include "Riostream.h"
 #include <math.h>
 
 #include "RooLognormal.h"

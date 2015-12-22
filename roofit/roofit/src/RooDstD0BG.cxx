@@ -28,7 +28,6 @@ D*-D0 mass difference distributions
 #include "RooFit.h"
 
 #include "Riostream.h"
-#include "Riostream.h"
 #include <math.h>
 #include "TMath.h"
 

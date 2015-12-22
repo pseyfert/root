@@ -25,7 +25,6 @@ http://www.idav.ucdavis.edu/education/CAGDNotes/Bernstein-Polynomials.pdf
 #include "RooFit.h"
 
 #include "Riostream.h"
-#include "Riostream.h"
 #include <math.h>
 #include "TMath.h"
 #include "RooBernstein.h"
