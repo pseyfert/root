@@ -7,29 +7,29 @@
  * @date 2013-07-07
  */
 #ifndef _WIN32
-#include <map>
-#include <cerrno>
-#include <limits>
-#include <string>
-#include <cstdlib>
-#include <cstring>
-#include <iostream>
-#include <algorithm>
-#include <exception>
-
-#include <poll.h>
-#include <fcntl.h>
-#include <signal.h>
-#include <string.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <pthread.h>
-#include <sys/mman.h>
-#include <sys/stat.h>
-#include <sys/wait.h>
-#include <sys/socket.h>
 
 #include "BidirMMapPipe.h"
+#include <fcntl.h>                      // for fcntl, FD_CLOEXEC, F_GETFD, etc
+#include <poll.h>                       // for pollfd, poll, POLLERR, etc
+#include <pthread.h>                    // for pthread_mutex_unlock, etc
+#include <signal.h>                     // for kill, SIGTERM
+#include <stddef.h>                     // for size_t
+#include <stdlib.h>                     // for atexit, free, malloc, etc
+#include <sys/mman.h>                   // for mmap, mprotect, munmap, etc
+#include <sys/socket.h>                 // for shutdown, socketpair, etc
+#include <sys/wait.h>                   // for waitpid
+#include <unistd.h>                     // for close, read, write, pipe, etc
+#include <algorithm>                    // for copy, find, min, fill
+#include <cassert>                      // for assert
+#include <cerrno>                       // for errno, EINTR, EPIPE, EAGAIN, etc
+#include <cstring>                      // for strlen, strncpy, strerror_r
+#include <exception>                    // for exception
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <map>                          // for map
+#include <new>                          // for operator new
+#include <string>                       // for char_traits, string
+#include <utility>                      // for pair, make_pair
+
 
 #define BEGIN_NAMESPACE_ROOFIT namespace RooFit {
 #define END_NAMESPACE_ROOFIT }

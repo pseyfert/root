@@ -35,31 +35,35 @@ Support for calculation in partitions is needed to allow multi-core
 parallelized calculation of test statistics
 **/
 
-#include "RooFit.h"
+#include <string.h>                     // for strlen
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string
+#include "RooAbsArg.h"                  // for RooAbsArg, etc
+#include "RooAbsBinning.h"              // for RooAbsBinning
+#include "RooAbsCollection.h"           // for RooAbsCollection
+#include "RooAbsData.h"                 // for RooAbsData
+#include "RooAbsDataStore.h"            // for RooAbsDataStore
+#include "RooAbsOptTestStatistic.h"     // for RooAbsOptTestStatistic
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
+#include "RooAbsTestStatistic.h"
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooDataSet.h"                 // for RooDataSet
+#include "RooErrorHandler.h"            // for RooErrorHandler
+#include "RooGlobalFunc.h"              // for CutRange, SelectVars, etc
+#include "RooLinkedListIter.h"          // for RooFIter
+#include "RooMsgService.h"              // for cxcoutI, coutI, coutW, etc
+#include "RooPrintable.h"               // for operator<<
+#include "RooProdPdf.h"                 // for RooProdPdf
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooVectorDataStore.h"         // for RooVectorDataStore
+#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp
+#include "RtypesCore.h"                 // for Bool_t, Double_t, Int_t
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for Form, TString, operator<<
 
-#include "Riostream.h"
-#include <string.h>
-
-
-#include "RooAbsOptTestStatistic.h"
-#include "RooMsgService.h"
-#include "RooAbsPdf.h"
-#include "RooAbsData.h"
-#include "RooDataHist.h"
-#include "RooArgSet.h"
-#include "RooRealVar.h"
-#include "RooErrorHandler.h"
-#include "RooGlobalFunc.h"
-#include "RooBinning.h"
-#include "RooAbsDataStore.h"
-#include "RooCategory.h"
-#include "RooDataSet.h"
-#include "RooProdPdf.h"
-#include "RooAddPdf.h"
-#include "RooProduct.h"
-#include "RooRealSumPdf.h"
-#include "RooTrace.h"
-#include "RooVectorDataStore.h" 
 
 using namespace std;
 

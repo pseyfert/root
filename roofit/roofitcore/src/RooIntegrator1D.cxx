@@ -23,21 +23,23 @@ RooIntegrator1D implements an adaptive one-dimensional
 numerical integration algorithm. 
 **/
 
-
-#include "RooFit.h"
-#include "Riostream.h"
-
-#include "TClass.h"
-#include "RooIntegrator1D.h"
-#include "RooArgSet.h"
-#include "RooRealVar.h"
-#include "RooNumber.h"
-#include "RooIntegratorBinding.h"
-#include "RooNumIntConfig.h"
-#include "RooNumIntFactory.h"
-#include "RooMsgService.h"
-
-#include <assert.h>
+#include <assert.h>                     // for assert
+#include <math.h>                       // for fabs
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include "RooAbsFunc.h"                 // for RooAbsFunc
+#include "RooAbsIntegrator.h"           // for RooAbsIntegrator
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCategory.h"                // for RooCategory
+#include "RooIntegrator1D.h"            // for RooIntegrator1D, etc
+#include "RooMsgService.h"              // for oocoutE, ooccoutW, oocoutW
+#include "RooNumIntConfig.h"            // for RooNumIntConfig
+#include "RooNumIntFactory.h"           // for RooNumIntFactory
+#include "RooNumber.h"                  // for RooNumber
+#include "RooRealVar.h"                 // for RooRealVar
+#include "Rtypes.h"                     // for kFALSE, kTRUE, etc
+#include "RtypesCore.h"                 // for Double_t, Int_t, Bool_t, etc
+#include "TClass.h"                     // for TClass
+class TObject;
 
 
 

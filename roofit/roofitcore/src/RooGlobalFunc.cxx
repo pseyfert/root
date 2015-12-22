@@ -16,18 +16,35 @@
 
 // Global helper functions
 
-#include "RooFit.h"
-
-#include "RooGlobalFunc.h"
-#include "RooCategory.h"
-#include "RooRealConstant.h"
-#include "RooDataSet.h"
-#include "RooDataHist.h"
-#include "RooNumIntConfig.h"
-#include "RooRealVar.h"
-#include "RooFitResult.h"
-#include "RooAbsPdf.h"
-#include "TH1.h"
+#include <iosfwd>                       // for ostream
+#include <map>                          // for map, etc
+#include <string>                       // for string, basic_string
+#include <utility>                      // for pair
+#include "RooAbsBinning.h"              // for RooAbsBinning
+#include "RooAbsCategory.h"             // for RooAbsCategory
+#include "RooAbsCollection.h"           // for RooAbsCollection
+#include "RooAbsData.h"                 // for RooAbsData
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooAbsReal.h"                 // for RooAbsReal, etc
+#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCategory.h"                // for RooCategory
+#include "RooCmdArg.h"                  // for RooCmdArg
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooDataSet.h"                 // for RooDataSet
+#include "RooFitResult.h"               // for RooFitResult
+#include "RooFormulaVar.h"              // for RooFormulaVar
+#include "RooNumIntConfig.h"            // for RooNumIntConfig
+#include "RooRealConstant.h"            // for RooRealConstant
+#include "RooRealVar.h"                 // for RooRealVar
+#include "Rtypes.h"                     // for kFALSE, kTRUE
+#include "RtypesCore.h"                 // for Bool_t, Double_t, Int_t, etc
+#include "TH1.h"                        // for TH1
+class RooAbsArg;
+class RooConstVar;
+class TObject;
+class TTree;
 
 using namespace std;
 

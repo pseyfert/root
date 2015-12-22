@@ -29,11 +29,14 @@ C is 'reject'. Values of F below 0 and above 1 are clipped.
 F may have an arbitrary number of dependents and parameters
 **/
 
-#include "RooFit.h"
-
 #include "RooEfficiency.h"
-#include "RooStreamParser.h"
-#include "RooArgList.h"
+
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooCategoryProxy.h"           // for RooCategoryProxy
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "Rtypes.h"                     // for ClassImp
+#include "RtypesCore.h"                 // for Double_t, Int_t
+#include "TString.h"                    // for operator==, TString
 
 #include "TError.h"
 

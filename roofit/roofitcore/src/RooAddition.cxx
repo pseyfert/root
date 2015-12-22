@@ -25,25 +25,35 @@ in the two sets. This class does not (yet) do any smart handling of integrals,
 i.e. all integrals of the product are handled numerically
 **/
 
+#include <assert.h>                     // for assert
+#include <algorithm>                    // for merge, unique
+#include <list>                         // for _List_iterator, list, etc
+#include <memory>                       // for auto_ptr, etc
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsCacheElement.h"
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooAddition.h"                // for RooAddition, etc
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooChi2Var.h"                 // for RooChi2Var
+#include "RooErrorHandler.h"            // for RooErrorHandler
+#include "RooLinkedListIter.h"          // for RooFIter
+#include "RooListProxy.h"               // for RooListProxy
+#include "RooMsgService.h"              // for coutE, coutI
+#include "RooNLLVar.h"                  // for RooNLLVar
+#include "RooNameReg.h"                 // for RooNameReg
+#include "RooNameSet.h"                 // for RooNameSet
+#include "RooObjCacheManager.h"         // for RooObjCacheManager
+#include "RooProduct.h"                 // for RooProduct
+#include "Rtypes.h"                     // for kTRUE, kFALSE, ClassImp
+#include "RtypesCore.h"                 // for Double_t, Bool_t, Int_t
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for TString
+class RooAbsData;
+class RooAbsRealLValue;
 
-#include "RooFit.h"
-
-#include "Riostream.h"
-#include <math.h>
-#include <memory>
-#include <list>
-#include <algorithm>
 using namespace std ;
-
-#include "RooAddition.h"
-#include "RooProduct.h"
-#include "RooAbsReal.h"
-#include "RooErrorHandler.h"
-#include "RooArgSet.h"
-#include "RooNameReg.h"
-#include "RooNLLVar.h"
-#include "RooChi2Var.h"
-#include "RooMsgService.h"
 
 ClassImp(RooAddition)
 ;

@@ -20,6 +20,9 @@
 #include "RooCategoryProxy.h"
 #include "RooRealProxy.h"
 #include "TString.h" 
+class RooAbsCategory;
+class RooAbsReal;
+class RooArgSet;
 
 class RooArgList ;
 

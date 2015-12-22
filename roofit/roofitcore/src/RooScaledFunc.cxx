@@ -24,10 +24,8 @@ factor to another RooAbsFunc.
 **/
 
 
-#include "RooFit.h"
-
-#include "RooScaledFunc.h"
-#include "RooScaledFunc.h"
+#include "Rtypes.h"                     // for ClassImp
+class RooScaledFunc;
 
 using namespace std;
 

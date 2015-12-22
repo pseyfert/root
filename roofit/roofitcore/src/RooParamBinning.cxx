@@ -27,14 +27,16 @@ range definitions in RooFit. Objects of class RooParamBinning are made
 by the RooRealVar::setRange() that takes RooAbsReal references as arguments
 **/
 
-#include "RooFit.h"
-
-#include "RooParamBinning.h"
-#include "RooParamBinning.h"
-#include "RooMsgService.h"
-
-#include "Riostream.h"
-
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include "RooAbsBinning.h"              // for RooAbsBinning
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
+#include "RooListProxy.h"               // for RooListProxy
+#include "RooMsgService.h"              // for coutE, coutW
+#include "RooParamBinning.h"            // for RooParamBinning
+#include "Rtypes.h"                     // for ClassImp, kFALSE, kTRUE
+#include "RtypesCore.h"                 // for Double_t, Int_t, Bool_t
+#include "TString.h"                    // for operator<<, Form, TString
 
 using namespace std;
 

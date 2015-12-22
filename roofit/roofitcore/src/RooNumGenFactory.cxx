@@ -28,23 +28,28 @@ the nature of the integration limits (closed or open ended) and
 the preference of the caller as encoded in the configuration object.
 **/
 
-#include "TClass.h"
-#include "Riostream.h"
+#include <map>                          // for map, _Rb_tree_iterator, etc
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for string, char_traits
+#include <utility>                      // for pair
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsNumGenerator.h"         // for RooAbsNumGenerator
+#include "RooAcceptReject.h"            // for RooAcceptReject
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCategory.h"                // for RooCategory
+#include "RooFoamGenerator.h"           // for RooFoamGenerator
+#include "RooMsgService.h"              // for oocoutE
+#include "RooNumGenConfig.h"            // for RooNumGenConfig
+#include "RooNumGenFactory.h"           // for RooNumGenFactory
+#include "RooSentinel.h"                // for RooSentinel
+#include "Rtypes.h"                     // for kFALSE, kTRUE, etc
+#include "RtypesCore.h"                 // for Bool_t, Int_t
+#include "TClass.h"                     // for TClass
+#include "TIterator.h"                  // for TIterator
+#include "TObject.h"                    // for TObject
+#include "TString.h"                    // for TString
+class RooAbsReal;
 
-#include "RooFit.h"
-
-#include "RooNumGenFactory.h"
-#include "RooArgSet.h"
-#include "RooAbsFunc.h"
-#include "RooNumGenConfig.h"
-#include "RooNumber.h"
-
-#include "RooAcceptReject.h"
-#include "RooFoamGenerator.h"
-#include "RooSentinel.h"
-
-
-#include "RooMsgService.h"
 
 using namespace std ;
 

@@ -24,17 +24,21 @@ numeric integrators used by RooRealIntegral. RooRealIntegral and RooAbsPdf
 use this class in the (normalization) integral configuration interface
 **/
 
-#include "RooFit.h"
-#include "Riostream.h"
-
-#include "RooNumGenConfig.h"
-#include "RooArgSet.h"
-#include "RooAbsNumGenerator.h"
-#include "RooNumGenFactory.h"
-#include "RooMsgService.h"
-
-#include "TClass.h"
-
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include "RooAbsNumGenerator.h"         // for RooAbsNumGenerator
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCategory.h"                // for RooCategory
+#include "RooLinkedList.h"              // for RooLinkedList
+#include "RooMsgService.h"              // for oocoutE
+#include "RooNumGenConfig.h"            // for RooNumGenConfig
+#include "RooNumGenFactory.h"           // for RooNumGenFactory
+#include "RooPrintable.h"               // for RooPrintable, etc
+#include "Rtypes.h"                     // for ClassImp, etc
+#include "RtypesCore.h"                 // for Bool_t, Int_t, Option_t
+#include "TClass.h"                     // for TClass
+#include "TIterator.h"                  // for TIterator
+#include "TObject.h"                    // for TObject
+#include "TString.h"                    // for TString, operator<<
 
 
 using namespace std;

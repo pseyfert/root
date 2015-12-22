@@ -90,22 +90,41 @@
 // on the build command line
 //
 
-
-#include "RooFit.h"
-#include "RooSimWSTool.h"
-#include "RooMsgService.h"
-#include "RooCategory.h"
-#include "RooRealVar.h"
-#include "RooAbsPdf.h"
-#include "RooStringVar.h"
-#include "RooSuperCategory.h"
-#include "RooCatType.h"
-#include "RooCustomizer.h"
-#include "RooMultiCategory.h"
-#include "RooSimultaneous.h"
-#include "RooGlobalFunc.h"
-#include "RooFracRemainder.h"
-#include "RooFactoryWSTool.h"
+#include <ext/alloc_traits.h>
+#include <stdlib.h>                     // for atoi
+#include <string.h>                     // for strtok
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <list>                         // for list, _List_iterator, etc
+#include <map>                          // for _Rb_tree_iterator, map, etc
+#include <string>                       // for string, char_traits, etc
+#include <utility>                      // for pair
+#include <vector>                       // for vector
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsCategory.h"             // for RooAbsCategory
+#include "RooAbsCategoryLValue.h"       // for RooAbsCategoryLValue
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCatType.h"                 // for RooCatType
+#include "RooCategory.h"                // for RooCategory
+#include "RooCmdArg.h"                  // for RooCmdArg
+#include "RooCustomizer.h"              // for RooCustomizer
+#include "RooFactoryWSTool.h"           // for RooFactoryWSTool
+#include "RooFracRemainder.h"           // for RooFracRemainder
+#include "RooGlobalFunc.h"              // for Silence, etc
+#include "RooMsgService.h"              // for coutE, coutI
+#include "RooMultiCategory.h"           // for RooMultiCategory
+#include "RooPrintable.h"               // for operator<<
+#include "RooSimWSTool.h"               // for RooSimWSTool, etc
+#include "RooSimultaneous.h"            // for RooSimultaneous
+#include "RooSuperCategory.h"           // for RooSuperCategory
+#include "RooWorkspace.h"               // for RooWorkspace
+#include "Rtypes.h"                     // for kFALSE, ClassImp, kTRUE
+#include "RtypesCore.h"                 // for Int_t, Bool_t
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
+#include "TString.h"                    // for Form, TString
+#include "strlcpy.h"                    // for strlcpy
 
 ClassImp(RooSimWSTool) 
 ClassImp(RooSimWSTool::BuildConfig) 

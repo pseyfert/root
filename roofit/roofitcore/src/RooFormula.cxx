@@ -28,20 +28,33 @@ e.g. 'tagCat::Kaon' will resolve to the numerical value of
 the 'Kaon' state of the RooAbsCategory object named tagCat.
 **/
 
-#include "RooFit.h"
+#include <stdlib.h>                     // for atoi
+#include <string.h>                     // for strstr
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <vector>                       // for vector, vector<>::reference
+#include "RVersion.h"                   // for ROOT_VERSION, etc
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsCategory.h"             // for RooAbsCategory
+#include "RooAbsCollection.h"           // for RooAbsCollection
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCatType.h"                 // for RooCatType
+#include "RooFormula.h"                 // for RooFormula
+#include "RooLinkedList.h"              // for RooLinkedList
+#include "RooLinkedListIter.h"          // for RooLinkedListIter
+#include "RooMsgService.h"              // for coutE
+#include "RooPrintable.h"               // for operator<<, RooPrintable
+#include "Rtypes.h"                     // for kTRUE, kFALSE, ClassImp, etc
+#include "RtypesCore.h"                 // for Bool_t, Int_t, Double_t
+#include "TClass.h"                     // for TClass
+#include "TIterator.h"                  // for TIterator
+#include "TObjString.h"                 // for TObjString
+#include "TObject.h"                    // for TObject
+#include "TString.h"                    // for TString, operator<<
+#include "strlcpy.h"                    // for strlcpy
+#include "v5/TFormula.h"                // for TFormula, etc
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include <stdlib.h>
-#include "TROOT.h"
-#include "TClass.h"
-#include "TObjString.h"
-#include "RooFormula.h"
-#include "RooAbsReal.h"
-#include "RooAbsCategory.h"
-#include "RooArgList.h"
-#include "RooMsgService.h"
-#include "RooTrace.h"
 
 using namespace std;
 

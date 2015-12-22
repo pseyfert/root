@@ -28,11 +28,20 @@ by forwarding these calls to the RooAbsCacheElement interface functions, which
 have a sensible default implementation. 
 **/
 
-#include "RooFit.h"
-#include "Riostream.h"
-#include <vector>
-#include "RooObjCacheManager.h"
-#include "RooMsgService.h"
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <vector>                       // for vector
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsCacheElement.h"         // for RooAbsCacheElement
+#include "RooAbsCollection.h"           // for RooAbsCollection
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCacheManager.h"            // for RooCacheManager
+#include "RooLinkedList.h"              // for RooLinkedList
+#include "RooMsgService.h"              // for oocxcoutD
+#include "RooObjCacheManager.h"         // for RooObjCacheManager
+#include "RooPrintable.h"               // for operator<<
+#include "Rtypes.h"                     // for kFALSE, ClassImp, kTRUE
+#include "RtypesCore.h"                 // for Bool_t, Int_t
+
 
 using namespace std ;
 

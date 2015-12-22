@@ -26,17 +26,29 @@ separately as a PDF. The convolution variable of the physics model is
 subsequently explicitly smeared with the resolution model distribution.
 **/
 
-#include "RooMsgService.h"
-#include "RooErrorHandler.h"
-#include "RooConvGenContext.h"
-#include "RooAbsAnaConvPdf.h"
-#include "RooNumConvPdf.h"
-#include "RooFFTConvPdf.h"
-#include "RooProdPdf.h"
-#include "RooDataSet.h"
-#include "RooArgSet.h"
-#include "RooTruthModel.h"
-#include "Riostream.h"
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include "RooAbsAnaConvPdf.h"           // for RooAbsAnaConvPdf
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsGenContext.h"           // for RooAbsGenContext
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooConvGenContext.h"          // for RooConvGenContext
+#include "RooDataSet.h"                 // for RooDataSet
+#include "RooErrorHandler.h"            // for RooErrorHandler
+#include "RooFFTConvPdf.h"              // for RooFFTConvPdf
+#include "RooListProxy.h"               // for RooListProxy
+#include "RooMsgService.h"              // for cxcoutI, coutE
+#include "RooNumConvPdf.h"              // for RooNumConvPdf
+#include "RooNumConvolution.h"          // for RooNumConvolution
+#include "RooPrintable.h"               // for operator<<
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooResolutionModel.h"         // for RooResolutionModel
+#include "RooTruthModel.h"              // for RooTruthModel
+#include "Rtypes.h"                     // for kTRUE, ClassImp
+#include "RtypesCore.h"                 // for Bool_t, Int_t, Double_t
+#include "TString.h"                    // for TString, operator<<
 
 
 using namespace std;
