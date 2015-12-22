@@ -3,29 +3,30 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <string>
+#include <iostream>
 #include "TInterpreter.h"
 
 bool JupyROOTExecutorImpl(const char *code);
 bool JupyROOTDeclarerImpl(const char *code);
 
 class JupyROOTExecutorHandler {
-   private:
-      bool fCapturing=false;
-      std::string fStdoutpipe;
-      std::string fStderrpipe;
-      int fStdout_pipe[2];
-      int fStderr_pipe[2];
-      int fSaved_stderr;
-      int fSaved_stdout;
-   public:
-      JupyROOTExecutorHandler();
-      void Poll();
-      void InitCapture();
-      void EndCapture();
-      void Clear();
-      std::string& GetStdout();
-      std::string& GetStderr();
-   };
+private:
+   bool fCapturing = false;
+   std::string fStdoutpipe;
+   std::string fStderrpipe;
+   int fStdout_pipe[2];
+   int fStderr_pipe[2];
+   int fSaved_stderr;
+   int fSaved_stdout;
+public:
+   JupyROOTExecutorHandler();
+   void Poll();
+   void InitCapture();
+   void EndCapture();
+   void Clear();
+   std::string &GetStdout();
+   std::string &GetStderr();
+};
 
 
 #ifndef F_LINUX_SPECIFIC_BASE
@@ -108,19 +109,26 @@ std::string &JupyROOTExecutorHandler::GetStderr()
    return fStderrpipe;
 }
 
+JupyROOTExecutorHandler *JupyROOTExecutorHandler_ptr = nullptr;
 
 ////////////////////////////////////////////////////////////////////////////////
 bool JupyROOTExecutorImpl(const char *code)
 {
    auto status = false;
    try {
-      if (gInterpreter->ProcessLine(code))    {
+      TInterpreter::EErrorCode err = TInterpreter::kNoError;
+      if (gInterpreter->ProcessLine(code, &err)) {
          status = true;
       }
-   }
-   catch(...) {
+
+      if (err == TInterpreter::kProcessing) {
+         gInterpreter->ProcessLine(".@");
+         gInterpreter->ProcessLine("cerr << \"Unbalanced curly braces. This cell was not processed.\" << endl;");
+      }
+   } catch (...) {
       status = true;
    }
+
    return status;
 }
 
@@ -131,15 +139,11 @@ bool JupyROOTDeclarerImpl(const char *code)
       if (gInterpreter->Declare(code)) {
          status = true;
       }
-   }
-   catch(...) {
+   } catch (...) {
       status = true;
    }
    return status;
 }
-
-
-JupyROOTExecutorHandler *JupyROOTExecutorHandler_ptr = nullptr;
 
 extern "C" {
 
@@ -159,7 +163,9 @@ extern "C" {
 
    void JupyROOTExecutorHandler_Ctor()
    {
-      JupyROOTExecutorHandler_ptr = new JupyROOTExecutorHandler();
+      if (!JupyROOTExecutorHandler_ptr) {
+         JupyROOTExecutorHandler_ptr = new JupyROOTExecutorHandler();
+      }
    }
 
    void JupyROOTExecutorHandler_Poll()
@@ -191,7 +197,9 @@ extern "C" {
 
    void JupyROOTExecutorHandler_Dtor()
    {
+      if (!JupyROOTExecutorHandler_ptr) return;
       delete JupyROOTExecutorHandler_ptr;
+      JupyROOTExecutorHandler_ptr = nullptr;
    }
 
 }
