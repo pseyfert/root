@@ -1,7 +1,7 @@
 ######################################################################
 # Project: TMVA - Toolkit for Multivariate Data Analysis             #
 # Code   : Example usage for TMVA analyses                           #
-###################################################################### 
+######################################################################
 BINS = TMVAClassification \
         TMVAClassificationCategory \
         TMVAClassificationApplication \
@@ -15,25 +15,28 @@ BINS = TMVAClassification \
 			TMVAGAexample2 \
 
 
-CXX = g++
-CCFLAGS = -O0 -ggdb -std=c++11 
+CXX = $(shell root-config --cxx)
+
+# later arguments override earlier ones. If root has been build with -std=c++1y then
+# the examples should still see c++11 in compilation
+CXXFLAGS = $(shell root-config --cflags) -O0 -ggdb -std=c++11
 
 
-LD = g++
-LDFLAGS = 
+LD = $(shell root-config --ld)
+LDFLAGS = $(shell root-config --ldflags) -g
+LDLIBS = $(shell root-config --libs) -lMLP -lMinuit -lTreePlayer -lTMVA -lTMVAGui -lXMLIO  -lMLP -lm
 
-LIBS = $(shell root-config --libdir) 
-INCS = $(shell root-config --incdir)  
+INCS = $(shell root-config --incdir)
 
 
 default : $(BINS)
 
-$(BINS): % : %.C 
+$(BINS): % : %.C
 	@echo -n "Building $@ ... "
-	$(CXX) $(CCFLAGS) $<  $(addprefix -I, $(INCS))  $(shell root-config --libs) -lMLP -lMinuit -lTreePlayer -lTMVA -lTMVAGui -lXMLIO  -lMLP -lm  -g -o $@
+	$(CXX) $(CXXFLAGS) $(addprefix -I, $(INCS)) $(LDFLAGS) $^ $(LDLIBS) -o $@
 	@echo "Done"
 
 
-clean: 
+clean:
 	rm -f *.o	$(BINS)
 
