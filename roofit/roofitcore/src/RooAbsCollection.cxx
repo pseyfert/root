@@ -34,6 +34,7 @@ collections.
 #include <algorithm>                    // for sort, unique
 #include <iomanip>                      // for operator<<, setw
 #include <iostream>                     // for operator<<, basic_ostream, etc
+#include <fstream>                      // IWYU pragma: keep
 #include <string>                       // for string, char_traits
 #include <vector>                       // for vector, vector<>::iterator
 

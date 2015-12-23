@@ -35,6 +35,7 @@ importClassCode() method.
 **/
 
 #include <iostream>                     // for operator<<, basic_ostream, etc
+#include <fstream>                      // IWYU pragma: keep
 #include <list>                         // for list, _List_iterator, etc
 #include <map>                          // for map, _Rb_tree_iterator, etc
 #include <set>                          // for set

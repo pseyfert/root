@@ -40,6 +40,7 @@ The singleton instance is accessible through RooMsgService::instance() ;
 
 #include <ext/alloc_traits.h>
 #include <iostream>                     // for operator<<, ostream, etc
+#include <fstream>                      // IWYU pragma: keep
 #include <map>                          // for map, map<>::mapped_type, etc
 #include <stack>                        // for stack
 #include <string>                       // for string, operator<<, etc

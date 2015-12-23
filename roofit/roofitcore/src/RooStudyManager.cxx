@@ -26,7 +26,8 @@ repeated applications of generate-and-fit operations on a workspace
 
 #include <string.h>                     // for strcmp, NULL
 #include <list>                         // for list, _List_iterator, etc
-#include <ostream>                      // for operator<<, basic_ostream, etc
+// IWYU pragma: no_include <ostream>    // for operator<<, basic_ostream, etc
+#include <fstream>                      // IWYU pragma: keep
 #include <string>                       // for string, char_traits, etc
 
 #include "RooAbsStudy.h"                // for RooAbsStudy
