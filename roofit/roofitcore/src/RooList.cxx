@@ -26,9 +26,8 @@ that are associated with each node. This is a utility class for RooPlot
 #include <string.h>                     // for strlen, strcmp
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooList.h"                    // for RooList
+#include "RooList.h"                    // for RooList, TObjOptLink, etc
 #include "RooMsgService.h"              // for coutE
-#include "TList.h"                      // for TObjOptLink, TObjLink
 #include "TObject.h"                    // for kFALSE, Bool_t, TObject, etc
 #include "TString.h"                    // for TString
 

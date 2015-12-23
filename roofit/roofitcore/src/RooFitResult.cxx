@@ -37,14 +37,13 @@
 #include <utility>                      // for pair
 #include <vector>                       // for vector, etc
 
-#include "RooAbsArg.h"                  // for RooAbsArg, TNamed
-#include "RooAbsPdf.h"                  // for RooAbsReal, RooAbsPdf
-#include "RooArgList.h"                 // for RooArgList, Int_t, Double_t, etc
-#include "RooArgSet.h"                  // for RooArgSet
+#include "RooAbsArg.h"                  // for RooAbsArg, operator<<, etc
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for Int_t, Double_t, kFALSE, etc
 #include "RooEllipse.h"                 // for RooEllipse
-#include "RooFitResult.h"               // for RooFitResult, operator<<, etc
+#include "RooFitResult.h"               // for RooFitResult, RooDirItem
 #include "RooMsgService.h"              // for coutE, coutW, coutI, etc
-#include "RooMultiVarGaussian.h"        // for RooMultiVarGaussian
+#include "RooMultiVarGaussian.h"        // for RooAbsReal, etc
 #include "RooPlot.h"                    // for RooPlot
 #include "RooRandom.h"                  // for RooRandom
 #include "RooRealVar.h"                 // for RooRealVar

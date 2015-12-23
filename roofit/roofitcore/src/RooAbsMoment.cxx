@@ -26,7 +26,7 @@ derivator class.
 
 
 #include "RooAbsMoment.h"               // for RooAbsMoment, RooAbsReal
-#include "RooArgSet.h"                  // for kFALSE, Bool_t, ClassImp, etc
+
 #include "RooRealVar.h"                 // for RooRealVar
 
 using namespace std ;

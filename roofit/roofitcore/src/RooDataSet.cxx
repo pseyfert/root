@@ -33,25 +33,23 @@ or RooStringVar objects
 #include <fstream>                      // for operator<<, basic_ostream, etc
 #include <list>                         // for list, _List_iterator, etc
 #include <map>                          // for _Rb_tree_iterator, map, etc
-#include <string>                       // for string, basic_string, etc
+#include <string>                       // for string, char_traits, etc
 #include <utility>                      // for pair
 
-#include "RooAbsRealLValue.h"           // for RooAbsRealLValue, etc
-#include "RooArgList.h"                 // for Int_t, kTRUE, Double_t, etc
-#include "RooArgSet.h"                  // for RooArgSet
+#include "RooArgList.h"                 // for RooArgList
 #include "RooCatType.h"                 // for RooCatType
 #include "RooCategory.h"                // for RooCategory, RooLinkedList, etc
 #include "RooCmdArg.h"                  // for RooCmdArg
 #include "RooCmdConfig.h"               // for RooCmdConfig
 #include "RooCompositeDataStore.h"      // for RooAbsDataStore, etc
-#include "RooDataHist.h"                // for RooDataHist
-#include "RooDataSet.h"                 // for RooDataSet, RooAbsData, etc
+#include "RooDataHist.h"                // for RooDirItem, RooDataHist
+#include "RooDataSet.h"                 // for RooDataSet, RooArgSet, etc
 #include "RooFormula.h"                 // for RooFormula
 #include "RooFormulaVar.h"              // for RooFormulaVar
 #include "RooHist.h"                    // for RooHist
 #include "RooMsgService.h"              // for coutE, oocoutE, coutI, etc
 #include "RooPlot.h"                    // for RooPlot
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for RooRealVar, Int_t, kTRUE, etc
 #include "RooSentinel.h"                // for RooSentinel
 #include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
 #include "RooTreeData.h"                // for RooTreeData

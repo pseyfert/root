@@ -38,19 +38,16 @@ interpreted as a parameter.
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
 #include "RooAbsArg.h"                  // for RooLinkedList, RooAbsArg
-#include "RooAbsBinning.h"              // for RooAbsBinning
-#include "RooAbsRealLValue.h"           // for RooAbsRealLValue, etc
-#include "RooArgList.h"                 // for Double_t, Int_t, Bool_t, etc
-#include "RooArgSet.h"                  // for RooArgSet
+#include "RooArgList.h"                 // for RooArgList
 #include "RooCmdArg.h"                  // for RooCmdArg
 #include "RooCmdConfig.h"               // for RooCmdConfig
 #include "RooMsgService.h"              // for coutE, oocoutE, coutI
 #include "RooNumber.h"                  // for RooNumber
 #include "RooPlot.h"                    // for RooPlot
 #include "RooRandom.h"                  // for RooRandom
-#include "RooRealVar.h"                 // for RooRealVar
-#include "RooTreeData.h"                // for RooTreeData
-#include "RooUniformBinning.h"          // for RooUniformBinning
+#include "RooRealVar.h"                 // for RooAbsRealLValue, etc
+#include "RooTreeData.h"                // for Double_t, Int_t, Bool_t, etc
+#include "RooUniformBinning.h"          // for RooAbsBinning, etc
 #include "TH1.h"                        // for TH1F, TH1
 #include "TH2.h"                        // for TH2F
 #include "TH3.h"                        // for TH3F

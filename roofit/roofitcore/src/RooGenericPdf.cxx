@@ -37,11 +37,9 @@ doesn't hardcode any of the variable names it expects
 
 #include <ostream>                      // for operator<<, ostream, etc
 
-#include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooArgList.h"                 // for Bool_t, RooArgList, kTRUE, etc
 #include "RooFormula.h"                 // for RooFormula
-#include "RooGenericPdf.h"              // for RooGenericPdf
-#include "RooListProxy.h"               // for RooListProxy
+#include "RooGenericPdf.h"              // for RooGenericPdf, RooAbsPdf
+#include "RooListProxy.h"               // for Bool_t, RooListProxy, etc
 #include "RooMsgService.h"              // for coutE
 #include "RooStreamParser.h"            // for RooStreamParser
 #include "TString.h"                    // for TString, operator<<

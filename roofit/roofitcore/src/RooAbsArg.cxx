@@ -39,8 +39,7 @@ setting/clearing/testing named attributes.
 #include <string.h>                     // for strlen, strtok, strcmp
 #include <algorithm>                    // for remove
 #include <deque>                        // for _Deque_iterator, deque, etc
-#include <fstream>                      // for operator<<, basic_ostream, etc
-#include <iostream>                     // for cout
+#include <iostream>                     // for operator<<, basic_ostream, etc
 #include <map>                          // for map, etc
 #include <set>                          // for set, set<>::iterator, etc
 #include <stack>                        // for stack
@@ -49,13 +48,11 @@ setting/clearing/testing named attributes.
 
 #include "RooAbsArg.h"                  // for RooAbsArg, RooFIter, etc
 #include "RooAbsCache.h"                // for RooAbsCache
-#include "RooAbsData.h"                 // for RooAbsData
-#include "RooAbsDataStore.h"            // for RooAbsDataStore
+#include "RooAbsData.h"                 // for RooArgSet, Bool_t, kFALSE, etc
 #include "RooArgProxy.h"                // for RooArgProxy, RooAbsProxy
-#include "RooArgSet.h"                  // for RooArgSet, Bool_t, kFALSE, etc
 #include "RooConstVar.h"                // for RooConstVar
 #include "RooExpensiveObjectCache.h"    // for RooExpensiveObjectCache
-#include "RooListProxy.h"               // for RooListProxy
+#include "RooListProxy.h"               // for RooListProxy, RooAbsProxy
 #include "RooMsgService.h"              // for coutE, cxcoutD, coutI, etc
 #include "RooNameReg.h"                 // for RooNameReg, etc
 #include "RooRealIntegral.h"            // for RooRealIntegral
@@ -63,7 +60,7 @@ setting/clearing/testing named attributes.
 #include "RooRefCountList.h"            // for RooRefCountList
 #include "RooResolutionModel.h"         // for RooResolutionModel
 #include "RooSetProxy.h"                // for RooSetProxy
-#include "RooTreeDataStore.h"           // for RooTreeDataStore
+#include "RooTreeDataStore.h"           // for RooAbsDataStore, etc
 #include "RooVectorDataStore.h"         // for RooVectorDataStore
 #include "TBuffer.h"                    // for TBuffer
 #include "TClass.h"                     // for TClass

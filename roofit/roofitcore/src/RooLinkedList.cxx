@@ -43,6 +43,7 @@ Use RooAbsCollection derived objects for public use
 #include "RooNameReg.h"                 // for RooNameReg, etc
 #include "Rtypes.h"                     // for Int_t, Bool_t, UInt_t, etc
 #include "TBuffer.h"                    // for TBuffer, operator<<, etc
+#include "TObject.h"                    // for TObject
 
 using namespace std;
 

@@ -31,18 +31,15 @@ use a RooAcceptReject sampling technique.
 #include <string>                       // for char_traits, string
 
 #include "RooAbsArg.h"                  // for operator<<, RooAbsArg, etc
-#include "RooAbsGenContext.h"           // for RooAbsGenContext
-#include "RooAbsLValue.h"               // for RooAbsLValue
 #include "RooAbsNumGenerator.h"         // for RooAbsNumGenerator
 #include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooArgSet.h"                  // for RooArgSet, kTRUE, Double_t, etc
-#include "RooDataSet.h"                 // for RooDataSet
+#include "RooDataSet.h"                 // for RooArgSet, kTRUE, Double_t, etc
 #include "RooErrorHandler.h"            // for RooErrorHandler
-#include "RooGenContext.h"              // for RooGenContext
+#include "RooGenContext.h"              // for RooGenContext, etc
 #include "RooMsgService.h"              // for cxcoutD, ccxcoutI, coutE, etc
 #include "RooNumGenFactory.h"           // for RooNumGenFactory
 #include "RooRealIntegral.h"            // for RooRealIntegral
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for RooRealVar, RooAbsLValue
 #include "TClass.h"                     // for TClass
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for operator<<, TString

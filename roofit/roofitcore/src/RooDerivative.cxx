@@ -29,12 +29,11 @@ derivator class.
 
 #include "Math/RichardsonDerivator.h"   // for RichardsonDerivator
 #include "Math/WrappedFunction.h"       // for WrappedFunction
-#include "RooArgSet.h"                  // for kFALSE, Bool_t, Double_t, etc
 #include "RooDerivative.h"              // for RooDerivative, RooAbsReal
 #include "RooFunctor.h"                 // for RooFunctor
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "RooRealVar.h"                 // for RooRealVar
-#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooRealVar.h"                 // for kFALSE, Bool_t, Double_t, etc
+#include "RooSetProxy.h"                // for RooArgSet, RooSetProxy, etc
 #include "TString.h"                    // for Form
 
 using namespace std;

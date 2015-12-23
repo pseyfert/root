@@ -30,14 +30,13 @@ when any of the parameters of the input p.d.f. has changed.
 #include <string>                       // for string, char_traits
 
 #include "RooAbsCacheElement.h"         // for RooAbsCacheElement::Action
-#include "RooAbsCachedReal.h"           // for RooAbsReal, etc
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for Double_t, Int_t, RooArgSet, etc
+#include "RooArgSet.h"                  // for RooArgSet
 #include "RooDataHist.h"                // for RooDataHist
 #include "RooHistFunc.h"                // for RooHistFunc
 #include "RooNumRunningInt.h"
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for Double_t, Int_t, RooRealVar, etc
 
 using namespace std;
 

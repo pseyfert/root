@@ -31,7 +31,7 @@ repeated applications of generate-and-fit operations on a workspace
 #include <string>                       // for char_traits, string, etc
 
 #include "RooAbsStudy.h"                // for RooAbsStudy, TNamed
-#include "RooDataSet.h"                 // for RooDataSet
+#include "RooDataSet.h"                 // for Int_t, RooDataSet, ClassImp, etc
 #include "RooLinkedList.h"              // for RooLinkedList
 #include "RooMsgService.h"              // for coutP
 #include "RooRandom.h"                  // for RooRandom
@@ -43,7 +43,6 @@ repeated applications of generate-and-fit operations on a workspace
 #include "TIterator.h"                  // for TIterator
 #include "TList.h"                      // for TList
 #include "TMath.h"                      // for Limits
-#include "TObject.h"                    // for Int_t, ClassImp, etc
 #include "TRandom.h"                    // for TRandom
 #include "TRandom2.h"                   // for TRandom2, gRandom
 #include "TString.h"                    // for Form, TString, operator!=

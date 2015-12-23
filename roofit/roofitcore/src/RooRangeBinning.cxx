@@ -26,10 +26,9 @@ the RooRealVar::setRange() method
 
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooAbsBinning.h"              // for RooAbsBinning
 #include "RooMsgService.h"              // for oocoutE
 #include "RooNumber.h"                  // for RooNumber
-#include "RooRangeBinning.h"            // for RooRangeBinning
+#include "RooRangeBinning.h"            // for RooRangeBinning, etc
 #include "Rtypes.h"                     // for Double_t, ClassImp
 
 class TObject;

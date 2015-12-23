@@ -35,17 +35,14 @@ discrete dimensions.
 #include <utility>                      // for make_pair, pair
 
 #include "RooAbsBinning.h"              // for RooAbsBinning
-#include "RooAbsData.h"                 // for RooAbsData
-#include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal
-#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
+#include "RooAbsData.h"                 // for RooArgSet, RooAbsCollection, etc
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet, RooAbsCollection
-#include "RooCategory.h"                // for Double_t, RooAbsArg, kFALSE, etc
+#include "RooCategory.h"                // for RooAbsArg, RooFIter, etc
 #include "RooDataHist.h"                // for RooDataHist
 #include "RooGlobalFunc.h"              // for Embedded, Rename
-#include "RooHistPdf.h"                 // for RooHistPdf
+#include "RooHistPdf.h"                 // for RooHistPdf, RooAbsPdf, etc
 #include "RooMsgService.h"              // for coutE
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for Double_t, RooAbsRealLValue, etc
 #include "RooSetProxy.h"                // for RooSetProxy
 #include "RooWorkspace.h"               // for RooWorkspace
 #include "TBuffer.h"                    // for TBuffer

@@ -35,8 +35,7 @@ the serverRedirect changes.
 #include <ostream>                      // for operator<<, ostream, etc
 
 #include "RooAbsArg.h"                  // for RooAbsArg, etc
-#include "RooArgSet.h"                  // for Bool_t, RooArgSet, etc
-#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooSetProxy.h"                // for RooSetProxy, Bool_t, etc
 #include "TIterator.h"                  // for TIterator
 
 

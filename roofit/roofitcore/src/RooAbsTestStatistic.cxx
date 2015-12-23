@@ -40,15 +40,13 @@ combined in the main thread.
 #include <vector>                       // for vector
 
 #include "RooAbsCategoryLValue.h"       // for RooAbsCategoryLValue, etc
-#include "RooAbsData.h"                 // for RooAbsData
-#include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal
+#include "RooAbsData.h"                 // for RooArgSet, RooAbsData, etc
 #include "RooAbsTestStatistic.h"        // for RooAbsTestStatistic, etc
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet, RooAbsCollection
 #include "RooCatType.h"                 // for Int_t, Double_t, Bool_t, etc
 #include "RooGlobalFunc.h"              // for MPSplit, etc
 #include "RooMsgService.h"              // for ccoutD, coutE, coutI, etc
-#include "RooProdPdf.h"                 // for RooProdPdf
+#include "RooProdPdf.h"                 // for RooAbsPdf, RooAbsReal, etc
 #include "RooRealMPFE.h"                // for RooRealMPFE
 #include "RooRealSumPdf.h"              // for RooRealSumPdf
 #include "RooSetProxy.h"                // for RooSetProxy

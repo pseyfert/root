@@ -48,7 +48,6 @@
 
 #include "RooAbsCategoryLValue.h"       // for RooAbsArg, RooAbsCategory, etc
 #include "RooAbsRealLValue.h"           // for RooAbsRealLValue, etc
-#include "RooAbsString.h"               // for RooAbsString
 #include "RooArgList.h"                 // for RooArgList
 #include "RooArgSet.h"                  // for RooArgSet, Bool_t, kTRUE, etc
 #include "RooErrorHandler.h"            // for RooErrorHandler
@@ -56,7 +55,7 @@
 #include "RooMsgService.h"              // for coutE, oocxcoutD, coutI, etc
 #include "RooSentinel.h"                // for RooSentinel
 #include "RooStreamParser.h"            // for RooStreamParser
-#include "RooStringVar.h"               // for RooStringVar
+#include "RooStringVar.h"               // for RooAbsString, RooStringVar
 #include "RooTrace.h"                   // for TRACE_CREATE, RooTrace, etc
 #include "TCollection.h"                // for TCollection
 #include "TIterator.h"                  // for TIterator

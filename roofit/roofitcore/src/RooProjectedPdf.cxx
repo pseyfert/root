@@ -30,17 +30,14 @@ is therefore identical to that of <pre>f->createProjection(RooArgSet(x,y))</pre>
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
 #include "RooAbsArg.h"                  // for operator<<, RooAbsArg
-#include "RooAbsCacheElement.h"
-#include "RooAbsPdf.h"                  // for RooAbsReal, RooAbsPdf
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet, kTRUE, Int_t, etc
 #include "RooMsgService.h"              // for coutI
 #include "RooNameReg.h"                 // for RooNameReg
 #include "RooNameSet.h"                 // for RooNameSet
-#include "RooObjCacheManager.h"         // for RooObjCacheManager
-#include "RooProjectedPdf.h"            // for RooProjectedPdf, etc
+#include "RooObjCacheManager.h"         // for RooObjCacheManager, etc
+#include "RooProjectedPdf.h"            // for RooProjectedPdf, RooAbsReal, etc
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooSetProxy.h"                // for RooArgSet, RooSetProxy, etc
 #include "TString.h"                    // for TString, Form
 
 

@@ -62,22 +62,18 @@
 #include "RooAICRegistry.h"             // for RooAICRegistry
 #include "RooAbsAnaConvPdf.h"           // for RooAbsAnaConvPdf, etc
 #include "RooAbsArg.h"                  // for RooAbsArg, RooFIter, etc
-#include "RooAbsPdf.h"                  // for RooAbsReal, RooAbsPdf
-#include "RooArgList.h"                 // for RooArgList
 #include "RooArgSet.h"                  // for RooArgSet
 #include "RooConvCoefVar.h"             // for RooConvCoefVar
 #include "RooConvGenContext.h"          // for RooConvGenContext
 #include "RooFormulaVar.h"              // for RooFormulaVar
 #include "RooGenContext.h"              // for RooGenContext
-#include "RooListProxy.h"               // for RooListProxy
+#include "RooListProxy.h"               // for RooListProxy, RooArgList
 #include "RooMsgService.h"              // for coutE, cxcoutD, coutI
 #include "RooNameReg.h"                 // for RooNameReg
 #include "RooObjCacheManager.h"         // for RooObjCacheManager
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "RooRealVar.h"                 // for RooRealVar
-#include "RooResolutionModel.h"         // for RooResolutionModel
-#include "RooTruthModel.h"              // for RooTruthModel
-#include "Rtypes.h"                     // for Int_t, Double_t, Bool_t, etc
+#include "RooRealVar.h"                 // for Int_t, Double_t, Bool_t, etc
+#include "RooTruthModel.h"              // for RooResolutionModel, etc
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for TString, Form, operator<<
 

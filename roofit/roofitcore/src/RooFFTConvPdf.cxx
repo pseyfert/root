@@ -104,25 +104,21 @@
 #include <string>                       // for char_traits, string, etc
 
 #include "RooAbsArg.h"                  // for RooAbsArg, etc
-#include "RooAbsBinning.h"              // for RooAbsBinning
-#include "RooAbsCacheElement.h"         // for RooAbsCacheElement::Action
-#include "RooAbsLValue.h"               // for RooAbsLValue
-#include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet, Int_t, Double_t, etc
-#include "RooConstVar.h"                // for RooConstVar
+#include "RooArgList.h"                 // for Int_t, Double_t, kTRUE, etc
+#include "RooConstVar.h"                // for RooAbsReal, RooConstVar
 #include "RooConvGenContext.h"          // for RooConvGenContext
 #include "RooCustomizer.h"              // for RooCustomizer
 #include "RooDataHist.h"                // for RooDataHist
 #include "RooFFTConvPdf.h"              // for RooFFTConvPdf, RooAbsPdf, etc
 #include "RooGenContext.h"              // for RooGenContext
 #include "RooGlobalFunc.h"              // for RooConst
-#include "RooLinearVar.h"               // for RooLinearVar
+#include "RooLinearVar.h"               // for RooLinearVar, RooAbsLValue
 #include "RooMsgService.h"              // for cxcoutI, coutE
-#include "RooObjCacheManager.h"         // for RooObjCacheManager
+#include "RooObjCacheManager.h"         // for RooAbsCacheElement::Action, etc
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "RooRealVar.h"                 // for RooRealVar
-#include "RooSetProxy.h"                // for RooSetProxy
-#include "RooUniformBinning.h"          // for RooUniformBinning
+#include "RooSetProxy.h"                // for RooArgSet, RooSetProxy
+#include "RooUniformBinning.h"          // for RooAbsBinning, etc
 #include "TClass.h"                     // for TClass
 #include "TComplex.h"                   // for TComplex
 #include "TIterator.h"                  // for TIterator

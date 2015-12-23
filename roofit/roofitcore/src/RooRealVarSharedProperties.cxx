@@ -25,9 +25,7 @@ For RooRealVars these are the definitions of the named ranges.
 **/
 
 #include "RooLinkedList.h"              // for RooLinkedList
-#include "RooRealVarSharedProperties.h"  // for RooRealVarSharedProperties
-#include "RooSharedProperties.h"        // for RooSharedProperties
-#include "Rtypes.h"                     // for ClassImp
+#include "RooRealVarSharedProperties.h"  // for RooRealVarSharedProperties, etc
 
 
 using namespace std;

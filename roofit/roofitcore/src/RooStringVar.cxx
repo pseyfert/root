@@ -24,10 +24,9 @@ RooStringVar implements a string values RooAbsArg
 
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooAbsString.h"               // for RooAbsString
 #include "RooMsgService.h"              // for coutW
 #include "RooStreamParser.h"            // for RooStreamParser
-#include "RooStringVar.h"               // for RooStringVar
+#include "RooStringVar.h"               // for RooStringVar, RooAbsString
 #include "Rtypes.h"                     // for Bool_t, ClassImp, Int_t, etc
 #include "TString.h"                    // for TString
 #include "strlcpy.h"                    // for strlcpy

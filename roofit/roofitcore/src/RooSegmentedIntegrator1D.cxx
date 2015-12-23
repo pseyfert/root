@@ -34,9 +34,8 @@ numerical integration algorithm.
 #include "RooNumIntConfig.h"            // for RooNumIntConfig
 #include "RooNumIntFactory.h"           // for RooNumIntFactory
 #include "RooNumber.h"                  // for RooNumber
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for Double_t, Int_t, Bool_t, etc
 #include "RooSegmentedIntegrator1D.h"   // for RooSegmentedIntegrator1D, etc
-#include "Rtypes.h"                     // for Double_t, Int_t, Bool_t, etc
 #include "TClass.h"                     // for TClass
 
 

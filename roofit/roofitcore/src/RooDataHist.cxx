@@ -36,11 +36,7 @@ or RooStringVar objects, thus data can be binned in real and/or discrete dimensi
 #include <utility>                      // for pair
 #include <vector>                       // for vector, etc
 
-#include "RooAbsData.h"                 // for RooAbsData, etc
-#include "RooAbsDataStore.h"            // for RooAbsDataStore
-#include "RooAbsRealLValue.h"           // for RooAbsLValue, RooAbsReal, etc
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for Double_t, RooArgSet, Int_t, etc
 #include "RooBinning.h"                 // for RooBinning, RooAbsBinning
 #include "RooCacheManager.h"            // for RooCacheManager
 #include "RooCategory.h"                // for RooAbsArg, RooCategory, etc
@@ -54,10 +50,10 @@ or RooStringVar objects, thus data can be binned in real and/or discrete dimensi
 #include "RooMath.h"                    // for RooMath
 #include "RooMsgService.h"              // for coutE, coutI
 #include "RooPlot.h"                    // for RooPlot
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for RooRealVar, RooAbsLValue, etc
 #include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
-#include "RooTreeData.h"                // for RooTreeData
-#include "RooTreeDataStore.h"           // for RooTreeDataStore
+#include "RooTreeData.h"                // for Double_t, RooArgSet, Int_t, etc
+#include "RooTreeDataStore.h"           // for RooTreeDataStore, etc
 #include "RooUniformBinning.h"          // for RooUniformBinning
 #include "RooVectorDataStore.h"         // for RooVectorDataStore
 #include "TArrayD.h"                    // for TArrayD

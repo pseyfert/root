@@ -50,7 +50,7 @@ have to appear in any specific place in the list.
 
 #include "RooAddition.h"                // for RooAddition
 #include "RooConstVar.h"                // for RooConstVar
-#include "RooCustomizer.h"              // for RooCustomizer, operator<<
+#include "RooCustomizer.h"              // for RooCustomizer
 #include "RooFormulaVar.h"              // for RooFormulaVar
 #include "RooGenProdProj.h"             // for RooGenProdProj
 #include "RooGlobalFunc.h"              // for RooConst
@@ -65,8 +65,6 @@ have to appear in any specific place in the list.
 #include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
 #include "TString.h"                    // for Form, TString, operator<<
 
-class RooAbsGenContext;
-class RooAbsRealLValue;
 class RooDataSet;
 
 #ifndef _WIN32

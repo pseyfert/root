@@ -29,8 +29,7 @@ RooAbsStudy is an abstract base class for RooStudyManager modules
 #include <string>                       // for string, char_traits
 
 #include "RooAbsStudy.h"                // for RooAbsStudy, TNamed
-#include "RooArgSet.h"                  // for RooArgSet, TObject, etc
-#include "RooDataSet.h"                 // for RooDataSet
+#include "RooDataSet.h"                 // for RooDataSet, RooArgSet, etc
 #include "RooGlobalFunc.h"              // for StoreAsymError, StoreError
 #include "RooLinkedList.h"              // for RooLinkedList
 #include "RooMsgService.h"              // for coutE, coutW

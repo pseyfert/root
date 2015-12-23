@@ -31,17 +31,15 @@ discrete dimensions and may have negative values
 #include <string>                       // for char_traits, operator==, etc
 
 #include "RooAbsBinning.h"              // for RooAbsBinning
-#include "RooAbsData.h"                 // for RooAbsData
-#include "RooAbsRealLValue.h"           // for RooAbsRealLValue, etc
+#include "RooAbsData.h"                 // for RooArgSet, RooAbsCollection, etc
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet, RooAbsCollection
-#include "RooCategory.h"                // for RooAbsArg, Double_t, kFALSE, etc
+#include "RooCategory.h"                // for RooAbsArg, RooCategory, etc
 #include "RooDataHist.h"                // for RooDataHist
 #include "RooGlobalFunc.h"              // for Embedded, Rename
 #include "RooHistFunc.h"                // for RooHistFunc
 #include "RooMsgService.h"              // for coutE
 #include "RooNameSet.h"                 // for RooNameSet
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for Double_t, RooAbsRealLValue, etc
 #include "RooSetProxy.h"                // for RooSetProxy
 #include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
 #include "RooWorkspace.h"               // for RooWorkspace

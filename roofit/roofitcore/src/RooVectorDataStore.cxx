@@ -31,19 +31,16 @@ use a TTree as internal storage mechanism
 #include <string>                       // for char_traits, string, etc
 #include <vector>                       // for vector, etc
 
-#include "RooAbsData.h"                 // for RooAbsData, etc
-#include "RooAbsDataStore.h"            // for RooAbsDataStore
-#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooAbsData.h"                 // for RooArgSet, Int_t, Double_t, etc
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet, ClassImp, kFALSE
-#include "RooCategory.h"                // for RooAbsArg, Int_t, Double_t, etc
-#include "RooFormulaVar.h"              // for RooFormulaVar
+#include "RooCategory.h"                // for RooAbsArg, RooAbsCategory, etc
+#include "RooFormulaVar.h"              // for RooAbsReal, RooFormulaVar
 #include "RooHistError.h"               // for RooHistError
 #include "RooMsgService.h"              // for coutE, coutI
 #include "RooNameSet.h"                 // for RooNameSet
 #include "RooRealVar.h"                 // for RooRealVar
 #include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
-#include "RooTreeDataStore.h"           // for RooTreeDataStore
+#include "RooTreeDataStore.h"           // for RooAbsDataStore, etc
 #include "RooVectorDataStore.h"         // for RooVectorDataStore, etc
 #include "TBuffer.h"                    // for TBuffer
 #include "TIterator.h"                  // for TIterator

@@ -31,11 +31,9 @@ it can define.
 #include <vector>                       // for vector
 
 #include "RooAbsArg.h"                  // for RooFIter, RooAbsArg
-#include "RooAbsReal.h"                 // for RooAbsReal
-#include "RooArgList.h"                 // for Double_t, Int_t, RooArgList, etc
-#include "RooListProxy.h"               // for RooListProxy
+#include "RooListProxy.h"               // for Double_t, RooListProxy, etc
 #include "RooMsgService.h"              // for coutE
-#include "RooPolyVar.h"                 // for RooPolyVar
+#include "RooPolyVar.h"                 // for RooPolyVar, RooAbsReal
 #include "RooRealProxy.h"               // for RooRealProxy
 //#include "Riostream.h"
 

@@ -47,25 +47,21 @@
 #include <string>                       // for char_traits, string, etc
 #include <utility>                      // for pair
 
-#include "RooAbsArg.h"                  // for RooAbsArg
-#include "RooAbsCacheElement.h"         // for RooAbsCacheElement::Action, etc
-#include "RooAbsPdf.h"                  // for RooAbsPdf, etc
-#include "RooAddGenContext.h"           // for operator<<, etc
-#include "RooAddModel.h"                // for RooAddModel, etc
-#include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet, Double_t, kTRUE, etc
-#include "RooConstVar.h"                // for RooAbsReal, RooConstVar
+#include "RooAbsArg.h"                  // for RooAbsArg, operator<<, etc
+#include "RooAddGenContext.h"           // for RooAddGenContext
+#include "RooAddModel.h"                // for RooAddModel, RooAbsReal, etc
+#include "RooConstVar.h"                // for RooConstVar
 #include "RooFormulaVar.h"              // for RooFormulaVar
-#include "RooListProxy.h"               // for RooListProxy
+#include "RooListProxy.h"               // for RooArgList, RooListProxy
 #include "RooMsgService.h"              // for coutE, cxcoutD, ccoutI, etc
 #include "RooNameReg.h"                 // for RooNameReg
 #include "RooNameSet.h"                 // for RooNameSet
-#include "RooObjCacheManager.h"         // for RooObjCacheManager
+#include "RooObjCacheManager.h"         // for RooObjCacheManager, etc
 #include "RooRealConstant.h"            // for RooRealConstant
 #include "RooRealIntegral.h"            // for RooRealIntegral
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "RooRealVar.h"                 // for RooRealVar
-#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooSetProxy.h"                // for RooArgSet, Double_t, etc
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for TString
 

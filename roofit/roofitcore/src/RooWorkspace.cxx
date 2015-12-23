@@ -34,8 +34,8 @@ This process is also organized by the workspace through the
 importClassCode() method.
 **/
 
-#include <iostream>                     // for operator<<, basic_ostream, etc
-#include <fstream>                      // IWYU pragma: keep
+#include <fstream>                      // for operator<<, basic_ostream, etc
+#include <iostream>                     // for cout
 #include <list>                         // for list, _List_iterator, etc
 #include <map>                          // for map, _Rb_tree_iterator, etc
 #include <set>                          // for set
@@ -43,14 +43,12 @@ importClassCode() method.
 #include <utility>                      // for pair
 
 #include "RVersion.h"                   // for ROOT_VERSION, etc
-#include "RooAbsData.h"                 // for RooAbsData
+#include "RooAbsData.h"                 // for RooArgSet, Bool_t, kTRUE, etc
 #include "RooAbsOptTestStatistic.h"     // for RooAbsOptTestStatistic
-#include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal
 #include "RooAbsStudy.h"                // for RooAbsStudy
-#include "RooArgSet.h"                  // for RooArgSet
-#include "RooCategory.h"                // for RooAbsArg, Bool_t, etc
+#include "RooCategory.h"                // for RooAbsArg, RooLinkedList, etc
 #include "RooCmdArg.h"                  // for RooCmdArg
-#include "RooCmdConfig.h"               // for RooCmdConfig, TObject
+#include "RooCmdConfig.h"               // for RooCmdConfig
 #include "RooConstVar.h"                // for RooConstVar
 #include "RooExpensiveObjectCache.h"    // for RooExpensiveObjectCache
 #include "RooFactoryWSTool.h"           // for RooFactoryWSTool
@@ -59,7 +57,7 @@ importClassCode() method.
 #include "RooPlot.h"                    // for RooPlot
 #include "RooRealVar.h"                 // for RooRealVar
 #include "RooRefCountList.h"            // for RooRefCountList
-#include "RooResolutionModel.h"         // for RooResolutionModel
+#include "RooResolutionModel.h"         // for RooResolutionModel, etc
 #include "RooTObjWrap.h"                // for RooTObjWrap
 #include "RooWorkspace.h"               // for RooWorkspace, etc
 #include "TBaseClass.h"                 // for TBaseClass

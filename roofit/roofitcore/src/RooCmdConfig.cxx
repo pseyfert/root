@@ -32,15 +32,15 @@ arguments and dependencies between arguments
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <string>                       // for char_traits, string
 
-#include "RooArgSet.h"                  // for RooArgSet
+#include "RooArgSet.h"                  // for TObject, RooArgSet
 #include "RooCmdArg.h"                  // for RooCmdArg
-#include "RooCmdConfig.h"               // for RooCmdConfig, Bool_t, etc
-#include "RooDouble.h"                  // for RooDouble, TNamed
+#include "RooCmdConfig.h"               // for RooCmdConfig
+#include "RooDouble.h"                  // for RooDouble
 #include "RooInt.h"                     // for RooInt
-#include "RooLinkedList.h"              // for RooLinkedList
 #include "RooMsgService.h"              // for coutE
-#include "RooStringVar.h"               // for RooStringVar
+#include "RooStringVar.h"               // for RooStringVar, RooLinkedList, etc
 #include "RooTObjWrap.h"                // for RooTObjWrap
+#include "Rtypes.h"                     // for Bool_t, kFALSE, kTRUE, etc
 #include "TIterator.h"                  // for TIterator
 #include "TList.h"                      // for TList
 #include "TObjString.h"                 // for TObjString

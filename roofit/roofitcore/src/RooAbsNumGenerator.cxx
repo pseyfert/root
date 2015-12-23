@@ -28,13 +28,11 @@ implementations like RooAcceptReject and RooFoam
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
 #include "RooAbsNumGenerator.h"         // for RooAbsNumGenerator, etc
-#include "RooAbsReal.h"                 // for RooAbsReal
-#include "RooArgSet.h"                  // for RooArgSet
-#include "RooCategory.h"                // for RooAbsArg, kFALSE, kTRUE, etc
-#include "RooDataSet.h"                 // for RooDataSet
+#include "RooCategory.h"                // for RooAbsArg, RooCategory
+#include "RooDataSet.h"                 // for RooArgSet, RooDataSet, etc
 #include "RooErrorHandler.h"            // for RooErrorHandler
 #include "RooMsgService.h"              // for coutE
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for RooAbsReal, RooRealVar
 #include "TClass.h"                     // for TClass
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for operator<<

@@ -27,11 +27,10 @@ and the outer two pieces, if required are calculated using a 1/x transform
 
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooAbsFunc.h"                 // for RooAbsFunc
 #include "RooArgSet.h"                  // for RooArgSet
 #include "RooImproperIntegrator1D.h"    // for RooImproperIntegrator1D, etc
 #include "RooIntegrator1D.h"            // for RooIntegrator1D, etc
-#include "RooInvTransform.h"            // for RooInvTransform
+#include "RooInvTransform.h"            // for RooAbsFunc, RooInvTransform
 #include "RooMsgService.h"              // for oocoutE
 #include "RooNumIntFactory.h"           // for RooNumIntFactory
 #include "RooNumber.h"                  // for RooNumber

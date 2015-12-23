@@ -443,17 +443,16 @@ static char *strtok_r(char *s1, const char *s2, char **lasts)
 #include <list>                         // for list, _List_iterator, etc
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet
-#include "RooCatType.h"                 // for RooCatType, Bool_t, kTRUE, etc
+#include "RooArgSet.h"                  // for RooArgSet, Bool_t, kTRUE, etc
+#include "RooCatType.h"                 // for RooCatType, ClassImp
 #include "RooCategory.h"                // for RooAbsArg, operator<<, etc
 #include "RooCustomizer.h"              // for RooCustomizer
 #include "RooFormulaVar.h"              // for RooFormulaVar
 #include "RooMsgService.h"              // for coutE, coutI, coutW, etc
 #include "RooMultiCategory.h"           // for RooMultiCategory
 #include "RooSimPdfBuilder.h"           // for RooSimPdfBuilder
-#include "RooSimultaneous.h"            // for RooSimultaneous
+#include "RooSimultaneous.h"            // for RooAbsPdf, RooSimultaneous, etc
 #include "RooStringVar.h"               // for RooStringVar
 #include "RooSuperCategory.h"           // for RooSuperCategory
 #include "TIterator.h"                  // for TIterator

@@ -122,11 +122,8 @@ the proxy holds a function, and will trigger an assert
 #include <vector>                       // for vector, vector<>::iterator
 
 #include "Math/CholeskyDecomp.h"        // for CholeskyDecompGenDim
-#include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal, etc
-#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
 #include "RooAddition.h"                // for RooAddition
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet, Double_t, Int_t, etc
 #include "RooBinnedGenContext.h"        // for RooAbsGenContext, etc
 #include "RooCachedReal.h"              // for RooCachedReal
 #include "RooCategory.h"                // for RooLinkedList, RooAbsArg, etc
@@ -135,7 +132,7 @@ the proxy holds a function, and will trigger an assert
 #include "RooCmdConfig.h"               // for RooCmdConfig
 #include "RooConstraintSum.h"           // for RooConstraintSum
 #include "RooDataHist.h"                // for RooDataHist
-#include "RooDataSet.h"                 // for RooDataSet, RooAbsData
+#include "RooDataSet.h"                 // for RooArgSet, Double_t, Int_t, etc
 #include "RooFitResult.h"               // for RooFitResult
 #include "RooGenContext.h"              // for RooGenContext
 #include "RooGlobalFunc.h"              // for NumEvents, Range, MPSplit, etc
@@ -150,10 +147,10 @@ the proxy holds a function, and will trigger an assert
 #include "RooNumGenConfig.h"            // for RooNumGenConfig
 #include "RooObjCacheManager.h"         // for RooObjCacheManager
 #include "RooPlot.h"                    // for RooPlot
-#include "RooProjectedPdf.h"            // for RooProjectedPdf
+#include "RooProjectedPdf.h"            // for RooAbsPdf, RooAbsReal, etc
 #include "RooRandom.h"                  // for RooRandom
 #include "RooRealIntegral.h"            // for RooRealIntegral
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for RooRealVar, etc
 #include "RooXYChi2Var.h"               // for RooXYChi2Var
 #include "TClass.h"                     // for TClass
 #include "TIterator.h"                  // for TIterator

@@ -41,13 +41,10 @@
 #include <vector>                       // for vector, vector<>::iterator
 
 #include "Math/ParamFunctor.h"          // for ParamFunctorHandler
-#include "RooAbsFunc.h"                 // for RooAbsFunc
 #include "RooAbsPdf.h"                  // for RooAbsReal, etc
-#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
 #include "RooAddition.h"                // for RooAddition
 #include "RooArgList.h"                 // for RooArgList
 #include "RooArgProxy.h"                // for RooArgProxy, RooAbsProxy
-#include "RooArgSet.h"                  // for RooArgSet, kTRUE, Int_t, etc
 #include "RooBinning.h"                 // for RooAbsBinning, RooBinning
 #include "RooBrentRootFinder.h"         // for RooBrentRootFinder
 #include "RooCachedReal.h"              // for RooCachedReal
@@ -58,7 +55,7 @@
 #include "RooCurve.h"                   // for RooCurve, etc
 #include "RooCustomizer.h"              // for RooCustomizer
 #include "RooDataHist.h"                // for RooDataHist
-#include "RooDataSet.h"                 // for RooAbsData, RooDataSet
+#include "RooDataSet.h"                 // for RooArgSet, RooAbsData, etc
 #include "RooDataWeightedAverage.h"     // for RooDataWeightedAverage
 #include "RooDerivative.h"              // for RooDerivative
 #include "RooFirstMoment.h"             // for RooFirstMoment
@@ -77,9 +74,9 @@
 #include "RooParamBinning.h"            // for RooParamBinning
 #include "RooPlot.h"                    // for RooPlot
 #include "RooProfileLL.h"               // for RooProfileLL
-#include "RooRealBinding.h"             // for RooRealBinding
+#include "RooRealBinding.h"             // for RooRealBinding, RooAbsFunc
 #include "RooRealIntegral.h"            // for RooRealIntegral
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for RooRealVar, kTRUE, Int_t, etc
 #include "RooScaledFunc.h"              // for RooScaledFunc
 #include "RooSecondMoment.h"            // for RooSecondMoment
 #include "RooVectorDataStore.h"         // for RooVectorDataStore, etc

@@ -100,9 +100,8 @@
 #include <utility>                      // for pair
 #include <vector>                       // for vector
 
-#include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal
-#include "RooArgSet.h"                  // for RooArgSet
-#include "RooCatType.h"                 // for RooCatType, Int_t, kFALSE, etc
+#include "RooArgSet.h"                  // for RooArgSet, kFALSE, Int_t, etc
+#include "RooCatType.h"                 // for RooCatType, ClassImp, Int_t, etc
 #include "RooCategory.h"                // for RooAbsCategory, RooAbsArg, etc
 #include "RooCmdArg.h"                  // for RooCmdArg
 #include "RooCustomizer.h"              // for RooFactoryWSTool, etc
@@ -111,7 +110,7 @@
 #include "RooMsgService.h"              // for coutE, coutI
 #include "RooMultiCategory.h"           // for RooMultiCategory
 #include "RooSimWSTool.h"               // for RooSimWSTool, etc
-#include "RooSimultaneous.h"            // for RooSimultaneous
+#include "RooSimultaneous.h"            // for RooAbsPdf, RooSimultaneous, etc
 #include "RooSuperCategory.h"           // for RooSuperCategory
 #include "RooWorkspace.h"               // for RooWorkspace
 #include "TIterator.h"                  // for TIterator

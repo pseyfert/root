@@ -39,7 +39,7 @@ automatic PDF optimization.
 #ifndef __ROOFIT_NOROOMINIMIZER
 
 #include <fstream>                      // for operator<<, basic_ostream, etc
-#include <string>                       // for string
+#include <string>                       // for char_traits, string
 #include <utility>                      // for pair
 #include <vector>                       // for vector
 
@@ -50,7 +50,6 @@ automatic PDF optimization.
 #include "Math/Minimizer.h"             // for Minimizer
 #include "Math/MinimizerOptions.h"      // for MinimizerOptions
 #include "RooAbsArg.h"                  // for RooAbsArg, etc
-#include "RooAbsReal.h"                 // for RooAbsReal, etc
 #include "RooArgList.h"                 // for RooArgList
 #include "RooArgSet.h"                  // for Double_t, Int_t, kFALSE, etc
 #include "RooFitResult.h"               // for RooFitResult
@@ -58,7 +57,7 @@ automatic PDF optimization.
 #include "RooMinimizerFcn.h"            // for RooMinimizerFcn
 #include "RooMsgService.h"              // for coutI, coutW, coutE, etc
 #include "RooPlot.h"                    // for RooPlot
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for RooAbsReal, RooRealVar, etc
 #include "RooSentinel.h"                // for RooSentinel
 #include "TGraph.h"                     // for TGraph
 #include "TIterator.h"                  // for TIterator

@@ -27,15 +27,14 @@ derivator class.
 #include <string>                       // for string
 
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet, kTRUE, kFALSE, etc
-#include "RooCategory.h"                // for RooCategory
+#include "RooCategory.h"                // for kTRUE, kFALSE, RooCategory, etc
 #include "RooFirstMoment.h"             // for RooFirstMoment, RooAbsReal, etc
 #include "RooNumIntConfig.h"            // for RooNumIntConfig
 #include "RooProduct.h"                 // for RooProduct
 #include "RooRealIntegral.h"            // for RooRealIntegral
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "RooRealVar.h"                 // for RooRealVar
-#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooSetProxy.h"                // for RooArgSet, RooSetProxy
 #include "TString.h"                    // for Form
 
 using namespace std ;

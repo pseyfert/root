@@ -59,9 +59,8 @@ convolution precision.
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
 #include "RooAbsIntegrator.h"           // for RooAbsIntegrator
-#include "RooAbsReal.h"                 // for RooAbsReal
-#include "RooArgSet.h"                  // for kFALSE, Double_t, Bool_t, etc
-#include "RooCategory.h"                // for RooCategory
+#include "RooArgSet.h"                  // for RooArgSet, RooAbsCollection
+#include "RooCategory.h"                // for kFALSE, Double_t, Bool_t, etc
 #include "RooConvIntegrandBinding.h"    // for RooConvIntegrandBinding
 #include "RooCustomizer.h"              // for RooCustomizer
 #include "RooListProxy.h"               // for RooListProxy
@@ -71,7 +70,7 @@ convolution precision.
 #include "RooNumIntFactory.h"           // for RooNumIntFactory
 #include "RooNumber.h"                  // for RooNumber
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for RooAbsReal, RooRealVar
 #include "TH2.h"                        // for TH2, TH2F
 #include "TString.h"                    // for Form
 

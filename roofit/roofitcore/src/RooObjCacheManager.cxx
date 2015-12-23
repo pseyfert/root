@@ -32,11 +32,9 @@ have a sensible default implementation.
 #include <vector>                       // for vector
 
 #include "RooAbsArg.h"                  // for operator<<, RooAbsArg, etc
-#include "RooAbsCacheElement.h"         // for RooAbsCacheElement
 #include "RooArgSet.h"                  // for RooArgSet, Bool_t, Int_t, etc
-#include "RooCacheManager.h"            // for RooCacheManager
 #include "RooMsgService.h"              // for oocxcoutD
-#include "RooObjCacheManager.h"         // for RooObjCacheManager
+#include "RooObjCacheManager.h"         // for RooObjCacheManager, etc
 
 
 using namespace std ;

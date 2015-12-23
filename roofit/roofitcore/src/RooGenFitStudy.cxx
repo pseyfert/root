@@ -29,12 +29,10 @@ RooGenFitStudy is an abstract base class for RooStudyManager modules
 #include <string>                       // for char_traits, string, etc
 
 #include "RooAbsPdf.h"                  // for RooAbsPdf, etc
-#include "RooAbsStudy.h"                // for RooAbsStudy
-#include "RooArgSet.h"                  // for RooArgSet, Bool_t, kTRUE, etc
 #include "RooCmdArg.h"                  // for RooCmdArg
-#include "RooDataSet.h"                 // for RooDataSet
+#include "RooDataSet.h"                 // for RooArgSet, Bool_t, kTRUE, etc
 #include "RooFitResult.h"               // for RooFitResult
-#include "RooGenFitStudy.h"             // for RooGenFitStudy
+#include "RooGenFitStudy.h"             // for RooGenFitStudy, RooAbsStudy
 #include "RooGlobalFunc.h"              // for Save
 #include "RooLinkedList.h"              // for RooLinkedList
 #include "RooMsgService.h"              // for coutE

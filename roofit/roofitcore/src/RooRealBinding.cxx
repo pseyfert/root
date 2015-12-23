@@ -28,12 +28,11 @@ of its servers and present it as a simple array oriented interface.
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
 #include "RooAbsArg.h"                  // for RooAbsArg, RooFIter
-#include "RooAbsFunc.h"                 // for RooAbsFunc
 #include "RooAbsRealLValue.h"           // for RooAbsReal, etc
 #include "RooArgSet.h"                  // for Double_t, RooArgSet, UInt_t, etc
 #include "RooMsgService.h"              // for oocoutE
 #include "RooNameReg.h"                 // for RooNameReg
-#include "RooRealBinding.h"             // for RooRealBinding
+#include "RooRealBinding.h"             // for RooRealBinding, RooAbsFunc
 #include "TIterator.h"                  // for TIterator
 
 

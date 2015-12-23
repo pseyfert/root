@@ -32,11 +32,8 @@ integration is performed in the various implemenations of the RooAbsIntegrator b
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
 #include "RooAbsBinning.h"              // for RooAbsBinning
-#include "RooAbsCategoryLValue.h"       // for RooAbsArg, operator<<, etc
-#include "RooAbsFunc.h"                 // for RooAbsFunc
 #include "RooAbsIntegrator.h"           // for RooAbsIntegrator
 #include "RooAbsRealLValue.h"           // for RooAbsReal, etc
-#include "RooArgSet.h"                  // for RooArgSet, kFALSE, kTRUE, etc
 #include "RooCatType.h"                 // for RooCatType
 #include "RooConstVar.h"                // for RooConstVar
 #include "RooDouble.h"                  // for RooDouble
@@ -45,13 +42,12 @@ integration is performed in the various implemenations of the RooAbsIntegrator b
 #include "RooMsgService.h"              // for oocxcoutI, coutE, oocxcoutD, etc
 #include "RooNameReg.h"                 // for RooNameReg
 #include "RooNumIntFactory.h"           // for RooNumIntFactory
-#include "RooRealAnalytic.h"            // for RooRealAnalytic
-#include "RooRealBinding.h"             // for RooRealBinding
+#include "RooRealAnalytic.h"            // for RooAbsFunc, RooRealAnalytic, etc
 #include "RooRealIntegral.h"            // for RooRealIntegral, etc
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "RooRefCountList.h"            // for RooRefCountList
-#include "RooSetProxy.h"                // for RooSetProxy
-#include "RooSuperCategory.h"           // for RooSuperCategory
+#include "RooSetProxy.h"                // for RooArgSet, RooSetProxy, etc
+#include "RooSuperCategory.h"           // for RooAbsArg, operator<<, etc
 #include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
 #include "TClass.h"                     // for TClass
 #include "TIterator.h"                  // for TIterator

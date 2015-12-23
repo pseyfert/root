@@ -28,12 +28,10 @@ a_i it returns a_0 * Prod_i (1 - a_i).
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
 #include "RooAbsArg.h"                  // for RooAbsArg
-#include "RooAbsReal.h"                 // for RooAbsReal
-#include "RooArgList.h"                 // for RooArgList, Double_t, etc
 #include "RooErrorHandler.h"            // for RooErrorHandler
-#include "RooListProxy.h"               // for RooListProxy
+#include "RooListProxy.h"               // for RooListProxy, RooArgList, etc
 #include "RooMsgService.h"              // for coutE
-#include "RooRecursiveFraction.h"       // for RooRecursiveFraction
+#include "RooRecursiveFraction.h"       // for RooRecursiveFraction, etc
 #include "TIterator.h"                  // for TIterator
 
 class RooArgSet;

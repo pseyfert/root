@@ -30,10 +30,9 @@
 #include <math.h>                       // for sqrt
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooAbsData.h"                 // for RooAbsData, etc
+#include "RooAbsData.h"                 // for Double_t, RooAbsData, Int_t, etc
 #include "RooAbsDataStore.h"            // for RooAbsDataStore
 #include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal
-#include "RooArgSet.h"                  // for Double_t, Int_t, Bool_t, etc
 #include "RooChi2Var.h"                 // for RooChi2Var, etc
 #include "RooCmdConfig.h"               // for RooCmdConfig
 #include "RooDataHist.h"                // for RooDataHist

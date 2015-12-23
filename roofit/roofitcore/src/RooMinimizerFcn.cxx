@@ -30,13 +30,12 @@
 #include "Math/IFunction.h"             // for IBaseFunctionMultiDim
 #include "RooAbsArg.h"                  // for RooAbsArg, RooFIter, etc
 #include "RooAbsPdf.h"                  // for RooAbsReal, RooAbsPdf, etc
-#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
 #include "RooArgList.h"                 // for RooArgList
 #include "RooArgSet.h"                  // for Double_t, Int_t, kFALSE, etc
 #include "RooMinimizer.h"               // for RooMinimizer
 #include "RooMinimizerFcn.h"            // for RooMinimizerFcn
 #include "RooMsgService.h"              // for oocoutI, ooccoutW, oocoutW
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for RooRealVar, etc
 #include "TClass.h"                     // for TClass
 #include "TIterator.h"                  // for TIterator
 #include "TMatrixDSymfwd.h"             // for TMatrixDSym

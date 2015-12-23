@@ -29,19 +29,16 @@ component pdfs.
 #include <string>                       // for string, char_traits
 #include <vector>                       // for vector, vector<>::iterator, etc
 
-#include "RooAbsGenContext.h"           // for RooAbsGenContext
-#include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooArgSet.h"                  // for RooArgSet
-#include "RooCatType.h"                 // for Double_t, kTRUE, Int_t, etc
+#include "RooCatType.h"                 // for RooCatType
 #include "RooCategory.h"                // for RooAbsCategoryLValue, etc
 #include "RooCategoryProxy.h"           // for RooCategoryProxy
-#include "RooDataSet.h"                 // for RooDataSet
+#include "RooDataSet.h"                 // for RooArgSet, Double_t, kTRUE, etc
 #include "RooGlobalFunc.h"              // for Index, Link, OwnLinked
 #include "RooMsgService.h"              // for oocoutE, oocoutW
 #include "RooRandom.h"                  // for RooRandom
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "RooSimGenContext.h"           // for RooSimGenContext
-#include "RooSimultaneous.h"            // for RooSimultaneous
+#include "RooSimGenContext.h"           // for RooSimGenContext, etc
+#include "RooSimultaneous.h"            // for RooSimultaneous, RooAbsPdf
 #include "TIterator.h"                  // for TIterator
 #include "TList.h"                      // for TList
 #include "TString.h"                    // for operator<<, Form, TString

@@ -28,8 +28,7 @@ do not define internal methods
 
 
 #include "RooAbsNumGenerator.h"         // for RooAbsNumGenerator
-#include "RooArgSet.h"                  // for RooArgSet, Double_t, Int_t, etc
-#include "RooDataSet.h"                 // for RooDataSet
+#include "RooDataSet.h"                 // for RooArgSet, Double_t, Int_t, etc
 #include "RooFoamGenerator.h"           // for RooFoamGenerator
 #include "RooNumGenConfig.h"            // for RooNumGenConfig
 #include "RooNumGenFactory.h"           // for RooNumGenFactory
@@ -38,8 +37,6 @@ do not define internal methods
 #include "RooTFoamBinding.h"            // for RooTFoamBinding
 #include "TFoam.h"                      // for TFoam
 #include "TIterator.h"                  // for TIterator
-
-class RooAbsReal;
 
 using namespace std;
 

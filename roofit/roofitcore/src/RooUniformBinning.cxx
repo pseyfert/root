@@ -27,9 +27,8 @@ e.g. the binning of class RooBinning.
 
 #include <ostream>                      // for operator<<, etc
 
-#include "RooAbsBinning.h"              // for RooAbsBinning
 #include "RooMsgService.h"              // for coutE
-#include "RooUniformBinning.h"          // for RooUniformBinning
+#include "RooUniformBinning.h"          // for RooUniformBinning, etc
 #include "Rtypes.h"                     // for Double_t, Int_t, ClassImp
 
 

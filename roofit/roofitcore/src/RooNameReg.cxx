@@ -25,12 +25,10 @@ a unique pointer to a TNamed object is return that can be used for
 fast searches and comparisons.
 **/
 
-#include "RooHashTable.h"               // for RooHashTable
+#include "RooHashTable.h"               // for RooHashTable, ClassImp, etc
 #include "RooLinkedList.h"              // for RooLinkedList
-#include "RooNameReg.h"                 // for RooNameReg
+#include "RooNameReg.h"                 // for RooNameReg, TNamed
 #include "RooSentinel.h"                // for RooSentinel
-#include "Rtypes.h"                     // for ClassImp, Int_t
-#include "TNamed.h"                     // for TNamed
 
 using namespace std ;
 

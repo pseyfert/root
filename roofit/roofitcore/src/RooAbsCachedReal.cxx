@@ -36,16 +36,15 @@ using namespace std ;
 #include <utility>                      // for pair
 
 #include "RooAbsArg.h"                  // for RooAbsArg, operator<<, etc
-#include "RooAbsCacheElement.h"
 #include "RooAbsCachedReal.h"           // for RooAbsCachedReal, etc
 #include "RooArgList.h"                 // for RooArgList
 #include "RooArgSet.h"                  // for RooArgSet, Int_t, kTRUE, etc
 #include "RooChangeTracker.h"           // for RooChangeTracker
 #include "RooDataHist.h"                // for RooDataHist
-#include "RooExpensiveObjectCache.h"    // for RooExpensiveObjectCache
+#include "RooExpensiveObjectCache.h"    // for Int_t, etc
 #include "RooHistFunc.h"                // for RooHistFunc
 #include "RooMsgService.h"              // for ccoutD
-#include "RooObjCacheManager.h"         // for RooObjCacheManager
+#include "RooObjCacheManager.h"         // for RooObjCacheManager, etc
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for TString, Form
 

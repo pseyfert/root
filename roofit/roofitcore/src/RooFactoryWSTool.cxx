@@ -39,18 +39,16 @@ instantiate objects.
 #include <utility>                      // for pair
 #include <vector>                       // for vector, vector<>::iterator
 
-#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
-#include "RooAddPdf.h"                  // for RooAbsReal, RooAbsPdf, etc
+#include "RooAddPdf.h"                  // for RooAbsPdf, RooAddPdf
 #include "RooAddition.h"                // for RooAddition
-#include "RooArgList.h"                 // for RooArgList, TObject
-#include "RooArgSet.h"                  // for RooArgSet
-#include "RooCategory.h"                // for Int_t, RooAbsArg, Double_t, etc
+#include "RooArgList.h"                 // for RooArgList
+#include "RooCategory.h"                // for RooAbsArg, RooCategory, etc
 #include "RooChi2Var.h"                 // for RooChi2Var
 #include "RooCintUtils.h"               // for ctorArgs, isEnum, etc
 #include "RooCmdArg.h"                  // for RooCmdArg
 #include "RooConstVar.h"                // for RooConstVar
 #include "RooDataHist.h"                // for RooDataHist
-#include "RooDataSet.h"                 // for RooAbsData, RooDataSet
+#include "RooDataSet.h"                 // for RooArgSet, RooAbsData, etc
 #include "RooDerivative.h"              // for RooDerivative
 #include "RooFactoryWSTool.h"           // for RooFactoryWSTool, etc
 #include "RooGlobalFunc.h"              // for Silence, RooConst, NormSet, etc
@@ -59,7 +57,7 @@ instantiate objects.
 #include "RooProdPdf.h"                 // for RooProdPdf
 #include "RooProduct.h"                 // for RooProduct
 #include "RooRealSumPdf.h"              // for RooRealSumPdf
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for Int_t, RooAbsReal, etc
 #include "RooResolutionModel.h"         // for RooResolutionModel
 #include "RooSimultaneous.h"            // for RooSimultaneous
 #include "RooWorkspace.h"               // for RooWorkspace

@@ -31,9 +31,7 @@ are clone and client-server links need to be redirected.
 #include <ostream>                      // for operator<<, ostream, etc
 
 #include "RooAbsArg.h"                  // for RooAbsArg, RooFIter, etc
-#include "RooArgList.h"                 // for RooArgList, etc
-#include "RooListProxy.h"               // for RooListProxy
-#include "Rtypes.h"                     // for Bool_t, kTRUE, kFALSE, etc
+#include "RooListProxy.h"               // for RooListProxy, Bool_t, etc
 
 using namespace std;
 

@@ -28,9 +28,7 @@ derivator class.
 #include <math.h>                       // for sqrt
 #include <string>                       // for string
 
-#include "RooAbsMoment.h"               // for RooAbsReal, RooAbsMoment
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for kTRUE, RooArgSet, Bool_t, etc
 #include "RooCategory.h"                // for RooCategory
 #include "RooFormulaVar.h"              // for RooFormulaVar
 #include "RooNumIntConfig.h"            // for RooNumIntConfig
@@ -38,8 +36,8 @@ derivator class.
 #include "RooRealIntegral.h"            // for RooRealIntegral
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "RooRealVar.h"                 // for RooRealVar
-#include "RooSecondMoment.h"            // for RooSecondMoment
-#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooSecondMoment.h"            // for RooSecondMoment, RooAbsReal, etc
+#include "RooSetProxy.h"                // for kTRUE, RooArgSet, etc
 #include "TString.h"                    // for Form
 
 using namespace std ;

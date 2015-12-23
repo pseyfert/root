@@ -23,18 +23,16 @@
 
 #include "RooAbsBinning.h"              // for RooAbsBinning
 #include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal, etc
-#include "RooAbsRealLValue.h"           // for Bool_t, Double_t, Int_t, etc
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet, RooAbsCollection
 #include "RooCategory.h"                // for RooAbsCategory, RooCategory
 #include "RooCmdArg.h"                  // for RooCmdArg
 #include "RooDataHist.h"                // for RooDataHist
-#include "RooDataSet.h"                 // for RooAbsData, RooDataSet
+#include "RooDataSet.h"                 // for RooArgSet, RooAbsData, etc
 #include "RooFitResult.h"               // for RooFitResult
 #include "RooFormulaVar.h"              // for RooFormulaVar
 #include "RooNumIntConfig.h"            // for RooNumIntConfig
 #include "RooRealConstant.h"            // for RooRealConstant
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for Bool_t, Double_t, Int_t, etc
 #include "TH1.h"                        // for TH1
 
 class RooConstVar;

@@ -30,12 +30,11 @@ generator context specific for binned pdfs
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <vector>                       // for vector
 
-#include "RooAbsArg.h"                  // for RooAbsArg, RooFIter, etc
+#include "RooAbsArg.h"                  // for operator<<, RooAbsArg, etc
 #include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooArgSet.h"                  // for RooArgSet, Int_t, Double_t, etc
 #include "RooBinnedGenContext.h"        // for RooBinnedGenContext, etc
 #include "RooDataHist.h"                // for RooDataHist
-#include "RooDataSet.h"                 // for RooDataSet
+#include "RooDataSet.h"                 // for RooArgSet, Int_t, Double_t, etc
 #include "RooGlobalFunc.h"              // for WeightVar
 #include "RooMsgService.h"              // for ccxcoutI, coutE, cxcoutI
 #include "RooRandom.h"                  // for RooRandom

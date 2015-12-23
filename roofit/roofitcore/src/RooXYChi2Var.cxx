@@ -36,16 +36,14 @@
 
 #include "RooAbsBinning.h"              // for RooAbsBinning
 #include "RooAbsDataStore.h"            // for RooAbsDataStore
-#include "RooAbsOptTestStatistic.h"     // for RooAbsOptTestStatistic
 #include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal
-#include "RooArgSet.h"                  // for Double_t, RooArgSet, kFALSE, etc
-#include "RooCategory.h"                // for RooAbsArg, RooCategory
-#include "RooDataSet.h"                 // for RooDataSet, RooAbsData
+#include "RooCategory.h"                // for Double_t, kFALSE, Bool_t, etc
+#include "RooDataSet.h"                 // for RooArgSet, RooDataSet, etc
 #include "RooGlobalFunc.h"              // for MPSplit::Interleave
 #include "RooMsgService.h"              // for coutE
 #include "RooNumIntConfig.h"            // for RooNumIntConfig
 #include "RooRealVar.h"                 // for RooRealVar
-#include "RooXYChi2Var.h"               // for RooXYChi2Var
+#include "RooXYChi2Var.h"               // for RooXYChi2Var, etc
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for Form
 

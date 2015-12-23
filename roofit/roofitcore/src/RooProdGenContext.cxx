@@ -29,17 +29,14 @@ for each component PDF sequentially.
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <string>                       // for char_traits, string
 
-#include "RooAbsArg.h"                  // for RooLinkedList, RooAbsArg, etc
-#include "RooAbsGenContext.h"           // for RooAbsGenContext
+#include "RooAbsArg.h"                  // for operator<<, RooLinkedList, etc
 #include "RooAbsLValue.h"               // for RooAbsLValue
-#include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooArgSet.h"                  // for RooArgSet, kTRUE, Bool_t, etc
 #include "RooCmdArg.h"                  // for RooCmdArg
-#include "RooDataSet.h"                 // for operator<<, RooDataSet, etc
+#include "RooDataSet.h"                 // for RooArgSet, kTRUE, Bool_t, etc
 #include "RooGlobalFunc.h"              // for Conditional
 #include "RooMsgService.h"              // for cxcoutD, ccxcoutD, ccxcoutI, etc
-#include "RooProdGenContext.h"          // for RooProdGenContext
-#include "RooProdPdf.h"                 // for RooProdPdf
+#include "RooProdGenContext.h"          // for RooProdGenContext, etc
+#include "RooProdPdf.h"                 // for RooProdPdf, RooAbsPdf
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for operator<<, TString
 

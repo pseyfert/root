@@ -30,9 +30,10 @@ that create and fill these generic containers
 
 #include <string>                       // for string
 
-#include "RooArgSet.h"                  // for RooArgSet, Int_t, Double_t, etc
+#include "RooArgSet.h"                  // for RooArgSet
 #include "RooCmdArg.h"                  // for RooCmdArg, TNamed
 #include "RooLinkedList.h"              // for RooLinkedList
+#include "Rtypes.h"                     // for Int_t, Double_t, kTRUE, etc
 
 using namespace std;
 

@@ -32,8 +32,7 @@ a specified area of a Poisson or Binomail error distribution.
 #include "RooBrentRootFinder.h"         // for RooBrentRootFinder
 #include "RooHistError.h"               // for RooHistError, etc
 #include "RooMsgService.h"              // for oocoutE
-#include "Rtypes.h"                     // for kTRUE, kFALSE, ClassImp
-#include "RtypesCore.h"                 // for Double_t, Int_t, Bool_t
+#include "Rtypes.h"                     // for Double_t, Int_t, Bool_t, etc
 #include "TMath.h"                      // for Erf
 
 class TObject;

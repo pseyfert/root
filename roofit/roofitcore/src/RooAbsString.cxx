@@ -30,10 +30,9 @@ is provided to modify the contents
 #include <assert.h>                     // for assert
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooAbsString.h"               // for RooAbsString, RooAbsArg
 #include "RooArgSet.h"                  // for Bool_t, kFALSE, Int_t, etc
 #include "RooMsgService.h"              // for cxcoutD, coutE
-#include "RooStringVar.h"               // for RooStringVar
+#include "RooStringVar.h"               // for RooAbsString, RooAbsArg, etc
 #include "TBranch.h"                    // for TBranch
 #include "TString.h"                    // for TString
 #include "TTree.h"                      // for TTree

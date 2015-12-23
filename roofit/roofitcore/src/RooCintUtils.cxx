@@ -24,14 +24,12 @@
 #include <string>                       // for string, operator==, etc
 #include <utility>                      // for pair
 
-#include "Rtypes.h"                     // for kFALSE, kTRUE
-#include "RtypesCore.h"                 // for Bool_t, Int_t, UInt_t
+#include "RooCintUtils.h" // IWYU pragma: keep
+#include "Rtypes.h"                     // for Bool_t, kFALSE, kTRUE, etc
 #include "TDictionary.h"                // for EProperty::kIsConstPointer, etc
 #include "TInterpreter.h"               // for TInterpreter, gInterpreter
 #include "TString.h"                    // for Form
 #include "strlcpy.h"                    // for strlcpy
-
-#include "RooCintUtils.h" // IWYU pragma: keep
 
 class ClassInfo_t;
 class DataMemberInfo_t;

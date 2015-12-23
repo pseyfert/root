@@ -25,9 +25,8 @@ the counter instead of adding multiple copies. Remove() decrements the
 reference count until zero, when the object is actually removed.
 **/
 
-#include "RooLinkedList.h"              // for RooLinkedList
 #include "RooLinkedListElem.h"          // for RooLinkedListElem
-#include "RooRefCountList.h"            // for RooRefCountList
+#include "RooRefCountList.h"            // for RooRefCountList, etc
 #include "Rtypes.h"                     // for Bool_t, Int_t, ClassImp
 
 class TObject;

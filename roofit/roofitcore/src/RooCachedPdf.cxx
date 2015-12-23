@@ -20,13 +20,13 @@ any external RooAbsPdf input function provided in the constructor.
 
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooArgSet.h"                  // for RooArgSet, kFALSE, kTRUE, etc
 #include "RooCachedPdf.h"               // for RooCachedPdf, RooAbsReal, etc
 #include "RooDataHist.h"                // for RooDataHist
 #include "RooHistPdf.h"                 // for RooHistPdf
 #include "RooMsgService.h"              // for ccoutP, coutP
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooSetProxy.h"                // for RooArgSet, RooSetProxy
+#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp
 
 
 using namespace std;

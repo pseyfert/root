@@ -35,20 +35,17 @@
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
 #include "RooAbsArg.h"                  // for RooFIter, RooAbsArg, etc
-#include "RooAbsPdf.h"                  // for RooAbsReal, RooAbsPdf, etc
-#include "RooArgList.h"                 // for RooArgList
 #include "RooArgSet.h"                  // for Double_t, RooArgSet, kFALSE, etc
-#include "RooListProxy.h"               // for RooListProxy
+#include "RooListProxy.h"               // for RooListProxy, RooArgList
 #include "RooMsgService.h"              // for coutE, coutW, cxcoutD
 #include "RooNameReg.h"                 // for RooNameReg
 #include "RooNameSet.h"                 // for RooNameSet
 #include "RooObjCacheManager.h"         // for RooObjCacheManager
-#include "RooRealSumPdf.h"              // for RooRealSumPdf, etc
+#include "RooRealSumPdf.h"              // for RooRealSumPdf, RooAbsReal, etc
 #include "TClass.h"                     // for TClass
 #include "TError.h"                     // for R__ASSERT
 #include "TIterator.h"                  // for TIterator
 
-class RooAbsCacheElement;
 class RooAbsRealLValue;
 
 using namespace std;

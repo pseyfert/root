@@ -38,10 +38,8 @@ is that of the component p.d.f. selected by the index category
 #include <utility>                      // for pair
 
 #include "Roo1DTable.h"                 // for Roo1DTable
-#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
 #include "RooAddPdf.h"                  // for RooAbsPdf, RooAddPdf, etc
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet, kTRUE, Bool_t, etc
 #include "RooCatType.h"                 // for RooCatType
 #include "RooCategory.h"                // for RooAbsCategory, etc
 #include "RooCategoryProxy.h"           // for RooCategoryProxy
@@ -56,8 +54,8 @@ is that of the component p.d.f. selected by the index category
 #include "RooObjCacheManager.h"         // for RooObjCacheManager
 #include "RooPlot.h"                    // for RooPlot
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "RooRealVar.h"                 // for RooRealVar
-#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooRealVar.h"                 // for RooAbsRealLValue, etc
+#include "RooSetProxy.h"                // for RooArgSet, kTRUE, Bool_t, etc
 #include "RooSimGenContext.h"           // for RooSimGenContext
 #include "RooSimSplitGenContext.h"      // for RooSimSplitGenContext
 #include "RooSimultaneous.h"            // for RooSimultaneous, etc
@@ -66,8 +64,6 @@ is that of the component p.d.f. selected by the index category
 #include "TList.h"                      // for TList
 #include "TString.h"                    // for TString, Form
 #include "strlcpy.h"                    // for strlcpy
-
-class RooAbsGenContext;
 
 using namespace std ;
 

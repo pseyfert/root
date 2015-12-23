@@ -31,14 +31,12 @@ error, such as calculating the pull value.
 #include <string>                       // for string, char_traits
 
 #include "RooAbsArg.h"                  // for RooLinkedList, RooAbsArg, etc
-#include "RooAbsBinning.h"              // for RooAbsBinning
-#include "RooAbsRealLValue.h"           // for Bool_t, Double_t, kTRUE, etc
 #include "RooErrorVar.h"                // for RooErrorVar
 #include "RooMsgService.h"              // for coutW, coutI
 #include "RooRangeBinning.h"            // for RooRangeBinning
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for Bool_t, Double_t, kTRUE, etc
 #include "RooStreamParser.h"            // for RooStreamParser
-#include "RooUniformBinning.h"          // for RooUniformBinning
+#include "RooUniformBinning.h"          // for RooAbsBinning, etc
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for TString
 

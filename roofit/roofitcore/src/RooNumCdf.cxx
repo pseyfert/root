@@ -24,11 +24,11 @@ upper bound is guaranteed to converge to exactly one, at all interpolation
 orders.
 **/
 
-#include "RooAbsCachedReal.h"           // for RooAbsCachedReal
 #include "RooAbsPdf.h"                  // for RooAbsPdf
 #include "RooNumCdf.h"                  // for RooNumCdf
 #include "RooNumRunningInt.h"           // for RooNumRunningInt, etc
 #include "Rtypes.h"                     // for ClassImp, kTRUE
+
 class RooRealVar;
 
 using namespace std;

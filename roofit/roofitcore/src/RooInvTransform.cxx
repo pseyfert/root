@@ -26,8 +26,7 @@ range cannot include zero.
 **/
 
 
-#include "RooAbsFunc.h"                 // for RooAbsFunc
-#include "RooInvTransform.h"            // for RooInvTransform
+#include "RooInvTransform.h"            // for RooAbsFunc, RooInvTransform
 #include "Rtypes.h"                     // for ClassImp
 
 using namespace std;

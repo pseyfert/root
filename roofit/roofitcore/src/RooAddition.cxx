@@ -32,18 +32,16 @@ i.e. all integrals of the product are handled numerically
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
 #include "RooAbsArg.h"                  // for RooAbsArg, RooFIter
-#include "RooAbsCacheElement.h"
 #include "RooAddition.h"                // for RooAddition, RooAbsReal, etc
-#include "RooArgList.h"                 // for RooArgList
 #include "RooArgSet.h"                  // for Double_t, RooArgSet, Bool_t, etc
 #include "RooChi2Var.h"                 // for RooChi2Var
 #include "RooErrorHandler.h"            // for RooErrorHandler
-#include "RooListProxy.h"               // for RooListProxy
+#include "RooListProxy.h"               // for RooArgList, RooListProxy, etc
 #include "RooMsgService.h"              // for coutE, coutI
 #include "RooNLLVar.h"                  // for RooNLLVar
 #include "RooNameReg.h"                 // for RooNameReg
 #include "RooNameSet.h"                 // for RooNameSet
-#include "RooObjCacheManager.h"         // for RooObjCacheManager
+#include "RooObjCacheManager.h"         // for RooObjCacheManager, etc
 #include "RooProduct.h"                 // for RooProduct
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for TString

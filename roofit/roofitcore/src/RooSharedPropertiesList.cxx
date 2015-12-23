@@ -33,10 +33,9 @@ and RooCategories that are clones of each other.
 #include "RooRefCountList.h"            // for RooRefCountList
 #include "RooSharedProperties.h"        // for RooSharedProperties
 #include "RooSharedPropertiesList.h"    // for RooSharedPropertiesList
-#include "Rtypes.h"                     // for Bool_t, ClassImp
+#include "Rtypes.h"                     // for ClassImp
+#include "RtypesCore.h"                 // for Bool_t
 #include "TString.h"                    // for TString
-
-class TObject;
 
 using std::cout ;
 using std::endl ;

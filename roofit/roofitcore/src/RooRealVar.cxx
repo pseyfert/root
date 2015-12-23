@@ -34,8 +34,6 @@ a optionally series of alternate named ranges.
 #include <string>                       // for char_traits, string
 
 #include "RooAbsArg.h"                  // for RooLinkedList, RooAbsArg, etc
-#include "RooAbsBinning.h"              // for RooAbsBinning, etc
-#include "RooAbsRealLValue.h"           // for RooAbsRealLValue, etc
 #include "RooCmdArg.h"                  // for RooCmdArg
 #include "RooCmdConfig.h"               // for kTRUE, Double_t, Bool_t, etc
 #include "RooErrorVar.h"                // for RooErrorVar
@@ -43,13 +41,12 @@ a optionally series of alternate named ranges.
 #include "RooNumber.h"                  // for RooNumber
 #include "RooParamBinning.h"            // for RooParamBinning
 #include "RooRangeBinning.h"            // for RooRangeBinning
-#include "RooRealVar.h"                 // for RooRealVar
-#include "RooRealVarSharedProperties.h"  // for RooRealVarSharedProperties
-#include "RooSharedProperties.h"        // for RooSharedProperties
+#include "RooRealVar.h"                 // for RooRealVar, etc
+#include "RooRealVarSharedProperties.h"  // for RooRealVarSharedProperties, etc
 #include "RooSharedPropertiesList.h"    // for RooSharedPropertiesList
 #include "RooStreamParser.h"            // for RooStreamParser
 #include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
-#include "RooUniformBinning.h"          // for RooUniformBinning
+#include "RooUniformBinning.h"          // for RooAbsBinning, etc
 #include "RooVectorDataStore.h"         // for RooVectorDataStore, etc
 #include "TBranch.h"                    // for TBranch
 #include "TBuffer.h"                    // for TBuffer, operator>>, etc

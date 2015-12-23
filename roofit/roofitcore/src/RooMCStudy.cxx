@@ -45,16 +45,14 @@ These study modules should derive from classs RooAbsMCStudyModel
 #include "RooAbsArg.h"                  // for RooLinkedList, RooAbsArg, etc
 #include "RooAbsGenContext.h"           // for RooAbsGenContext
 #include "RooAbsMCStudyModule.h"        // for RooAbsMCStudyModule
-#include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet, kTRUE, kFALSE, etc
 #include "RooCmdArg.h"                  // for RooCmdArg
 #include "RooCmdConfig.h"               // for RooCmdConfig
 #include "RooDataHist.h"                // for RooDataHist
-#include "RooDataSet.h"                 // for RooDataSet, RooAbsData
+#include "RooDataSet.h"                 // for RooArgSet, RooDataSet, etc
 #include "RooErrorVar.h"                // for RooErrorVar
 #include "RooFitResult.h"               // for RooFitResult
-#include "RooGenericPdf.h"              // for RooGenericPdf
+#include "RooGenericPdf.h"              // for RooAbsPdf, RooGenericPdf, etc
 #include "RooGlobalFunc.h"              // for ConditionalObservables, etc
 #include "RooMCStudy.h"                 // for RooMCStudy
 #include "RooMsgService.h"              // for oocoutE, RooMsgService, etc

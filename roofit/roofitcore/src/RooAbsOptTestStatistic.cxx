@@ -41,20 +41,17 @@ parallelized calculation of test statistics
 
 #include "RooAbsArg.h"                  // for RooAbsArg, operator<<, etc
 #include "RooAbsBinning.h"              // for RooAbsBinning
-#include "RooAbsDataStore.h"            // for RooAbsDataStore
 #include "RooAbsOptTestStatistic.h"     // for RooAbsOptTestStatistic, etc
-#include "RooAbsRealLValue.h"           // for RooAbsReal, etc
-#include "RooArgSet.h"                  // for RooArgSet, kFALSE, kTRUE, etc
 #include "RooDataHist.h"                // for RooDataHist
-#include "RooDataSet.h"                 // for RooAbsData, RooDataSet
+#include "RooDataSet.h"                 // for RooArgSet, RooAbsData, etc
 #include "RooErrorHandler.h"            // for RooErrorHandler
 #include "RooGlobalFunc.h"              // for CutRange, SelectVars, etc
 #include "RooLinkedListIter.h"          // for RooFIter
 #include "RooMsgService.h"              // for cxcoutI, coutI, coutW, etc
 #include "RooProdPdf.h"                 // for RooProdPdf
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for RooAbsReal, RooRealVar, etc
 #include "RooSetProxy.h"                // for RooSetProxy
-#include "RooVectorDataStore.h"         // for RooVectorDataStore
+#include "RooVectorDataStore.h"         // for RooAbsDataStore, etc
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for Form, TString, operator<<
 

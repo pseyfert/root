@@ -37,12 +37,10 @@ number of expected events of an extended p.d.f
 #include <list>                         // for _List_iterator, list, etc
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooAbsArg.h"                  // for RooAbsArg
-#include "RooAbsMCStudyModule.h"        // for RooAbsMCStudyModule
+#include "RooAbsArg.h"                  // for RooAbsArg, operator<<
 #include "RooAddition.h"                // for RooAddition
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet, Double_t, Bool_t, etc
-#include "RooDataSet.h"                 // for operator<<, RooDataSet
+#include "RooDataSet.h"                 // for RooArgSet, Double_t, etc
 #include "RooMsgService.h"              // for oocoutW, oocoutI, oocoutE
 #include "RooRandom.h"                  // for RooRandom
 #include "RooRandomizeParamMCSModule.h"  // for RooRandomizeParamMCSModule, etc

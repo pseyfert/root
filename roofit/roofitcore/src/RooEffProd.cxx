@@ -24,13 +24,13 @@
 
 #include <assert.h>                     // for assert
 
-#include "RooAbsCacheElement.h"
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet, Int_t, Double_t, etc
+#include "RooArgSet.h"                  // for RooArgSet
 #include "RooEffGenContext.h"           // for RooEffGenContext
 #include "RooEffProd.h"                 // for RooEffProd, etc
 #include "RooNameReg.h"                 // for RooNameReg
-#include "RooObjCacheManager.h"         // for RooObjCacheManager
+#include "RooObjCacheManager.h"         // for RooObjCacheManager, etc
+#include "Rtypes.h"                     // for Int_t, Double_t, Bool_t, etc
 #include "TString.h"                    // for Form
 
 class RooDataSet;

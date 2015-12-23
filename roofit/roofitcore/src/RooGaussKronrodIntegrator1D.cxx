@@ -45,7 +45,6 @@ reached
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
 #include "RooAbsFunc.h"                 // for RooAbsFunc
-#include "RooAbsIntegrator.h"           // for RooAbsIntegrator
 #include "RooArgSet.h"                  // for RooArgSet
 #include "RooGaussKronrodIntegrator1D.h"
 #include "RooMsgService.h"              // for oocoutE

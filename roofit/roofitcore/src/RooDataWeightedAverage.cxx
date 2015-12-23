@@ -32,10 +32,9 @@ plot option.
 
 #include <iostream>                     // for operator<<, basic_ostream, etc
 
-#include "RooAbsData.h"                 // for RooAbsData, operator<<
+#include "RooAbsData.h"                 // for RooAbsData, Int_t, Double_t, etc
 #include "RooAbsDataStore.h"            // for RooAbsDataStore
 #include "RooAbsPdf.h"                  // for RooAbsReal
-#include "RooArgSet.h"                  // for Int_t, Double_t, Bool_t, etc
 #include "RooDataWeightedAverage.h"     // for RooDataWeightedAverage, etc
 #include "RooGlobalFunc.h"              // for MPSplit
 #include "RooMsgService.h"              // for ccoutP, coutI

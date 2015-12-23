@@ -18,15 +18,13 @@
 #include <string.h>                     // for memset
 
 #include "RooAbsArg.h"                  // for RooLinkedList, RooAbsArg, etc
-#include "RooHashTable.h"               // for RooHashTable, etc
+#include "RooHashTable.h"               // for RooHashTable, Int_t, kFALSE, etc
 #include "RooLinkedListElem.h"          // for RooLinkedListElem
 #include "RooNameReg.h"                 // for RooNameReg, etc
 #include "RooSetPair.h"                 // for RooSetPair
-#include "Rtypes.h"                     // for Int_t, kFALSE, kTRUE, etc
 #include "TCollection.h"                // for TCollection, etc
 #include "TMath.h"                      // for Hash
 #include "TMathBase.h"                  // for Max, NextPrime
-#include "TObject.h"                    // for TObject
 
 class RooArgSet;
 

@@ -29,11 +29,10 @@ by the RooRealVar::setRange() that takes RooAbsReal references as arguments
 
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooAbsBinning.h"              // for RooAbsBinning
 #include "RooAbsRealLValue.h"           // for RooAbsReal, Double_t, Int_t, etc
 #include "RooListProxy.h"               // for RooListProxy
 #include "RooMsgService.h"              // for coutE, coutW
-#include "RooParamBinning.h"            // for RooParamBinning
+#include "RooParamBinning.h"            // for RooParamBinning, etc
 #include "TString.h"                    // for operator<<, Form, TString
 
 using namespace std;

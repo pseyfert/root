@@ -33,10 +33,9 @@ constructed from all the categories in the dataset
 #include <iostream>                     // for operator<<, basic_ostream, etc
 
 #include "Roo1DTable.h"                 // for Roo1DTable
-#include "RooAbsData.h"                 // for RooAbsData
+#include "RooAbsData.h"                 // for Double_t, RooAbsData, etc
 #include "RooAbsReal.h"                 // for RooAbsReal
-#include "RooArgSet.h"                  // for RooArgSet
-#include "RooCatType.h"                 // for Double_t, RooCatType, Int_t, etc
+#include "RooCatType.h"                 // for RooCatType
 #include "RooCategory.h"                // for RooAbsArg, RooCategory
 #include "RooDataProjBinding.h"         // for RooDataProjBinding, etc
 #include "RooMsgService.h"              // for ooccoutW, oocoutW, oodologW

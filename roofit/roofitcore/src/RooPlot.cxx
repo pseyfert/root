@@ -47,13 +47,13 @@ object onto a one-dimensional plot.
 #include <string.h>                     // for strlen, strtok
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
-#include "RooArgSet.h"                  // for Double_t, Bool_t, TObject, etc
-#include "RooCurve.h"                   // for RooPlotable, RooCurve, etc
+#include "RooAbsRealLValue.h"           // for RooAbsRealLValue, Double_t, etc
+#include "RooArgSet.h"                  // for TObject, RooArgSet
+#include "RooCurve.h"                   // for RooPlotable, RooPrintable, etc
 #include "RooHist.h"                    // for RooHist
-#include "RooList.h"                    // for RooList
+#include "RooList.h"                    // for RooList, TObjOptLink, TList
 #include "RooMsgService.h"              // for coutE, coutI, coutW
-#include "RooPlot.h"                    // for RooPlot, RooPlot::DrawOpt
+#include "RooPlot.h"                    // for RooPlot, RooPlot::DrawOpt, etc
 #include "TArrayD.h"                    // for TArrayD
 #include "TAttFill.h"                   // for TAttFill
 #include "TAttLine.h"                   // for TAttLine
@@ -66,8 +66,6 @@ object onto a one-dimensional plot.
 #include "TDirectoryFile.h"             // for TDirectoryFile, etc
 #include "TH1.h"                        // for TH1, TH1D, TH1F
 #include "TIterator.h"                  // for TIterator
-#include "TList.h"                      // for TObjOptLink, TList
-#include "TNamed.h"                     // for TNamed
 #include "TString.h"                    // for TString, operator<<, Form
 #include "TVirtualPad.h"                // for TVirtualPad, gPad
 #include "strlcpy.h"                    // for strlcpy, strlcat

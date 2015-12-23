@@ -20,10 +20,9 @@
 #include <vector>                       // for vector
 
 #include "RooAbsArg.h"                  // for RooAbsArg
-#include "RooArgSet.h"                  // for RooArgSet
+#include "RooArgSet.h"                  // for RooArgSet, kFALSE, Bool_t, etc
 #include "RooNameSet.h"                 // for RooNameSet
 #include "RooNormSetCache.h"            // for RooNormSetCache, etc
-#include "Rtypes.h"                     // for kFALSE, Bool_t, ULong_t, etc
 
 ClassImp(RooNormSetCache)
 ;

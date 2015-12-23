@@ -36,17 +36,16 @@ using namespace std ;
 
 #include "RooAICRegistry.h"             // for RooAICRegistry
 #include "RooAbsArg.h"                  // for operator<<, RooAbsArg, etc
-#include "RooAbsCacheElement.h"
 #include "RooAbsCachedPdf.h"            // for RooAbsCachedPdf, etc
 #include "RooAbsLValue.h"               // for Int_t, kTRUE, Bool_t, etc
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet
+#include "RooArgSet.h"                  // for RooArgSet, TObject
 #include "RooChangeTracker.h"           // for RooChangeTracker
 #include "RooDataHist.h"                // for RooDataHist
-#include "RooExpensiveObjectCache.h"    // for RooExpensiveObjectCache, etc
+#include "RooExpensiveObjectCache.h"    // for RooExpensiveObjectCache
 #include "RooHistPdf.h"                 // for RooHistPdf
 #include "RooMsgService.h"              // for ccoutI, coutI, cxcoutD
-#include "RooObjCacheManager.h"         // for RooObjCacheManager
+#include "RooObjCacheManager.h"         // for RooObjCacheManager, etc
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for TString, Form
 

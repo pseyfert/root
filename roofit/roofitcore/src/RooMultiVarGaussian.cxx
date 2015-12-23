@@ -32,13 +32,11 @@ Multivariate Gaussian p.d.f. with correlations
 #include <vector>                       // for vector
 
 #include "RooAbsArg.h"                  // for RooAbsArg
-#include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooArgList.h"                 // for RooArgList
 #include "RooArgSet.h"                  // for RooArgSet, Int_t, kFALSE, etc
-#include "RooConstVar.h"                // for RooAbsReal, RooConstVar
+#include "RooConstVar.h"                // for RooConstVar
 #include "RooFitResult.h"               // for RooFitResult
 #include "RooGlobalFunc.h"              // for RooConst
-#include "RooListProxy.h"               // for RooListProxy
+#include "RooListProxy.h"               // for RooListProxy, RooArgList
 #include "RooMsgService.h"              // for cxcoutD, coutW
 #include "RooMultiVarGaussian.h"        // for RooMultiVarGaussian, etc
 #include "RooRandom.h"                  // for RooRandom

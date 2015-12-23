@@ -25,10 +25,8 @@ way that RooLinearVar does
 **/
 
 
-#include "RooAbsBinning.h"              // for RooAbsBinning
-#include "RooLinTransBinning.h"         // for RooLinTransBinning
-#include "Rtypes.h"                     // for ClassImp
-#include "RtypesCore.h"                 // for Double_t, Int_t
+#include "RooLinTransBinning.h"         // for RooLinTransBinning, etc
+#include "Rtypes.h"                     // for Double_t, Int_t, ClassImp
 
 using namespace std;
 

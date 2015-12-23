@@ -37,8 +37,6 @@ points for its contents and provides an iterator over its elements
 #include <vector>                       // for vector
 
 #include "Roo1DTable.h"                 // for Roo1DTable
-#include "RooAbsBinning.h"              // for RooAbsBinning
-#include "RooAbsRealLValue.h"           // for RooAbsRealLValue, etc
 #include "RooCatType.h"                 // for RooCatType
 #include "RooCategory.h"                // for RooAbsArg, RooLinkedList, etc
 #include "RooCmdConfig.h"               // for RooCmdConfig
@@ -52,10 +50,10 @@ points for its contents and provides an iterator over its elements
 #include "RooMultiCategory.h"           // for RooMultiCategory
 #include "RooNumber.h"                  // for RooNumber
 #include "RooPlot.h"                    // for RooPlot
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for RooRealVar, etc
 #include "RooTrace.h"                   // for RooTrace
 #include "RooTreeDataStore.h"           // for RooTreeDataStore
-#include "RooUniformBinning.h"          // for RooUniformBinning
+#include "RooUniformBinning.h"          // for RooAbsBinning, etc
 #include "RooVectorDataStore.h"         // for RooVectorDataStore
 #include "TArrayD.h"                    // for TArrayD
 #include "TAttFill.h"                   // for TAttFill

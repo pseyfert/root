@@ -30,15 +30,13 @@ a RooPlot.
 #include <iostream>                     // for operator<<, basic_ostream, etc
 
 #include "RVersion.h"                   // for ROOT_VERSION, etc
-#include "RooAbsData.h"                 // for RooAbsData, etc
+#include "RooAbsData.h"                 // for Double_t, Int_t, RooAbsData, etc
 #include "RooCurve.h"                   // for RooCurve, RooPlotable
-#include "RooHist.h"                    // for RooHist
+#include "RooHist.h"                    // for RooHist, TGraphAsymmErrors
 #include "RooHistError.h"               // for RooHistError
 #include "RooMsgService.h"              // for coutW, coutE
-#include "Rtypes.h"                     // for Double_t, Int_t, Axis_t, etc
 #include "TAxis.h"                      // for TAxis
 #include "TClass.h"                     // for TClass
-#include "TGraphAsymmErrors.h"          // for TGraphAsymmErrors
 #include "TH1.h"                        // for TH1, TH1F
 #include "TString.h"                    // for operator<<, Form, TString
 

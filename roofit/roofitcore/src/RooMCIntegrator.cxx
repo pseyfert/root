@@ -29,7 +29,6 @@ based on a C version from the 0.9 beta release of the GNU scientific library.
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
 #include "RooAbsFunc.h"                 // for RooAbsFunc
-#include "RooAbsIntegrator.h"           // for RooAbsIntegrator
 #include "RooArgSet.h"                  // for RooArgSet
 #include "RooCategory.h"                // for Double_t, RooCategory, etc
 #include "RooGrid.h"                    // for RooGrid, RooGrid::::maxBins

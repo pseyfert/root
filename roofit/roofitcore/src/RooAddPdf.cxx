@@ -54,28 +54,24 @@
 #include <vector>                       // for vector
 
 #include "RooAICRegistry.h"             // for RooAICRegistry
-#include "RooAbsArg.h"                  // for RooFIter, RooAbsArg, etc
-#include "RooAbsCacheElement.h"         // for RooAbsCacheElement::Action
-#include "RooAddGenContext.h"           // for operator<<, etc
+#include "RooAbsArg.h"                  // for operator<<, RooFIter, etc
+#include "RooAddGenContext.h"           // for RooAddGenContext
 #include "RooAddPdf.h"                  // for RooAddPdf, RooAbsPdf, etc
-#include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet, Double_t, kFALSE, etc
 #include "RooConstVar.h"                // for RooConstVar
 #include "RooGlobalFunc.h"              // for RooConst
-#include "RooListProxy.h"               // for RooListProxy
+#include "RooListProxy.h"               // for RooListProxy, RooArgList
 #include "RooMsgService.h"              // for cxcoutD, coutE, coutW, etc
 #include "RooNameReg.h"                 // for RooNameReg
-#include "RooObjCacheManager.h"         // for RooObjCacheManager
+#include "RooObjCacheManager.h"         // for RooObjCacheManager, etc
 #include "RooRealConstant.h"            // for RooRealConstant
 #include "RooRealIntegral.h"            // for RooRealIntegral
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for Double_t, kFALSE, kTRUE, etc
 #include "RooRecursiveFraction.h"       // for RooRecursiveFraction
-#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooSetProxy.h"                // for RooArgSet, RooSetProxy
 #include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for TString, Form
 
-class RooAbsRealLValue;
 class RooDataSet;
 
 

@@ -29,11 +29,10 @@ prototype data etc..
 
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooAbsArg.h"                  // for RooAbsArg
-#include "RooAbsGenContext.h"           // for RooAbsGenContext, etc
+#include "RooAbsArg.h"                  // for RooAbsArg, etc
+#include "RooAbsGenContext.h"           // for RooAbsGenContext
 #include "RooAbsPdf.h"                  // for RooAbsPdf, etc
-#include "RooArgSet.h"                  // for RooArgSet, Int_t, Bool_t, etc
-#include "RooDataSet.h"                 // for RooDataSet
+#include "RooDataSet.h"                 // for RooDataSet, RooArgSet, etc
 #include "RooGlobalFunc.h"              // for EventRange
 #include "RooMsgService.h"              // for coutE, coutI, cxcoutD, etc
 #include "RooRandom.h"                  // for RooRandom

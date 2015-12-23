@@ -32,9 +32,8 @@ the proxy to functions a Double_t on the right hand side of expressions.
 
 #include "RooAbsArg.h"                  // for RooAbsArg
 #include "RooAbsRealLValue.h"           // for RooAbsReal, etc
-#include "RooArgProxy.h"                // for RooArgProxy
 #include "RooArgSet.h"                  // for Bool_t, RooArgSet, kTRUE, etc
-#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealProxy.h"               // for RooRealProxy, RooArgProxy
 #include "TString.h"                    // for TString, Form
 
 using namespace std;

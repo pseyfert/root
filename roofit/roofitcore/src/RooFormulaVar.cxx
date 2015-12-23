@@ -40,12 +40,10 @@
 #include <list>                         // for list
 
 #include "RooAbsArg.h"                  // for RooFIter, RooAbsArg
-#include "RooAbsReal.h"                 // for RooAbsReal
-#include "RooArgList.h"                 // for Bool_t, Double_t, etc
 #include "RooChi2Var.h"                 // for RooChi2Var
 #include "RooFormula.h"                 // for RooFormula
-#include "RooFormulaVar.h"              // for RooFormulaVar
-#include "RooListProxy.h"               // for RooListProxy
+#include "RooFormulaVar.h"              // for RooFormulaVar, RooAbsReal
+#include "RooListProxy.h"               // for RooListProxy, Bool_t, etc
 #include "RooMsgService.h"              // for coutI, coutE
 #include "RooNLLVar.h"                  // for RooNLLVar
 #include "TIterator.h"                  // for TIterator

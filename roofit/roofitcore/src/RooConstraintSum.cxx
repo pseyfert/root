@@ -30,12 +30,11 @@ arguments
 
 #include "RooAbsArg.h"                  // for RooAbsArg, RooFIter
 #include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal
-#include "RooArgSet.h"                  // for RooArgSet, Double_t, etc
 #include "RooConstraintSum.h"           // for RooConstraintSum
 #include "RooErrorHandler.h"            // for RooErrorHandler
 #include "RooListProxy.h"               // for RooListProxy
 #include "RooMsgService.h"              // for coutE
-#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooSetProxy.h"                // for RooArgSet, Double_t, etc
 #include "TIterator.h"                  // for TIterator
 
 using namespace std;

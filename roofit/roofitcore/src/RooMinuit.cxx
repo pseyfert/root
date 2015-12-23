@@ -46,14 +46,13 @@ automatic PDF optimization.
 
 #include "RooAbsArg.h"                  // for RooAbsArg, RooFIter, etc
 #include "RooAbsPdf.h"                  // for RooAbsReal, etc
-#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
 #include "RooArgList.h"                 // for RooArgList
 #include "RooArgSet.h"                  // for Double_t, Int_t, kFALSE, etc
 #include "RooFitResult.h"               // for RooFitResult
 #include "RooMinuit.h"                  // for RooMinuit
 #include "RooMsgService.h"              // for coutI, ooccoutW, coutE, etc
 #include "RooPlot.h"                    // for RooPlot
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for RooRealVar, etc
 #include "RooSentinel.h"                // for RooSentinel
 #include "TClass.h"                     // for TClass
 #include "TFitter.h"                    // for TFitter

@@ -28,15 +28,11 @@ category modifies its list of states
 
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooAbsCategory.h"             // for RooAbsCategory, RooAbsArg, etc
-#include "RooArgSet.h"                  // for RooArgSet
-#include "RooCatType.h"                 // for RooCatType
+#include "RooCatType.h"                 // for Bool_t, kTRUE, ClassImp, etc
 #include "RooMsgService.h"              // for coutE
-#include "RooMultiCatIter.h"            // for RooMultiCatIter
-#include "RooMultiCategory.h"           // for RooMultiCategory
-#include "RooSetProxy.h"                // for RooSetProxy
-#include "Rtypes.h"                     // for Bool_t, kTRUE, ClassImp, etc
-#include "TIterator.h"                  // for TIterator
+#include "RooMultiCatIter.h"            // for TIterator, RooMultiCatIter
+#include "RooMultiCategory.h"           // for RooMultiCategory, etc
+#include "RooSetProxy.h"                // for RooSetProxy, RooArgSet
 #include "TObjString.h"                 // for TObjString
 #include "TString.h"                    // for TString, operator<<
 

@@ -33,15 +33,12 @@ category modifies its list of states
 #include <string.h>                     // for strlen, strtok
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooAbsCategoryLValue.h"       // for RooAbsCategoryLValue, etc
-#include "RooArgSet.h"                  // for RooArgSet
 #include "RooCatType.h"                 // for Bool_t, kTRUE, Int_t, etc
 #include "RooMsgService.h"              // for coutE, ccoutE
-#include "RooMultiCatIter.h"            // for RooMultiCatIter
-#include "RooSetProxy.h"                // for RooSetProxy
-#include "RooSuperCategory.h"           // for RooSuperCategory
+#include "RooMultiCatIter.h"            // for TIterator, RooMultiCatIter
+#include "RooSetProxy.h"                // for RooSetProxy, RooArgSet
+#include "RooSuperCategory.h"           // for RooSuperCategory, etc
 #include "TClass.h"                     // for TClass
-#include "TIterator.h"                  // for TIterator
 #include "TObjString.h"                 // for TObjString
 #include "TString.h"                    // for TString, operator<<
 #include "strlcpy.h"                    // for strlcpy

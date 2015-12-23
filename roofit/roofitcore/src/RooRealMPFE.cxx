@@ -57,16 +57,14 @@ For general multiprocessing in ROOT, please refer to the TProcPool class.
 #include <utility>                      // for pair
 #include <vector>                       // for vector, vector<>::reference
 
-#include "RooAbsReal.h"                 // for RooAbsReal, etc
 #include "RooAbsTestStatistic.h"        // for RooAbsTestStatistic
-#include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for Bool_t, kFALSE, Double_t, etc
+#include "RooArgSet.h"                  // for Bool_t, Double_t, Int_t, etc
 #include "RooCategory.h"                // for RooAbsArg, RooFIter, etc
-#include "RooListProxy.h"               // for RooListProxy
+#include "RooListProxy.h"               // for RooListProxy, RooArgList, etc
 #include "RooMPSentinel.h"              // for RooMPSentinel
 #include "RooMsgService.h"              // for ccoutD
 #include "RooNLLVar.h"                  // for RooNLLVar
-#include "RooRealMPFE.h"                // for RooRealMPFE, etc
+#include "RooRealMPFE.h"                // for RooRealMPFE, RooAbsReal, etc
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "RooRealVar.h"                 // for RooRealVar
 #include "RooTrace.h"                   // for RooTrace

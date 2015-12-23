@@ -26,10 +26,9 @@ RooRealIntegral integration mechanism
 **/
 
 #include "RooAbsAnaConvPdf.h"           // for RooAbsAnaConvPdf
-#include "RooArgSet.h"                  // for Int_t, Double_t, kFALSE, etc
 #include "RooConvCoefVar.h"             // for RooConvCoefVar, RooAbsReal
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooSetProxy.h"                // for Int_t, Double_t, kFALSE, etc
 
 using namespace std;
 

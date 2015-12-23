@@ -30,10 +30,9 @@ a constrained split
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
 #include "RooAbsArg.h"                  // for RooAbsArg
-#include "RooAbsReal.h"                 // for RooAbsReal
 #include "RooArgSet.h"                  // for RooArgSet, Double_t, etc
 #include "RooErrorHandler.h"            // for RooErrorHandler
-#include "RooFracRemainder.h"           // for RooFracRemainder
+#include "RooFracRemainder.h"           // for RooFracRemainder, etc
 #include "RooListProxy.h"               // for RooListProxy
 #include "RooMsgService.h"              // for coutE
 #include "TIterator.h"                  // for TIterator

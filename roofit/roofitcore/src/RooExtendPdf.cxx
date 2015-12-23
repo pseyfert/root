@@ -38,11 +38,12 @@
 
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooArgSet.h"                  // for operator<<, Double_t, etc
+#include "RooArgSet.h"                  // for operator<<, RooArgSet
 #include "RooExtendPdf.h"               // for RooExtendPdf, RooAbsPdf, etc
 #include "RooMsgService.h"              // for coutW
 #include "RooNameReg.h"                 // for RooNameReg
 #include "RooRealProxy.h"               // for RooRealProxy
+#include "Rtypes.h"                     // for Double_t, ClassImp, kFALSE, etc
 
 
 

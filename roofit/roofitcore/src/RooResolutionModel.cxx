@@ -62,14 +62,13 @@
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
 #include "RooAbsArg.h"                  // for RooAbsArg, etc
-#include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal, etc
 #include "RooArgList.h"                 // for RooArgList
 #include "RooArgSet.h"                  // for kFALSE, Bool_t, Double_t, etc
 #include "RooFormulaVar.h"              // for RooFormulaVar
 #include "RooMsgService.h"              // for coutE, cxcoutD
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "RooRealVar.h"                 // for RooRealVar
-#include "RooResolutionModel.h"         // for RooResolutionModel
+#include "RooResolutionModel.h"         // for RooResolutionModel, etc
 #include "RooSentinel.h"                // for RooSentinel
 #include "TClass.h"                     // for TClass
 #include "TIterator.h"                  // for TIterator

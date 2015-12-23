@@ -34,22 +34,20 @@ the preference of the caller as encoded in the configuration object.
 #include <utility>                      // for pair
 
 #include "RooAbsFunc.h"                 // for RooAbsFunc
-#include "RooAdaptiveGaussKronrodIntegrator1D.h"
+#include "RooAdaptiveGaussKronrodIntegrator1D.h"  // for RooAbsIntegrator, etc
 #include "RooAdaptiveIntegratorND.h"    // for RooAdaptiveIntegratorND
-#include "RooArgSet.h"                  // for Int_t, Bool_t, kTRUE, etc
+#include "RooArgSet.h"                  // for RooArgSet, TObject
 #include "RooBinIntegrator.h"           // for RooBinIntegrator
-#include "RooCategory.h"                // for RooCategory
+#include "RooCategory.h"                // for RooCategory, Int_t, Bool_t, etc
 #include "RooGaussKronrodIntegrator1D.h"
 #include "RooImproperIntegrator1D.h"    // for RooImproperIntegrator1D
-#include "RooIntegrator1D.h"            // for RooAbsIntegrator, etc
-#include "RooIntegrator2D.h"            // for RooIntegrator2D
+#include "RooIntegrator2D.h"            // for RooIntegrator1D, etc
 #include "RooMCIntegrator.h"            // for RooMCIntegrator
 #include "RooMsgService.h"              // for oocoutE
 #include "RooNumIntConfig.h"            // for RooNumIntConfig
 #include "RooNumIntFactory.h"           // for RooNumIntFactory
 #include "RooNumber.h"                  // for RooNumber
-#include "RooSegmentedIntegrator1D.h"   // for RooSegmentedIntegrator1D
-#include "RooSegmentedIntegrator2D.h"   // for RooSegmentedIntegrator2D
+#include "RooSegmentedIntegrator2D.h"   // for RooSegmentedIntegrator1D, etc
 #include "RooSentinel.h"                // for RooSentinel
 #include "TClass.h"                     // for TClass
 #include "TString.h"                    // for TString

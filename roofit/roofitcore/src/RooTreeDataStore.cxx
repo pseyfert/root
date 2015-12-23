@@ -29,10 +29,8 @@ use a TTree as internal storage mechanism
 #include <string>                       // for char_traits, string
 
 #include "RooAbsArg.h"                  // for RooAbsArg, RooFIter, etc
-#include "RooAbsData.h"                 // for RooAbsData, etc
-#include "RooAbsDataStore.h"            // for RooAbsDataStore
+#include "RooAbsData.h"                 // for RooArgSet, Int_t, Double_t, etc
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet, Int_t, Double_t, etc
 #include "RooFormulaVar.h"              // for RooFormulaVar
 #include "RooHistError.h"               // for RooHistError
 #include "RooMsgService.h"              // for coutE, coutI

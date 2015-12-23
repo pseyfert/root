@@ -27,14 +27,12 @@ as a MIGRAD minimization step is executed for each function evaluation
 #include <string>                       // for string, char_traits
 
 #include "RooAbsArg.h"                  // for RooAbsArg
-#include "RooAbsReal.h"                 // for RooAbsReal
-#include "RooArgSet.h"                  // for RooArgSet, kFALSE, Bool_t, etc
 #include "RooMinimizer.h"               // for RooMinimizer
 #include "RooMsgService.h"              // for RooMsgService, cxcoutI, etc
-#include "RooProfileLL.h"               // for RooProfileLL, MINIMIZER
+#include "RooProfileLL.h"               // for RooProfileLL, RooAbsReal, etc
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "RooRealVar.h"                 // for RooRealVar
-#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooSetProxy.h"                // for RooArgSet, RooSetProxy, etc
 #include "TIterator.h"                  // for TIterator
 
 

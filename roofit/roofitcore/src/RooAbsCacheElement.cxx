@@ -30,8 +30,7 @@ change calls and constant term optimization management calls
 
 #include "RooAbsArg.h"                  // for RooAbsArg, etc
 #include "RooAbsCacheElement.h"         // for RooAbsCacheElement, etc
-#include "RooArgList.h"                 // for RooArgList, etc
-#include "Rtypes.h"                     // for Bool_t, Int_t, ClassImp, etc
+#include "RooArgList.h"                 // for RooArgList, Bool_t, Int_t, etc
 #include "TIterator.h"                  // for TIterator
 
 class RooArgSet;

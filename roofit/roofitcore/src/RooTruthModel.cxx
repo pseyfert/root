@@ -30,19 +30,15 @@ functions used in D mixing have been hand coded for increased execution speed.
 #include <algorithm>                    // for max
 
 #include "RooAbsAnaConvPdf.h"           // for RooAbsAnaConvPdf
-#include "RooAbsReal.h"                 // for RooAbsReal
 #include "RooArgSet.h"                  // for Double_t, Int_t, RooArgSet, etc
 #include "RooFormulaVar.h"              // for RooFormulaVar
 #include "RooGenContext.h"              // for RooGenContext
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "RooRealVar.h"                 // for RooRealVar
-#include "RooResolutionModel.h"         // for RooResolutionModel
-#include "RooTruthModel.h"              // for RooTruthModel, etc
+#include "RooTruthModel.h"              // for RooTruthModel, RooAbsReal, etc
 #include "TError.h"                     // for R__ASSERT
 #include "TString.h"                    // for TString
 
-class RooAbsGenContext;
-class RooAbsPdf;
 class RooDataSet;
 
 using namespace std ;

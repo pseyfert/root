@@ -25,10 +25,9 @@ is constructed.
 **/
 
 #include "RooExtendedTerm.h"            // for RooExtendedTerm, RooAbsPdf
+
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "Rtypes.h"                     // for ClassImp, Double_t
-
-class RooArgSet;
 
 using namespace std;
 

@@ -34,12 +34,11 @@ to test that assumption.
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <string>                       // for string, char_traits, etc
 
-#include "RooArgSet.h"                  // for RooArgSet, Double_t, kTRUE, etc
 #include "RooDLLSignificanceMCSModule.h"
-#include "RooDataSet.h"                 // for RooDataSet
+#include "RooDataSet.h"                 // for RooArgSet, RooDataSet
 #include "RooFitResult.h"               // for RooFitResult
 #include "RooMsgService.h"              // for coutE
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for RooRealVar, Double_t, kTRUE, etc
 #include "TString.h"                    // for Form, TString
 
 

@@ -29,11 +29,10 @@ use a TTree as internal storage mechanism
 #include <string>                       // for string, char_traits, etc
 #include <utility>                      // for pair
 
-#include "RooAbsData.h"                 // for RooAbsData, etc
+#include "RooAbsData.h"                 // for Int_t, RooArgSet, Bool_t, etc
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet
 #include "RooCatType.h"                 // for RooCatType
-#include "RooCategory.h"                // for Int_t, Bool_t, RooCategory, etc
+#include "RooCategory.h"                // for RooCategory, RooAbsArg
 #include "RooCompositeDataStore.h"      // for RooCompositeDataStore, etc
 #include "RooMsgService.h"              // for coutE
 #include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY

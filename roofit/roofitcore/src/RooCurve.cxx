@@ -44,13 +44,12 @@ a function y(x) is actually evaluated to approximate a smooth curve, use:
 #include <vector>                       // for vector, etc
 
 #include "RVersion.h"                   // for ROOT_VERSION, etc
-#include "RooAbsFunc.h"                 // for RooAbsFunc
 #include "RooAbsRealLValue.h"           // for Double_t, Int_t, RooAbsReal, etc
 #include "RooCurve.h"                   // for RooCurve, etc
 #include "RooHist.h"                    // for RooHist
 #include "RooMsgService.h"              // for ccoutP, coutE, ccoutW, etc
 #include "RooNumber.h"                  // for RooNumber
-#include "RooScaledFunc.h"              // for RooScaledFunc
+#include "RooScaledFunc.h"              // for RooAbsFunc, RooScaledFunc
 #include "TClass.h"                     // for TClass
 #include "TMath.h"                      // for Erfc
 #include "TMatrixDfwd.h"                // for TMatrixD
