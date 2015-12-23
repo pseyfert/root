@@ -24,6 +24,7 @@ occur in a slice defined by the bin coordinates of the input
 sliceSet.
 **/
 
+#include "RVersion.h"                   // for ROOT_VERSION, etc
 #if ROOT_VERSION_CODE <= ROOT_VERSION(5,19,04)
 #ifndef nullptr
 #define nullptr 0
@@ -32,7 +33,6 @@ sliceSet.
 
 #include <vector>                       // for vector
 
-#include "RVersion.h"                   // for ROOT_VERSION, etc
 #include "RooAbsArg.h"                  // for RooAbsArg
 #include "RooAbsLValue.h"               // for RooAbsLValue
 #include "RooArgSet.h"                  // for RooArgSet, Int_t, etc

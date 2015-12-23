@@ -31,6 +31,8 @@
 #include "TString.h"                    // for Form
 #include "strlcpy.h"                    // for strlcpy
 
+#include "RooCintUtils.h" // IWYU pragma: keep
+
 class ClassInfo_t;
 class DataMemberInfo_t;
 class MethodArgInfo_t;
