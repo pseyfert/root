@@ -16,7 +16,7 @@
 #ifndef ROO_UNBLIND_UNIFORM
 #define ROO_UNBLIND_UNIFORM
 
-#include "RooAbsHiddenReal.h"
+#include "RooAbsHiddenReal.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 #include "RooBlindTools.h"
 

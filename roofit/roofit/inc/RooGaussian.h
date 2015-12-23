@@ -16,11 +16,8 @@
 #ifndef ROO_GAUSSIAN
 #define ROO_GAUSSIAN
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-#include "RooTrace.h"
-
-class RooRealVar;
 
 class RooGaussian : public RooAbsPdf {
 public:

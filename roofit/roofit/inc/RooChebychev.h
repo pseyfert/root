@@ -15,11 +15,10 @@
 #ifndef ROO_CHEBYCHEV
 #define ROO_CHEBYCHEV
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: exportj
 #include "RooRealProxy.h"
 #include "RooListProxy.h"
 
-class RooRealVar;
 class RooArgList ;
 
 class RooChebychev : public RooAbsPdf {

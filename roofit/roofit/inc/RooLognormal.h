@@ -11,10 +11,8 @@
 #ifndef ROO_LOGNORMAL
 #define ROO_LOGNORMAL
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-
-class RooRealVar;
 
 class RooLognormal : public RooAbsPdf {
 public:

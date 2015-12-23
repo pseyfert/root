@@ -16,10 +16,8 @@
 #ifndef ROO_BIFUR_GAUSS
 #define ROO_BIFUR_GAUSS
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-
-class RooRealVar;
 
 class RooBifurGauss : public RooAbsPdf {
 public:

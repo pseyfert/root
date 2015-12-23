@@ -26,7 +26,7 @@
 #ifndef ROO_NONCPEIGEN_DECAY
 #define ROO_NONCPEIGEN_DECAY
 
-#include "RooAbsAnaConvPdf.h"
+#include "RooAbsAnaConvPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 #include "RooCategoryProxy.h"
 

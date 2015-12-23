@@ -15,19 +15,15 @@
 #ifndef ROO_NDKEYS_PDF
 #define ROO_NDKEYS_PDF
 
-#include "RooAbsPdf.h"
-#include "RooRealProxy.h"
-#include "RooSetProxy.h"
-#include "RooRealConstant.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "TVectorD.h"
 #include "TMatrixD.h"
-#include "TMatrixDSym.h"
+#include "TMatrixDSymfwd.h"
 #include <map>
 #include <vector>
 #include <string>
 #include "RooListProxy.h"
 
-class RooRealVar;
 class RooArgList;
 class RooArgSet;
 

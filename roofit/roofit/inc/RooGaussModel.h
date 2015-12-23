@@ -19,7 +19,7 @@
 #include <cmath>
 #include <complex>
 
-#include "RooResolutionModel.h"
+#include "RooResolutionModel.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 #include "RooMath.h"
 

@@ -16,7 +16,7 @@
 #ifndef ROO_BMIX_DECAY
 #define ROO_BMIX_DECAY
 
-#include "RooAbsAnaConvPdf.h"
+#include "RooAbsAnaConvPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 #include "RooCategoryProxy.h"
 

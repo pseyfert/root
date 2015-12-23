@@ -7,9 +7,8 @@
 #ifndef ROOTFNBINDING
 #define ROOTFNBINDING
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooListProxy.h"
-#include "RooAbsReal.h"
 class TF1 ;
 class TF2 ;
 class TF3 ;

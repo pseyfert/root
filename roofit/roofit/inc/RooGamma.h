@@ -14,7 +14,7 @@
 #ifndef ROO_GAMMA
 #define ROO_GAMMA
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 
 class RooRealVar;

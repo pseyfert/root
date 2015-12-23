@@ -13,11 +13,8 @@
 #ifndef ROO_CHISQUARE
 #define ROO_CHISQUARE
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-
-class RooRealVar;
-class RooArgList ;
 
 class RooChiSquarePdf : public RooAbsPdf {
 public:
