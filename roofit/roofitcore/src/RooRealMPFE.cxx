@@ -50,7 +50,8 @@ For general multiprocessing in ROOT, please refer to the TProcPool class.
 
 #include <unistd.h>                     // for _exit
 #include <cstdlib>                      // for free
-#include <iostream>                     // for operator<<, basic_ostream, etc
+// IWYU pragma: no_include <iostream>   // for operator<<, basic_ostream, etc
+#include <sstream>                      // IWYU pragma: keep
 #include <list>                         // for list, _List_const_iterator, etc
 #include <map>                          // for _Rb_tree_const_iterator, etc
 #include <string>                       // for char_traits, string, etc
