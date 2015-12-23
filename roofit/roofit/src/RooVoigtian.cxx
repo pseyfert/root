@@ -30,11 +30,10 @@ the selectFastAlgorithm() method.
 #include <cmath>                        // for sqrt, atan2, exp
 #include <complex>                      // for complex
 
-#include "RooAbsPdf.h"                  // for RooAbsPdf
 #include "RooMath.h"                    // for RooMath
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "RooRealVar.h"                 // for Double_t, Bool_t, ClassImp
-#include "RooVoigtian.h"                // for RooVoigtian
+#include "RooVoigtian.h"                // for RooVoigtian, RooAbsPdf
 
 using namespace std;
 

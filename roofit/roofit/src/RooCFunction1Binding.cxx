@@ -27,10 +27,7 @@ pointer first using RooCFunction1Binding<T1,T2>::register().
 #include <ostream>                      // for operator<<
 
 #include "RooCFunction1Binding.h"       // for RooCFunction1Binding, etc
-#include "Rtypes.h"                     // for Double_t, etc
-
-class RooAbsPdf;
-class RooAbsReal;
+#include "Rtypes.h"                     // for Double_t, Int_t, etc
 
 using namespace std ;
 

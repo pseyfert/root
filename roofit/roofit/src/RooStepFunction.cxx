@@ -33,12 +33,11 @@
 #include <vector>                       // for vector
 
 #include "RooAbsArg.h"                  // for RooAbsArg
-#include "RooListProxy.h"               // for RooListProxy, RooArgList
+#include "RooListProxy.h"               // for RooListProxy, Double_t, etc
 #include "RooMath.h"                    // for RooMath
 #include "RooMsgService.h"              // for coutE
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "RooRealVar.h"                 // for RooAbsReal, Double_t, Int_t, etc
-#include "RooStepFunction.h"            // for RooStepFunction
+#include "RooStepFunction.h"            // for RooStepFunction, RooAbsReal
 #include "TIterator.h"                  // for TIterator
 
 using namespace std;

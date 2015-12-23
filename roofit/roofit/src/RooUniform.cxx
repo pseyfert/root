@@ -25,12 +25,11 @@ Flat p.d.f. in N dimensions
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
 #include "RooAbsArg.h"                  // for RooAbsArg
-#include "RooAbsPdf.h"                  // for RooAbsPdf
 #include "RooArgSet.h"                  // for RooArgSet, Int_t, Double_t, etc
 #include "RooListProxy.h"               // for RooListProxy
 #include "RooMsgService.h"              // for coutW
 #include "RooRealVar.h"                 // for RooAbsRealLValue
-#include "RooUniform.h"                 // for RooUniform
+#include "RooUniform.h"                 // for RooUniform, RooAbsPdf
 
 using namespace std;
 

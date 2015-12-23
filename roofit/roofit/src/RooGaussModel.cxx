@@ -29,15 +29,14 @@ for analytical convolutions with classes inheriting from RooAbsAnaConvPdf
 #include <iostream>                     // for operator<<, basic_ostream, etc
 
 #include "RooArgSet.h"                  // for RooArgSet
-#include "RooFormulaVar.h"              // for RooFormulaVar
+#include "RooFormulaVar.h"              // for RooAbsReal, RooFormulaVar
 #include "RooGaussModel.h"              // for RooGaussModel, etc
 #include "RooMath.h"                    // for RooMath
 #include "RooMsgService.h"              // for cxcoutE
 #include "RooRandom.h"                  // for RooRandom
 #include "RooRealConstant.h"            // for RooRealConstant
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "RooRealVar.h"                 // for Double_t, RooAbsReal, etc
-#include "RooResolutionModel.h"         // for RooResolutionModel
+#include "RooRealVar.h"                 // for Double_t, RooRealVar, etc
 #include "TError.h"                     // for R__ASSERT
 #include "TMath.h"                      // for IsNaN
 #include "TRandom.h"                    // for TRandom

@@ -44,11 +44,10 @@
 #include <iostream>                     // for operator<<, basic_ostream, etc
 
 #include "RooAbsArg.h"                  // for RooAbsArg
-#include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooListProxy.h"               // for RooListProxy, RooArgList
-#include "RooParametricStepFunction.h"  // for RooParametricStepFunction
+#include "RooListProxy.h"               // for Double_t, RooListProxy, etc
+#include "RooParametricStepFunction.h"  // for RooParametricStepFunction, etc
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "RooRealVar.h"                 // for Double_t, RooRealVar, Int_t, etc
+#include "RooRealVar.h"                 // for RooRealVar
 #include "TArrayD.h"                    // for TArrayD
 #include "TError.h"                     // for R__ASSERT
 #include "TIterator.h"                  // for TIterator

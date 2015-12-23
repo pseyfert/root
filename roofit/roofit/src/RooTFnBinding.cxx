@@ -8,9 +8,8 @@
 
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooAbsReal.h"                 // for RooAbsReal
 #include "RooListProxy.h"               // for RooListProxy, RooArgList, etc
-#include "RooTFnBinding.h"              // for RooTFnBinding
+#include "RooTFnBinding.h"              // for RooTFnBinding, RooAbsReal
 #include "TF1.h"                        // for TF1
 #include "TF2.h"                        // for TF2
 #include "TF3.h"                        // for TF3

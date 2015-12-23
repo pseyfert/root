@@ -24,9 +24,8 @@ P.d.f implementing the Crystall Ball line shape
 
 #include <math.h>                       // for exp, fabs, log
 
-#include "RooAbsPdf.h"                  // for RooAbsPdf
 #include "RooArgSet.h"                  // for Double_t, Int_t, RooArgSet, etc
-#include "RooCBShape.h"                 // for RooCBShape
+#include "RooCBShape.h"                 // for RooCBShape, RooAbsPdf
 #include "RooMath.h"                    // for RooMath
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "TError.h"                     // for R__ASSERT

@@ -31,13 +31,12 @@ be analytically convolved with any RooResolutionModel implementation
 #include <stdlib.h>                     // for abort
 #include <iostream>                     // for operator<<, basic_ostream, etc
 
-#include "RooAbsAnaConvPdf.h"           // for RooAbsAnaConvPdf
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet
-#include "RooBDecay.h"                  // for RooBDecay, etc
+#include "RooArgSet.h"                  // for Double_t, Int_t, Bool_t, etc
+#include "RooBDecay.h"                  // for RooBDecay, RooAbsAnaConvPdf, etc
 #include "RooRandom.h"                  // for RooRandom
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "RooRealVar.h"                 // for RooAbsReal, Double_t, Int_t, etc
+#include "RooRealVar.h"                 // for RooAbsReal, RooRealVar
 #include "TError.h"                     // for R__ASSERT
 #include "TMathBase.h"                  // for Abs
 

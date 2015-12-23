@@ -29,16 +29,15 @@ Suitably stolen and modified from RooBCPEffDecay
 #include <assert.h>                     // for assert
 #include <math.h>                       // for log, fabs, cos, sin
 
-#include "RooAbsAnaConvPdf.h"           // for RooAbsAnaConvPdf
 #include "RooAbsCategory.h"             // for RooAbsCategory
-#include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet
+#include "RooArgList.h"                 // for RooArgList, Int_t, Double_t
+#include "RooArgSet.h"                  // for Double_t, Int_t, RooArgSet, etc
 #include "RooBCPGenDecay.h"             // for RooBCPGenDecay, etc
 #include "RooCategoryProxy.h"           // for RooCategoryProxy
 #include "RooRandom.h"                  // for RooRandom
 #include "RooRealIntegral.h"            // for RooRealIntegral
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "RooRealVar.h"                 // for RooAbsReal, Double_t, Int_t, etc
+#include "RooRealVar.h"                 // for RooAbsReal, ClassImp, etc
 
 class RooResolutionModel;
 

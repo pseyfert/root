@@ -81,7 +81,6 @@
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
 #include "RooAbsCacheElement.h"         // for RooAbsCacheElement::Action
-#include "RooAbsCachedPdf.h"            // for RooAbsPdf, etc
 #include "RooArgList.h"                 // for RooArgList
 #include "RooArgSet.h"                  // for RooArgSet
 #include "RooBrentRootFinder.h"         // for RooBrentRootFinder
@@ -90,7 +89,7 @@
 #include "RooIntegralMorph.h" 
 #include "RooMsgService.h"              // for oocxcoutD, ccoutP, oocoutE, etc
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "RooRealVar.h"                 // for Double_t, RooRealVar, etc
+#include "RooRealVar.h"                 // for Double_t, RooRealVar, Int_t, etc
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for TString
 

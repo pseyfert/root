@@ -23,11 +23,10 @@ Chebychev polynomial p.d.f. of the first kind
 
 #include <iostream>                     // for operator<<, basic_ostream, etc
 
-#include "RooAbsArg.h"                  // for RooAbsArg
-#include "RooAbsPdf.h"                  // for RooAbsReal, RooAbsPdf
-#include "RooChebychev.h"               // for RooChebychev
+#include "RooAbsArg.h"                  // for RooAbsArg, TNamed
+#include "RooChebychev.h"               // for RooChebychev, RooAbsReal, etc
 #include "RooListProxy.h"               // for RooListProxy, RooArgList, etc
-#include "RooNameReg.h"                 // for TNamed, RooNameReg
+#include "RooNameReg.h"                 // for RooNameReg
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "TError.h"                     // for R__ASSERT
 #include "TIterator.h"                  // for TIterator

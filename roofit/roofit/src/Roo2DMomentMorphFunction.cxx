@@ -64,7 +64,6 @@ Usage example:
 #include <vector>                       // for vector, vector<>::iterator
 
 #include "Roo2DMomentMorphFunction.h"   // for Roo2DMomentMorphFunction, etc
-#include "RooAbsReal.h"                 // for RooAbsReal
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "Rtypes.h"                     // for Double_t, Int_t, Bool_t, etc
 #include "TMath.h"                      // for Sqrt

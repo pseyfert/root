@@ -20,8 +20,7 @@ Here we also implement the analytic integral.
 #include <math.h>                       // for pow, exp
 #include <string.h>                     // for strlen
 
-#include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooChiSquarePdf.h"            // for RooChiSquarePdf
+#include "RooChiSquarePdf.h"            // for RooChiSquarePdf, RooAbsPdf
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "RooRealVar.h"                 // for Double_t, Int_t, ClassImp
 #include "TError.h"                     // for R__ASSERT

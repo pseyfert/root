@@ -44,9 +44,8 @@ http://wesnoth.repositoryhosting.com/trac/wesnoth_wesnoth/browser/trunk/include/
 #include "Math/PdfFuncMathMore.h"       // for noncentral_chisquared_pdf
 #include "Math/ProbFuncMathCore.h"      // for chisquared_cdf
 #include "RConfigure.h"                 // for R__HAS_MATHMORE
-#include "RooAbsPdf.h"                  // for RooAbsPdf
 #include "RooMsgService.h"              // for ccoutD, coutW, coutI
-#include "RooNonCentralChiSquare.h"     // for RooNonCentralChiSquare
+#include "RooNonCentralChiSquare.h"     // for RooNonCentralChiSquare, etc
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "Rtypes.h"                     // for Double_t, Int_t, Bool_t, etc
 #include "TError.h"                     // for R__ASSERT

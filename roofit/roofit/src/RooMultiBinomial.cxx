@@ -34,10 +34,9 @@ The combination only 'reject' can be chosen to be visible or not visible
 #include <vector>                       // for vector
 
 #include "RooAbsCategory.h"             // for RooAbsCategory
-#include "RooAbsReal.h"                 // for RooAbsReal
 #include "RooListProxy.h"               // for Double_t, RooArgList, etc
 #include "RooMsgService.h"              // for coutW, coutE
-#include "RooMultiBinomial.h"           // for RooMultiBinomial
+#include "RooMultiBinomial.h"           // for RooMultiBinomial, etc
 
 using namespace std ;
 

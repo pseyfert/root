@@ -21,11 +21,10 @@
 #include <limits>                       // for numeric_limits
 #include <vector>                       // for vector
 
-#include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooDataSet.h"                 // for RooDataSet, RooArgSet
+#include "RooDataSet.h"                 // for Double_t, Int_t, RooDataSet, etc
 #include "RooKeysPdf.h"                 // for RooKeysPdf, etc
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "RooRealVar.h"                 // for Double_t, Int_t, RooRealVar, etc
+#include "RooRealVar.h"                 // for RooRealVar, etc
 #include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
 #include "TError.h"                     // for R__ASSERT
 #include "TMath.h"                      // for Pi

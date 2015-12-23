@@ -12,14 +12,13 @@
 #include <vector>                       // for vector, vector<>::iterator
 
 #include "RooAbsCategory.h"             // for RooFIter, RooAbsArg
-#include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooArgSet.h"                  // for RooArgSet
+#include "RooArgSet.h"                  // for Double_t, RooArgSet, Int_t, etc
 #include "RooDataHist.h"                // for RooDataHist
-#include "RooHistConstraint.h"          // for RooHistConstraint
-#include "RooListProxy.h"               // for RooListProxy
+#include "RooHistConstraint.h"          // for RooHistConstraint, etc
+#include "RooListProxy.h"               // for RooListProxy, ClassImp
 #include "RooMsgService.h"              // for coutE, coutW
 #include "RooParamHistFunc.h"           // for RooParamHistFunc
-#include "RooRealVar.h"                 // for RooRealVar, Double_t, Int_t, etc
+#include "RooRealVar.h"                 // for RooRealVar
 #include "TMath.h"                      // for Poisson
 #include "TString.h"                    // for Form
 

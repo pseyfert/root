@@ -28,9 +28,8 @@ The parametrization here is physics driven and differs from the ROOT::Math::logn
 #include <Math/PdfFuncMathCore.h>       // for lognormal_pdf
 #include <math.h>                       // for sqrt
 
-#include "RooAbsPdf.h"                  // for RooAbsPdf
 #include "RooArgSet.h"                  // for Double_t, Int_t, Bool_t, etc
-#include "RooLognormal.h"               // for RooLognormal
+#include "RooLognormal.h"               // for RooLognormal, RooAbsPdf
 #include "RooMath.h"                    // for RooMath
 #include "RooRandom.h"                  // for RooRandom
 #include "RooRealProxy.h"               // for RooRealProxy

@@ -15,17 +15,16 @@ RooJeffreysPrior
 #include <stddef.h>                     // for NULL
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal
 #include "RooArgSet.h"                  // for Int_t, RooArgSet, kFALSE, etc
 #include "RooCategory.h"                // for RooAbsArg, RooCategory
 #include "RooDataHist.h"                // for RooDataHist
 #include "RooErrorHandler.h"            // for RooErrorHandler
 #include "RooFitResult.h"               // for RooFitResult
 #include "RooGlobalFunc.h"              // for ExpectedData, Minos, etc
-#include "RooJeffreysPrior.h"           // for RooJeffreysPrior
-#include "RooListProxy.h"               // for RooListProxy, RooArgList
+#include "RooJeffreysPrior.h"           // for RooJeffreysPrior, RooAbsPdf, etc
+#include "RooListProxy.h"               // for RooListProxy, RooArgList, etc
 #include "RooMsgService.h"              // for RooMsgService, coutE
-#include "RooNumIntConfig.h"            // for kFALSE, ClassImp, Double_t, etc
+#include "RooNumIntConfig.h"            // for RooNumIntConfig
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "TError.h"                     // for R__ASSERT
 #include "TIterator.h"                  // for TIterator

@@ -28,8 +28,7 @@ that models a non-relativistic Breit-Wigner shape
 #include <assert.h>                     // for assert
 #include <math.h>                       // for atan
 
-#include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooBreitWigner.h"             // for RooBreitWigner
+#include "RooBreitWigner.h"             // for RooBreitWigner, RooAbsPdf
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "RooRealVar.h"                 // for Double_t, Int_t, ClassImp
 

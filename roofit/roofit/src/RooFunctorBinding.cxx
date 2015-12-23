@@ -28,11 +28,9 @@ pointer first using RooCFunction1Binding<T1,T2>::register().
 #include <string>                       // for char_traits, string
 
 #include "Math/IFunction.h"             // for IBaseFunctionMultiDim
-#include "RooAbsPdf.h"                  // for RooAbsReal, RooAbsPdf
 #include "RooFunctorBinding.h"          // for RooFunctorBinding, etc
 #include "RooListProxy.h"               // for RooArgList, RooListProxy, etc
 #include "RooMsgService.h"              // for coutE
-#include "Rtypes.h"                     // for Double_t, ClassImp, Int_t, etc
 #include "TString.h"                    // for TString
 
 using namespace std ;

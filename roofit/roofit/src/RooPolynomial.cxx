@@ -31,10 +31,9 @@ less than polynomial functions due to the normalization condition
 #include <vector>                       // for vector
 
 #include "RooAbsArg.h"                  // for RooFIter, RooAbsArg
-#include "RooAbsPdf.h"                  // for RooAbsReal, RooAbsPdf
 #include "RooListProxy.h"               // for Double_t, RooListProxy, etc
 #include "RooMsgService.h"              // for coutE
-#include "RooPolynomial.h"              // for RooPolynomial
+#include "RooPolynomial.h"              // for RooPolynomial, RooAbsReal, etc
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "TError.h"                     // for R__ASSERT
 

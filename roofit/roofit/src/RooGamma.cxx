@@ -33,9 +33,8 @@
 
 #include <Math/ProbFuncMathCore.h>      // for gamma_cdf
 
-#include "RooAbsPdf.h"                  // for RooAbsPdf
 #include "RooArgSet.h"                  // for Double_t, Int_t, Bool_t, etc
-#include "RooGamma.h"                   // for RooGamma
+#include "RooGamma.h"                   // for RooGamma, RooAbsPdf
 #include "RooRandom.h"                  // for RooRandom
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "TError.h"                     // for R__ASSERT

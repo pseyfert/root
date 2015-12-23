@@ -33,9 +33,8 @@ Function taken from H. Ikeda et al. NIM A441 (2000), p. 401 (Belle Collaboration
 #include <assert.h>                     // for assert
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooAbsPdf.h"                  // for RooAbsPdf
 #include "RooMsgService.h"              // for coutF
-#include "RooNovosibirsk.h"             // for RooNovosibirsk
+#include "RooNovosibirsk.h"             // for RooNovosibirsk, RooAbsPdf
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "RooRealVar.h"                 // for Double_t, Int_t, ClassImp
 #include "TMath.h"                      // for Erf, Log, ASinH, Exp, Power

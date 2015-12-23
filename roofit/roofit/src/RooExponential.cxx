@@ -25,8 +25,7 @@ Exponential p.d.f
 #include <assert.h>                     // for assert
 #include <math.h>                       // for exp
 
-#include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooExponential.h"             // for RooExponential
+#include "RooExponential.h"             // for RooExponential, RooAbsPdf
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "RooRealVar.h"                 // for Double_t, Int_t, ClassImp
 

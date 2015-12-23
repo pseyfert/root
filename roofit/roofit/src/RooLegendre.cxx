@@ -25,9 +25,8 @@
 
 #include "Math/SpecFuncMathMore.h"      // for assoc_legendre
 #include "RConfigure.h"                 // for R__HAS_MATHMORE
-#include "RooAbsReal.h"                 // for RooAbsReal
 #include "RooArgSet.h"                  // for Int_t, Double_t, Bool_t, etc
-#include "RooLegendre.h"                // for RooLegendre
+#include "RooLegendre.h"                // for RooLegendre, RooAbsReal
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "TError.h"                     // for R__ASSERT
 #include "TMath.h"                      // for Factorial, Gamma

@@ -23,8 +23,7 @@ Morphing can be set to be linear, non-linear or a mixture of the two.
 #include "RooArgList.h"                 // for RooArgList
 #include "RooMsgService.h"              // for coutE
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "RooRealVar.h"                 // for Int_t, RooAbsReal, Double_t
-#include "RooSetProxy.h"                // for RooSetProxy, ClassImp
+#include "RooSetProxy.h"                // for Int_t, RooSetProxy, etc
 #include "TIterator.h"                  // for TIterator
 #include "TMath.h"                      // for Power
 #include "TMatrixDfwd.h"                // for TMatrixD

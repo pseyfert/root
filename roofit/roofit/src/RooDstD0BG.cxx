@@ -28,12 +28,10 @@ D*-D0 mass difference distributions
 #include <assert.h>                     // for assert
 #include <math.h>                       // for exp
 
-#include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooArgSet.h"                  // for RooArgSet
-#include "RooDstD0BG.h"                 // for RooDstD0BG
+#include "RooArgSet.h"                  // for Double_t, Int_t, kTRUE, etc
+#include "RooDstD0BG.h"                 // for RooDstD0BG, RooAbsPdf, etc
 #include "RooIntegrator1D.h"            // for RooIntegrator1D
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "RooRealVar.h"                 // for Double_t, Int_t, kTRUE, etc
 #include "TMath.h"                      // for Power
 
 class RooAbsFunc;

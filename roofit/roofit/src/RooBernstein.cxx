@@ -27,11 +27,9 @@ http://www.idav.ucdavis.edu/education/CAGDNotes/Bernstein-Polynomials.pdf
 #include <iostream>                     // for operator<<, basic_ostream, etc
 
 #include "RooAbsArg.h"                  // for RooFIter, RooAbsArg
-#include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooBernstein.h"               // for RooBernstein
-#include "RooListProxy.h"               // for RooListProxy, RooArgList
+#include "RooBernstein.h"               // for RooBernstein, RooAbsReal, etc
+#include "RooListProxy.h"               // for Double_t, RooListProxy, etc
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "RooRealVar.h"                 // for RooAbsReal, Double_t, Int_t, etc
 #include "TError.h"                     // for R__ASSERT
 #include "TIterator.h"                  // for TIterator
 #include "TMath.h"                      // for Binomial, SignalingNaN

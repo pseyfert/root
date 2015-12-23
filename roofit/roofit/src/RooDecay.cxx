@@ -25,12 +25,11 @@ with any RooResolutionModel implementation
 
 #include <math.h>                       // for log
 
-#include "RooAbsAnaConvPdf.h"           // for RooAbsAnaConvPdf
-#include "RooArgSet.h"                  // for RooArgSet
-#include "RooDecay.h"                   // for RooDecay, etc
+#include "RooArgSet.h"                  // for Double_t, Int_t, Bool_t, etc
+#include "RooDecay.h"                   // for RooDecay, RooAbsAnaConvPdf, etc
 #include "RooRandom.h"                  // for RooRandom
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "RooRealVar.h"                 // for Double_t, Int_t, RooAbsReal, etc
+#include "RooRealVar.h"                 // for RooAbsReal, RooRealVar
 #include "TError.h"                     // for R__ASSERT
 
 class RooResolutionModel;

@@ -15,7 +15,7 @@
 #ifndef ROO_CHEBYCHEV
 #define ROO_CHEBYCHEV
 
-#include "RooAbsPdf.h" // IWYU pragma: exportj
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 #include "RooListProxy.h"
 

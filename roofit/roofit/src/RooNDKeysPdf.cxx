@@ -20,12 +20,11 @@
 #include <vector>                       // for vector, vector<>::iterator, etc
 
 #include "RooAbsArg.h"                  // for RooAbsArg
-#include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooDataSet.h"                 // for RooDataSet, RooArgSet
+#include "RooDataSet.h"                 // for Double_t, Int_t, Bool_t, etc
 #include "RooListProxy.h"               // for RooListProxy, RooArgList
 #include "RooMsgService.h"              // for cxcoutD, coutE, coutI, etc
 #include "RooNDKeysPdf.h"               // for RooNDKeysPdf, itVec, etc
-#include "RooRealVar.h"                 // for Double_t, Int_t, Bool_t, etc
+#include "RooRealVar.h"                 // for RooRealVar
 #include "TIterator.h"                  // for TIterator
 #include "TMath.h"                      // for Erf, Power, Pi
 #include "TMathBase.h"                  // for Abs

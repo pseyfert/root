@@ -8,10 +8,8 @@
 
 #include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooAbsPdf.h"                  // for RooAbsReal, RooAbsPdf
 #include "RooListProxy.h"               // for RooListProxy, RooArgList, etc
-#include "RooTFnPdfBinding.h"           // for RooTFnPdfBinding
-#include "Rtypes.h"                     // for Double_t, ClassImp, Int_t
+#include "RooTFnPdfBinding.h"           // for RooTFnPdfBinding, etc
 #include "TF1.h"                        // for TF1
 #include "TF2.h"                        // for TF2
 #include "TF3.h"                        // for TF3

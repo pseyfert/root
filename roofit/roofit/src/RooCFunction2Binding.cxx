@@ -29,9 +29,6 @@ pointer first using RooCFunction2Binding<T1,T2,T3>::register().
 #include "RooCFunction2Binding.h"       // for RooCFunction2Binding, etc
 #include "Rtypes.h"                     // for Double_t, Int_t, etc
 
-class RooAbsPdf;
-class RooAbsReal;
-
 using namespace std ;
 
 #ifndef ROOFIT_R__NO_CLASS_TEMPLATE_SPECIALIZATION

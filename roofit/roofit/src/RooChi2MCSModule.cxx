@@ -26,13 +26,12 @@ the number of degrees of freedom and the probability of the chi-squared
 is store in the summary dataset
 **/
 
-#include "RooAbsMCStudyModule.h"        // for RooAbsMCStudyModule
-#include "RooChi2MCSModule.h"           // for RooChi2MCSModule
+#include "RooChi2MCSModule.h"           // for RooChi2MCSModule, etc
 #include "RooChi2Var.h"                 // for RooChi2Var
 #include "RooDataHist.h"                // for RooDataHist
 #include "RooDataSet.h"                 // for RooArgSet, RooDataSet, etc
 #include "RooGlobalFunc.h"              // for DataError, Extended
-#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRealVar.h"                 // for RooRealVar, Bool_t, kTRUE, etc
 #include "TMath.h"                      // for Prob
 
 

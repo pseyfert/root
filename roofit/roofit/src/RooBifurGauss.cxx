@@ -27,8 +27,7 @@ side of maximum value
 #include <assert.h>                     // for assert
 #include <math.h>                       // for sqrt, atan2, exp
 
-#include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooBifurGauss.h"              // for RooBifurGauss
+#include "RooBifurGauss.h"              // for RooBifurGauss, RooAbsPdf
 #include "RooMath.h"                    // for RooMath
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "Rtypes.h"                     // for Double_t, Int_t, ClassImp

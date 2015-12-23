@@ -26,9 +26,8 @@ Plain Gaussian p.d.f
 #include <math.h>                       // for sqrt, atan2, exp, log
 #include <iostream>                     // for operator<<, basic_ostream, etc
 
-#include "RooAbsPdf.h"                  // for RooAbsPdf
 #include "RooArgSet.h"                  // for Double_t, Int_t, Bool_t, etc
-#include "RooGaussian.h"                // for RooGaussian
+#include "RooGaussian.h"                // for RooGaussian, RooAbsPdf
 #include "RooMath.h"                    // for RooMath
 #include "RooRandom.h"                  // for RooRandom
 #include "RooRealProxy.h"               // for RooRealProxy
