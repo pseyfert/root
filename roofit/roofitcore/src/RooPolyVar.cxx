@@ -26,14 +26,22 @@ Class RooPolyvar implements analytical integrals of all polynomials
 it can define.
 **/
 
-#include <cmath>
+#include <cmath>                        // for pow
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <vector>                       // for vector
 
-#include "RooPolyVar.h"
-#include "RooArgList.h"
-#include "RooMsgService.h"
+#include "RooAbsArg.h"                  // for RooFIter, RooAbsArg
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooArgList.h"                 // for Double_t, Int_t, RooArgList, etc
+#include "RooListProxy.h"               // for RooListProxy
+#include "RooMsgService.h"              // for coutE
+#include "RooPolyVar.h"                 // for RooPolyVar
+#include "RooRealProxy.h"               // for RooRealProxy
 //#include "Riostream.h"
 
-#include "TError.h"
+#include "TError.h"                     // for R__ASSERT
+
+class RooArgSet;
 
 using namespace std;
 

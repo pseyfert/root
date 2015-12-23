@@ -26,15 +26,23 @@ techniques to perform calculations that involve a RooRealVars
 error, such as calculating the pull value.
 **/
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <list>                         // for list
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for string, char_traits
 
-#include "RooErrorVar.h"
-#include "RooErrorVar.h"
-#include "RooAbsBinning.h"
-#include "RooStreamParser.h"
-#include "RooRangeBinning.h"
-#include "RooMsgService.h"
+#include "RooAbsArg.h"                  // for RooLinkedList, RooAbsArg, etc
+#include "RooAbsBinning.h"              // for RooAbsBinning
+#include "RooAbsRealLValue.h"           // for Bool_t, Double_t, kTRUE, etc
+#include "RooErrorVar.h"                // for RooErrorVar
+#include "RooMsgService.h"              // for coutW, coutI
+#include "RooRangeBinning.h"            // for RooRangeBinning
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooStreamParser.h"            // for RooStreamParser
+#include "RooUniformBinning.h"          // for RooUniformBinning
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for TString
+
+class RooArgSet;
 
 
 

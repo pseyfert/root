@@ -23,11 +23,10 @@ Class RooThreshEntry is a utility class for RooThresholdCategory
 **/
 
 #include "RooThreshEntry.h"             // for RooThreshEntry
+
 #include "Rtypes.h"                     // for RooThreshEntry::Class, etc
-#include "RtypesCore.h"                 // for Double_t, Int_t
 #include "TClass.h"                     // for TClass
 #include "TObject.h"                    // for TObject
-class RooCatType;
 
 
 using namespace std;

@@ -25,30 +25,23 @@ derivator class.
 **/
 
 
-#include "RooFit.h"
+#include <math.h>                       // for sqrt
+#include <string>                       // for string
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include <math.h>
-#include <string>
+#include "RooAbsMoment.h"               // for RooAbsReal, RooAbsMoment
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for kTRUE, RooArgSet, Bool_t, etc
+#include "RooCategory.h"                // for RooCategory
+#include "RooFormulaVar.h"              // for RooFormulaVar
+#include "RooNumIntConfig.h"            // for RooNumIntConfig
+#include "RooProduct.h"                 // for RooProduct
+#include "RooRealIntegral.h"            // for RooRealIntegral
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooSecondMoment.h"            // for RooSecondMoment
+#include "RooSetProxy.h"                // for RooSetProxy
+#include "TString.h"                    // for Form
 
-#include "RooSecondMoment.h"
-#include "RooAbsReal.h"
-#include "RooAbsPdf.h"
-#include "RooErrorHandler.h"
-#include "RooArgSet.h"
-#include "RooMsgService.h"
-#include "RooRealVar.h"
-#include "RooFunctor.h"
-#include "RooGlobalFunc.h"
-#include "RooConstVar.h"
-#include "RooRealIntegral.h"
-#include "RooNumIntConfig.h"
-#include "RooFormulaVar.h"
-#include "RooLinearVar.h"
-#include "RooProduct.h"
-#include "RooGlobalFunc.h"
-#include <string>
 using namespace std ;
 
 

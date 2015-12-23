@@ -24,17 +24,31 @@ multidimensional histogram. The histogram can have an arbitrary number of real o
 discrete dimensions and may have negative values
 **/
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <assert.h>                     // for assert
+#include <math.h>                       // for fabs
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <list>                         // for list, etc
+#include <string>                       // for char_traits, operator==, etc
 
-#include "RooHistFunc.h"
-#include "RooDataHist.h"
-#include "RooMsgService.h"
-#include "RooRealVar.h"
-#include "RooCategory.h"
-#include "RooWorkspace.h"
-
-#include "TError.h"
+#include "RooAbsBinning.h"              // for RooAbsBinning
+#include "RooAbsData.h"                 // for RooAbsData
+#include "RooAbsRealLValue.h"           // for RooAbsRealLValue, etc
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet, RooAbsCollection
+#include "RooCategory.h"                // for RooAbsArg, Double_t, kFALSE, etc
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooGlobalFunc.h"              // for Embedded, Rename
+#include "RooHistFunc.h"                // for RooHistFunc
+#include "RooMsgService.h"              // for coutE
+#include "RooNameSet.h"                 // for RooNameSet
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
+#include "RooWorkspace.h"               // for RooWorkspace
+#include "TBuffer.h"                    // for TBuffer
+#include "TError.h"                     // for R__ASSERT
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for TString, Form, operator<<
 
 using namespace std;
 

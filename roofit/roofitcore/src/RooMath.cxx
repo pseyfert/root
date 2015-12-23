@@ -20,15 +20,16 @@
 //
 //
 
-#include <complex>
-#include <cmath>
-#include <algorithm>
+#include <cmath>                        // for fabs, abs
+#include <complex>                      // for complex, operator*, etc
+#include <iostream>                     // for operator<<, basic_ostream, etc
 
-#include "RooFit.h"
+#include "RooMath.h"                    // for RooMath
+#include "RooMsgService.h"              // for oocoutE
+#include "Rtypes.h"                     // for ClassImp
+#include "RtypesCore.h"                 // for Double_t, Int_t
 
-#include "RooMath.h"
-#include "Riostream.h"
-#include "RooMsgService.h"
+class TObject;
 
 using namespace std;
 
@@ -685,7 +686,8 @@ Double_t RooMath::interpolate(Double_t xa[], Double_t ya[], Int_t n, Double_t x)
 }
 
 
-#include <map>
+#include <map>                          // for map
+
 void RooMath::warn(const char* oldfun, const char* newfun)
 {
     static std::map<const char*, int> nwarn;

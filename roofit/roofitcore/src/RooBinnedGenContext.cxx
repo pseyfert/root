@@ -24,18 +24,24 @@ generator context specific for binned pdfs
 **/
 
 
-#include "RooFit.h"
+#include <assert.h>                     // for assert
+#include <stdlib.h>                     // for abs
+#include <list>                         // for list
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <vector>                       // for vector
 
-#include "Riostream.h"
-
-
-#include "RooMsgService.h"
-#include "RooBinnedGenContext.h"
-#include "RooAbsPdf.h"
-#include "RooRealVar.h"
-#include "RooDataHist.h"
-#include "RooDataSet.h"
-#include "RooRandom.h"
+#include "RooAbsArg.h"                  // for RooAbsArg, RooFIter, etc
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooArgSet.h"                  // for RooArgSet, Int_t, Double_t, etc
+#include "RooBinnedGenContext.h"        // for RooBinnedGenContext, etc
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooDataSet.h"                 // for RooDataSet
+#include "RooGlobalFunc.h"              // for WeightVar
+#include "RooMsgService.h"              // for ccxcoutI, coutE, cxcoutI
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealVar.h"                 // for RooRealVar
+#include "TRandom.h"                    // for TRandom
+#include "TString.h"                    // for operator<<, TString
 
 using namespace std;
 

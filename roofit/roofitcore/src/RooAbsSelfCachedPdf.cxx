@@ -27,14 +27,12 @@ RooCachedPdf wrapper p.d.f. that takes any RooAbsPdf object as
 input.
 **/
 
-#include "Riostream.h" 
-
-#include "RooFit.h"
-#include "RooAbsSelfCachedPdf.h" 
-#include "RooAbsReal.h" 
-#include "RooMsgService.h"
-#include "RooDataHist.h"
-#include "RooHistPdf.h"
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsSelfCachedPdf.h"        // for RooAbsSelfCachedPdf, etc
+#include "RooArgSet.h"                  // for RooArgSet, kTRUE, Int_t, etc
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooHistPdf.h"                 // for RooHistPdf
+#include "TIterator.h"                  // for TIterator
 
 using namespace std ;
 

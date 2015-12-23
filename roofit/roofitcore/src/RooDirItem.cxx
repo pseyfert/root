@@ -25,13 +25,14 @@ methods that can be used to safely attach and detach one self from a TDirectory
 **/
 
 #include "RooDirItem.h"                 // for RooDirItem
-#include "Rtypes.h"                     // for ClassImp
-#include "RtypesCore.h"                 // for Bool_t
+
+#include "Rtypes.h"                     // for Bool_t, ClassImp
 #include "TDirectory.h"                 // for TDirectory, gDirectory
 #include "TDirectoryFile.h"             // for TDirectoryFile, etc
 #include "TList.h"                      // for TList
 #include "TROOT.h"                      // for TROOT, gROOT
 #include "TString.h"                    // for TString, operator!=
+
 class TObject;
 
 

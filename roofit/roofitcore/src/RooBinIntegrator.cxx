@@ -27,20 +27,17 @@ numerical integration algorithm.
 #include <list>                         // for list, _List_iterator, etc
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <vector>                       // for vector, vector<>::iterator
+
 #include "RooAbsFunc.h"                 // for RooAbsFunc
-#include "RooAbsIntegrator.h"           // for RooAbsIntegrator
 #include "RooArgSet.h"                  // for RooArgSet
-#include "RooBinIntegrator.h"           // for RooBinIntegrator
-#include "RooCategory.h"                // for RooCategory
+#include "RooBinIntegrator.h"           // for RooBinIntegrator, etc
+#include "RooCategory.h"                // for Double_t, UInt_t, kFALSE, etc
 #include "RooMsgService.h"              // for oocoutE, oocoutW
 #include "RooNumIntConfig.h"            // for RooNumIntConfig
 #include "RooNumIntFactory.h"           // for RooNumIntFactory
 #include "RooNumber.h"                  // for RooNumber
 #include "RooRealVar.h"                 // for RooRealVar
-#include "Rtypes.h"                     // for kFALSE, kTRUE, etc
-#include "RtypesCore.h"                 // for Double_t, UInt_t, Int_t, etc
 #include "TClass.h"                     // for TClass
-class TObject;
 
 
 

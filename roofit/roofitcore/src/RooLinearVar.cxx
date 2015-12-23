@@ -41,21 +41,18 @@
 #include <list>                         // for list
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <string>                       // for string, char_traits
-#include "RooAbsArg.h"                  // for RooAbsArg
-#include "RooAbsReal.h"                 // for RooAbsReal
-#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
-#include "RooArgSet.h"                  // for RooArgSet
+
+#include "RooAbsArg.h"                  // for RooAbsArg, RooLinkedList, etc
+#include "RooAbsRealLValue.h"           // for RooAbsReal, etc
+#include "RooArgSet.h"                  // for Bool_t, kTRUE, Double_t, etc
 #include "RooLinTransBinning.h"         // for RooLinTransBinning
 #include "RooLinearVar.h"               // for RooLinearVar
-#include "RooLinkedList.h"              // for RooLinkedList
-#include "RooLinkedListIter.h"          // for RooFIter
 #include "RooMsgService.h"              // for coutE
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "RooRealVar.h"                 // for RooRealVar
-#include "Rtypes.h"                     // for kTRUE, RooAbsReal::Class, etc
-#include "RtypesCore.h"                 // for Bool_t, Double_t
 #include "TClass.h"                     // for TClass
 #include "TIterator.h"                  // for TIterator
+
 class RooAbsBinning;
 
 

@@ -26,20 +26,15 @@ of its servers and present it as a simple array oriented interface.
 #include <assert.h>                     // for assert
 #include <list>                         // for list, list<>::iterator, etc
 #include <ostream>                      // for operator<<, basic_ostream, etc
-#include "RooAbsArg.h"                  // for RooAbsArg
+
+#include "RooAbsArg.h"                  // for RooAbsArg, RooFIter
 #include "RooAbsFunc.h"                 // for RooAbsFunc
-#include "RooAbsReal.h"                 // for RooAbsReal
-#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
-#include "RooArgSet.h"                  // for RooArgSet
-#include "RooLinkedListIter.h"          // for RooFIter
+#include "RooAbsRealLValue.h"           // for RooAbsReal, etc
+#include "RooArgSet.h"                  // for Double_t, RooArgSet, UInt_t, etc
 #include "RooMsgService.h"              // for oocoutE
 #include "RooNameReg.h"                 // for RooNameReg
 #include "RooRealBinding.h"             // for RooRealBinding
-#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp
-#include "RtypesCore.h"                 // for Double_t, UInt_t, Int_t, etc
 #include "TIterator.h"                  // for TIterator
-class TNamed;
-class TObject;
 
 
 using namespace std;

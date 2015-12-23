@@ -26,19 +26,14 @@ has a public interface to define the possible value states.
 #include <stddef.h>                     // for size_t
 #include <string.h>                     // for strtok, strlen
 #include <ostream>                      // for operator<<, basic_ostream, etc
-#include "RooAbsCategory.h"             // for RooAbsCategory
-#include "RooAbsCategoryLValue.h"       // for RooAbsCategoryLValue
-#include "RooCatType.h"                 // for RooCatType
-#include "RooCategory.h"                // for RooCategory
+
+#include "RooCatType.h"                 // for kTRUE, Bool_t, kFALSE, etc
+#include "RooCategory.h"                // for RooCategory, etc
 #include "RooCategorySharedProperties.h"
-#include "RooLinkedList.h"              // for RooLinkedList
 #include "RooMsgService.h"              // for coutE, coutI, coutW
-#include "RooSharedProperties.h"        // for RooSharedProperties
 #include "RooSharedPropertiesList.h"    // for RooSharedPropertiesList
 #include "RooStreamParser.h"            // for RooStreamParser
 #include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
-#include "Rtypes.h"                     // for kTRUE, kFALSE, etc
-#include "RtypesCore.h"                 // for Bool_t, Int_t, UInt_t, etc
 #include "TBuffer.h"                    // for TBuffer, operator>>
 #include "TList.h"                      // for TList
 #include "TString.h"                    // for TString

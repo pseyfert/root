@@ -25,24 +25,17 @@ derivator class.
 **/
 
 
-#include "RooFit.h"
+#include <string>                       // for string
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include <math.h>
-#include <string>
-
-#include "RooDerivative.h"
-#include "RooAbsReal.h"
-#include "RooAbsPdf.h"
-#include "RooErrorHandler.h"
-#include "RooArgSet.h"
-#include "RooMsgService.h"
-#include "RooRealVar.h"
-#include "RooFunctor.h"
-
-#include "Math/WrappedFunction.h"
-#include "Math/RichardsonDerivator.h"
+#include "Math/RichardsonDerivator.h"   // for RichardsonDerivator
+#include "Math/WrappedFunction.h"       // for WrappedFunction
+#include "RooArgSet.h"                  // for kFALSE, Bool_t, Double_t, etc
+#include "RooDerivative.h"              // for RooDerivative, RooAbsReal
+#include "RooFunctor.h"                 // for RooFunctor
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooSetProxy.h"                // for RooSetProxy
+#include "TString.h"                    // for Form
 
 using namespace std;
 

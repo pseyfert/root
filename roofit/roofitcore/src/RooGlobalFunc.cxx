@@ -20,30 +20,24 @@
 #include <map>                          // for map, etc
 #include <string>                       // for string, basic_string
 #include <utility>                      // for pair
+
 #include "RooAbsBinning.h"              // for RooAbsBinning
-#include "RooAbsCategory.h"             // for RooAbsCategory
-#include "RooAbsCollection.h"           // for RooAbsCollection
-#include "RooAbsData.h"                 // for RooAbsData
-#include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooAbsReal.h"                 // for RooAbsReal, etc
-#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
+#include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal, etc
+#include "RooAbsRealLValue.h"           // for Bool_t, Double_t, Int_t, etc
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet
-#include "RooCategory.h"                // for RooCategory
+#include "RooArgSet.h"                  // for RooArgSet, RooAbsCollection
+#include "RooCategory.h"                // for RooAbsCategory, RooCategory
 #include "RooCmdArg.h"                  // for RooCmdArg
 #include "RooDataHist.h"                // for RooDataHist
-#include "RooDataSet.h"                 // for RooDataSet
+#include "RooDataSet.h"                 // for RooAbsData, RooDataSet
 #include "RooFitResult.h"               // for RooFitResult
 #include "RooFormulaVar.h"              // for RooFormulaVar
 #include "RooNumIntConfig.h"            // for RooNumIntConfig
 #include "RooRealConstant.h"            // for RooRealConstant
 #include "RooRealVar.h"                 // for RooRealVar
-#include "Rtypes.h"                     // for kFALSE, kTRUE
-#include "RtypesCore.h"                 // for Bool_t, Double_t, Int_t, etc
 #include "TH1.h"                        // for TH1
-class RooAbsArg;
+
 class RooConstVar;
-class TObject;
 class TTree;
 
 using namespace std;

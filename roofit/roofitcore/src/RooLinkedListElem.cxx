@@ -22,8 +22,9 @@
 RooLinkedListElem is an link element for the RooLinkedList class
 **/
 
-#include "Rtypes.h"
-#include "RooLinkedListElem.h"
+#include "Rtypes.h"                     // for ClassImp
+
+class RooLinkedListElem;
 
 using namespace std;
 

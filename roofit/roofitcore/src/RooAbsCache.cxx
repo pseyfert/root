@@ -27,13 +27,12 @@ mode changes and constant term optimization management calls.
 **/
 
 #include <iosfwd>                       // for ostream
+
 #include "RooAbsArg.h"                  // for RooAbsArg
 #include "RooAbsCache.h"                // for RooAbsCache
-#include "RooAbsCollection.h"           // for RooAbsCollection
-#include "Rtypes.h"                     // for ClassImp, kFALSE
-#include "RtypesCore.h"                 // for Bool_t
+#include "RooAbsCollection.h"           // for Bool_t, ClassImp, etc
+
 class RooArgSet;
-class RooLinkedList;
 
 using namespace std;
 

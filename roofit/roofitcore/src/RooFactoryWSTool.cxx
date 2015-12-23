@@ -26,42 +26,47 @@ the generated code on the fly, and on request also immediate
 instantiate objects.
 **/
 
-#include "RooFit.h"
+#include <ctype.h>                      // for isdigit, isspace
+#include <ext/alloc_traits.h>
+#include <stddef.h>                     // for size_t
+#include <stdlib.h>                     // for atof, atoi
+#include <string.h>                     // for strtok_r, strlen, strchr, etc
+#include <fstream>                      // for operator<<, basic_ostream, etc
+#include <list>                         // for _List_iterator, list, etc
+#include <map>                          // for map, _Rb_tree_iterator, etc
+#include <stack>                        // for stack
+#include <string>                       // for string, operator==, etc
+#include <utility>                      // for pair
+#include <vector>                       // for vector, vector<>::iterator
 
-#include "RooFactoryWSTool.h"
-#include "RooAbsReal.h"
-#include "RooAbsCategory.h"
-#include "RooArgList.h"
-#include "RooRealVar.h"
-#include "RooCategory.h"
-#include "RooMsgService.h"
-#include "RooWorkspace.h"
-#include "TInterpreter.h"
-#include "TClass.h"
-#include "TClassTable.h"
-#include "RooAbsPdf.h"
-#include "RooGaussian.h"
-#include <fstream>
-#include <vector>
-#include <string>
-#include "RooGlobalFunc.h"
-#include "RooDataSet.h"
-#include "RooDataHist.h"
-#include "RooCintUtils.h"
-#include "RooAddPdf.h"
-#include "RooProdPdf.h"
-#include "RooSimultaneous.h"
-#include "RooFFTConvPdf.h"
-#include "RooNumConvPdf.h"
-#include "RooResolutionModel.h"
-#include "RooProduct.h"
-#include "RooAddition.h"
-#include "RooChi2Var.h"
-#include "RooNLLVar.h"
-#include "RooRealSumPdf.h"
-#include "RooConstVar.h"
-#include "RooDerivative.h"
-#include "TROOT.h"
+#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
+#include "RooAddPdf.h"                  // for RooAbsReal, RooAbsPdf, etc
+#include "RooAddition.h"                // for RooAddition
+#include "RooArgList.h"                 // for RooArgList, TObject
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCategory.h"                // for Int_t, RooAbsArg, Double_t, etc
+#include "RooChi2Var.h"                 // for RooChi2Var
+#include "RooCintUtils.h"               // for ctorArgs, isEnum, etc
+#include "RooCmdArg.h"                  // for RooCmdArg
+#include "RooConstVar.h"                // for RooConstVar
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooDataSet.h"                 // for RooAbsData, RooDataSet
+#include "RooDerivative.h"              // for RooDerivative
+#include "RooFactoryWSTool.h"           // for RooFactoryWSTool, etc
+#include "RooGlobalFunc.h"              // for Silence, RooConst, NormSet, etc
+#include "RooMsgService.h"              // for coutE, cxcoutD
+#include "RooNLLVar.h"                  // for RooNLLVar
+#include "RooProdPdf.h"                 // for RooProdPdf
+#include "RooProduct.h"                 // for RooProduct
+#include "RooRealSumPdf.h"              // for RooRealSumPdf
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooResolutionModel.h"         // for RooResolutionModel
+#include "RooSimultaneous.h"            // for RooSimultaneous
+#include "RooWorkspace.h"               // for RooWorkspace
+#include "TClass.h"                     // for TClass
+#include "TROOT.h"                      // for TROOT, gROOT
+#include "TString.h"                    // for Form
+#include "strlcpy.h"                    // for strlcpy, strlcat
 
 using namespace RooFit ;
 using namespace std ;
@@ -119,7 +124,6 @@ static Int_t init()
 
 
 #ifndef _WIN32
-#include <strings.h>
 #else
 
 static char *strtok_r(char *s1, const char *s2, char **lasts)

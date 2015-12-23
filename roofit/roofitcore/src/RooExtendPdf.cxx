@@ -36,16 +36,13 @@
 //  the nominal integration range normRegion[x[]
 //
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooExtendPdf.h"
-#include "RooExtendPdf.h"
-#include "RooArgList.h"
-#include "RooRealVar.h"
-#include "RooFormulaVar.h"
-#include "RooNameReg.h"
-#include "RooMsgService.h"
+#include "RooArgSet.h"                  // for operator<<, Double_t, etc
+#include "RooExtendPdf.h"               // for RooExtendPdf, RooAbsPdf, etc
+#include "RooMsgService.h"              // for coutW
+#include "RooNameReg.h"                 // for RooNameReg
+#include "RooRealProxy.h"               // for RooRealProxy
 
 
 

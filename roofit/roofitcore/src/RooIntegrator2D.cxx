@@ -25,16 +25,13 @@ in terms of a recursive application of RooIntegrator1D
 
 #include "RooAbsFunc.h"                 // for RooAbsFunc
 #include "RooArgSet.h"                  // for RooArgSet
-#include "RooCategory.h"                // for RooCategory
+#include "RooCategory.h"                // for Double_t, Bool_t, Int_t, etc
 #include "RooIntegrator1D.h"            // for RooIntegrator1D, etc
 #include "RooIntegrator2D.h"            // for RooIntegrator2D
 #include "RooIntegratorBinding.h"       // for RooIntegratorBinding
 #include "RooNumIntConfig.h"            // for RooNumIntConfig
 #include "RooNumIntFactory.h"           // for RooNumIntFactory
-#include "Rtypes.h"                     // for RooIntegrator1D::Class, etc
-#include "RtypesCore.h"                 // for Double_t, Bool_t, Int_t
 #include "TClass.h"                     // for TClass
-class RooAbsIntegrator;
 
 using namespace std;
 

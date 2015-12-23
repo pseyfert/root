@@ -56,21 +56,24 @@ calls that MINUIT needs to fit your function as function of the
 convolution precision. 
 **/
 
-#include "RooFit.h"
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include "TH2F.h"
-#include "RooNumConvolution.h"
-#include "RooArgList.h"
-#include "RooRealVar.h"
-#include "RooFormulaVar.h"
-#include "RooCustomizer.h"
-#include "RooConvIntegrandBinding.h"
-#include "RooNumIntFactory.h"
-#include "RooGenContext.h"
-#include "RooConvGenContext.h"
-#include "RooMsgService.h"
+#include "RooAbsIntegrator.h"           // for RooAbsIntegrator
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooArgSet.h"                  // for kFALSE, Double_t, Bool_t, etc
+#include "RooCategory.h"                // for RooCategory
+#include "RooConvIntegrandBinding.h"    // for RooConvIntegrandBinding
+#include "RooCustomizer.h"              // for RooCustomizer
+#include "RooListProxy.h"               // for RooListProxy
+#include "RooMsgService.h"              // for coutE, coutW
+#include "RooNumConvolution.h"          // for RooNumConvolution
+#include "RooNumIntConfig.h"            // for RooNumIntConfig
+#include "RooNumIntFactory.h"           // for RooNumIntFactory
+#include "RooNumber.h"                  // for RooNumber
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooRealVar
+#include "TH2.h"                        // for TH2, TH2F
+#include "TString.h"                    // for Form
 
 
 using namespace std;

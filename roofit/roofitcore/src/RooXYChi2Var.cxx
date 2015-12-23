@@ -33,23 +33,19 @@
 #include <list>                         // for list, _List_const_iterator, etc
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <string>                       // for string, char_traits
-#include "RooAbsArg.h"                  // for RooAbsArg
+
 #include "RooAbsBinning.h"              // for RooAbsBinning
-#include "RooAbsData.h"                 // for RooAbsData
 #include "RooAbsDataStore.h"            // for RooAbsDataStore
 #include "RooAbsOptTestStatistic.h"     // for RooAbsOptTestStatistic
-#include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooAbsReal.h"                 // for RooAbsReal
-#include "RooArgSet.h"                  // for RooArgSet
-#include "RooCategory.h"                // for RooCategory
-#include "RooDataSet.h"                 // for RooDataSet
+#include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal
+#include "RooArgSet.h"                  // for Double_t, RooArgSet, kFALSE, etc
+#include "RooCategory.h"                // for RooAbsArg, RooCategory
+#include "RooDataSet.h"                 // for RooDataSet, RooAbsData
 #include "RooGlobalFunc.h"              // for MPSplit::Interleave
 #include "RooMsgService.h"              // for coutE
 #include "RooNumIntConfig.h"            // for RooNumIntConfig
 #include "RooRealVar.h"                 // for RooRealVar
 #include "RooXYChi2Var.h"               // for RooXYChi2Var
-#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp
-#include "RtypesCore.h"                 // for Double_t, Bool_t, Int_t
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for Form
 

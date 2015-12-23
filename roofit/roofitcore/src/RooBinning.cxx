@@ -31,12 +31,11 @@ uniformly spaced boundaries.
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <string>                       // for string
 #include <vector>                       // for vector, etc
-#include "RooAbsBinning.h"              // for RooAbsBinning
-#include "RooBinning.h"                 // for RooBinning
+
+#include "RooBinning.h"                 // for RooBinning, RooAbsBinning
 #include "RooDouble.h"                  // for RooDouble
 #include "RooMsgService.h"              // for coutE
-#include "Rtypes.h"                     // for kTRUE, kFALSE, etc
-#include "RtypesCore.h"                 // for Double_t, Int_t, Bool_t, etc
+#include "Rtypes.h"                     // for Double_t, Int_t, kTRUE, etc
 #include "TBuffer.h"                    // for TBuffer, operator>>
 #include "TIterator.h"                  // for TIterator
 #include "TList.h"                      // for TList

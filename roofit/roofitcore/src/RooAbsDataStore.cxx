@@ -23,13 +23,14 @@ RooAbsDataStore is the abstract base class for data collection that
 use a TTree as internal storage mechanism
 **/
 
-#include "RooFit.h"
-#include "RooMsgService.h"
-#include "RooAbsDataStore.h"
+#include <ostream>                      // for operator<<, ostream, etc
 
-#include "Riostream.h"
-#include <iomanip>
-#include "TClass.h"
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsDataStore.h"            // for RooAbsDataStore, operator<<, etc
+#include "RooArgSet.h"                  // for RooArgSet, kTRUE, Bool_t, etc
+#include "TClass.h"                     // for TClass
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for operator<<, TString, etc
 
 using namespace std ;
 

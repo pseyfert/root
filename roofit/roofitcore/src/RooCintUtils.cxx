@@ -19,16 +19,23 @@
 // to CINT interfacing
 //
 
-#include "RooFit.h"
+#include <string.h>                     // for strrchr, strtok
+#include <list>                         // for list
+#include <string>                       // for string, operator==, etc
+#include <utility>                      // for pair
 
-#include "RooCintUtils.h"
+#include "Rtypes.h"                     // for kFALSE, kTRUE
+#include "RtypesCore.h"                 // for Bool_t, Int_t, UInt_t
+#include "TDictionary.h"                // for EProperty::kIsConstPointer, etc
+#include "TInterpreter.h"               // for TInterpreter, gInterpreter
+#include "TString.h"                    // for Form
+#include "strlcpy.h"                    // for strlcpy
 
-#include "RooMsgService.h"
-#include "TInterpreter.h"
-
-#include <string.h>
-#include <string>
-#include <iostream>
+class ClassInfo_t;
+class DataMemberInfo_t;
+class MethodArgInfo_t;
+class MethodInfo_t;
+class TypedefInfo_t;
 
 using namespace std ;
 

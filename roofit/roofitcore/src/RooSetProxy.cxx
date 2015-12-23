@@ -33,13 +33,10 @@ the serverRedirect changes.
 #include <stddef.h>                     // for size_t
 #include <stdlib.h>                     // for free, malloc
 #include <ostream>                      // for operator<<, ostream, etc
-#include "RooAbsArg.h"                  // for RooAbsArg
-#include "RooAbsCollection.h"           // for RooAbsCollection
-#include "RooArgSet.h"                  // for RooArgSet, USEMEMPOOL
-#include "RooPrintable.h"
+
+#include "RooAbsArg.h"                  // for RooAbsArg, etc
+#include "RooArgSet.h"                  // for Bool_t, RooArgSet, etc
 #include "RooSetProxy.h"                // for RooSetProxy
-#include "Rtypes.h"                     // for kTRUE, kFALSE, ClassImp
-#include "RtypesCore.h"                 // for Bool_t
 #include "TIterator.h"                  // for TIterator
 
 

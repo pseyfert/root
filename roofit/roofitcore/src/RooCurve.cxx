@@ -32,29 +32,34 @@ a function y(x) is actually evaluated to approximate a smooth curve, use:
 //
 
 
-#include "RooFit.h"
+#include <assert.h>                     // for assert
+#include <math.h>                       // for fabs, sqrt
+#include <string.h>                     // for strlen
+#include <algorithm>                    // for sort, min
+#include <deque>                        // for _Deque_iterator, operator-, etc
+#include <iomanip>                      // for operator<<, setw
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <limits>                       // for numeric_limits
+#include <list>                         // for list, _List_iterator, etc
+#include <vector>                       // for vector, etc
 
-#include "RooCurve.h"
-#include "RooHist.h"
-#include "RooAbsReal.h"
-#include "RooArgSet.h"
-#include "RooRealVar.h"
-#include "RooRealIntegral.h"
-#include "RooRealBinding.h"
-#include "RooScaledFunc.h"
-#include "RooMsgService.h"
+#include "RVersion.h"                   // for ROOT_VERSION, etc
+#include "RooAbsFunc.h"                 // for RooAbsFunc
+#include "RooAbsRealLValue.h"           // for Double_t, Int_t, RooAbsReal, etc
+#include "RooCurve.h"                   // for RooCurve, etc
+#include "RooHist.h"                    // for RooHist
+#include "RooMsgService.h"              // for ccoutP, coutE, ccoutW, etc
+#include "RooNumber.h"                  // for RooNumber
+#include "RooScaledFunc.h"              // for RooScaledFunc
+#include "TClass.h"                     // for TClass
+#include "TMath.h"                      // for Erfc
+#include "TMatrixDfwd.h"                // for TMatrixD
+#include "TMatrixT.h"                   // for TMatrixT
+#include "TString.h"                    // for TString, operator<<, Form
+#include "TVectorDfwd.h"                // for TVectorD
+#include "TVectorT.h"                   // for operator*, TVectorT
 
-#include "Riostream.h"
-#include "TClass.h"
-#include "TMath.h"
-#include "TMatrixD.h"
-#include "TVectorD.h"
-#include <iomanip>
-#include <math.h>
-#include <assert.h>
-#include <deque>
-#include <algorithm>
-#include <limits>
+class RooArgSet;
 
 using namespace std ;
 

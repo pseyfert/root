@@ -16,20 +16,18 @@
 
 #include <assert.h>                     // for assert
 #include <string.h>                     // for memset
-#include "RooAbsArg.h"                  // for RooAbsArg
+
+#include "RooAbsArg.h"                  // for RooLinkedList, RooAbsArg, etc
 #include "RooHashTable.h"               // for RooHashTable, etc
-#include "RooLinkedList.h"              // for RooLinkedList
 #include "RooLinkedListElem.h"          // for RooLinkedListElem
-#include "RooLinkedListIter.h"          // for RooFIter
 #include "RooNameReg.h"                 // for RooNameReg, etc
 #include "RooSetPair.h"                 // for RooSetPair
-#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp
-#include "RtypesCore.h"                 // for Int_t, Bool_t, Double_t
+#include "Rtypes.h"                     // for Int_t, kFALSE, kTRUE, etc
 #include "TCollection.h"                // for TCollection, etc
 #include "TMath.h"                      // for Hash
 #include "TMathBase.h"                  // for Max, NextPrime
-#include "TNamed.h"                     // for TNamed
 #include "TObject.h"                    // for TObject
+
 class RooArgSet;
 
 using namespace std;

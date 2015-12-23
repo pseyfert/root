@@ -38,28 +38,23 @@ parallelized calculation of test statistics
 #include <string.h>                     // for strlen
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <string>                       // for char_traits, string
-#include "RooAbsArg.h"                  // for RooAbsArg, etc
+
+#include "RooAbsArg.h"                  // for RooAbsArg, operator<<, etc
 #include "RooAbsBinning.h"              // for RooAbsBinning
-#include "RooAbsCollection.h"           // for RooAbsCollection
-#include "RooAbsData.h"                 // for RooAbsData
 #include "RooAbsDataStore.h"            // for RooAbsDataStore
-#include "RooAbsOptTestStatistic.h"     // for RooAbsOptTestStatistic
-#include "RooAbsReal.h"                 // for RooAbsReal
-#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
-#include "RooAbsTestStatistic.h"
-#include "RooArgSet.h"                  // for RooArgSet
+#include "RooAbsOptTestStatistic.h"     // for RooAbsOptTestStatistic, etc
+#include "RooAbsRealLValue.h"           // for RooAbsReal, etc
+#include "RooArgSet.h"                  // for RooArgSet, kFALSE, kTRUE, etc
 #include "RooDataHist.h"                // for RooDataHist
-#include "RooDataSet.h"                 // for RooDataSet
+#include "RooDataSet.h"                 // for RooAbsData, RooDataSet
 #include "RooErrorHandler.h"            // for RooErrorHandler
 #include "RooGlobalFunc.h"              // for CutRange, SelectVars, etc
 #include "RooLinkedListIter.h"          // for RooFIter
 #include "RooMsgService.h"              // for cxcoutI, coutI, coutW, etc
-#include "RooPrintable.h"               // for operator<<
 #include "RooProdPdf.h"                 // for RooProdPdf
 #include "RooRealVar.h"                 // for RooRealVar
 #include "RooSetProxy.h"                // for RooSetProxy
 #include "RooVectorDataStore.h"         // for RooVectorDataStore
-#include "Rtypes.h"                     // for Bool_t, Double_t, Int_t, kFALSE, kTRUE, ClassImp
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for Form, TString, operator<<
 

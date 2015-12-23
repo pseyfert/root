@@ -27,20 +27,13 @@ of the value. RooAbsCategoryLValue may be derived, but its functional relation
 to other RooAbsArgs must be invertible
 **/
 
-#include "RooFit.h"
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include <stdlib.h>
-#include <string.h>
-#include "TTree.h"
-#include "TString.h"
-#include "TH1.h"
-#include "RooAbsCategoryLValue.h"
-#include "RooArgSet.h"
-#include "RooStreamParser.h"
-#include "RooRandom.h"
-#include "RooMsgService.h"
+#include "RooAbsCategoryLValue.h"       // for RooAbsCategoryLValue, etc
+#include "RooCatType.h"                 // for RooCatType
+#include "RooMsgService.h"              // for coutE
+#include "RooRandom.h"                  // for RooRandom
+#include "TObjArray.h"                  // for TObjArray
 
 using namespace std;
 

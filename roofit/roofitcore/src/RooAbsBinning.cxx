@@ -25,12 +25,12 @@ This class defines the interface to retrieve bin boundaries, ranges etc.
 
 #include "RooAbsBinning.h"
 
-#include "RooAbsReal.h"
-#include "RooFit.h"
-#include "TBuffer.h"
-#include "TClass.h"
+#include <ostream>                      // for operator<<, ostream, etc
 
-#include "Riostream.h"
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "TBuffer.h"                    // for TBuffer
+#include "TClass.h"                     // for TClass
+#include "TObject.h"                    // for TObject
 
 using namespace std;
 

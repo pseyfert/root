@@ -31,31 +31,43 @@ extended likelihood mode. The expected number of events by a RooSimultaneous
 is that of the component p.d.f. selected by the index category
 **/
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <string.h>                     // for strtok, strlen
+#include <map>                          // for _Rb_tree_iterator, map, etc
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string, etc
+#include <utility>                      // for pair
 
-#include "TObjString.h"
-#include "RooSimultaneous.h"
-#include "RooAbsCategoryLValue.h"
-#include "RooPlot.h"
-#include "RooCurve.h"
-#include "RooRealVar.h"
-#include "RooAddPdf.h"
-#include "RooAbsData.h"
-#include "Roo1DTable.h"
-#include "RooSimGenContext.h"
-#include "RooSimSplitGenContext.h"
-#include "RooDataSet.h"
-#include "RooCmdConfig.h"
-#include "RooNameReg.h"
-#include "RooGlobalFunc.h"
-#include "RooNameReg.h"
-#include "RooMsgService.h"
-#include "RooCategory.h"
-#include "RooSuperCategory.h"
-#include "RooDataHist.h"
-#include "RooRandom.h"
-#include "RooArgSet.h"
+#include "Roo1DTable.h"                 // for Roo1DTable
+#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
+#include "RooAddPdf.h"                  // for RooAbsPdf, RooAddPdf, etc
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet, kTRUE, Bool_t, etc
+#include "RooCatType.h"                 // for RooCatType
+#include "RooCategory.h"                // for RooAbsCategory, etc
+#include "RooCategoryProxy.h"           // for RooCategoryProxy
+#include "RooCmdArg.h"                  // for RooCmdArg
+#include "RooCmdConfig.h"               // for RooCmdConfig
+#include "RooCurve.h"                   // for RooCurve, etc
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooDataSet.h"                 // for RooAbsData, RooDataSet
+#include "RooGlobalFunc.h"              // for Normalization, ProjWData, etc
+#include "RooMsgService.h"              // for coutE, coutI, cxcoutD, etc
+#include "RooNameReg.h"                 // for RooNameReg
+#include "RooObjCacheManager.h"         // for RooObjCacheManager
+#include "RooPlot.h"                    // for RooPlot
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooSimGenContext.h"           // for RooSimGenContext
+#include "RooSimSplitGenContext.h"      // for RooSimSplitGenContext
+#include "RooSimultaneous.h"            // for RooSimultaneous, etc
+#include "RooSuperCategory.h"           // for RooSuperCategory
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
+#include "TString.h"                    // for TString, Form
+#include "strlcpy.h"                    // for strlcpy
+
+class RooAbsGenContext;
 
 using namespace std ;
 

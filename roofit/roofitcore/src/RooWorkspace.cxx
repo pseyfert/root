@@ -34,34 +34,49 @@ This process is also organized by the workspace through the
 importClassCode() method.
 **/
 
-#include "RooFit.h"
-#include "RooWorkspace.h"
-#include "RooAbsPdf.h"
-#include "RooRealVar.h"
-#include "RooCategory.h"
-#include "RooAbsData.h"
-#include "RooCmdConfig.h"
-#include "RooMsgService.h"
-#include "RooConstVar.h"
-#include "RooResolutionModel.h"
-#include "RooPlot.h"
-#include "RooRandom.h"
-#include "TInterpreter.h"
-#include "TClassTable.h"
-#include "TBaseClass.h"
-#include "TSystem.h"
-#include "TRegexp.h"
-#include "RooFactoryWSTool.h"
-#include "RooAbsStudy.h"
-#include "RooTObjWrap.h"
-#include "RooAbsOptTestStatistic.h"
-#include "TROOT.h"
-#include "TFile.h"
-#include "TH1.h"
-#include <map>
-#include <string>
-#include <list>
-#include <set>
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <list>                         // for list, _List_iterator, etc
+#include <map>                          // for map, _Rb_tree_iterator, etc
+#include <set>                          // for set
+#include <string>                       // for string, char_traits, etc
+#include <utility>                      // for pair
+
+#include "RVersion.h"                   // for ROOT_VERSION, etc
+#include "RooAbsData.h"                 // for RooAbsData
+#include "RooAbsOptTestStatistic.h"     // for RooAbsOptTestStatistic
+#include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal
+#include "RooAbsStudy.h"                // for RooAbsStudy
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCategory.h"                // for RooAbsArg, Bool_t, etc
+#include "RooCmdArg.h"                  // for RooCmdArg
+#include "RooCmdConfig.h"               // for RooCmdConfig, TObject
+#include "RooConstVar.h"                // for RooConstVar
+#include "RooExpensiveObjectCache.h"    // for RooExpensiveObjectCache
+#include "RooFactoryWSTool.h"           // for RooFactoryWSTool
+#include "RooGlobalFunc.h"              // for MsgLevel, MsgLevel::WARNING
+#include "RooMsgService.h"              // for coutE, coutI, oocoutI, etc
+#include "RooPlot.h"                    // for RooPlot
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRefCountList.h"            // for RooRefCountList
+#include "RooResolutionModel.h"         // for RooResolutionModel
+#include "RooTObjWrap.h"                // for RooTObjWrap
+#include "RooWorkspace.h"               // for RooWorkspace, etc
+#include "TBaseClass.h"                 // for TBaseClass
+#include "TBuffer.h"                    // for TBuffer, operator<<, etc
+#include "TClassTable.h"                // for TClassTable, gClassTable
+#include "TDictionary.h"                // for EProperty::kIsAbstract
+#include "TDirectory.h"                 // for TDirectory
+#include "TFile.h"                      // for TFile
+#include "TH1.h"                        // for TH1
+#include "TInterpreter.h"               // for TInterpreter, gInterpreter
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
+#include "TROOT.h"                      // for TROOT, gROOT
+#include "TRegexp.h"                    // for TRegexp
+#include "TString.h"                    // for TString, Form, operator<, etc
+#include "TSystem.h"                    // for TSystem, gSystem
+#include "TUUID.h"                      // for TUUID
+#include "strlcpy.h"                    // for strlcpy
 
 using namespace std ;
 
@@ -71,10 +86,10 @@ using namespace std ;
 #endif
 
 
-#include "TClass.h"
-#include "Riostream.h"
-#include <string.h>
-#include <assert.h>
+#include <ctype.h>                      // for isalnum, isdigit
+#include <string.h>                     // for strtok, strlen, strstr, etc
+
+#include "TClass.h"                     // for TClass
 
 ClassImp(RooWorkspace)
 ;

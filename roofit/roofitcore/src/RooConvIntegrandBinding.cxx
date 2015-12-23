@@ -27,13 +27,11 @@ RooNumConvPdf
 
 #include <assert.h>                     // for assert
 #include <ostream>                      // for operator<<
-#include "RooAbsFunc.h"                 // for RooAbsFunc
-#include "RooAbsReal.h"                 // for RooAbsReal
-#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
-#include "RooConvIntegrandBinding.h"    // for RooConvIntegrandBinding
+
+#include "RooAbsRealLValue.h"           // for Double_t, RooAbsReal, etc
+#include "RooConvIntegrandBinding.h"    // for RooConvIntegrandBinding, etc
 #include "RooMsgService.h"              // for oocoutE
-#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp
-#include "RtypesCore.h"                 // for Double_t, UInt_t, Bool_t
+
 class RooArgSet;
 
 using namespace std;

@@ -59,19 +59,17 @@ convolution precision.
 **/
 
 #include <ostream>                      // for operator<<, basic_ostream, etc
-#include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooAbsReal.h"                 // for RooAbsReal
-#include "RooArgSet.h"                  // for RooArgSet
+
+#include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal
+#include "RooArgSet.h"                  // for RooArgSet, Bool_t, kFALSE, etc
 #include "RooConvGenContext.h"          // for RooConvGenContext
 #include "RooGenContext.h"              // for RooGenContext
 #include "RooNumConvPdf.h"              // for RooNumConvPdf
 #include "RooNumConvolution.h"          // for RooNumConvolution
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "RooRealVar.h"                 // for RooRealVar
-#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp
-#include "RtypesCore.h"                 // for Bool_t, Double_t, Int_t
 #include "TString.h"                    // for Form
-class RooAbsGenContext;
+
 class RooDataSet;
 
 

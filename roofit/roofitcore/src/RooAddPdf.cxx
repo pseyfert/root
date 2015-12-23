@@ -47,28 +47,36 @@
 //
 // 
 
-#include "RooFit.h"
-#include "RooMsgService.h"
+#include <assert.h>                     // for assert
+#include <algorithm>                    // for merge, unique
+#include <list>                         // for _List_iterator, list, etc
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <vector>                       // for vector
 
-#include "TIterator.h"
-#include "TIterator.h"
-#include "TList.h"
-#include "RooAddPdf.h"
-#include "RooDataSet.h"
-#include "RooRealProxy.h"
-#include "RooPlot.h"
-#include "RooRealVar.h"
-#include "RooAddGenContext.h"
-#include "RooRealConstant.h"
-#include "RooNameReg.h"
-#include "RooMsgService.h"
-#include "RooRecursiveFraction.h"
-#include "RooGlobalFunc.h"
-#include "RooRealIntegral.h"
-#include "RooTrace.h"
+#include "RooAICRegistry.h"             // for RooAICRegistry
+#include "RooAbsArg.h"                  // for RooFIter, RooAbsArg, etc
+#include "RooAbsCacheElement.h"         // for RooAbsCacheElement::Action
+#include "RooAddGenContext.h"           // for operator<<, etc
+#include "RooAddPdf.h"                  // for RooAddPdf, RooAbsPdf, etc
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet, Double_t, kFALSE, etc
+#include "RooConstVar.h"                // for RooConstVar
+#include "RooGlobalFunc.h"              // for RooConst
+#include "RooListProxy.h"               // for RooListProxy
+#include "RooMsgService.h"              // for cxcoutD, coutE, coutW, etc
+#include "RooNameReg.h"                 // for RooNameReg
+#include "RooObjCacheManager.h"         // for RooObjCacheManager
+#include "RooRealConstant.h"            // for RooRealConstant
+#include "RooRealIntegral.h"            // for RooRealIntegral
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRecursiveFraction.h"       // for RooRecursiveFraction
+#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for TString, Form
 
-#include "Riostream.h"
-#include <algorithm>
+class RooAbsRealLValue;
+class RooDataSet;
 
 
 using namespace std;

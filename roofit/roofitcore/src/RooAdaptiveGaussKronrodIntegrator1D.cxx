@@ -48,20 +48,18 @@ can be selected to speed up the converges of these integrals
 #include <stddef.h>                     // for size_t
 #include <stdlib.h>                     // for free, malloc
 #include <ostream>                      // for operator<<, basic_ostream, etc
+
 #include "RooAbsFunc.h"                 // for RooAbsFunc
-#include "RooAbsIntegrator.h"           // for RooAbsIntegrator
 #include "RooAdaptiveGaussKronrodIntegrator1D.h"
 #include "RooArgSet.h"                  // for RooArgSet
-#include "RooCategory.h"                // for RooCategory
+#include "RooCategory.h"                // for Double_t, RooCategory, etc
 #include "RooMsgService.h"              // for oocoutE, coutE
 #include "RooNumIntConfig.h"            // for RooNumIntConfig
 #include "RooNumIntFactory.h"           // for RooNumIntFactory
 #include "RooNumber.h"                  // for RooNumber
 #include "RooRealVar.h"                 // for RooRealVar
-#include "Rtypes.h"                     // for Double_t, Bool_t, Int_t, etc
 #include "TClass.h"                     // for TClass
 #include "TMath.h"                      // for Power
-class TObject;
 
 using namespace std ;
 

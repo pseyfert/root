@@ -27,32 +27,53 @@
 // No references to the fitted PDF and dataset are stored
 //
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <assert.h>                     // for assert
+#include <ext/alloc_traits.h>
+#include <string.h>                     // for strlen
+#include <cmath>                        // for fabs, sqrt
+#include <iomanip>                      // for operator<<, setw
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string, etc
+#include <utility>                      // for pair
+#include <vector>                       // for vector, etc
 
-#include <iomanip>
-#include "TMinuit.h"
-#include "TMath.h"
-#include "TMarker.h"
-#include "TLine.h"
-#include "TBox.h"
-#include "TGaxis.h"
-#include "TMatrix.h"
-#include "TVector.h"
-#include "TDirectory.h"
-#include "TClass.h"
-#include "RooFitResult.h"
-#include "RooArgSet.h"
-#include "RooArgList.h"
-#include "RooRealVar.h"
-#include "RooPlot.h"
-#include "RooEllipse.h"
-#include "RooRandom.h"
-#include "RooMsgService.h"
-#include "TH2D.h"
-#include "TText.h"
-#include "TMatrixDSym.h"
-#include "RooMultiVarGaussian.h"
+#include "RooAbsArg.h"                  // for RooAbsArg, TNamed
+#include "RooAbsPdf.h"                  // for RooAbsReal, RooAbsPdf
+#include "RooArgList.h"                 // for RooArgList, Int_t, Double_t, etc
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooEllipse.h"                 // for RooEllipse
+#include "RooFitResult.h"               // for RooFitResult, operator<<, etc
+#include "RooMsgService.h"              // for coutE, coutW, coutI, etc
+#include "RooMultiVarGaussian.h"        // for RooMultiVarGaussian
+#include "RooPlot.h"                    // for RooPlot
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealVar.h"                 // for RooRealVar
+#include "TAttLine.h"                   // for ELineStyle::kDashed
+#include "TAxis.h"                      // for TAxis
+#include "TBox.h"                       // for TBox
+#include "TBuffer.h"                    // for operator>>, TBuffer
+#include "TClass.h"                     // for TClass
+#include "TDirectory.h"                 // for TDirectory
+#include "TGaxis.h"                     // for TGaxis
+#include "TH2.h"                        // for TH2D, TH2 (ptr only)
+#include "TIterator.h"                  // for TIterator
+#include "TLine.h"                      // for TLine
+#include "TList.h"                      // for TList
+#include "TMarker.h"                    // for TMarker
+#include "TMath.h"                      // for Sqrt
+#include "TMathBase.h"                  // for Abs, Max, Min
+#include "TMatrix.h"                    // for TMatrix
+#include "TMatrixDSymfwd.h"             // for TMatrixDSym
+#include "TMatrixDfwd.h"                // for TMatrixD
+#include "TMatrixFfwd.h"                // for TMatrixF
+#include "TMatrixT.h"                   // for TMatrixT, operator*, etc
+#include "TMatrixTBase.h"               // for TMatrixTBase
+#include "TMatrixTSym.h"                // for TMatrixTSym
+#include "TMinuit.h"                    // for TMinuit, gMinuit
+#include "TString.h"                    // for TString, operator<<, Form
+#include "TVectorDfwd.h"                // for TVectorD
+#include "TVectorT.h"                   // for TVectorT
+#include "TVectorfwd.h"                 // for TVector
 
 
 

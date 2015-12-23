@@ -30,15 +30,17 @@ on underlying normal sampling distributions and a MC study is a good way
 to test that assumption.
 **/
 
-#include "Riostream.h"
+#include <math.h>                       // for sqrt
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for string, char_traits, etc
 
-#include "RooDataSet.h"
-#include "RooRealVar.h"
-#include "TString.h"
-#include "RooFit.h"
-#include "RooFitResult.h"
+#include "RooArgSet.h"                  // for RooArgSet, Double_t, kTRUE, etc
 #include "RooDLLSignificanceMCSModule.h"
-#include "RooMsgService.h"
+#include "RooDataSet.h"                 // for RooDataSet
+#include "RooFitResult.h"               // for RooFitResult
+#include "RooMsgService.h"              // for coutE
+#include "RooRealVar.h"                 // for RooRealVar
+#include "TString.h"                    // for Form, TString
 
 
 

@@ -28,19 +28,24 @@ rules such as (conditionally) required arguments, mutually exclusive
 arguments and dependencies between arguments
 **/
 
-#include "RooFit.h"
+#include <string.h>                     // for strtok, strlen
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string
 
-#include "RooCmdConfig.h"
-#include "RooInt.h"
-#include "RooDouble.h"
-#include "RooArgSet.h"
-#include "RooStringVar.h"
-#include "RooTObjWrap.h"
-#include "RooAbsData.h"
-#include "TObjString.h"
-#include "RooMsgService.h"
-
-#include "Riostream.h"
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCmdArg.h"                  // for RooCmdArg
+#include "RooCmdConfig.h"               // for RooCmdConfig, Bool_t, etc
+#include "RooDouble.h"                  // for RooDouble, TNamed
+#include "RooInt.h"                     // for RooInt
+#include "RooLinkedList.h"              // for RooLinkedList
+#include "RooMsgService.h"              // for coutE
+#include "RooStringVar.h"               // for RooStringVar
+#include "RooTObjWrap.h"                // for RooTObjWrap
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
+#include "TObjString.h"                 // for TObjString
+#include "TString.h"                    // for TString, operator<<, Form
+#include "strlcpy.h"                    // for strlcpy
 
 
 using namespace std;

@@ -31,19 +31,16 @@ constructed from all the categories in the dataset
 
 #include <assert.h>                     // for assert
 #include <iostream>                     // for operator<<, basic_ostream, etc
+
 #include "Roo1DTable.h"                 // for Roo1DTable
-#include "RooAbsArg.h"                  // for RooAbsArg
 #include "RooAbsData.h"                 // for RooAbsData
 #include "RooAbsReal.h"                 // for RooAbsReal
 #include "RooArgSet.h"                  // for RooArgSet
-#include "RooCatType.h"                 // for RooCatType
-#include "RooCategory.h"                // for RooCategory
-#include "RooDataProjBinding.h"         // for RooDataProjBinding
+#include "RooCatType.h"                 // for Double_t, RooCatType, Int_t, etc
+#include "RooCategory.h"                // for RooAbsArg, RooCategory
+#include "RooDataProjBinding.h"         // for RooDataProjBinding, etc
 #include "RooMsgService.h"              // for ooccoutW, oocoutW, oodologW
-#include "RooRealBinding.h"             // for RooRealBinding
 #include "RooSuperCategory.h"           // for RooSuperCategory
-#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp
-#include "RtypesCore.h"                 // for Double_t, Int_t, Bool_t
 #include "TIterator.h"                  // for TIterator
 
 

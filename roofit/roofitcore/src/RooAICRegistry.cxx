@@ -25,10 +25,10 @@ associated normalization and integration sets.
 **/
 
 #include <vector>                       // for vector, operator==
+
 #include "RooAICRegistry.h"             // for RooAICRegistry, pRooArgSet
 #include "RooArgSet.h"                  // for RooArgSet
-#include "Rtypes.h"                     // for kFALSE, ClassImp, kTRUE
-#include "RtypesCore.h"                 // for Int_t, UInt_t, Bool_t
+#include "Rtypes.h"                     // for Int_t, kFALSE, UInt_t, etc
 
 using namespace std;
 

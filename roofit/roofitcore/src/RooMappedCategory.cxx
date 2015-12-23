@@ -25,16 +25,13 @@
 
 #include "RooMappedCategory.h"
 
-#include "RooFit.h"
-#include "RooStreamParser.h"
-#include "RooMsgService.h"
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <utility>                      // for pair
 
-#include "Riostream.h"
-#include "TBuffer.h"
-#include "TString.h"
-
-#include <stdlib.h>
-#include <stdio.h>
+#include "RooMsgService.h"              // for coutE
+#include "RooStreamParser.h"            // for RooStreamParser
+#include "TBuffer.h"                    // for TBuffer, operator<<, etc
+#include "TString.h"                    // for TString, operator<<
 
 using namespace std ;
 

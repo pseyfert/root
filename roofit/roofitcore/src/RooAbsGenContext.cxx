@@ -27,18 +27,20 @@ storage of common components, such as the observables definition, the
 prototype data etc..
 **/
 
-#include "RooFit.h"
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "TClass.h"
-
-#include "RooAbsGenContext.h"
-#include "RooRandom.h"
-#include "RooAbsPdf.h"
-#include "RooDataSet.h"
-#include "RooMsgService.h"
-#include "RooGlobalFunc.h"
-
-#include "Riostream.h"
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsGenContext.h"           // for RooAbsGenContext, etc
+#include "RooAbsPdf.h"                  // for RooAbsPdf, etc
+#include "RooArgSet.h"                  // for RooArgSet, Int_t, Bool_t, etc
+#include "RooDataSet.h"                 // for RooDataSet
+#include "RooGlobalFunc.h"              // for EventRange
+#include "RooMsgService.h"              // for coutE, coutI, cxcoutD, etc
+#include "RooRandom.h"                  // for RooRandom
+#include "TClass.h"                     // for TClass
+#include "TIterator.h"                  // for TIterator
+#include "TRandom.h"                    // for TRandom
+#include "TString.h"                    // for TString
 
 
 using namespace std;

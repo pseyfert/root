@@ -24,20 +24,21 @@ implements an adaptive multi-dimensional Monte Carlo numerical
 integration, following the VEGAS algorithm.  
 **/
 
-#include "RooFit.h"
+#include <math.h>                       // for log
+#include <iomanip>                      // for operator<<, setw
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooGrid.h"
-#include "RooGrid.h"
-#include "RooAbsFunc.h"
-#include "RooNumber.h"
-#include "RooRandom.h"
-#include "TMath.h"
-#include "RooMsgService.h"
-#include "TClass.h"
+#include "RooAbsFunc.h"                 // for RooAbsFunc
+#include "RooGrid.h"                    // for RooGrid, RooGrid::::maxBins
+#include "RooMsgService.h"              // for oocoutE
+#include "RooNumber.h"                  // for RooNumber
+#include "RooRandom.h"                  // for RooRandom
+#include "Rtypes.h"                     // for Double_t, UInt_t, kFALSE, etc
+#include "TClass.h"                     // for TClass
+#include "TMath.h"                      // for Power
+#include "TString.h"                    // for operator<<, TString
 
-#include <math.h>
-#include "Riostream.h"
-#include <iomanip>
+class TObject;
 
 using namespace std;
 

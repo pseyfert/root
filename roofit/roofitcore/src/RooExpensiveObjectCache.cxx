@@ -29,20 +29,17 @@ retrieve these precalculated objects
 #include <math.h>                       // for fabs
 #include <iostream>                     // for operator<<, basic_ostream, etc
 #include <map>                          // for map, _Rb_tree_iterator, etc
-#include <string>                       // for operator==, basic_string, etc
+#include <string>                       // for char_traits, operator==, etc
 #include <utility>                      // for pair
-#include "RooAbsArg.h"                  // for RooAbsArg
-#include "RooAbsCategory.h"             // for RooAbsCategory
+
+#include "RooAbsCategory.h"             // for RooAbsArg, RooAbsCategory
 #include "RooAbsReal.h"                 // for RooAbsReal
-#include "RooArgSet.h"                  // for RooArgSet
+#include "RooArgSet.h"                  // for Int_t, Bool_t, RooArgSet, etc
 #include "RooExpensiveObjectCache.h"    // for RooExpensiveObjectCache, etc
 #include "RooMsgService.h"              // for oocoutI, oocoutW
 #include "RooSentinel.h"                // for RooSentinel
-#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp, etc
-#include "RtypesCore.h"                 // for Int_t, Bool_t, Double_t
 #include "TClass.h"                     // for TClass
 #include "TIterator.h"                  // for TIterator
-#include "TObject.h"                    // for TObject
 #include "TString.h"                    // for TString, operator<, etc
 
 

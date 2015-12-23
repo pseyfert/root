@@ -24,10 +24,10 @@ that can be stored in RooSharedPropertiesList.
 **/
 
 #include <iostream>                     // for operator<<, basic_ostream, etc
+
 #include "RooSharedProperties.h"        // for RooSharedProperties
 #include "RooTrace.h"                   // for RooTrace
-#include "Rtypes.h"                     // for kFALSE, ClassImp
-#include "RtypesCore.h"                 // for Bool_t, Option_t
+#include "Rtypes.h"                     // for kFALSE, Bool_t, ClassImp, etc
 #include "TUUID.h"                      // for TUUID, operator==
 
 using std::cout ;

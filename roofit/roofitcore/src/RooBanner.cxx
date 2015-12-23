@@ -1,5 +1,4 @@
-#include "RtypesCore.h"
-#include <iostream>
+#include "RtypesCore.h"                 // for Int_t
 
 /**
 \file RooBanner.cxx

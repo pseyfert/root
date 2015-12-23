@@ -25,11 +25,10 @@ an error contour.
 
 #include <math.h>                       // for cos, sin, atan2, sqrt
 #include <ostream>                      // for operator<<, ostream, etc
-#include "RooEllipse.h"                 // for RooEllipse
+
+#include "RooEllipse.h"                 // for RooEllipse, RooPlotable
 #include "RooMsgService.h"              // for coutE
-#include "RooPlotable.h"                // for RooPlotable
-#include "Rtypes.h"                     // for ClassImp, RooEllipse::IsA
-#include "RtypesCore.h"                 // for Double_t, Int_t, Bool_t
+#include "Rtypes.h"                     // for Double_t, Int_t, Bool_t, etc
 #include "TClass.h"                     // for TClass
 #include "TMath.h"                      // for Pi
 #include "TString.h"                    // for operator<<, TString

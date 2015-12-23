@@ -30,17 +30,13 @@ have a sensible default implementation.
 
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <vector>                       // for vector
-#include "RooAbsArg.h"                  // for RooAbsArg
+
+#include "RooAbsArg.h"                  // for operator<<, RooAbsArg, etc
 #include "RooAbsCacheElement.h"         // for RooAbsCacheElement
-#include "RooAbsCollection.h"           // for RooAbsCollection
-#include "RooArgSet.h"                  // for RooArgSet
+#include "RooArgSet.h"                  // for RooArgSet, Bool_t, Int_t, etc
 #include "RooCacheManager.h"            // for RooCacheManager
-#include "RooLinkedList.h"              // for RooLinkedList
 #include "RooMsgService.h"              // for oocxcoutD
 #include "RooObjCacheManager.h"         // for RooObjCacheManager
-#include "RooPrintable.h"               // for operator<<
-#include "Rtypes.h"                     // for kFALSE, ClassImp, kTRUE
-#include "RtypesCore.h"                 // for Bool_t, Int_t
 
 
 using namespace std ;

@@ -28,21 +28,17 @@ do not define internal methods
 
 #include <assert.h>                     // for assert
 #include <iostream>                     // for operator<<, basic_ostream, etc
-#include "RooAbsCategory.h"             // for RooAbsCategory
-#include "RooAbsNumGenerator.h"         // for RooAbsNumGenerator
+
 #include "RooAbsReal.h"                 // for RooAbsReal
-#include "RooAcceptReject.h"            // for RooAcceptReject
-#include "RooArgSet.h"                  // for RooArgSet
-#include "RooCategory.h"                // for RooCategory
+#include "RooAcceptReject.h"            // for RooAcceptReject, etc
+#include "RooArgSet.h"                  // for RooArgSet, Double_t, UInt_t, etc
+#include "RooCategory.h"                // for operator<<, RooCategory, etc
 #include "RooDataSet.h"                 // for RooDataSet
 #include "RooMsgService.h"              // for ccoutI, coutI, coutW, etc
 #include "RooNumGenConfig.h"            // for RooNumGenConfig
 #include "RooNumGenFactory.h"           // for RooNumGenFactory
-#include "RooPrintable.h"               // for operator<<, etc
 #include "RooRandom.h"                  // for RooRandom
 #include "RooRealVar.h"                 // for RooRealVar
-#include "Rtypes.h"                     // for ClassImp
-#include "RtypesCore.h"                 // for Double_t, UInt_t, Int_t, etc
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for operator<<
 

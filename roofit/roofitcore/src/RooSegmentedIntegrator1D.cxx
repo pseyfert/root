@@ -26,20 +26,18 @@ numerical integration algorithm.
 #include <assert.h>                     // for assert
 #include <math.h>                       // for sqrt
 #include <ostream>                      // for operator<<, basic_ostream, etc
+
 #include "RooAbsFunc.h"                 // for RooAbsFunc
-#include "RooAbsIntegrator.h"           // for RooAbsIntegrator
 #include "RooArgSet.h"                  // for RooArgSet
-#include "RooIntegrator1D.h"            // for RooIntegrator1D
+#include "RooIntegrator1D.h"            // for RooIntegrator1D, etc
 #include "RooMsgService.h"              // for oocoutE
 #include "RooNumIntConfig.h"            // for RooNumIntConfig
 #include "RooNumIntFactory.h"           // for RooNumIntFactory
 #include "RooNumber.h"                  // for RooNumber
 #include "RooRealVar.h"                 // for RooRealVar
 #include "RooSegmentedIntegrator1D.h"   // for RooSegmentedIntegrator1D, etc
-#include "Rtypes.h"                     // for kFALSE, kTRUE, etc
-#include "RtypesCore.h"                 // for Double_t, Int_t, Bool_t
+#include "Rtypes.h"                     // for Double_t, Int_t, Bool_t, etc
 #include "TClass.h"                     // for TClass
-class TObject;
 
 
 using namespace std;

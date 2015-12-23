@@ -23,13 +23,21 @@ Class RooSharedPropertiesList maintains the properties of RooRealVars
 and RooCategories that are clones of each other.
 **/
 
-#include "RooFit.h"
-#include "RooSharedPropertiesList.h"
-#include "RooSharedProperties.h"
-#include "RooLinkedListIter.h"
-#include "TIterator.h"
-#include "RooMsgService.h"
-#include "Riostream.h"
+#include <iostream>                     // for endl, operator<<, etc
+#include <map>                          // for map, map<>::iterator, etc
+#include <string>                       // for string
+#include <utility>                      // for pair
+
+#include "RooLinkedListIter.h"          // for RooFIter
+#include "RooMsgService.h"              // for oocoutE
+#include "RooRefCountList.h"            // for RooRefCountList
+#include "RooSharedProperties.h"        // for RooSharedProperties
+#include "RooSharedPropertiesList.h"    // for RooSharedPropertiesList
+#include "Rtypes.h"                     // for Bool_t, ClassImp
+#include "TString.h"                    // for TString
+
+class TObject;
+
 using std::cout ;
 using std::endl ;
 

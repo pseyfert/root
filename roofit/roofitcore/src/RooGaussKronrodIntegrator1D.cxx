@@ -43,6 +43,7 @@ reached
 #include <math.h>                       // for fabs
 #include <stddef.h>                     // for size_t
 #include <ostream>                      // for operator<<, basic_ostream, etc
+
 #include "RooAbsFunc.h"                 // for RooAbsFunc
 #include "RooAbsIntegrator.h"           // for RooAbsIntegrator
 #include "RooArgSet.h"                  // for RooArgSet
@@ -50,10 +51,8 @@ reached
 #include "RooMsgService.h"              // for oocoutE
 #include "RooNumIntConfig.h"            // for RooNumIntConfig
 #include "RooNumIntFactory.h"           // for RooNumIntFactory
-#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp
-#include "RtypesCore.h"                 // for Double_t, Bool_t, UInt_t
+#include "Rtypes.h"                     // for Double_t, Bool_t, kFALSE, etc
 #include "TMath.h"                      // for Power
-class TObject;
 
 using namespace std;
 

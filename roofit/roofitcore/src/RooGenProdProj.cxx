@@ -32,16 +32,13 @@ analytically. Remaining non-factorizing observables are integrated numerically.
 **/
 
 #include "RooAbsArg.h"                  // for RooAbsArg, etc
-#include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooAbsPdf.h"                  // for RooAbsReal, RooAbsPdf
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet
+#include "RooArgSet.h"                  // for RooArgSet, kFALSE, Double_t, etc
 #include "RooGenProdProj.h"             // for RooGenProdProj
 #include "RooListProxy.h"               // for RooListProxy
 #include "RooProduct.h"                 // for RooProduct
 #include "RooSetProxy.h"                // for RooSetProxy
-#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp
-#include "RtypesCore.h"                 // for Double_t, Bool_t, Int_t
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for TString, Form
 

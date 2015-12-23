@@ -34,22 +34,18 @@ using namespace std ;
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <string>                       // for char_traits, string
 #include <utility>                      // for pair
-#include "RooAbsArg.h"                  // for RooAbsArg, etc
+
+#include "RooAbsArg.h"                  // for RooAbsArg, operator<<, etc
 #include "RooAbsCacheElement.h"
 #include "RooAbsCachedReal.h"           // for RooAbsCachedReal, etc
-#include "RooAbsReal.h"                 // for RooAbsReal
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet
+#include "RooArgSet.h"                  // for RooArgSet, Int_t, kTRUE, etc
 #include "RooChangeTracker.h"           // for RooChangeTracker
 #include "RooDataHist.h"                // for RooDataHist
 #include "RooExpensiveObjectCache.h"    // for RooExpensiveObjectCache
 #include "RooHistFunc.h"                // for RooHistFunc
-#include "RooLinkedListIter.h"          // for RooFIter
 #include "RooMsgService.h"              // for ccoutD
 #include "RooObjCacheManager.h"         // for RooObjCacheManager
-#include "RooPrintable.h"               // for operator<<
-#include "Rtypes.h"                     // for kTRUE, kFALSE, etc
-#include "RtypesCore.h"                 // for Int_t, Double_t, Bool_t
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for TString, Form
 

@@ -25,16 +25,23 @@ component generator contexts that are used to generate the dependents
 for each component PDF sequentially. 
 **/
 
-#include "RooFit.h"
-#include "Riostream.h"
-#include "RooMsgService.h"
+#include <list>                         // for list, _List_iterator, etc
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string
 
-#include "RooProdGenContext.h"
-#include "RooProdGenContext.h"
-#include "RooProdPdf.h"
-#include "RooDataSet.h"
-#include "RooRealVar.h"
-#include "RooGlobalFunc.h"
+#include "RooAbsArg.h"                  // for RooLinkedList, RooAbsArg, etc
+#include "RooAbsGenContext.h"           // for RooAbsGenContext
+#include "RooAbsLValue.h"               // for RooAbsLValue
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooArgSet.h"                  // for RooArgSet, kTRUE, Bool_t, etc
+#include "RooCmdArg.h"                  // for RooCmdArg
+#include "RooDataSet.h"                 // for operator<<, RooDataSet, etc
+#include "RooGlobalFunc.h"              // for Conditional
+#include "RooMsgService.h"              // for cxcoutD, ccxcoutD, ccxcoutI, etc
+#include "RooProdGenContext.h"          // for RooProdGenContext
+#include "RooProdPdf.h"                 // for RooProdPdf
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for operator<<, TString
 
 
 

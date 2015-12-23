@@ -25,22 +25,22 @@ in G. P. Lepage, J. Comp. Phys. 27, 192(1978). This implementation is
 based on a C version from the 0.9 beta release of the GNU scientific library.
 **/
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <math.h>                       // for sqrt, floor
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "TMath.h"
-#include "TClass.h"
-#include "RooMCIntegrator.h"
-#include "RooArgSet.h"
-#include "RooNumber.h"
-#include "RooAbsArg.h"
-#include "RooNumIntFactory.h"
-#include "RooRealVar.h"
-#include "RooCategory.h"
-#include "RooMsgService.h"
-#include "RooNumIntConfig.h"
-#include <math.h>
-#include <assert.h>
+#include "RooAbsFunc.h"                 // for RooAbsFunc
+#include "RooAbsIntegrator.h"           // for RooAbsIntegrator
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCategory.h"                // for Double_t, RooCategory, etc
+#include "RooGrid.h"                    // for RooGrid, RooGrid::::maxBins
+#include "RooMCIntegrator.h"            // for RooMCIntegrator, etc
+#include "RooMsgService.h"              // for oocxcoutD, oocoutW, etc
+#include "RooNumIntConfig.h"            // for RooNumIntConfig
+#include "RooNumIntFactory.h"           // for RooNumIntFactory
+#include "RooRealVar.h"                 // for RooRealVar
+#include "TClass.h"                     // for TClass
+#include "TMath.h"                      // for Power
+#include "TStopwatch.h"                 // for TStopwatch
 
 
 

@@ -31,25 +31,22 @@ of a given set of other RooAbsReal objects
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <utility>                      // for pair, make_pair
 #include <vector>                       // for vector, vector<>::iterator, etc
-#include "RooAbsArg.h"                  // for RooAbsArg, etc
+
 #include "RooAbsCacheElement.h"
-#include "RooAbsCategory.h"             // for RooAbsCategory
+#include "RooAbsCategory.h"             // for RooFIter, operator<<, etc
 #include "RooAbsReal.h"                 // for RooAbsReal
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet
+#include "RooArgSet.h"                  // for RooArgSet, Double_t, Int_t, etc
 #include "RooErrorHandler.h"            // for RooErrorHandler
-#include "RooLinkedListIter.h"          // for RooFIter
 #include "RooListProxy.h"               // for RooListProxy
 #include "RooMsgService.h"              // for cxcoutD, ccoutD, coutE, etc
 #include "RooNameReg.h"                 // for RooNameReg
 #include "RooNameSet.h"                 // for RooNameSet
 #include "RooObjCacheManager.h"         // for RooObjCacheManager
-#include "RooPrintable.h"               // for operator<<
 #include "RooProduct.h"                 // for RooProduct, etc
 #include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
-#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp
-#include "RtypesCore.h"                 // for Double_t, Int_t, Bool_t
 #include "TString.h"                    // for TString
+
 class RooAbsRealLValue;
 
 

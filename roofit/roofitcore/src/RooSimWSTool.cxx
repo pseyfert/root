@@ -99,28 +99,21 @@
 #include <string>                       // for string, char_traits, etc
 #include <utility>                      // for pair
 #include <vector>                       // for vector
-#include "RooAbsArg.h"                  // for RooAbsArg
-#include "RooAbsCategory.h"             // for RooAbsCategory
-#include "RooAbsCategoryLValue.h"       // for RooAbsCategoryLValue
-#include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooAbsReal.h"                 // for RooAbsReal
+
+#include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal
 #include "RooArgSet.h"                  // for RooArgSet
-#include "RooCatType.h"                 // for RooCatType
-#include "RooCategory.h"                // for RooCategory
+#include "RooCatType.h"                 // for RooCatType, Int_t, kFALSE, etc
+#include "RooCategory.h"                // for RooAbsCategory, RooAbsArg, etc
 #include "RooCmdArg.h"                  // for RooCmdArg
-#include "RooCustomizer.h"              // for RooCustomizer
-#include "RooFactoryWSTool.h"           // for RooFactoryWSTool
+#include "RooCustomizer.h"              // for RooFactoryWSTool, etc
 #include "RooFracRemainder.h"           // for RooFracRemainder
 #include "RooGlobalFunc.h"              // for Silence, etc
 #include "RooMsgService.h"              // for coutE, coutI
 #include "RooMultiCategory.h"           // for RooMultiCategory
-#include "RooPrintable.h"               // for operator<<
 #include "RooSimWSTool.h"               // for RooSimWSTool, etc
 #include "RooSimultaneous.h"            // for RooSimultaneous
 #include "RooSuperCategory.h"           // for RooSuperCategory
 #include "RooWorkspace.h"               // for RooWorkspace
-#include "Rtypes.h"                     // for kFALSE, ClassImp, kTRUE
-#include "RtypesCore.h"                 // for Int_t, Bool_t
 #include "TIterator.h"                  // for TIterator
 #include "TList.h"                      // for TList
 #include "TString.h"                    // for Form, TString

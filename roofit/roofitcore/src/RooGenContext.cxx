@@ -29,23 +29,20 @@ use a RooAcceptReject sampling technique.
 
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <string>                       // for char_traits, string
-#include "RooAbsArg.h"                  // for RooAbsArg, etc
+
+#include "RooAbsArg.h"                  // for operator<<, RooAbsArg, etc
 #include "RooAbsGenContext.h"           // for RooAbsGenContext
 #include "RooAbsLValue.h"               // for RooAbsLValue
 #include "RooAbsNumGenerator.h"         // for RooAbsNumGenerator
 #include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooArgSet.h"                  // for RooArgSet
+#include "RooArgSet.h"                  // for RooArgSet, kTRUE, Double_t, etc
 #include "RooDataSet.h"                 // for RooDataSet
 #include "RooErrorHandler.h"            // for RooErrorHandler
 #include "RooGenContext.h"              // for RooGenContext
-#include "RooLinkedListIter.h"          // for RooFIter
 #include "RooMsgService.h"              // for cxcoutD, ccxcoutI, coutE, etc
 #include "RooNumGenFactory.h"           // for RooNumGenFactory
-#include "RooPrintable.h"               // for operator<<, etc
 #include "RooRealIntegral.h"            // for RooRealIntegral
 #include "RooRealVar.h"                 // for RooRealVar
-#include "Rtypes.h"                     // for kTRUE, etc
-#include "RtypesCore.h"                 // for Double_t, Int_t, Bool_t
 #include "TClass.h"                     // for TClass
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for operator<<, TString

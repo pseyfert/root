@@ -24,15 +24,19 @@ for each bin of a RooHist object. Errors are calculated by integrating
 a specified area of a Poisson or Binomail error distribution.
 **/
 
-#include "RooFit.h"
+#include <assert.h>                     // for assert
+#include <math.h>                       // for sqrt
+#include <ostream>                      // for operator<<, etc
 
-#include "RooHistError.h"
-#include "RooBrentRootFinder.h"
-#include "RooMsgService.h"
-#include "TMath.h"
+#include "RooAbsFunc.h"                 // for RooAbsFunc
+#include "RooBrentRootFinder.h"         // for RooBrentRootFinder
+#include "RooHistError.h"               // for RooHistError, etc
+#include "RooMsgService.h"              // for oocoutE
+#include "Rtypes.h"                     // for kTRUE, kFALSE, ClassImp
+#include "RtypesCore.h"                 // for Double_t, Int_t, Bool_t
+#include "TMath.h"                      // for Erf
 
-#include "Riostream.h"
-#include <assert.h>
+class TObject;
 
 using namespace std;
 

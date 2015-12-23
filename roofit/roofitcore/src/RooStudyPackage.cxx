@@ -26,22 +26,27 @@ repeated applications of generate-and-fit operations on a workspace
 
 
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <list>                         // for list, _List_iterator, etc
+#include <string>                       // for char_traits, string, etc
 
-#include "RooStudyPackage.h"
-#include "RooWorkspace.h"
-#include "RooAbsStudy.h"
-#include "RooDataSet.h"
-#include "RooMsgService.h"
-#include "TProof.h"
-#include "TTree.h"
-#include "TDSet.h"
-#include "TFile.h"
-#include "TRandom2.h"
-#include "RooRandom.h"
-#include "TMath.h"
-#include "TEnv.h"
+#include "RooAbsStudy.h"                // for RooAbsStudy, TNamed
+#include "RooDataSet.h"                 // for RooDataSet
+#include "RooLinkedList.h"              // for RooLinkedList
+#include "RooMsgService.h"              // for coutP
+#include "RooRandom.h"                  // for RooRandom
+#include "RooStudyPackage.h"            // for RooStudyPackage
+#include "RooWorkspace.h"               // for RooWorkspace
+#include "TClass.h"                     // for TClass
+#include "TEnv.h"                       // for TEnv, gEnv
+#include "TFile.h"                      // for TFile
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
+#include "TMath.h"                      // for Limits
+#include "TObject.h"                    // for Int_t, ClassImp, etc
+#include "TRandom.h"                    // for TRandom
+#include "TRandom2.h"                   // for TRandom2, gRandom
+#include "TString.h"                    // for Form, TString, operator!=
 
 using namespace std ;
 

@@ -33,23 +33,21 @@
 #include <list>                         // for _List_iterator, list, etc
 #include <memory>                       // for auto_ptr
 #include <ostream>                      // for operator<<, basic_ostream, etc
-#include "RooAbsArg.h"                  // for RooAbsArg, etc
-#include "RooAbsPdf.h"                  // for RooAbsPdf, etc
-#include "RooAbsReal.h"                 // for RooAbsReal
+
+#include "RooAbsArg.h"                  // for RooFIter, RooAbsArg, etc
+#include "RooAbsPdf.h"                  // for RooAbsReal, RooAbsPdf, etc
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet
-#include "RooLinkedListIter.h"          // for RooFIter
+#include "RooArgSet.h"                  // for Double_t, RooArgSet, kFALSE, etc
 #include "RooListProxy.h"               // for RooListProxy
 #include "RooMsgService.h"              // for coutE, coutW, cxcoutD
 #include "RooNameReg.h"                 // for RooNameReg
 #include "RooNameSet.h"                 // for RooNameSet
 #include "RooObjCacheManager.h"         // for RooObjCacheManager
 #include "RooRealSumPdf.h"              // for RooRealSumPdf, etc
-#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp, etc
-#include "RtypesCore.h"                 // for Double_t, Bool_t, Int_t
 #include "TClass.h"                     // for TClass
 #include "TError.h"                     // for R__ASSERT
 #include "TIterator.h"                  // for TIterator
+
 class RooAbsCacheElement;
 class RooAbsRealLValue;
 

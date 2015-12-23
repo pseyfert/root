@@ -24,9 +24,10 @@ that stores the properties of a RooRealVar that are shared among clones.
 For RooRealVars these are the definitions of the named ranges.
 **/
 
-#include "RooFit.h"
-#include "RooRealVarSharedProperties.h"
-#include "Riostream.h"
+#include "RooLinkedList.h"              // for RooLinkedList
+#include "RooRealVarSharedProperties.h"  // for RooRealVarSharedProperties
+#include "RooSharedProperties.h"        // for RooSharedProperties
+#include "Rtypes.h"                     // for ClassImp
 
 
 using namespace std;

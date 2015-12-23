@@ -23,26 +23,33 @@ RooVectorDataStore is the abstract base class for data collection that
 use a TTree as internal storage mechanism
 **/
 
-#include "RooFit.h"
-#include "RooMsgService.h"
-#include "RooVectorDataStore.h"
-#include "RooTreeDataStore.h"
+#include <math.h>                       // for sqrt
+#include <algorithm>                    // for sort
+#include <functional>                   // for binary_function
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <list>                         // for list, _List_iterator, etc
+#include <string>                       // for char_traits, string, etc
+#include <vector>                       // for vector, etc
 
-#include "Riostream.h"
-#include "TTree.h"
-#include "TChain.h"
-#include "TDirectory.h"
-#include "TROOT.h"
-#include "RooFormulaVar.h"
-#include "RooRealVar.h"
-#include "RooCategory.h"
-#include "RooNameSet.h"
-#include "RooHistError.h"
-#include "RooTrace.h"
+#include "RooAbsData.h"                 // for RooAbsData, etc
+#include "RooAbsDataStore.h"            // for RooAbsDataStore
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet, ClassImp, kFALSE
+#include "RooCategory.h"                // for RooAbsArg, Int_t, Double_t, etc
+#include "RooFormulaVar.h"              // for RooFormulaVar
+#include "RooHistError.h"               // for RooHistError
+#include "RooMsgService.h"              // for coutE, coutI
+#include "RooNameSet.h"                 // for RooNameSet
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
+#include "RooTreeDataStore.h"           // for RooTreeDataStore
+#include "RooVectorDataStore.h"         // for RooVectorDataStore, etc
+#include "TBuffer.h"                    // for TBuffer
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
+#include "TString.h"                    // for Form
 
-#include <iomanip>
-#include <algorithm>
-#include <memory>
 using namespace std ;
 
 ClassImp(RooVectorDataStore)

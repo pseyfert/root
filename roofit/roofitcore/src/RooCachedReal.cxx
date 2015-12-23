@@ -18,16 +18,17 @@ RooCachedReal is an implementation of RooAbsCachedReal that can cache
 any external RooAbsReal input function provided in the constructor.
 **/
 
-#include "Riostream.h"
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooAbsPdf.h"
-#include "RooCachedReal.h"
-#include "RooAbsReal.h"
-#include "RooAbsCategory.h"
-#include "RooMsgService.h"
-#include "RooDataHist.h"
-#include "RooHistPdf.h"
-#include "RooChangeTracker.h"
+#include "RooAbsCategory.h"             // for RooAbsArg, etc
+#include "RooArgSet.h"                  // for RooArgSet, kFALSE, ClassImp, etc
+#include "RooCachedReal.h"              // for RooCachedReal, RooAbsReal, etc
+#include "RooChangeTracker.h"           // for RooChangeTracker
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooHistFunc.h"                // for RooHistFunc
+#include "RooMsgService.h"              // for coutP
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooSetProxy.h"                // for RooSetProxy
 
 using namespace std;
 

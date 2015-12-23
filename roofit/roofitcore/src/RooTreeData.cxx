@@ -23,11 +23,12 @@ RooTreeData is the abstract base class for data collection that
 use a TTree as internal storage mechanism
 **/
 
-#include "RooFit.h"
-#include "RooTreeData.h"
 
-#include "Riostream.h"
 
+
+#include "Rtypes.h"                     // for ClassImp
+
+class RooTreeData;
 
 using namespace std;
 

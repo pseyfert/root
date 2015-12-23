@@ -26,6 +26,7 @@ points for its contents and provides an iterator over its elements
 **/
 
 #include "RooAbsData.h"
+
 #include <assert.h>                     // for assert
 #include <ext/alloc_traits.h>
 #include <stddef.h>                     // for size_t
@@ -34,18 +35,14 @@ points for its contents and provides an iterator over its elements
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <utility>                      // for pair
 #include <vector>                       // for vector
+
 #include "Roo1DTable.h"                 // for Roo1DTable
-#include "RooAbsArg.h"                  // for RooAbsArg
 #include "RooAbsBinning.h"              // for RooAbsBinning
-#include "RooAbsCategory.h"             // for RooAbsCategory
-#include "RooAbsCategoryLValue.h"       // for RooAbsCategoryLValue
-#include "RooAbsDataStore.h"            // for RooAbsDataStore
-#include "RooAbsReal.h"                 // for RooAbsReal
-#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
+#include "RooAbsRealLValue.h"           // for RooAbsRealLValue, etc
 #include "RooCatType.h"                 // for RooCatType
-#include "RooCategory.h"                // for RooCategory
+#include "RooCategory.h"                // for RooAbsArg, RooLinkedList, etc
 #include "RooCmdConfig.h"               // for RooCmdConfig
-#include "RooCompositeDataStore.h"      // for RooCompositeDataStore
+#include "RooCompositeDataStore.h"      // for RooAbsDataStore, etc
 #include "RooDataHist.h"                // for RooDataHist
 #include "RooFormula.h"                 // for RooFormula
 #include "RooFormulaVar.h"              // for RooFormulaVar
@@ -76,7 +73,7 @@ points for its contents and provides an iterator over its elements
 #include "TMatrixTSym.h"                // for TMatrixTSym
 #include "TPaveText.h"                  // for TPaveText
 #include "strlcpy.h"                    // for strlcpy
-class TObject;
+
 class TTree;
 
 

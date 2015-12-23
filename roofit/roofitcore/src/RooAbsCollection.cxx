@@ -28,30 +28,30 @@ an optional hash-table lookup mechanism for fast indexing of large
 collections. 
 **/
 
-#include <iomanip>
-#include <fstream>
-#include <vector>
-#include <string>
-#include <sstream>
-#include <algorithm>
+#include <ext/alloc_traits.h>
+#include <stddef.h>                     // for size_t
+#include <string.h>                     // for strlen, strtok, strchr
+#include <algorithm>                    // for sort, unique
+#include <iomanip>                      // for operator<<, setw
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <string>                       // for string, char_traits
+#include <vector>                       // for vector, vector<>::iterator
 
-#include "Riostream.h"
-#include "TClass.h"
-#include "TStopwatch.h"
-#include "TRegexp.h"
-#include "RooAbsCollection.h"
-#include "RooStreamParser.h"
-#include "RooFormula.h"
-#include "RooAbsRealLValue.h"
-#include "RooAbsCategoryLValue.h"
-#include "RooStringVar.h"
-#include "RooTrace.h"
-#include "RooArgList.h"
-#include "RooLinkedListIter.h"
-#include "RooCmdConfig.h"
-#include "RooRealVar.h"
-#include "RooGlobalFunc.h"
-#include "RooMsgService.h"
+#include "RooAbsCategoryLValue.h"       // for RooAbsArg, RooPrintable, etc
+#include "RooArgList.h"                 // for RooAbsCollection, Bool_t, etc
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCmdArg.h"                  // for RooCmdArg
+#include "RooCmdConfig.h"               // for RooCmdConfig
+#include "RooGlobalFunc.h"              // for LatexTableStyle
+#include "RooLinkedListIter.h"          // for RooFIter, RooLinkedList, etc
+#include "RooMsgService.h"              // for coutE, coutW, cxcoutD
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooTrace.h"                   // for RooTrace
+#include "TClass.h"                     // for TClass
+#include "TRegexp.h"                    // for TRegexp
+#include "TString.h"                    // for TString, operator<<, etc
+#include "strlcpy.h"                    // for strlcpy
+
 using namespace std ;
 
 #if (__GNUC__==3&&__GNUC_MINOR__==2&&__GNUC_PATCHLEVEL__==3)

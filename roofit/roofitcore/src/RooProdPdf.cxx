@@ -41,29 +41,35 @@ have to appear in any specific place in the list.
 **/
 
 #include "RooProdPdf.h"
-#include "RooRealProxy.h"
-#include "RooProdGenContext.h"
-#include "RooGenProdProj.h"
-#include "RooProduct.h"
-#include "RooNameReg.h"
-#include "RooMsgService.h"
-#include "RooFormulaVar.h"
-#include "RooRealVar.h"
-#include "RooAddition.h"
-#include "RooGlobalFunc.h"
-#include "RooConstVar.h"
-#include "RooWorkspace.h"
-#include "RooRangeBoolean.h"
-#include "RooCustomizer.h"
-#include "RooRealIntegral.h"
-#include "RooTrace.h"
 
-#include <cstring>
-#include <sstream>
-#include <algorithm>
+#include <assert.h>                     // for assert
+#include <cstring>                      // for strcmp, strlen, strtok_r, etc
+#include <map>                          // for map, map<>::mapped_type, etc
+#include <sstream>                      // for operator<<, basic_ostream, etc
+#include <utility>                      // for pair
+
+#include "RooAddition.h"                // for RooAddition
+#include "RooConstVar.h"                // for RooConstVar
+#include "RooCustomizer.h"              // for RooCustomizer, operator<<
+#include "RooFormulaVar.h"              // for RooFormulaVar
+#include "RooGenProdProj.h"             // for RooGenProdProj
+#include "RooGlobalFunc.h"              // for RooConst
+#include "RooLinkedList.h"              // for RooLinkedList
+#include "RooMsgService.h"              // for coutW, cxcoutD, coutE, etc
+#include "RooNameReg.h"                 // for RooNameReg
+#include "RooNameSet.h"                 // for RooNameSet
+#include "RooProdGenContext.h"          // for RooProdGenContext
+#include "RooProduct.h"                 // for RooProduct
+#include "RooRealIntegral.h"            // for RooRealIntegral
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
+#include "TString.h"                    // for Form, TString, operator<<
+
+class RooAbsGenContext;
+class RooAbsRealLValue;
+class RooDataSet;
 
 #ifndef _WIN32
-#include <strings.h>
 #else
 
 static char *strtok_r(char *s1, const char *s2, char **lasts)
@@ -87,8 +93,6 @@ static char *strtok_r(char *s1, const char *s2, char **lasts)
 
 #endif
 
-
-#include "TSystem.h"
 
 using namespace std;
 

@@ -30,15 +30,14 @@ i.e. all integrals of the product are handled numerically
 #include <list>                         // for _List_iterator, list, etc
 #include <memory>                       // for auto_ptr, etc
 #include <ostream>                      // for operator<<, basic_ostream, etc
-#include "RooAbsArg.h"                  // for RooAbsArg
+
+#include "RooAbsArg.h"                  // for RooAbsArg, RooFIter
 #include "RooAbsCacheElement.h"
-#include "RooAbsReal.h"                 // for RooAbsReal
-#include "RooAddition.h"                // for RooAddition, etc
+#include "RooAddition.h"                // for RooAddition, RooAbsReal, etc
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgSet.h"                  // for RooArgSet
+#include "RooArgSet.h"                  // for Double_t, RooArgSet, Bool_t, etc
 #include "RooChi2Var.h"                 // for RooChi2Var
 #include "RooErrorHandler.h"            // for RooErrorHandler
-#include "RooLinkedListIter.h"          // for RooFIter
 #include "RooListProxy.h"               // for RooListProxy
 #include "RooMsgService.h"              // for coutE, coutI
 #include "RooNLLVar.h"                  // for RooNLLVar
@@ -46,9 +45,9 @@ i.e. all integrals of the product are handled numerically
 #include "RooNameSet.h"                 // for RooNameSet
 #include "RooObjCacheManager.h"         // for RooObjCacheManager
 #include "RooProduct.h"                 // for RooProduct
-#include "Rtypes.h"                     // for Double_t, Bool_t, Int_t, kTRUE, kFALSE, ClassImp
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for TString
+
 class RooAbsData;
 class RooAbsRealLValue;
 

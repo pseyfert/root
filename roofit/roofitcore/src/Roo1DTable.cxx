@@ -28,19 +28,16 @@ equivalent of a plot. To create a table use the RooDataSet::table method.
 #include <iomanip>                      // for operator<<, setw, setfill
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <vector>                       // for vector
+
 #include "Roo1DTable.h"                 // for Roo1DTable
-#include "RooAbsCategory.h"             // for RooAbsCategory
-#include "RooCatType.h"                 // for RooCatType
+#include "RooAbsCategory.h"             // for RooAbsCategory, etc
+#include "RooCatType.h"                 // for Double_t, RooCatType, Int_t, etc
 #include "RooMsgService.h"              // for coutE, coutW
-#include "RooPrintable.h"
 #include "RooTable.h"                   // for RooTable
-#include "Rtypes.h"                     // for kFALSE, ClassImp, etc
-#include "RtypesCore.h"                 // for Double_t, Int_t, Bool_t, etc
 #include "TClass.h"                     // for TClass
 #include "TIterator.h"                  // for TIterator
 #include "TObjArray.h"                  // for TObjArray
 #include "TString.h"                    // for operator<<, TString
-class TObject;
 
 using namespace std ;
 

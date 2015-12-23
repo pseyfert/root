@@ -24,35 +24,48 @@ in N-dimensional space is represented by a RooArgSet of RooRealVar, RooCategory
 or RooStringVar objects 
 **/
 
-#include "RooFit.h"
+#include <assert.h>                     // for assert
+#include <math.h>                       // for fabs
+#include <stddef.h>                     // for size_t
+#include <stdio.h>                      // for snprintf
+#include <stdlib.h>                     // for free, malloc
+#include <string.h>                     // for strtok, strlen, strchr
+#include <fstream>                      // for operator<<, basic_ostream, etc
+#include <list>                         // for list, _List_iterator, etc
+#include <map>                          // for _Rb_tree_iterator, map, etc
+#include <string>                       // for string, basic_string, etc
+#include <utility>                      // for pair
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include <fstream>
-#include "TTree.h"
-#include "TH2.h"
-#include "TDirectory.h"
-#include "RooDataSet.h"
-#include "RooPlot.h"
-#include "RooAbsReal.h"
-#include "Roo1DTable.h"
-#include "RooCategory.h"
-#include "RooFormulaVar.h"
-#include "RooArgList.h"
-#include "RooAbsRealLValue.h"
-#include "RooRealVar.h"
-#include "RooDataHist.h"
-#include "RooMsgService.h"
-#include "RooCmdConfig.h"
-#include "RooHist.h"
-#include "TROOT.h"
-#include "TFile.h"
-#include "RooTreeDataStore.h"
-#include "RooVectorDataStore.h"
-#include "RooCompositeDataStore.h"
-#include "RooTreeData.h"
-#include "RooSentinel.h"
-#include "RooTrace.h"
+#include "RooAbsRealLValue.h"           // for RooAbsRealLValue, etc
+#include "RooArgList.h"                 // for Int_t, kTRUE, Double_t, etc
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCatType.h"                 // for RooCatType
+#include "RooCategory.h"                // for RooCategory, RooLinkedList, etc
+#include "RooCmdArg.h"                  // for RooCmdArg
+#include "RooCmdConfig.h"               // for RooCmdConfig
+#include "RooCompositeDataStore.h"      // for RooAbsDataStore, etc
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooDataSet.h"                 // for RooDataSet, RooAbsData, etc
+#include "RooFormula.h"                 // for RooFormula
+#include "RooFormulaVar.h"              // for RooFormulaVar
+#include "RooHist.h"                    // for RooHist
+#include "RooMsgService.h"              // for coutE, oocoutE, coutI, etc
+#include "RooPlot.h"                    // for RooPlot
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooSentinel.h"                // for RooSentinel
+#include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
+#include "RooTreeData.h"                // for RooTreeData
+#include "RooTreeDataStore.h"           // for RooTreeDataStore
+#include "RooVectorDataStore.h"         // for RooVectorDataStore
+#include "TBuffer.h"                    // for TBuffer, operator>>
+#include "TDirectory.h"                 // for TDirectory
+#include "TFile.h"                      // for TFile
+#include "TH2.h"                        // for TH2F
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
+#include "TString.h"                    // for TString, Form, operator<<
+#include "TTree.h"                      // for TTree
+#include "strlcpy.h"                    // for strlcpy
 
 #if (__GNUC__==3&&__GNUC_MINOR__==2&&__GNUC_PATCHLEVEL__==3)
 char* operator+( streampos&, char* );

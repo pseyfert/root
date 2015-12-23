@@ -22,20 +22,36 @@
 Multivariate Gaussian p.d.f. with correlations
 **/
 
-#include "RooFit.h"
+#include <ext/alloc_traits.h>
+#include <math.h>                       // for sqrt, exp, fabs, pow
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <list>                         // for list, _List_iterator, etc
+#include <map>                          // for map, _Rb_tree_iterator, etc
+#include <string>                       // for char_traits, string, etc
+#include <utility>                      // for pair
+#include <vector>                       // for vector
 
-#include "Riostream.h"
-#include <math.h>
-
-#include "RooMultiVarGaussian.h"
-#include "RooAbsReal.h"
-#include "RooRealVar.h"
-#include "RooRandom.h"
-#include "RooMath.h"
-#include "RooGlobalFunc.h"
-#include "RooConstVar.h"
-#include "TDecompChol.h"
-#include "RooFitResult.h"
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet, Int_t, kFALSE, etc
+#include "RooConstVar.h"                // for RooAbsReal, RooConstVar
+#include "RooFitResult.h"               // for RooFitResult
+#include "RooGlobalFunc.h"              // for RooConst
+#include "RooListProxy.h"               // for RooListProxy
+#include "RooMsgService.h"              // for cxcoutD, coutW
+#include "RooMultiVarGaussian.h"        // for RooMultiVarGaussian, etc
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealVar.h"                 // for RooRealVar
+#include "TDecompChol.h"                // for TDecompChol
+#include "TMatrixDSymfwd.h"             // for TMatrixDSym
+#include "TMatrixDfwd.h"                // for TMatrixD
+#include "TMatrixT.h"                   // for TMatrixT, operator*, etc
+#include "TMatrixTBase.h"               // for TMatrixTBase
+#include "TMatrixTSym.h"                // for TMatrixTSym
+#include "TString.h"                    // for Form
+#include "TVectorDfwd.h"                // for TVectorD
+#include "TVectorT.h"                   // for TVectorT, operator*, etc
 
 using namespace std;
 

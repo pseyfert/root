@@ -27,18 +27,15 @@ arguments
 **/
 
 #include <ostream>                      // for operator<<, basic_ostream, etc
-#include "RooAbsArg.h"                  // for RooAbsArg
-#include "RooAbsPdf.h"                  // for RooAbsPdf
-#include "RooAbsReal.h"                 // for RooAbsReal
-#include "RooArgSet.h"                  // for RooArgSet
+
+#include "RooAbsArg.h"                  // for RooAbsArg, RooFIter
+#include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal
+#include "RooArgSet.h"                  // for RooArgSet, Double_t, etc
 #include "RooConstraintSum.h"           // for RooConstraintSum
 #include "RooErrorHandler.h"            // for RooErrorHandler
-#include "RooLinkedListIter.h"          // for RooFIter
 #include "RooListProxy.h"               // for RooListProxy
 #include "RooMsgService.h"              // for coutE
 #include "RooSetProxy.h"                // for RooSetProxy
-#include "Rtypes.h"                     // for ClassImp
-#include "RtypesCore.h"                 // for Double_t
 #include "TIterator.h"                  // for TIterator
 
 using namespace std;

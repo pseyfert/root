@@ -32,39 +32,33 @@
 #include <assert.h>                     // for assert
 #include <math.h>                       // for sqrt
 #include <string.h>                     // for strtok, strlen, strchr
-#include <iostream>                     // for cout
+#include <iostream>                     // for operator<<, basic_ostream, etc
 #include <list>                         // for list, _List_iterator, etc
 #include <map>                          // for map, _Rb_tree_iterator, etc
 #include <sstream>                      // for operator<<, basic_ostream, etc
-#include <string>                       // for string, operator<<, etc
+#include <string>                       // for char_traits, string, etc
 #include <utility>                      // for pair
 #include <vector>                       // for vector, vector<>::iterator
+
 #include "Math/ParamFunctor.h"          // for ParamFunctorHandler
-#include "RooAbsArg.h"                  // for RooAbsArg, etc
-#include "RooAbsBinning.h"              // for RooAbsBinning
-#include "RooAbsCategoryLValue.h"       // for RooAbsCategoryLValue
-#include "RooAbsData.h"                 // for RooAbsData
 #include "RooAbsFunc.h"                 // for RooAbsFunc
-#include "RooAbsLValue.h"               // for RooAbsLValue
-#include "RooAbsPdf.h"                  // for RooAbsPdf, etc
-#include "RooAbsProxy.h"                // for RooAbsProxy
-#include "RooAbsReal.h"                 // for RooAbsReal, etc
+#include "RooAbsPdf.h"                  // for RooAbsReal, etc
 #include "RooAbsRealLValue.h"           // for RooAbsRealLValue
 #include "RooAddition.h"                // for RooAddition
 #include "RooArgList.h"                 // for RooArgList
-#include "RooArgProxy.h"                // for RooArgProxy
-#include "RooArgSet.h"                  // for RooArgSet
-#include "RooBinning.h"                 // for RooBinning
+#include "RooArgProxy.h"                // for RooArgProxy, RooAbsProxy
+#include "RooArgSet.h"                  // for RooArgSet, kTRUE, Int_t, etc
+#include "RooBinning.h"                 // for RooAbsBinning, RooBinning
 #include "RooBrentRootFinder.h"         // for RooBrentRootFinder
 #include "RooCachedReal.h"              // for RooCachedReal
-#include "RooCategory.h"                // for RooCategory
+#include "RooCategory.h"                // for RooAbsArg, operator<<, etc
 #include "RooChi2Var.h"                 // for RooChi2Var
 #include "RooCmdArg.h"                  // for RooCmdArg
 #include "RooCmdConfig.h"               // for RooCmdConfig
 #include "RooCurve.h"                   // for RooCurve, etc
 #include "RooCustomizer.h"              // for RooCustomizer
 #include "RooDataHist.h"                // for RooDataHist
-#include "RooDataSet.h"                 // for RooDataSet
+#include "RooDataSet.h"                 // for RooAbsData, RooDataSet
 #include "RooDataWeightedAverage.h"     // for RooDataWeightedAverage
 #include "RooDerivative.h"              // for RooDerivative
 #include "RooFirstMoment.h"             // for RooFirstMoment
@@ -73,8 +67,6 @@
 #include "RooFunctor.h"                 // for RooFunctor
 #include "RooGenFunction.h"             // for RooGenFunction
 #include "RooGlobalFunc.h"              // for Binning, YVar, ZVar, etc
-#include "RooLinkedList.h"              // for RooLinkedList
-#include "RooLinkedListIter.h"          // for RooFIter
 #include "RooMinuit.h"                  // for RooMinuit
 #include "RooMoment.h"                  // for RooMoment
 #include "RooMsgService.h"              // for coutE, coutI, cxcoutD, etc
@@ -84,7 +76,6 @@
 #include "RooNumRunningInt.h"           // for RooNumRunningInt
 #include "RooParamBinning.h"            // for RooParamBinning
 #include "RooPlot.h"                    // for RooPlot
-#include "RooPrintable.h"               // for operator<<, etc
 #include "RooProfileLL.h"               // for RooProfileLL
 #include "RooRealBinding.h"             // for RooRealBinding
 #include "RooRealIntegral.h"            // for RooRealIntegral
@@ -93,8 +84,6 @@
 #include "RooSecondMoment.h"            // for RooSecondMoment
 #include "RooVectorDataStore.h"         // for RooVectorDataStore, etc
 #include "RooXYChi2Var.h"               // for RooXYChi2Var
-#include "Rtypes.h"                     // for kTRUE, kFALSE, etc
-#include "RtypesCore.h"                 // for Int_t, Bool_t, Double_t, etc
 #include "TAttFill.h"                   // for TAttFill
 #include "TAttLine.h"                   // for TAttLine
 #include "TAxis.h"                      // for TAxis
@@ -111,13 +100,11 @@
 #include "TMatrixTSym.h"                // for TMatrixTSym
 #include "TObjArray.h"                  // for TObjArray
 #include "TObjString.h"                 // for TObjString
-#include "TObject.h"                    // for TObject
 #include "TString.h"                    // for TString, Form, operator<<
 #include "TTree.h"                      // for TTree
 #include "TVectorDfwd.h"                // for TVectorD
 #include "TVectorT.h"                   // for operator*, TVectorT
 #include "strlcpy.h"                    // for strlcpy
-class RooAbsMoment;
 
 
 #ifndef __ROOFIT_NOROOMINIMIZER

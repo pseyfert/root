@@ -28,29 +28,23 @@ component pdfs.
 #include <ostream>                      // for operator<<, basic_ostream, etc
 #include <string>                       // for string, char_traits
 #include <vector>                       // for vector, vector<>::iterator, etc
-#include "RooAbsArg.h"                  // for RooAbsArg
-#include "RooAbsCategory.h"             // for RooAbsCategory
-#include "RooAbsCategoryLValue.h"       // for RooAbsCategoryLValue
+
 #include "RooAbsGenContext.h"           // for RooAbsGenContext
 #include "RooAbsPdf.h"                  // for RooAbsPdf
 #include "RooArgSet.h"                  // for RooArgSet
-#include "RooCatType.h"                 // for RooCatType
-#include "RooCategory.h"                // for RooCategory
+#include "RooCatType.h"                 // for Double_t, kTRUE, Int_t, etc
+#include "RooCategory.h"                // for RooAbsCategoryLValue, etc
 #include "RooCategoryProxy.h"           // for RooCategoryProxy
 #include "RooDataSet.h"                 // for RooDataSet
 #include "RooGlobalFunc.h"              // for Index, Link, OwnLinked
 #include "RooMsgService.h"              // for oocoutE, oocoutW
-#include "RooPrintable.h"
 #include "RooRandom.h"                  // for RooRandom
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "RooSimGenContext.h"           // for RooSimGenContext
 #include "RooSimultaneous.h"            // for RooSimultaneous
-#include "Rtypes.h"                     // for kTRUE, kFALSE, ClassImp
-#include "RtypesCore.h"                 // for Double_t, Int_t, Bool_t
 #include "TIterator.h"                  // for TIterator
 #include "TList.h"                      // for TList
 #include "TString.h"                    // for operator<<, Form, TString
-class RooAbsData;
 
 
 using namespace RooFit ;

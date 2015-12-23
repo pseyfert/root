@@ -24,8 +24,11 @@ an extended ML term for a given number of expected events term when an extended 
 is constructed.
 **/
 
-#include "RooFit.h"
-#include "RooExtendedTerm.h"
+#include "RooExtendedTerm.h"            // for RooExtendedTerm, RooAbsPdf
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "Rtypes.h"                     // for ClassImp, Double_t
+
+class RooArgSet;
 
 using namespace std;
 

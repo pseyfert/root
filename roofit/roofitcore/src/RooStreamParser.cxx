@@ -37,12 +37,13 @@
 #include <stdlib.h>                     // for strtod, strtol
 #include <string.h>                     // for strstr, strcasecmp, strlen, etc
 #include <istream>                      // for istream, operator<<, etc
+
 #include "RooMsgService.h"              // for oocoutW, oocoutE
 #include "RooNumber.h"                  // for RooNumber
 #include "RooStreamParser.h"            // for RooStreamParser
-#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp
-#include "RtypesCore.h"                 // for Bool_t, Int_t, Double_t
+#include "Rtypes.h"                     // for Bool_t, kFALSE, kTRUE, etc
 #include "TString.h"                    // for TString, operator<<
+
 class TObject;
 
 

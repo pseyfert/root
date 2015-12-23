@@ -28,20 +28,27 @@ by the user to getVal() and on which parameters need to be tracked
 for changes to trigger a refilling of the cache histogram.
 **/
 
-#include "Riostream.h" 
 using namespace std ;
 
-#include "RooFit.h"
-#include "TString.h"
-#include "RooAbsCachedPdf.h" 
-#include "RooAbsReal.h" 
-#include "RooMsgService.h"
-#include "RooDataHist.h"
-#include "RooHistPdf.h"
-#include "RooGlobalFunc.h"
-#include "RooRealVar.h"
-#include "RooChangeTracker.h"
-#include "RooExpensiveObjectCache.h"
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string
+#include <vector>                       // for vector
+
+#include "RooAICRegistry.h"             // for RooAICRegistry
+#include "RooAbsArg.h"                  // for operator<<, RooAbsArg, etc
+#include "RooAbsCacheElement.h"
+#include "RooAbsCachedPdf.h"            // for RooAbsCachedPdf, etc
+#include "RooAbsLValue.h"               // for Int_t, kTRUE, Bool_t, etc
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooChangeTracker.h"           // for RooChangeTracker
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooExpensiveObjectCache.h"    // for RooExpensiveObjectCache, etc
+#include "RooHistPdf.h"                 // for RooHistPdf
+#include "RooMsgService.h"              // for ccoutI, coutI, cxcoutD
+#include "RooObjCacheManager.h"         // for RooObjCacheManager
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for TString, Form
 
 ClassImp(RooAbsCachedPdf) 
 

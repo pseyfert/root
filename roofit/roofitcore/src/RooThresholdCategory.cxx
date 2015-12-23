@@ -24,16 +24,14 @@ by a series of thresholds.
 **/
 
 #include <ostream>                      // for operator<<, ostream, etc
-#include "RooAbsCategory.h"             // for RooAbsCategory
+
+#include "RooAbsCategory.h"             // for RooAbsCategory, etc
 #include "RooAbsReal.h"                 // for RooAbsReal
-#include "RooCatType.h"                 // for RooCatType
+#include "RooCatType.h"                 // for RooCatType, Bool_t, Int_t, etc
 #include "RooMsgService.h"              // for coutW
-#include "RooPrintable.h"
 #include "RooRealProxy.h"               // for RooRealProxy
 #include "RooThreshEntry.h"             // for RooThreshEntry
 #include "RooThresholdCategory.h"       // for RooThresholdCategory
-#include "Rtypes.h"                     // for kFALSE, ClassImp, kTRUE
-#include "RtypesCore.h"                 // for Bool_t, Int_t, Double_t
 #include "TIterator.h"                  // for TIterator
 #include "TSortedList.h"                // for TSortedList
 #include "TString.h"                    // for operator<<, TString

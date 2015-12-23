@@ -44,26 +44,33 @@ For general multiprocessing in ROOT, please refer to the TProcPool class.
 
 **/
 
-#include "Riostream.h"
-#include "RooFit.h"
-
 #ifndef _WIN32
-#include "BidirMMapPipe.h"
+#include "BidirMMapPipe.h"              // for BidirMMapPipe
 #endif
 
-#include <cstdlib>
-#include <sstream>
-#include "RooRealMPFE.h"
-#include "RooArgSet.h"
-#include "RooAbsCategory.h"
-#include "RooRealVar.h"
-#include "RooCategory.h"
-#include "RooMPSentinel.h"
-#include "RooMsgService.h"
-#include "RooNLLVar.h"
-#include "RooTrace.h"
+#include <unistd.h>                     // for _exit
+#include <cstdlib>                      // for free
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <list>                         // for list, _List_const_iterator, etc
+#include <map>                          // for _Rb_tree_const_iterator, etc
+#include <string>                       // for char_traits, string, etc
+#include <utility>                      // for pair
+#include <vector>                       // for vector, vector<>::reference
 
-#include "TSystem.h"
+#include "RooAbsReal.h"                 // for RooAbsReal, etc
+#include "RooAbsTestStatistic.h"        // for RooAbsTestStatistic
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for Bool_t, kFALSE, Double_t, etc
+#include "RooCategory.h"                // for RooAbsArg, RooFIter, etc
+#include "RooListProxy.h"               // for RooListProxy
+#include "RooMPSentinel.h"              // for RooMPSentinel
+#include "RooMsgService.h"              // for ccoutD
+#include "RooNLLVar.h"                  // for RooNLLVar
+#include "RooRealMPFE.h"                // for RooRealMPFE, etc
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooTrace.h"                   // for RooTrace
+#include "TSystem.h"                    // for TSystem, gSystem
 
 RooMPSentinel RooRealMPFE::_sentinel ;
 

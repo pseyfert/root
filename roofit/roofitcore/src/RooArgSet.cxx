@@ -39,22 +39,29 @@
 //
 //
 
-#include "Riostream.h"
-#include <iomanip>
-#include <fstream>
-#include <list>
-#include "TClass.h"
-#include "RooErrorHandler.h"
-#include "RooArgSet.h"
-#include "RooStreamParser.h"
-#include "RooFormula.h"
-#include "RooAbsRealLValue.h"
-#include "RooAbsCategoryLValue.h"
-#include "RooStringVar.h"
-#include "RooTrace.h"
-#include "RooArgList.h"
-#include "RooSentinel.h"
-#include "RooMsgService.h"
+#include <stddef.h>                     // for size_t
+#include <stdlib.h>                     // for free, malloc
+#include <string.h>                     // for strtok
+#include <fstream>                      // for operator<<, basic_ostream, etc
+#include <list>                         // for list, _List_iterator, etc
+#include <new>                          // for operator new
+
+#include "RooAbsCategoryLValue.h"       // for RooAbsArg, RooAbsCategory, etc
+#include "RooAbsRealLValue.h"           // for RooAbsRealLValue, etc
+#include "RooAbsString.h"               // for RooAbsString
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet, Bool_t, kTRUE, etc
+#include "RooErrorHandler.h"            // for RooErrorHandler
+#include "RooFormula.h"                 // for RooFormula
+#include "RooMsgService.h"              // for coutE, oocxcoutD, coutI, etc
+#include "RooSentinel.h"                // for RooSentinel
+#include "RooStreamParser.h"            // for RooStreamParser
+#include "RooStringVar.h"               // for RooStringVar
+#include "RooTrace.h"                   // for TRACE_CREATE, RooTrace, etc
+#include "TCollection.h"                // for TCollection
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for TString, operator<<
+#include "strlcpy.h"                    // for strlcpy
 
 using namespace std ;
 

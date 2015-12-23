@@ -34,11 +34,9 @@ F may have an arbitrary number of dependents and parameters
 #include "RooAbsPdf.h"                  // for RooAbsPdf
 #include "RooCategoryProxy.h"           // for RooCategoryProxy
 #include "RooRealProxy.h"               // for RooRealProxy
-#include "Rtypes.h"                     // for ClassImp
-#include "RtypesCore.h"                 // for Double_t, Int_t
+#include "Rtypes.h"                     // for Double_t, Int_t, ClassImp
+#include "TError.h"                     // for R__ASSERT
 #include "TString.h"                    // for operator==, TString
-
-#include "TError.h"
 
 using namespace std;
 
