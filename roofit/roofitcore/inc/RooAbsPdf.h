@@ -16,11 +16,9 @@
 #ifndef ROO_ABS_PDF
 #define ROO_ABS_PDF
 
-#include "RooAbsReal.h"
-//#include "RooRealIntegral.h"
-//#include "RooNameSet.h"
-#include "RooObjCacheManager.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooCmdArg.h"
+#include "RooObjCacheManager.h"
 
 class RooDataSet;
 class RooDataHist ;

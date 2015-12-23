@@ -24,9 +24,6 @@ class RooAbsCategory;
 class RooAbsReal;
 class RooArgSet;
 
-class RooArgList ;
-
-
 class RooEfficiency : public RooAbsPdf {
 public:
   // Constructors, assignment etc

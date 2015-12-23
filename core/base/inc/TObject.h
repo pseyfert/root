@@ -28,16 +28,16 @@
 //////////////////////////////////////////////////////////////////////////
 
 #ifndef ROOT_Rtypes
-#include "Rtypes.h"
+#include "Rtypes.h" // IWYU pragma: export
 #endif
 #ifndef ROOT_TStorage
-#include "TStorage.h"
+#include "TStorage.h" // IWYU pragma: export
 #endif
 #ifndef ROOT_TVersionCheck
-#include "TVersionCheck.h"
+#include "TVersionCheck.h" // IWYU pragma: export
 #endif
 #ifndef ROOT_Riosfwd
-#include "Riosfwd.h"
+#include "Riosfwd.h" // IWYU pragma: export
 #endif
 
 #include <stdarg.h>

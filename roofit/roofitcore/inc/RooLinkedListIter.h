@@ -18,7 +18,7 @@
 
 #include "RtypesCore.h"
 #include "TIterator.h"
-#include "RooLinkedList.h"
+#include "RooLinkedList.h"  // IWYU pragma: export
 
 #if ROOT_VERSION_CODE <= 332546
 #ifndef nullptr

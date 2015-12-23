@@ -16,19 +16,18 @@
 #ifndef ROO_ABS_DATA
 #define ROO_ABS_DATA
 
-#include "TNamed.h"
-#include "RooPrintable.h"
+#include "TNamed.h"       // IWYU pragma: export
+#include "RooPrintable.h" // IWYU pragma: export
 #include "RooFormula.h" // crosscheck
 
 #include "RooArgSet.h"
 #include <math.h>
-#include "TMatrixDSym.h"
+#include "TMatrixDSym.h" // IWYU pragma: keep
 
 class RooAbsArg;
 class RooAbsReal ;
 class RooAbsCategory ;
 class RooAbsCategoryLValue;
-class Roo1DTable ;
 class RooFormulaVar;
 class RooRealVar;
 class RooPlot;

@@ -17,8 +17,8 @@
 #define ROO_ABS_CATEGORY_LVALUE
 
 #include "Riosfwd.h"
-#include "RooAbsCategory.h"
-#include "RooAbsLValue.h"
+#include "RooAbsCategory.h" // IWYU pragma: export
+#include "RooAbsLValue.h"   // IWYU pragma: export
 
 class RooAbsCategoryLValue : public RooAbsCategory, public RooAbsLValue {
 public:

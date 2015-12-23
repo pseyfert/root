@@ -18,8 +18,8 @@
 
 #include "TString.h"
 #include "RooAbsArg.h"
-#include "RooPrintable.h"
-#include "RooLinkedList.h"
+#include "RooPrintable.h" // IWYU pragma: export
+#include "TObject.h"      // IWYU pragma: export
 #include "RooCmdArg.h"
 #include "RooLinkedListIter.h"
 #include <string>

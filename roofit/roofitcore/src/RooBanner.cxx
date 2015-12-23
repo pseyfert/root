@@ -1,4 +1,5 @@
 #include "RtypesCore.h"
+#include <iostream>
 
 /**
 \file RooBanner.cxx

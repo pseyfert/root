@@ -20,7 +20,7 @@ class RooArgSet ;
 #include "RooAbsReal.h"
 #include "RooCategoryProxy.h"
 
-class RooCategory ;
+//class RooCategory ;
 
 class RooAbsHiddenReal : public RooAbsReal {
 public:

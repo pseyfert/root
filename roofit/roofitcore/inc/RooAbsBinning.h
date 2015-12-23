@@ -17,9 +17,8 @@
 #define ROO_ABS_BINNING
 
 #include "Rtypes.h"
-#include "RooPrintable.h"
-#include "TNamed.h" 
-class TIterator ;
+#include "RooPrintable.h" // IWYU pragma: export
+#include "TNamed.h"       // IWYU pragma: export
 class RooAbsRealLValue ;
 class RooAbsReal ;
 
