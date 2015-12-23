@@ -20,7 +20,7 @@
 //#include "TNamed.h"
 #include "RooCatType.h"
 #include "Rtypes.h"
-#include "TObject.h"
+#include "TObject.h" // IWYU pragma: export
 
 class RooThreshEntry : public TObject {
 public:

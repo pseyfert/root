@@ -17,7 +17,7 @@
 #define ROO_MULTI_CAT_ITER
 
 #include "Riosfwd.h"
-#include "TIterator.h"
+#include "TIterator.h" // IWYU pragma: export
 #include "RooArgSet.h"
 #include "TObjString.h"
 //class RooCategory ;

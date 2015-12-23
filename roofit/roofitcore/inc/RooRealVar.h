@@ -23,7 +23,7 @@
 #include <float.h>
 #include "TString.h"
 
-#include "RooAbsRealLValue.h"
+#include "RooAbsRealLValue.h" // IWYU pragma: export
 #include "RooUniformBinning.h"
 #include "RooNumber.h"
 #include "RooSharedPropertiesList.h"

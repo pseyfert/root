@@ -17,11 +17,10 @@
 #ifndef ROO_XY_CHI2_VAR
 #define ROO_XY_CHI2_VAR
 
-#include "RooAbsOptTestStatistic.h"
+#include "RooAbsOptTestStatistic.h" // IWYU pragma: export
 #include "RooDataSet.h"
 #include "RooNumIntConfig.h"
 #include <list>
-class RooAbsIntegrator;
 class RooAbsPdf;
 
 

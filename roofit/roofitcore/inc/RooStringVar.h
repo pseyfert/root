@@ -17,9 +17,9 @@
 #define ROO_STRING_VAR
 
 #include "Riosfwd.h"
+#include "Rtypes.h"
 #include "TString.h"
-#include "RooAbsString.h"
-class RooArgSet ;
+#include "RooAbsString.h" // IWYU pragma: export
 
 class RooStringVar : public RooAbsString {
 public:

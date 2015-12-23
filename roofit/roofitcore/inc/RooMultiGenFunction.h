@@ -17,7 +17,7 @@
 #define ROO_MULTI_GEN_FUNCTION
 
 #include "RooFunctor.h"
-#include "Math/IFunction.h"
+#include "Math/IFunction.h" // IWYU pragma: export
 
 class RooAbsReal ;
 class RooArgList ;

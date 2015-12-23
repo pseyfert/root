@@ -18,12 +18,11 @@
 
 #include <float.h>
 #include "RooList.h"
-#include "RooPrintable.h"
-#include "TNamed.h"
+#include "RooPrintable.h" // IWYU pragma: export
+#include "TNamed.h" // IWYU pragma: export
 
 class TH1 ;
 
-class RooAbsReal;
 class RooAbsRealLValue;
 class RooArgSet ;
 class RooHist;

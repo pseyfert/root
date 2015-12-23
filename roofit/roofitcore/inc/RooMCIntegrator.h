@@ -16,7 +16,7 @@
 #ifndef ROO_MC_INTEGRATOR
 #define ROO_MC_INTEGRATOR
 
-#include "RooAbsIntegrator.h"
+#include "RooAbsIntegrator.h" // IWYU pragma: export
 #include "RooGrid.h"
 #include "TStopwatch.h"
 class RooNumIntFactory;

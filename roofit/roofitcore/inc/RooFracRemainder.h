@@ -16,11 +16,11 @@
 #ifndef ROO_FRAC_REMAINDER
 #define ROO_FRAC_REMAINDER
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooListProxy.h"
 
-class RooRealVar;
-class RooArgList ;
+//class RooRealVar;
+//class RooArgList ;
 
 class RooFracRemainder : public RooAbsReal {
 public:

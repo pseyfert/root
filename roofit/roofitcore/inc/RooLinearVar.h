@@ -19,7 +19,7 @@
 #include "Riosfwd.h"
 #include <math.h>
 #include <float.h>
-#include "RooAbsRealLValue.h"
+#include "RooAbsRealLValue.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 //#include "RooFormula.h"
 #include "RooLinTransBinning.h"

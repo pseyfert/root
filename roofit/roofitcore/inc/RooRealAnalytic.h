@@ -16,7 +16,7 @@
 #ifndef ROO_REAL_ANALYTIC
 #define ROO_REAL_ANALYTIC
 
-#include "RooRealBinding.h"
+#include "RooRealBinding.h" // IWYU pragma: export
 
 class RooRealAnalytic : public RooRealBinding {
 public:

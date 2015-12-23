@@ -16,7 +16,7 @@
 #ifndef ROO_HIST_PDF
 #define ROO_HIST_PDF
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h"   // IWYU pragma: export
 #include "RooSetProxy.h"
 #include "RooAICRegistry.h"
 

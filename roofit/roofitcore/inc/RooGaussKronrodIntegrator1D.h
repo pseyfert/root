@@ -16,8 +16,10 @@
 #ifndef ROO_GAUSS_KRONROD_INTEGRATOR_1D
 #define ROO_GAUSS_KRONROD_INTEGRATOR_1D
 
-#include "RooAbsIntegrator.h"
-#include "RooNumIntConfig.h"
+#include "RooAbsIntegrator.h" // IWYU pragma: export
+//#include "RooNumIntConfig.h"
+class RooNumIntConfig;
+class RooNumIntFactory;
 
 double RooGaussKronrodIntegrator1D_GSL_GlueFunction(double x, void *data) ;
 

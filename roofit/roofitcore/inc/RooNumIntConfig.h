@@ -16,10 +16,10 @@
 #ifndef ROO_NUM_INT_CONFIG
 #define ROO_NUM_INT_CONFIG
 
-#include "TObject.h"
+#include "TObject.h" // IWYU pragma: export
+#include "RooPrintable.h" // IWYU pragma: export
 #include "RooCategory.h"
 #include "RooLinkedList.h"
-class RooNumIntFactory ;
 class RooAbsIntegrator ;
 
 class RooNumIntConfig : public TObject, public RooPrintable {

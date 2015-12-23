@@ -16,9 +16,9 @@
 #ifndef ROO_REAL_SUM_PDF
 #define ROO_REAL_SUM_PDF
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h"  // IWYU pragma: export
 #include "RooListProxy.h"
-#include "RooAICRegistry.h"
+//#include "RooAICRegistry.h"
 #include "RooObjCacheManager.h"
 
 class RooRealSumPdf : public RooAbsPdf {

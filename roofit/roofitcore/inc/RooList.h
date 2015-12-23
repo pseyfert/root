@@ -16,7 +16,7 @@
 #ifndef ROO_LIST
 #define ROO_LIST
 
-#include "TList.h"
+#include "TList.h" // IWYU pragma: export
 
 class RooList : public TList {
 public:

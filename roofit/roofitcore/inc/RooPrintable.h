@@ -17,8 +17,6 @@
 #define ROO_PRINTABLE
 
 
-class TNamed ;
-
 #include "Riosfwd.h"
 #include "Rtypes.h"
 #include "TString.h"

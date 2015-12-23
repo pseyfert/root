@@ -18,12 +18,13 @@
 
 #include "TNamed.h"       // IWYU pragma: export
 #include "RooPrintable.h" // IWYU pragma: export
-#include "RooFormula.h" // crosscheck
 
-#include "RooArgSet.h"
+#include "RooArgSet.h"    // IWYU pragma: export
+#include "RooArgList.h"   // for covarianceMatrix argument
 #include <math.h>
-#include "TMatrixDSym.h" // IWYU pragma: keep
+#include "TMatrixDSym.h"  // IWYU pragma: keep
 
+class RooAbsRealLValue;
 class RooAbsArg;
 class RooAbsReal ;
 class RooAbsCategory ;
@@ -31,7 +32,6 @@ class RooAbsCategoryLValue;
 class RooFormulaVar;
 class RooRealVar;
 class RooPlot;
-class RooArgList;
 class TH1;
 class RooAbsBinning ;
 class Roo1DTable ;

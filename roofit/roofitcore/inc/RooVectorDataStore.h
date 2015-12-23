@@ -19,8 +19,8 @@
 #include <list>
 #include <vector>
 #include <string>
-#include <algorithm> /// FIXME
-#include "RooAbsDataStore.h" 
+#include <algorithm>
+#include "RooAbsDataStore.h" // IWYU pragma: export
 #include "RooCatType.h"
 #include "RooAbsCategory.h"
 #include "RooAbsReal.h"
@@ -30,7 +30,6 @@
 
 class RooAbsArg ;
 class RooArgList ;
-class TTree ;
 class RooFormulaVar ;
 class RooArgSet ;
 

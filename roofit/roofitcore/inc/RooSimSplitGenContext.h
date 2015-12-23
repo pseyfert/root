@@ -16,8 +16,7 @@
 #ifndef ROO_SIM_SPLIT_GEN_CONTEXT
 #define ROO_SIM_SPLIT_GEN_CONTEXT
 
-#include "TList.h"
-#include "RooAbsGenContext.h"
+#include "RooAbsGenContext.h" // IWYU pragma: export
 #include "RooArgSet.h"
 #include <vector>
 

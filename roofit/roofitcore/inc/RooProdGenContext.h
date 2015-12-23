@@ -16,15 +16,12 @@
 #ifndef ROO_PROD_GEN_CONTEXT
 #define ROO_PROD_GEN_CONTEXT
 
-#include "TList.h"
-#include "RooAbsGenContext.h"
+#include "RooAbsGenContext.h" // IWYU pragma: export
 #include "RooArgSet.h"
 
 class RooProdPdf;
 class RooDataSet;
 class RooRealIntegral;
-class RooAcceptReject;
-class TRandom;
 class TIterator;
 class RooSuperCategory ;
 

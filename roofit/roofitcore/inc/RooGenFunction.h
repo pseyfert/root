@@ -17,7 +17,7 @@
 #define ROO_GEN_FUNCTION
 
 #include "RooFunctor.h"
-#include "Math/IFunction.h"
+#include "Math/IFunctionfwd.h"
 
 class RooGenFunction : public ROOT::Math::IGenFunction {
 

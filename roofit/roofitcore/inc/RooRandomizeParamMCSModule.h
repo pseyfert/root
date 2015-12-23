@@ -17,7 +17,7 @@
 #ifndef ROO_RANDOMIZE_PARAM_MCS_MODULE
 #define ROO_RANDOMIZE_PARAM_MCS_MODULE
 
-#include "RooAbsMCStudyModule.h"
+#include "RooAbsMCStudyModule.h" // IWYU pragma: export
 #include "RooRealVar.h"
 #include <list>
 

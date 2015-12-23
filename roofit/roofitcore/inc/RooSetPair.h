@@ -16,12 +16,8 @@
 #ifndef ROO_SET_PAIR
 #define ROO_SET_PAIR
 
-#include <iostream>
-#include "TObject.h"
+#include "TObject.h" // IWYU pragma: export
 #include "RooArgSet.h"
-
-class RooLinkedListElem ;
-class TBuffer ;
 
 class RooSetPair : public TObject {
 public:

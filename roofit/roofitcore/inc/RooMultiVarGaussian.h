@@ -16,7 +16,7 @@
 #ifndef ROO_MULTI_VAR_GAUSSIAN
 #define ROO_MULTI_VAR_GAUSSIAN
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h"   // IWYU pragma: export
 #include "RooListProxy.h"
 #include "TMatrixDSym.h"
 #include "TMatrixD.h"

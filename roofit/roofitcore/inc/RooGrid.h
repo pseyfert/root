@@ -16,8 +16,8 @@
 #ifndef ROO_GRID
 #define ROO_GRID
 
-#include "TObject.h"
-#include "RooPrintable.h"
+#include "TObject.h"      //IWYU pragma: export
+#include "RooPrintable.h" //IWYU pragma: export
 
 class RooAbsFunc;
 

@@ -23,6 +23,7 @@ class RooDataHist ;
 class TH2F;
 #include "RooAbsData.h" // IWYU pragma: export
 #include "RooDirItem.h" // IWYU pragma: export
+#include <list>
 
 #define USEMEMPOOL
 

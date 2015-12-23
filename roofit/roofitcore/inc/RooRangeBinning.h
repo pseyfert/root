@@ -16,7 +16,7 @@
 #ifndef ROO_RANGE_BINNING
 #define ROO_RANGE_BINNING
 
-#include "RooAbsBinning.h"
+#include "RooAbsBinning.h" // IWYU pragma: export
 
 class RooRangeBinning : public RooAbsBinning {
 public:

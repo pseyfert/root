@@ -17,7 +17,7 @@
 #define ROO_REAL_PROXY
 
 #include "RooAbsReal.h"
-#include "RooArgProxy.h"
+#include "RooArgProxy.h"  // IWYU pragma: export
 #include "RooAbsRealLValue.h"
 
 class RooRealProxy : public RooArgProxy {

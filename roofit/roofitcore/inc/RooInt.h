@@ -17,7 +17,7 @@
 #define ROO_INT
 
 #include "RtypesCore.h"
-#include "TNamed.h"
+#include "TNamed.h" // IWYU pragma: export
 
 class RooInt : public TNamed {
 public:

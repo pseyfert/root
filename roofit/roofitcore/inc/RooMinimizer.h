@@ -18,7 +18,7 @@
 #ifndef ROO_MINIMIZER
 #define ROO_MINIMIZER
 
-#include "TObject.h"
+#include "TObject.h" // IWYU pragma: export
 #include "TStopwatch.h"
 #include <fstream>
 //#include "TMatrixDSymfwd.h"
@@ -32,7 +32,6 @@ class RooFitResult ;
 class RooArgList ;
 class RooRealVar ;
 class RooArgSet ;
-class TH2F ;
 class RooPlot ;
 
 class RooMinimizer : public TObject {

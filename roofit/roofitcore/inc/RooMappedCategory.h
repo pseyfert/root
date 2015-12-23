@@ -17,7 +17,7 @@
 #define ROO_MAPPED_CATEGORY
 
 //#include "TObjArray.h"
-#include "RooAbsCategory.h"
+#include "RooAbsCategory.h" // IWYU pragma: export
 #include "RooCategoryProxy.h"
 #include "RooCatType.h"
 #include "TRegexp.h"

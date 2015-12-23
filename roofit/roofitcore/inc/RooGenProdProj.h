@@ -16,12 +16,9 @@
 #ifndef ROO_GEN_PROD_PROJ
 #define ROO_GEN_PROD_PROJ
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooSetProxy.h"
 #include "RooListProxy.h"
-
-class RooRealVar;
-class RooArgList ;
 
 class RooGenProdProj : public RooAbsReal {
 public:

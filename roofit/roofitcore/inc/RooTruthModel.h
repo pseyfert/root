@@ -16,7 +16,7 @@
 #ifndef ROO_TRUTH_MODEL
 #define ROO_TRUTH_MODEL
 
-#include "RooResolutionModel.h"
+#include "RooResolutionModel.h" // IWYU pragma: export
 
 class RooTruthModel : public RooResolutionModel {
 public:

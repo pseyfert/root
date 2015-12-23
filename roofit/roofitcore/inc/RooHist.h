@@ -16,8 +16,8 @@
 #ifndef ROO_HIST
 #define ROO_HIST
 
-#include "TGraphAsymmErrors.h"
-#include "RooPlotable.h"
+#include "TGraphAsymmErrors.h" // IWYU pragma: export
+#include "RooPlotable.h"       // IWYU pragma: export
 #include "RooAbsData.h"
 
 class TH1;

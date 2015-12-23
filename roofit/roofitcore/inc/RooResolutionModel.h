@@ -16,9 +16,10 @@
 #ifndef ROO_RESOLUTION_MODEL
 #define ROO_RESOLUTION_MODEL
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h"     // IWYU pragma: export
 #include "RooRealProxy.h"
-#include "RooRealVar.h"
+//#include "RooRealVar.h"
+class RooRealVar;
 #include "RooFormulaVar.h"
 
 class RooAbsAnaConvPdf;

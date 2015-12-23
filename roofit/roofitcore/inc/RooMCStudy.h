@@ -17,7 +17,7 @@
 #define ROO_MC_STUDY
 
 #include "TList.h"
-#include "TNamed.h"
+#include "TNamed.h" // IWYU pragma: export
 #include "RooArgSet.h"
 #include <list>
 class RooAbsPdf;

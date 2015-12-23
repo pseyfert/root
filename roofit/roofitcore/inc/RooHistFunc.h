@@ -16,14 +16,15 @@
 #ifndef ROO_HIST_FUNC
 #define ROO_HIST_FUNC
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h"   /// IWYU pragma: export
 //#include "RooRealProxy.h"
 #include "RooSetProxy.h"
 #include "RooAICRegistry.h"
-#include "RooTrace.h"
+//#include "RooTrace.h" // checkme
+#include "RooDataHist.h"
 
-class RooRealVar;
-class RooDataHist ;
+//class RooRealVar;
+//class RooDataHist ;
 
 class RooHistFunc : public RooAbsReal {
 public:

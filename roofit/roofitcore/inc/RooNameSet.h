@@ -17,8 +17,8 @@
 #define ROO_NAME_SET
 
 //#include "TString.h"
-#include "TObject.h"
-#include "RooPrintable.h"
+#include "TObject.h"      //IWYU pragma: export
+#include "RooPrintable.h" //IWYU pragma: export
 class RooArgSet ;
 
 class RooNameSet : public TObject, public RooPrintable {

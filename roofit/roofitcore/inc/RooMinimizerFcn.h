@@ -23,7 +23,7 @@ namespace ROOT { namespace Fit { class FitResult; } }
 
 #include "RooAbsReal.h"
 #include "RooArgList.h"
-#include "TMatrixDSym.h"
+#include "TMatrixDSymfwd.h"
 
 //#include <iostream>
 #include <fstream>

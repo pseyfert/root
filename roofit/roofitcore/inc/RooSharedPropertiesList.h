@@ -16,8 +16,8 @@
 #ifndef ROO_SHARED_PROPERTY_LIST
 #define ROO_SHARED_PROPERTY_LIST
 
-#include "TObject.h"
-#include <assert.h>
+#include "TObject.h" // IWYU pragma: export
+//#include <assert.h>
 #include "RooRefCountList.h"
 #include "RooSharedProperties.h"
 #include <map>
