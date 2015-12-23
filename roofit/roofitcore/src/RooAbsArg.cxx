@@ -40,6 +40,7 @@ setting/clearing/testing named attributes.
 #include <algorithm>                    // for remove
 #include <deque>                        // for _Deque_iterator, deque, etc
 #include <iostream>                     // for operator<<, basic_ostream, etc
+#include <fstream>                      // IWYU pragma: keep
 #include <map>                          // for map, etc
 #include <set>                          // for set, set<>::iterator, etc
 #include <stack>                        // for stack
