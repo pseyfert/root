@@ -37,24 +37,26 @@
 //
 //
 
-#include "RooFit.h"
-#include "Riostream.h"
-
-#include <math.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include "TClass.h"
-#include "TObjString.h"
-#include "TTree.h"
-#include "RooLinearVar.h"
-#include "RooStreamParser.h"
-#include "RooArgSet.h"
-#include "RooRealVar.h"
-#include "RooNumber.h"
-#include "RooBinning.h"
-#include "RooMsgService.h"
-
+#include <assert.h>                     // for assert
+#include <list>                         // for list
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for string, char_traits
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooLinTransBinning.h"         // for RooLinTransBinning
+#include "RooLinearVar.h"               // for RooLinearVar
+#include "RooLinkedList.h"              // for RooLinkedList
+#include "RooLinkedListIter.h"          // for RooFIter
+#include "RooMsgService.h"              // for coutE
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooRealVar
+#include "Rtypes.h"                     // for kTRUE, RooAbsReal::Class, etc
+#include "RtypesCore.h"                 // for Bool_t, Double_t
+#include "TClass.h"                     // for TClass
+#include "TIterator.h"                  // for TIterator
+class RooAbsBinning;
 
 
 using namespace std;

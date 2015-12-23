@@ -26,29 +26,26 @@ classes to take care of generation of observables for which p.d.fs
 do not define internal methods
 **/
 
+#include <assert.h>                     // for assert
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include "RooAbsCategory.h"             // for RooAbsCategory
+#include "RooAbsNumGenerator.h"         // for RooAbsNumGenerator
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooAcceptReject.h"            // for RooAcceptReject
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCategory.h"                // for RooCategory
+#include "RooDataSet.h"                 // for RooDataSet
+#include "RooMsgService.h"              // for ccoutI, coutI, coutW, etc
+#include "RooNumGenConfig.h"            // for RooNumGenConfig
+#include "RooNumGenFactory.h"           // for RooNumGenFactory
+#include "RooPrintable.h"               // for operator<<, etc
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealVar.h"                 // for RooRealVar
+#include "Rtypes.h"                     // for ClassImp
+#include "RtypesCore.h"                 // for Double_t, UInt_t, Int_t, etc
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for operator<<
 
-#include "RooFit.h"
-#include "Riostream.h"
-
-#include "RooAcceptReject.h"
-#include "RooAcceptReject.h"
-#include "RooAbsReal.h"
-#include "RooCategory.h"
-#include "RooRealVar.h"
-#include "RooDataSet.h"
-#include "RooRandom.h"
-#include "RooErrorHandler.h"
-
-#include "TString.h"
-#include "TIterator.h"
-#include "RooMsgService.h"
-#include "TClass.h"
-#include "TFoam.h"
-#include "RooRealBinding.h"
-#include "RooNumGenFactory.h"
-#include "RooNumGenConfig.h"
-
-#include <assert.h>
 
 using namespace std;
 

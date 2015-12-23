@@ -25,21 +25,19 @@ from a set of recursive fractions: for a given set of input fractions
 a_i it returns a_0 * Prod_i (1 - a_i). 
 **/
 
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooArgList.h"                 // for RooArgList
+#include "RooErrorHandler.h"            // for RooErrorHandler
+#include "RooListProxy.h"               // for RooListProxy
+#include "RooMsgService.h"              // for coutE
+#include "RooRecursiveFraction.h"       // for RooRecursiveFraction
+#include "Rtypes.h"                     // for ClassImp
+#include "RtypesCore.h"                 // for Double_t, Int_t
+#include "TIterator.h"                  // for TIterator
+class RooArgSet;
 
-#include "RooFit.h"
-
-#include "Riostream.h"
-#include "Riostream.h"
-#include <math.h>
-
-#include "RooRecursiveFraction.h"
-#include "RooAbsReal.h"
-#include "RooAbsPdf.h"
-#include "RooErrorHandler.h"
-#include "RooArgSet.h"
-#include "RooNLLVar.h"
-#include "RooChi2Var.h"
-#include "RooMsgService.h"
 
 using namespace std;
 

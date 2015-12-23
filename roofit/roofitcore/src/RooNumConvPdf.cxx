@@ -58,21 +58,21 @@ calls that MINUIT needs to fit your function as function of the
 convolution precision. 
 **/
 
-#include "RooFit.h"
-
-#include "Riostream.h"
-#include "Riostream.h"
-#include "TH2F.h"
-#include "RooNumConvPdf.h"
-#include "RooArgList.h"
-#include "RooRealVar.h"
-#include "RooFormulaVar.h"
-#include "RooCustomizer.h"
-#include "RooConvIntegrandBinding.h"
-#include "RooNumIntFactory.h"
-#include "RooGenContext.h"
-#include "RooConvGenContext.h"
-
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooConvGenContext.h"          // for RooConvGenContext
+#include "RooGenContext.h"              // for RooGenContext
+#include "RooNumConvPdf.h"              // for RooNumConvPdf
+#include "RooNumConvolution.h"          // for RooNumConvolution
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooRealVar
+#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp
+#include "RtypesCore.h"                 // for Bool_t, Double_t, Int_t
+#include "TString.h"                    // for Form
+class RooAbsGenContext;
+class RooDataSet;
 
 
 using namespace std;

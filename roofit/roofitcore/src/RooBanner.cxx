@@ -1,8 +1,4 @@
-#include "RooFit.h"
-
-#include "Rtypes.h"
-#include "Riostream.h"
-#include "TEnv.h"
+#include "RtypesCore.h"
 
 /**
 \file RooBanner.cxx

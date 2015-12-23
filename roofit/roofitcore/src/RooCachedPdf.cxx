@@ -18,14 +18,19 @@ RooCachedPdf is an implementation of RooAbsCachedPdf that can cache
 any external RooAbsPdf input function provided in the constructor. 
 **/
 
-#include "Riostream.h" 
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include "RooAbsCachedPdf.h"
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCachedPdf.h"               // for RooCachedPdf
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooHistPdf.h"                 // for RooHistPdf
+#include "RooMsgService.h"              // for ccoutP, coutP
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooSetProxy.h"                // for RooSetProxy
+#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp
 
-#include "RooAbsPdf.h"
-#include "RooCachedPdf.h" 
-#include "RooAbsReal.h" 
-#include "RooMsgService.h"
-#include "RooDataHist.h"
-#include "RooHistPdf.h"
 
 using namespace std;
 

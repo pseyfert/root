@@ -13,7 +13,6 @@
 #include <poll.h>                       // for pollfd, poll, POLLERR, etc
 #include <pthread.h>                    // for pthread_mutex_unlock, etc
 #include <signal.h>                     // for kill, SIGTERM
-#include <stddef.h>                     // for size_t
 #include <stdlib.h>                     // for atexit, free, malloc, etc
 #include <sys/mman.h>                   // for mmap, mprotect, munmap, etc
 #include <sys/socket.h>                 // for shutdown, socketpair, etc

@@ -16,19 +16,20 @@
 #ifndef ROO_LINKED_LIST
 #define ROO_LINKED_LIST
 
-#include <map>
-#include <list>
+#include "RooHashTable.h"               // for RooHashTable
+#include "RooLinkedListElem.h"          // for RooLinkedListElem
+#include "Rtypes.h"                     // for kTRUE, RooLinkedList::Class, etc
+#include "RtypesCore.h"                 // for Int_t, Bool_t, Option_t, etc
+#include "TObject.h"                    // for TObject
+#include "TString.h"                    // for TString
 
-//#include "TNamed.h"
-#include "RooLinkedListElem.h"
-#include "RooHashTable.h"
 class RooLinkedListIter ;
 class RooFIter ;
 class TIterator ;
 class RooAbsArg ;
 
 namespace RooLinkedListImplDetails {
-    class Chunk;
+    //class Chunk;
     class Pool;
 }
 

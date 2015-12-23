@@ -24,14 +24,12 @@ a single category state. The class holds a string label and an integer
 index value which define the state
 **/
 
-#include "RooFit.h"
-
-#include <stdlib.h>
-#include <stdlib.h>
-#include "TClass.h"
-#include "RooCatType.h"
-
-#include "Riostream.h"
+#include <string.h>                     // for strlen, strncpy
+#include <iostream>                     // for operator<<, ostream, etc
+#include "RooCatType.h"                 // for RooCatType
+#include "Rtypes.h"                     // for ClassImp, RooCatType::IsA
+#include "RtypesCore.h"                 // for Text_t
+#include "TClass.h"                     // for TClass
 
 
 using namespace std;

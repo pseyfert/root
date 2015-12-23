@@ -54,21 +54,38 @@
 //  Please see RooAbsPdf for additional details. Advertised analytical integrals must be
 //  valid for all coefficients.
 
+#include <assert.h>                     // for assert
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string
+#include <vector>                       // for vector
+#include "RooAICRegistry.h"             // for RooAICRegistry
+#include "RooAbsAnaConvPdf.h"           // for RooAbsAnaConvPdf, etc
+#include "RooAbsArg.h"                  // for RooAbsArg, etc
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooConvCoefVar.h"             // for RooConvCoefVar
+#include "RooConvGenContext.h"          // for RooConvGenContext
+#include "RooFormulaVar.h"              // for RooFormulaVar
+#include "RooGenContext.h"              // for RooGenContext
+#include "RooLinkedListIter.h"          // for RooFIter
+#include "RooListProxy.h"               // for RooListProxy
+#include "RooMsgService.h"              // for coutE, cxcoutD, coutI
+#include "RooNameReg.h"                 // for RooNameReg
+#include "RooObjCacheManager.h"         // for RooObjCacheManager
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooResolutionModel.h"         // for RooResolutionModel
+#include "RooTruthModel.h"              // for RooTruthModel
+#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp
+#include "RtypesCore.h"                 // for Int_t, Double_t, Bool_t
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for TString, Form, operator<<
+class RooAbsGenContext;
+class RooDataSet;
+class TNamed;
 
-#include "RooFit.h"
-#include "RooMsgService.h"
-
-#include "Riostream.h"
-#include "Riostream.h"
-#include "RooAbsAnaConvPdf.h"
-#include "RooResolutionModel.h"
-#include "RooRealVar.h"
-#include "RooFormulaVar.h"
-#include "RooConvGenContext.h"
-#include "RooGenContext.h"
-#include "RooTruthModel.h"
-#include "RooConvCoefVar.h"
-#include "RooNameReg.h"
 
 using namespace std;
 

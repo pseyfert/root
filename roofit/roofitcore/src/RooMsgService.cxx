@@ -38,25 +38,30 @@ The singleton instance is accessible through RooMsgService::instance() ;
 
 **/
 
-
-#include <sys/types.h>
-
-#include "RooFit.h"
-#include "RooAbsArg.h"
-#include "TClass.h"
-#include "TROOT.h"
-
-#include "RooMsgService.h"
-#include "RooCmdArg.h"
-#include "RooCmdConfig.h"
-#include "RooGlobalFunc.h"
-#include "RooSentinel.h"
-#include "RooWorkspace.h"
-
-#include "TSystem.h"
-#include "Riostream.h"
-#include <iomanip>
+#include <ext/alloc_traits.h>
+#include <iostream>                     // for operator<<, ostream, etc
 #include <fstream>
+#include <map>                          // for map, map<>::mapped_type, etc
+#include <stack>                        // for stack
+#include <string>                       // for string, operator<<, etc
+#include <utility>                      // for pair
+#include <vector>                       // for vector, vector<>::iterator
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooCmdArg.h"                  // for RooCmdArg
+#include "RooCmdConfig.h"               // for RooCmdConfig
+#include "RooGlobalFunc.h"              // for MsgTopic, MsgLevel, etc
+#include "RooLinkedList.h"              // for RooLinkedList
+#include "RooMsgService.h"              // for RooMsgService::StreamConfig, etc
+#include "RooSentinel.h"                // for RooSentinel
+#include "RooWorkspace.h"               // for RooWorkspace
+#include "Rtypes.h"                     // for kFALSE, kTRUE, etc
+#include "RtypesCore.h"                 // for Int_t, Bool_t, UInt_t, etc
+#include "TClass.h"                     // for TClass
+#include "TObject.h"                    // for TObject
+#include "TString.h"                    // for TString, Form
+#include "TSystem.h"                    // for TSystem, gSystem
+
+
 using namespace std ;
 using namespace RooFit ;
 

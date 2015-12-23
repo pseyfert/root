@@ -28,6 +28,7 @@ but are not automatically destroyed at the end of the session. This class
 installs an atexit() function that takes care of this
 **/
 
+#include <stdlib.h>                     // for atexit
 #include "RooArgSet.h"                  // for RooArgSet
 #include "RooExpensiveObjectCache.h"    // for RooExpensiveObjectCache
 #include "RooMinuit.h"                  // for RooMinuit

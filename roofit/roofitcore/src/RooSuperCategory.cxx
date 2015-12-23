@@ -30,20 +30,25 @@ RooSuperCategory state are automatically defined and updated whenever an input
 category modifies its list of states
 **/
 
-#include "RooFit.h"
-
-#include "Riostream.h"
-#include "Riostream.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include "TString.h"
-#include "TClass.h"
-#include "RooSuperCategory.h"
-#include "RooStreamParser.h"
-#include "RooArgSet.h"
-#include "RooMultiCatIter.h"
-#include "RooAbsCategoryLValue.h"
-#include "RooMsgService.h"
+#include <string.h>                     // for strlen, strtok
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsCategory.h"             // for RooAbsCategory
+#include "RooAbsCategoryLValue.h"       // for RooAbsCategoryLValue
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCatType.h"                 // for RooCatType
+#include "RooMsgService.h"              // for coutE, ccoutE
+#include "RooMultiCatIter.h"            // for RooMultiCatIter
+#include "RooPrintable.h"               // for operator<<, etc
+#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooSuperCategory.h"           // for RooSuperCategory
+#include "Rtypes.h"                     // for kTRUE, kFALSE, etc
+#include "RtypesCore.h"                 // for Bool_t, Int_t
+#include "TClass.h"                     // for TClass
+#include "TIterator.h"                  // for TIterator
+#include "TObjString.h"                 // for TObjString
+#include "TString.h"                    // for TString, operator<<
+#include "strlcpy.h"                    // for strlcpy
 
 using namespace std;
 

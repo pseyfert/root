@@ -27,28 +27,28 @@ to the p.d.f if it deems that safe. The other observables are generated
 use a RooAcceptReject sampling technique.
 **/
 
-
-#include "RooFit.h"
-#include "RooMsgService.h"
-#include "Riostream.h"
-
-#include "RooGenContext.h"
-#include "RooGenContext.h"
-#include "RooAbsPdf.h"
-#include "RooDataSet.h"
-#include "RooRealIntegral.h"
-#include "RooAcceptReject.h"
-#include "RooRealVar.h"
-#include "RooDataHist.h"
-#include "RooErrorHandler.h"
-#include "RooNumGenConfig.h"
-#include "RooNumGenFactory.h"
-
-#include "TString.h"
-#include "TIterator.h"
-#include "TClass.h"
-
-
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string
+#include "RooAbsArg.h"                  // for RooAbsArg, etc
+#include "RooAbsGenContext.h"           // for RooAbsGenContext
+#include "RooAbsLValue.h"               // for RooAbsLValue
+#include "RooAbsNumGenerator.h"         // for RooAbsNumGenerator
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooDataSet.h"                 // for RooDataSet
+#include "RooErrorHandler.h"            // for RooErrorHandler
+#include "RooGenContext.h"              // for RooGenContext
+#include "RooLinkedListIter.h"          // for RooFIter
+#include "RooMsgService.h"              // for cxcoutD, ccxcoutI, coutE, etc
+#include "RooNumGenFactory.h"           // for RooNumGenFactory
+#include "RooPrintable.h"               // for operator<<, etc
+#include "RooRealIntegral.h"            // for RooRealIntegral
+#include "RooRealVar.h"                 // for RooRealVar
+#include "Rtypes.h"                     // for kTRUE, etc
+#include "RtypesCore.h"                 // for Double_t, Int_t, Bool_t
+#include "TClass.h"                     // for TClass
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for operator<<, TString
 
 using namespace std;
 

@@ -25,15 +25,16 @@ passed to a numeric integrator. This is a utility class for
 RooNumConvPdf
 **/
 
-#include "RooFit.h"
-
-#include "RooConvIntegrandBinding.h"
-#include "RooAbsReal.h"
-#include "RooArgSet.h"
-#include "RooAbsRealLValue.h"
-#include "RooMsgService.h"
-
-#include <assert.h>
+#include <assert.h>                     // for assert
+#include <ostream>                      // for operator<<
+#include "RooAbsFunc.h"                 // for RooAbsFunc
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
+#include "RooConvIntegrandBinding.h"    // for RooConvIntegrandBinding
+#include "RooMsgService.h"              // for oocoutE
+#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp
+#include "RtypesCore.h"                 // for Double_t, UInt_t, Bool_t
+class RooArgSet;
 
 using namespace std;
 

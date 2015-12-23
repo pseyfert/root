@@ -23,18 +23,15 @@
 Lightweight interface adaptor that exports a RooAbsReal as a ROOT::Math::IMultiGenFunction
 **/
 
-
-#include "RooFit.h"
-#include "Riostream.h"
-
-#include "RooMultiGenFunction.h"
-#include "RooRealBinding.h"
-#include "RooAbsReal.h"
-#include "RooAbsPdf.h"
-#include "RooArgSet.h"
-
-#include <assert.h>
-
+#include "Math/IFunction.h"             // for IBaseFunctionMultiDim
+#include "Math/IFunctionfwd.h"          // for IMultiGenFunction
+#include "RooAbsFunc.h"                 // for RooAbsFunc
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooFunctor.h"                 // for RooFunctor
+#include "RooMultiGenFunction.h"        // for RooMultiGenFunction
+#include "Rtypes.h"                     // for ClassImp
+class RooAbsReal;
 
 
 using namespace std;

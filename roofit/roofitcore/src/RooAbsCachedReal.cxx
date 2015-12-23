@@ -28,18 +28,31 @@ by the user to getVal() and on which parameters need to be tracked
 for changes to trigger a refilling of the cache histogram.
 **/
 
-#include "Riostream.h" 
 using namespace std ;
 
-#include "RooFit.h"
-#include "TString.h"
-#include "RooAbsCachedReal.h" 
-#include "RooAbsReal.h" 
-#include "RooMsgService.h"
-#include "RooDataHist.h"
-#include "RooHistFunc.h"
-#include "RooChangeTracker.h"
-#include "RooExpensiveObjectCache.h"
+#include <map>                          // for map, map<>::mapped_type
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string
+#include <utility>                      // for pair
+#include "RooAbsArg.h"                  // for RooAbsArg, etc
+#include "RooAbsCacheElement.h"
+#include "RooAbsCachedReal.h"           // for RooAbsCachedReal, etc
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooChangeTracker.h"           // for RooChangeTracker
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooExpensiveObjectCache.h"    // for RooExpensiveObjectCache
+#include "RooHistFunc.h"                // for RooHistFunc
+#include "RooLinkedListIter.h"          // for RooFIter
+#include "RooMsgService.h"              // for ccoutD
+#include "RooObjCacheManager.h"         // for RooObjCacheManager
+#include "RooPrintable.h"               // for operator<<
+#include "Rtypes.h"                     // for kTRUE, kFALSE, etc
+#include "RtypesCore.h"                 // for Int_t, Double_t, Bool_t
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for TString, Form
+
 
 ClassImp(RooAbsCachedReal) 
 

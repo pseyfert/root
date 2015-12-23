@@ -39,24 +39,21 @@ Scientific Library version 1.5 and applies the 10-, 21-, 43- and
 reached
 **/
 
-
-
-#include "RooFit.h"
-
-#include <assert.h>
-#include <math.h>
-#include <float.h>
-#include <stdlib.h>
-#include "Riostream.h"
-#include "TMath.h"
+#include <assert.h>                     // for assert
+#include <math.h>                       // for fabs
+#include <stddef.h>                     // for size_t
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include "RooAbsFunc.h"                 // for RooAbsFunc
+#include "RooAbsIntegrator.h"           // for RooAbsIntegrator
+#include "RooArgSet.h"                  // for RooArgSet
 #include "RooGaussKronrodIntegrator1D.h"
-#include "RooArgSet.h"
-#include "RooRealVar.h"
-#include "RooNumber.h"
-#include "RooNumIntFactory.h"
-#include "RooIntegratorBinding.h"
-#include "RooMsgService.h"
-
+#include "RooMsgService.h"              // for oocoutE
+#include "RooNumIntConfig.h"            // for RooNumIntConfig
+#include "RooNumIntFactory.h"           // for RooNumIntFactory
+#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp
+#include "RtypesCore.h"                 // for Double_t, Bool_t, UInt_t
+#include "TMath.h"                      // for Power
+class TObject;
 
 using namespace std;
 

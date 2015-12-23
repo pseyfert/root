@@ -24,24 +24,31 @@ repeated applications of generate-and-fit operations on a workspace
 
 **/
 
-
-
-#include "RooFit.h"
+#include <string.h>                     // for strcmp, NULL
+#include <list>                         // for list, _List_iterator, etc
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for string, char_traits, etc
 #include "Riostream.h"
-
-#include "RooStudyManager.h"
-#include "RooWorkspace.h"
-#include "RooAbsStudy.h"
-#include "RooDataSet.h"
-#include "RooMsgService.h"
-#include "RooStudyPackage.h"
-#include "TTree.h"
-#include "TFile.h"
-#include "TRegexp.h"
-#include "TKey.h"
-#include <string>
-#include "TROOT.h"
-#include "TSystem.h"
+#include "RooAbsStudy.h"                // for RooAbsStudy
+#include "RooMsgService.h"              // for coutP, coutI, coutE, etc
+#include "RooStudyManager.h"            // for RooStudyManager
+#include "RooStudyPackage.h"            // for RooStudyPackage
+#include "Rtypes.h"                     // for ClassImp, kFALSE, kNPOS, etc
+#include "RtypesCore.h"                 // for ULong_t, Int_t, Bool_t, etc
+#include "TCollection.h"                // for TIter
+#include "TDirectory.h"                 // for TDirectory, gDirectory
+#include "TFile.h"                      // for TFile
+#include "TIterator.h"                  // for TIterator
+#include "TKey.h"                       // for TKey
+#include "TList.h"                      // for TList
+#include "TObjString.h"                 // for TObjString
+#include "TObject.h"                    // for TObject
+#include "TROOT.h"                      // for TROOT, gROOT
+#include "TRegexp.h"                    // for TRegexp
+#include "TSeqCollection.h"             // for TSeqCollection
+#include "TString.h"                    // for Form, TString, operator!=
+#include "TSystem.h"                    // for TSystem, gSystem
+class RooWorkspace;
 
 using namespace std ;
 

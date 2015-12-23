@@ -26,21 +26,20 @@ added the regular -log(L) in RooAbsPdf::fitTo() with Constrain(..)
 arguments
 **/
 
-
-#include "RooFit.h"
-
-#include "Riostream.h"
-#include "Riostream.h"
-#include <math.h>
-
-#include "RooConstraintSum.h"
-#include "RooAbsReal.h"
-#include "RooAbsPdf.h"
-#include "RooErrorHandler.h"
-#include "RooArgSet.h"
-#include "RooNLLVar.h"
-#include "RooChi2Var.h"
-#include "RooMsgService.h"
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooConstraintSum.h"           // for RooConstraintSum
+#include "RooErrorHandler.h"            // for RooErrorHandler
+#include "RooLinkedListIter.h"          // for RooFIter
+#include "RooListProxy.h"               // for RooListProxy
+#include "RooMsgService.h"              // for coutE
+#include "RooSetProxy.h"                // for RooSetProxy
+#include "Rtypes.h"                     // for ClassImp
+#include "RtypesCore.h"                 // for Double_t
+#include "TIterator.h"                  // for TIterator
 
 using namespace std;
 
