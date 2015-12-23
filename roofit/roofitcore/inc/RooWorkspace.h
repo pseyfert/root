@@ -16,7 +16,6 @@
 #ifndef ROO_WORKSPACE
 #define ROO_WORKSPACE
 
-#include "RooPrintable.h"
 #include "RooArgSet.h"
 #include "RooLinkedList.h"
 #include "RooCmdArg.h"

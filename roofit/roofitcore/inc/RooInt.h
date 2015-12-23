@@ -16,7 +16,7 @@
 #ifndef ROO_INT
 #define ROO_INT
 
-#include "Rtypes.h"
+#include "RtypesCore.h"
 #include "TNamed.h"
 
 class RooInt : public TNamed {

@@ -17,13 +17,12 @@
 #define ROO_HIST_FUNC
 
 #include "RooAbsReal.h"
-#include "RooRealProxy.h"
+//#include "RooRealProxy.h"
 #include "RooSetProxy.h"
 #include "RooAICRegistry.h"
 #include "RooTrace.h"
 
 class RooRealVar;
-class RooAbsReal;
 class RooDataHist ;
 
 class RooHistFunc : public RooAbsReal {

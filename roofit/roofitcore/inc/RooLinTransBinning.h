@@ -16,7 +16,7 @@
 #ifndef ROO_LIN_TRANS_BINNING
 #define ROO_LIN_TRANS_BINNING
 
-#include "Rtypes.h"
+#include "RtypesCore.h"
 #include "RooAbsBinning.h"
 
 class RooLinTransBinning : public RooAbsBinning {

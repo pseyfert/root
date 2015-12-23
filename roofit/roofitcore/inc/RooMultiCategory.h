@@ -17,7 +17,8 @@
 #define ROO_MULTI_CATEGORY
 
 class TObject ;
-#include "RooAbsCategoryLValue.h"
+//#include "RooAbsCategoryLValue.h"
+#include "RooAbsCategory.h"
 #include "RooCatType.h"
 #include "RooArgSet.h"
 #include "RooSetProxy.h"

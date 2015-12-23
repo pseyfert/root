@@ -100,29 +100,43 @@
 //
 
 
-#include "Riostream.h" 
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string, etc
+#include "RooAbsArg.h"                  // for RooAbsArg, etc
+#include "RooAbsBinning.h"              // for RooAbsBinning
+#include "RooAbsCacheElement.h"         // for RooAbsCacheElement::Action
+#include "RooAbsCachedPdf.h"            // for RooAbsCachedPdf, etc
+#include "RooAbsCollection.h"           // for RooAbsCollection
+#include "RooAbsLValue.h"               // for RooAbsLValue
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooConstVar.h"                // for RooConstVar
+#include "RooConvGenContext.h"          // for RooConvGenContext
+#include "RooCustomizer.h"              // for RooCustomizer
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooFFTConvPdf.h"              // for RooFFTConvPdf, etc
+#include "RooGenContext.h"              // for RooGenContext
+#include "RooGlobalFunc.h"              // for RooConst
+#include "RooLinearVar.h"               // for RooLinearVar
+#include "RooMsgService.h"              // for cxcoutI, coutE
+#include "RooObjCacheManager.h"         // for RooObjCacheManager
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooUniformBinning.h"          // for RooUniformBinning
+#include "Rtypes.h"                     // for kTRUE, kFALSE, etc
+#include "RtypesCore.h"                 // for Int_t, Double_t, Bool_t
+#include "TClass.h"                     // for TClass
+#include "TComplex.h"                   // for TComplex
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for Form, TString
+#include "TVirtualFFT.h"                // for TVirtualFFT
+class RooAbsGenContext;
+class RooDataSet;
 
-#include "RooFit.h"
-#include "RooFFTConvPdf.h" 
-#include "RooAbsReal.h" 
-#include "RooMsgService.h"
-#include "RooDataHist.h"
-#include "RooHistPdf.h"
-#include "RooRealVar.h"
-#include "TComplex.h"
-#include "TVirtualFFT.h"
-#include "RooGenContext.h"
-#include "RooConvGenContext.h"
-#include "RooBinning.h"
-#include "RooLinearVar.h"
-#include "RooCustomizer.h"
-#include "RooGlobalFunc.h"
-#include "RooLinearVar.h"
-#include "RooConstVar.h"
-#include "TClass.h"
-#include "TSystem.h"
-
-using namespace std ;
+using namespace std;
 
 ClassImp(RooFFTConvPdf) 
 

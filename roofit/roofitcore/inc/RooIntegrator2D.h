@@ -17,7 +17,7 @@
 #define ROO_INTEGRATOR_2D
 
 #include "RooIntegrator1D.h"
-#include "RooNumIntConfig.h"
+class RooNumIntConfig;
 
 class RooIntegrator2D : public RooIntegrator1D {
 public:

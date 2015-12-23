@@ -17,8 +17,8 @@
 #define ROO_ADAPTIVE_INTEGRATOR_ND
 
 #include "RooAbsIntegrator.h"
-#include "RooNumIntConfig.h"
 #include "TString.h"
+class RooNumIntConfig;
 
 namespace ROOT { namespace Math { class AdaptiveIntegratorMultiDim ; } } 
 class RooMultiGenFunction ;

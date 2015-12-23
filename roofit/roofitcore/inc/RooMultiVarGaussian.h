@@ -22,7 +22,7 @@
 #include "TMatrixD.h"
 #include "TVectorD.h"
 
-class RooRealVar;
+//class RooRealVar;
 class RooFitResult ;
 
 #include <map>

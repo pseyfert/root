@@ -38,6 +38,7 @@ the preference of the caller as encoded in the configuration object.
 #include "RooArgSet.h"                  // for RooArgSet
 #include "RooCategory.h"                // for RooCategory
 #include "RooFoamGenerator.h"           // for RooFoamGenerator
+#include "RooGlobalFunc.h"
 #include "RooMsgService.h"              // for oocoutE
 #include "RooNumGenConfig.h"            // for RooNumGenConfig
 #include "RooNumGenFactory.h"           // for RooNumGenFactory

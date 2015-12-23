@@ -17,13 +17,14 @@
 #define ROO_HIST_PDF
 
 #include "RooAbsPdf.h"
-#include "RooRealProxy.h"
+//#include "RooRealProxy.h"
 #include "RooSetProxy.h"
 #include "RooAICRegistry.h"
 
-class RooRealVar;
-class RooAbsReal;
-class RooDataHist ;
+//class RooRealVar;
+//class RooAbsReal;
+//class RooDataHist ;
+#include "RooDataHist.h"
 
 class RooHistPdf : public RooAbsPdf {
 public:

@@ -28,17 +28,20 @@ Use RooAbsCollection derived objects for public use
 **/
 
 #include "RooLinkedList.h"
-
-#include "RooFit.h"
-#include "RooLinkedListIter.h"
-#include "RooHashTable.h"
-#include "RooAbsArg.h"
-#include "RooMsgService.h"
-
-#include "Riostream.h"
-#include "TBuffer.h"
-
-#include <algorithm>
+#include <string.h>                     // for strcmp
+#include <algorithm>                    // for fill, find
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <iterator>                     // for reverse_iterator
+#include <list>                         // for _List_iterator, list
+#include <map>                          // for _Rb_tree_iterator, etc
+#include <utility>                      // for pair
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooHashTable.h"               // for RooHashTable, etc
+#include "RooLinkedListIter.h"          // for RooLinkedListIter, RooFIter
+#include "RooMsgService.h"              // for coutE
+#include "RooNameReg.h"                 // for RooNameReg, etc
+#include "TBuffer.h"                    // for TBuffer, operator<<, etc
+#include "TNamed.h"                     // for TNamed
 
 using namespace std;
 

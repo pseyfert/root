@@ -27,6 +27,8 @@
 #include "TMatrixDSym.h"
 #include "TRootIOCtor.h"
 
+#include "TList.h"
+
 #include <vector>
 #include <string>
 #include <map>

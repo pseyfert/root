@@ -16,7 +16,7 @@
 #ifndef ROO_LINKED_LIST_ITER
 #define ROO_LINKED_LIST_ITER
 
-#include "Rtypes.h"
+#include "RtypesCore.h"
 #include "TIterator.h"
 #include "RooLinkedList.h"
 

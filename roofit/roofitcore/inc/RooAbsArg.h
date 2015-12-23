@@ -18,21 +18,21 @@
 
 #include <assert.h>
 #include "TNamed.h"
-#include "THashList.h"
+//#include "THashList.h"
 #include "TRefArray.h"
 #include "RooPrintable.h"
 #include "RooRefCountList.h"
 #include "RooAbsCache.h"
 #include "RooLinkedListIter.h"
-#include "RooNameReg.h"
+//#include "RooNameReg.h"
 #include <map>
 #include <set>
 #include <deque>
 #include <stack>
 
-#include <iostream>
+//#include <iostream>
 
-#include "TClass.h"
+//#include "TClass.h"
 
 class TTree ;
 class RooArgSet ;

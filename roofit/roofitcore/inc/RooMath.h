@@ -19,7 +19,7 @@
 #include <cmath>
 #include <complex>
 
-#include "Rtypes.h"
+#include "RtypesCore.h"
 #include "TMath.h"
 #include "RooComplex.h"
 

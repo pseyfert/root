@@ -28,24 +28,30 @@
 // In the present version coef_i may not depend on x, but this limitation may be removed in the future
 //
 
-#include "RooFit.h"
-#include "Riostream.h"
-
-#include "TIterator.h"
-#include "TList.h"
-#include "RooRealSumPdf.h"
-#include "RooRealProxy.h"
-#include "RooPlot.h"
-#include "RooRealVar.h"
-#include "RooAddGenContext.h"
-#include "RooRealConstant.h"
-#include "RooRealIntegral.h"
-#include "RooMsgService.h"
-#include "RooNameReg.h"
-#include <memory>
-#include <algorithm>
-
-#include "TError.h"
+#include <assert.h>                     // for assert
+#include <algorithm>                    // for merge, unique
+#include <list>                         // for _List_iterator, list, etc
+#include <memory>                       // for auto_ptr
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include "RooAbsArg.h"                  // for RooAbsArg, etc
+#include "RooAbsPdf.h"                  // for RooAbsPdf, etc
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooLinkedListIter.h"          // for RooFIter
+#include "RooListProxy.h"               // for RooListProxy
+#include "RooMsgService.h"              // for coutE, coutW, cxcoutD
+#include "RooNameReg.h"                 // for RooNameReg
+#include "RooNameSet.h"                 // for RooNameSet
+#include "RooObjCacheManager.h"         // for RooObjCacheManager
+#include "RooRealSumPdf.h"              // for RooRealSumPdf, etc
+#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp, etc
+#include "RtypesCore.h"                 // for Double_t, Bool_t, Int_t
+#include "TClass.h"                     // for TClass
+#include "TError.h"                     // for R__ASSERT
+#include "TIterator.h"                  // for TIterator
+class RooAbsCacheElement;
+class RooAbsRealLValue;
 
 using namespace std;
 

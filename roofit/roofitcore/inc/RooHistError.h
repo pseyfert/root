@@ -16,7 +16,7 @@
 #ifndef ROO_HIST_ERROR
 #define ROO_HIST_ERROR
 
-#include "Rtypes.h"
+#include "RtypesCore.h"
 #include "RooNumber.h"
 #include "RooAbsFunc.h"
 #include <math.h>

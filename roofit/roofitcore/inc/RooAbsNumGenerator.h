@@ -19,7 +19,6 @@
 #include "TNamed.h"
 #include "RooPrintable.h"
 #include "RooArgSet.h"
-#include "RooArgList.h"
 
 class RooAbsReal;
 class RooRealVar;

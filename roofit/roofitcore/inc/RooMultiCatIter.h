@@ -20,7 +20,7 @@
 #include "TIterator.h"
 #include "RooArgSet.h"
 #include "TObjString.h"
-class RooCategory ;
+//class RooCategory ;
 class RooCatType ;
 class RooAbsCategoryLValue ;
 
@@ -43,8 +43,7 @@ public:
 
 protected:
   
-  TIterator& operator=(const TIterator&) { return *this ; } // forbidden for now
-
+  TIterator& operator=(const TIterator&) { return *this ; } // forbidden for now 
   void initialize(const RooArgSet& catList) ;
   TObjString* compositeLabel() ;
 

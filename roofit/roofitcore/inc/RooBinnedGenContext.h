@@ -17,9 +17,9 @@
 #define ROO_BINNED_GEN_CONTEXT
 
 #include "RooAbsGenContext.h"
-#include "RooArgSet.h"
 #include <vector>
 
+class RooArgSet;
 class RooDataSet;
 class RooRealIntegral;
 class RooAcceptReject;

@@ -19,9 +19,8 @@
 #include <list>
 #include <vector>
 #include <string>
-#include <algorithm>
+#include <algorithm> /// FIXME
 #include "RooAbsDataStore.h" 
-#include "TString.h"
 #include "RooCatType.h"
 #include "RooAbsCategory.h"
 #include "RooAbsReal.h"

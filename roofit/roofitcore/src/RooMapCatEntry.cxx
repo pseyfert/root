@@ -20,11 +20,12 @@
 // can be matched against the input category state label and an output
 // category state (RooCatType), which should be assign if the match is successfull.
 
-#include "RooFit.h"
-
-#include "RooMapCatEntry.h"
-#include "RooMapCatEntry.h"
-#include "TString.h"
+#include "RooMapCatEntry.h"             // for RooMapCatEntry
+#include "Rtypes.h"                     // for kTRUE, ClassImp
+#include "RtypesCore.h"                 // for Bool_t
+#include "TNamed.h"                     // for TNamed
+#include "TString.h"                    // for TString
+class RooCatType;
 
 using namespace std;
 

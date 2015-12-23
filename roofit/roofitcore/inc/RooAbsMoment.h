@@ -22,7 +22,6 @@
 
 
 class RooRealVar;
-class RooArgList ;
 
 class RooAbsMoment : public RooAbsReal {
 public:

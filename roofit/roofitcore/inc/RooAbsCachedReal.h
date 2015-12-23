@@ -12,8 +12,6 @@
 #ifndef ROOABSCACHEDREAL
 #define ROOABSCACHEDREAL
 
-#include "RooAbsPdf.h"
-#include "RooRealProxy.h"
 #include "RooAbsReal.h"
 #include "RooHistFunc.h"
 #include "RooObjCacheManager.h"

@@ -24,23 +24,36 @@ specific for RooSimultaneous PDFs when generating more than one of the
 component pdfs.
 **/
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <map>                          // for map
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for string, char_traits
+#include <vector>                       // for vector, vector<>::iterator, etc
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsCategory.h"             // for RooAbsCategory
+#include "RooAbsCategoryLValue.h"       // for RooAbsCategoryLValue
+#include "RooAbsGenContext.h"           // for RooAbsGenContext
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCatType.h"                 // for RooCatType
+#include "RooCategory.h"                // for RooCategory
+#include "RooCategoryProxy.h"           // for RooCategoryProxy
+#include "RooDataSet.h"                 // for RooDataSet
+#include "RooGlobalFunc.h"              // for Index, Link, OwnLinked
+#include "RooMsgService.h"              // for oocoutE, oocoutW
+#include "RooPrintable.h"
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooSimGenContext.h"           // for RooSimGenContext
+#include "RooSimultaneous.h"            // for RooSimultaneous
+#include "Rtypes.h"                     // for kTRUE, kFALSE, ClassImp
+#include "RtypesCore.h"                 // for Double_t, Int_t, Bool_t
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
+#include "TString.h"                    // for operator<<, Form, TString
+class RooAbsData;
 
-#include "RooSimGenContext.h"
-#include "RooSimultaneous.h"
-#include "RooRealProxy.h"
-#include "RooDataSet.h"
-#include "Roo1DTable.h"
-#include "RooCategory.h"
-#include "RooMsgService.h"
-#include "RooRandom.h"
-#include "RooGlobalFunc.h"
 
 using namespace RooFit ;
-
-#include <string>
-
 using namespace std;
 
 ClassImp(RooSimGenContext)

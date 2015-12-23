@@ -19,10 +19,9 @@
 #include "Riosfwd.h"
 #include <math.h>
 #include <float.h>
-#include "TString.h"
 #include "RooAbsRealLValue.h"
 #include "RooRealProxy.h"
-#include "RooFormula.h"
+//#include "RooFormula.h"
 #include "RooLinTransBinning.h"
 
 class RooArgSet ;

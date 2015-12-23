@@ -13,7 +13,6 @@
 #define ROOABSCACHEDPDF
 
 #include "RooAbsPdf.h"
-#include "RooRealProxy.h"
 #include "RooAbsReal.h"
 #include "RooHistPdf.h"
 #include "RooObjCacheManager.h"

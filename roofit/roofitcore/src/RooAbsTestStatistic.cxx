@@ -35,24 +35,34 @@ combined in the main thread.
 **/
 
 
-#include "RooFit.h"
-#include "Riostream.h"
-
-#include "RooAbsTestStatistic.h"
-#include "RooAbsPdf.h"
-#include "RooSimultaneous.h"
-#include "RooAbsData.h"
-#include "RooArgSet.h"
-#include "RooRealVar.h"
-#include "RooNLLVar.h"
-#include "RooRealMPFE.h"
-#include "RooErrorHandler.h"
-#include "RooMsgService.h"
-#include "TTimeStamp.h"
-#include "RooProdPdf.h"
-#include "RooRealSumPdf.h"
-
-#include <string>
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for string, char_traits
+#include <vector>                       // for vector
+#include "RooAbsArg.h"                  // for RooAbsArg, etc
+#include "RooAbsCategoryLValue.h"       // for RooAbsCategoryLValue
+#include "RooAbsCollection.h"           // for RooAbsCollection
+#include "RooAbsData.h"                 // for RooAbsData
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooAbsTestStatistic.h"        // for RooAbsTestStatistic, etc
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCatType.h"                 // for RooCatType
+#include "RooGlobalFunc.h"              // for MPSplit, etc
+#include "RooLinkedListIter.h"          // for RooFIter
+#include "RooMsgService.h"              // for ccoutD, coutE, coutI, etc
+#include "RooProdPdf.h"                 // for RooProdPdf
+#include "RooRealMPFE.h"                // for RooRealMPFE
+#include "RooRealSumPdf.h"              // for RooRealSumPdf
+#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooSimultaneous.h"            // for RooSimultaneous
+#include "Rtypes.h"                     // for kFALSE, kTRUE, etc
+#include "RtypesCore.h"                 // for Int_t, Double_t, Bool_t, etc
+#include "TClass.h"                     // for TClass
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
+#include "TObject.h"                    // for TObject
+#include "TString.h"                    // for Form, TString
 
 using namespace std;
 

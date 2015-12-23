@@ -18,7 +18,7 @@
 
 #include "RooAbsMoment.h"
 #include "RooRealProxy.h"
-#include "RooSetProxy.h"
+//#include "RooSetProxy.h"
 
 
 class RooRealVar;

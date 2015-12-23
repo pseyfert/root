@@ -23,18 +23,18 @@ RooIntegrator2D implements a numeric two-dimensiona integrator
 in terms of a recursive application of RooIntegrator1D
 **/
 
-
-#include "RooFit.h"
-
-#include "TClass.h"
-#include "RooIntegrator2D.h"
-#include "RooArgSet.h"
-#include "RooIntegratorBinding.h"
-#include "RooRealVar.h"
-#include "RooNumber.h"
-#include "RooNumIntFactory.h"
-
-#include <assert.h>
+#include "RooAbsFunc.h"                 // for RooAbsFunc
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCategory.h"                // for RooCategory
+#include "RooIntegrator1D.h"            // for RooIntegrator1D, etc
+#include "RooIntegrator2D.h"            // for RooIntegrator2D
+#include "RooIntegratorBinding.h"       // for RooIntegratorBinding
+#include "RooNumIntConfig.h"            // for RooNumIntConfig
+#include "RooNumIntFactory.h"           // for RooNumIntFactory
+#include "Rtypes.h"                     // for RooIntegrator1D::Class, etc
+#include "RtypesCore.h"                 // for Double_t, Bool_t, Int_t
+#include "TClass.h"                     // for TClass
+class RooAbsIntegrator;
 
 using namespace std;
 

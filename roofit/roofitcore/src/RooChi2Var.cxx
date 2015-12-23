@@ -27,19 +27,23 @@
 // are used. In extended PDF mode, N_tot is substituted with N_expected.
 //
 
-#include "RooFit.h"
-
-#include "RooChi2Var.h"
-#include "RooChi2Var.h"
-#include "RooDataHist.h"
-#include "RooAbsPdf.h"
-#include "RooCmdConfig.h"
-#include "RooMsgService.h"
-
-#include "Riostream.h"
-
-#include "RooRealVar.h"
-#include "RooAbsDataStore.h"
+#include <math.h>                       // for sqrt
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include "RooAbsData.h"                 // for RooAbsData, etc
+#include "RooAbsDataStore.h"            // for RooAbsDataStore
+#include "RooAbsOptTestStatistic.h"     // for RooAbsOptTestStatistic
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooChi2Var.h"                 // for RooChi2Var, etc
+#include "RooCmdConfig.h"               // for RooCmdConfig
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooGlobalFunc.h"              // for MPSplit, etc
+#include "RooMsgService.h"              // for coutE
+#include "Rtypes.h"                     // for kFALSE, RooAbsPdf::Class, etc
+#include "RtypesCore.h"                 // for Double_t, Int_t, Bool_t
+#include "TClass.h"                     // for TClass
+class RooCmdArg;
 
 
 using namespace std;

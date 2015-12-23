@@ -18,15 +18,19 @@
 
 #include "TNamed.h"
 #include "RooPrintable.h"
+#include "RooFormula.h" // crosscheck
+
 #include "RooArgSet.h"
-#include "RooFormulaVar.h"
 #include <math.h>
 #include "TMatrixDSym.h"
 
 class RooAbsArg;
 class RooAbsReal ;
 class RooAbsCategory ;
+class RooAbsCategoryLValue;
 class Roo1DTable ;
+class RooFormulaVar;
+class RooRealVar;
 class RooPlot;
 class RooArgList;
 class TH1;

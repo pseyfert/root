@@ -16,10 +16,10 @@
 #ifndef ROO_LIST_PROXY
 #define ROO_LIST_PROXY
 
-#include "TObject.h"
+//#include "TObject.h"
 #include "Riosfwd.h"
 #include "RooAbsProxy.h"
-#include "RooLinkedListIter.h"
+//#include "RooLinkedListIter.h"
 #include "RooAbsArg.h"
 #include "RooArgList.h"
 

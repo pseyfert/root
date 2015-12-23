@@ -37,6 +37,7 @@
 #include "RooMsgService.h"
 
 #include "RooMinimizer.h"
+#include "TMatrixDSym.h"
 
 using namespace std;
 

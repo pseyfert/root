@@ -24,31 +24,65 @@ coordinates in N-dimensional space are represented by a RooArgSet of RooRealVar,
 or RooStringVar objects, thus data can be binned in real and/or discrete dimensions
 **/
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <assert.h>                     // for assert
+#include <ext/alloc_traits.h>
+#include <string.h>                     // for strtok
+#include <algorithm>                    // for max, min
+#include <cmath>                        // for fabs, sqrt, pow
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <limits>                       // for numeric_limits
+#include <map>                          // for map, _Rb_tree_iterator, etc
+#include <string>                       // for string, char_traits, etc
+#include <utility>                      // for pair
+#include <vector>                       // for vector, etc
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsBinning.h"              // for RooAbsBinning
+#include "RooAbsData.h"                 // for RooAbsData, etc
+#include "RooAbsDataStore.h"            // for RooAbsDataStore
+#include "RooAbsLValue.h"               // for RooAbsLValue
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooAbsRealLValue.h"           // for RooAbsRealLValue
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooBinning.h"                 // for RooBinning
+#include "RooCacheManager.h"            // for RooCacheManager
+#include "RooCategory.h"                // for RooCategory
+#include "RooCmdArg.h"                  // for RooCmdArg
+#include "RooCmdConfig.h"               // for RooCmdConfig
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooDataHistSliceIter.h"       // for RooDataHistSliceIter
+#include "RooDirItem.h"                 // for RooDirItem
+#include "RooFormula.h"                 // for RooFormula
+#include "RooFormulaVar.h"              // for RooFormulaVar
+#include "RooHistError.h"               // for RooHistError
+#include "RooLinkedList.h"              // for RooLinkedList
+#include "RooLinkedListIter.h"          // for RooFIter
+#include "RooMath.h"                    // for RooMath
+#include "RooMsgService.h"              // for coutE, coutI
+#include "RooPlot.h"                    // for RooPlot
+#include "RooPrintable.h"               // for operator<<, etc
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
+#include "RooTreeData.h"                // for RooTreeData
+#include "RooTreeDataStore.h"           // for RooTreeDataStore
+#include "RooUniformBinning.h"          // for RooUniformBinning
+#include "RooVectorDataStore.h"         // for RooVectorDataStore
+#include "Rtypes.h"                     // for kTRUE, kFALSE, etc
+#include "RtypesCore.h"                 // for Double_t, Int_t, Bool_t, etc
+#include "TArrayD.h"                    // for TArrayD
+#include "TAxis.h"                      // for TAxis
+#include "TBuffer.h"                    // for TBuffer, operator>>
+#include "TDirectory.h"                 // for TDirectory
+#include "TH1.h"                        // for TH1
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
+#include "TMath.h"                      // for Power
+#include "TNamed.h"                     // for TNamed
+#include "TObject.h"                    // for TObject
+#include "TString.h"                    // for operator<<, Form, TString, etc
+#include "TTree.h"                      // for TTree
+#include "strlcpy.h"                    // for strlcpy
 
-#include "TH1.h"
-#include "TH1.h"
-#include "TDirectory.h"
-#include "TMath.h"
-#include "RooMsgService.h"
-#include "RooDataHist.h"
-#include "RooDataHistSliceIter.h"
-#include "RooAbsLValue.h"
-#include "RooArgList.h"
-#include "RooRealVar.h"
-#include "RooMath.h"
-#include "RooBinning.h"
-#include "RooPlot.h"
-#include "RooHistError.h"
-#include "RooCategory.h"
-#include "RooCmdConfig.h"
-#include "RooLinkedListIter.h"
-#include "RooTreeDataStore.h"
-#include "RooVectorDataStore.h"
-#include "TTree.h"
-#include "RooTrace.h"
-#include "RooTreeData.h"
 
 using namespace std ;
 

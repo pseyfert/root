@@ -17,7 +17,7 @@
 #define ROO_ADAPTIVE_GAUSS_KRONROD_INTEGRATOR_1D
 
 #include "RooAbsIntegrator.h"
-#include "RooNumIntConfig.h"
+class RooNumIntConfig;
 
 double RooAdaptiveGaussKronrodIntegrator1D_GSL_GlueFunction(double x, void *data) ;
 

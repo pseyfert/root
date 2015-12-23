@@ -19,7 +19,7 @@
 #include <map>
 #include <list>
 
-#include "TNamed.h"
+//#include "TNamed.h"
 #include "RooLinkedListElem.h"
 #include "RooHashTable.h"
 class RooLinkedListIter ;

@@ -26,21 +26,33 @@ the generated code on the fly, and on request also immediate
 instantiate objects.
 **/
 
-#include "RooFit.h"
-#include "TClass.h"
-#include "RooClassFactory.h"
-#include "RooErrorHandler.h"
-#include "RooAbsReal.h"
-#include "RooAbsCategory.h"
-#include "RooArgList.h"
-#include "RooMsgService.h"
-#include "TInterpreter.h"
-#include "RooWorkspace.h"
-#include "RooGlobalFunc.h"
-#include "RooAbsPdf.h"
-#include <fstream>
-#include <vector>
-#include <string>
+#include <ctype.h>                      // for toupper
+#include <ext/alloc_traits.h>
+#include <stddef.h>                     // for size_t
+#include <string.h>                     // for strtok, strlen, strncpy
+#include <fstream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for string, char_traits, etc
+#include <vector>                       // for vector, vector<>::reference
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsCategory.h"             // for RooAbsCategory
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooArgList.h"                 // for RooArgList
+#include "RooClassFactory.h"            // for RooClassFactory, etc
+#include "RooErrorHandler.h"            // for RooErrorHandler
+#include "RooFactoryWSTool.h"           // for RooFactoryWSTool
+#include "RooGlobalFunc.h"              // for Silence
+#include "RooMsgService.h"              // for oocoutE
+#include "RooWorkspace.h"               // for RooWorkspace
+#include "Rtypes.h"                     // for kTRUE, kFALSE, ClassImp, etc
+#include "RtypesCore.h"                 // for Bool_t, ULong_t, Int_t, etc
+#include "TClass.h"                     // for TClass
+#include "TInterpreter.h"               // for TInterpreter, gInterpreter, etc
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for Form, TString, operator<<
+#include "strlcpy.h"                    // for strlcpy
+class TObject;
+
 
 using namespace std ;
 

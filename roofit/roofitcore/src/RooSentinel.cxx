@@ -28,21 +28,21 @@ but are not automatically destroyed at the end of the session. This class
 installs an atexit() function that takes care of this
 **/
 
-#include "RooFit.h"
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooExpensiveObjectCache.h"    // for RooExpensiveObjectCache
+#include "RooMinuit.h"                  // for RooMinuit
+#include "RooMsgService.h"              // for RooMsgService
+#include "RooNameReg.h"                 // for RooNameReg
+#include "RooNumGenConfig.h"            // for RooNumGenConfig
+#include "RooNumGenFactory.h"           // for RooNumGenFactory
+#include "RooNumIntConfig.h"            // for RooNumIntConfig
+#include "RooNumIntFactory.h"           // for RooNumIntFactory
+#include "RooRealConstant.h"            // for RooRealConstant
+#include "RooResolutionModel.h"         // for RooResolutionModel
+#include "RooSentinel.h"                // for RooSentinel
+#include "Rtypes.h"                     // for kFALSE, kTRUE
+#include "RtypesCore.h"                 // for Bool_t
 
-#include "RooSentinel.h"
-#include "RooSentinel.h"
-#include "RooMinuit.h"
-#include "RooMsgService.h"
-#include "RooNumIntConfig.h"
-#include "RooNumIntFactory.h"
-#include "RooNumGenFactory.h"
-#include "RooNumGenConfig.h"
-#include "RooNameReg.h"
-#include "RooArgSet.h"
-#include "RooRealConstant.h"
-#include "RooResolutionModel.h"
-#include "RooExpensiveObjectCache.h"
 
 Bool_t RooSentinel::_active = kFALSE ;
 
