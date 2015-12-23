@@ -11,26 +11,26 @@ RooJeffreysPrior
 **/
 
 
-#include "RooFit.h"
+#include <math.h>                       // for sqrt
+#include <stddef.h>                     // for NULL
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include <math.h>
-
-#include "RooJeffreysPrior.h"
-#include "RooAbsReal.h"
-#include "RooAbsPdf.h"
-#include "RooErrorHandler.h"
-#include "RooArgSet.h"
-#include "RooMsgService.h"
-#include "RooFitResult.h"
-#include "TMatrixDSym.h"
-#include "RooDataHist.h"
-#include "RooFitResult.h"
-#include "RooNumIntConfig.h"
-#include "RooRealVar.h"
-
-#include "TError.h"
+#include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal
+#include "RooArgSet.h"                  // for Int_t, RooArgSet, kFALSE, etc
+#include "RooCategory.h"                // for RooAbsArg, RooCategory
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooErrorHandler.h"            // for RooErrorHandler
+#include "RooFitResult.h"               // for RooFitResult
+#include "RooGlobalFunc.h"              // for ExpectedData, Minos, etc
+#include "RooJeffreysPrior.h"           // for RooJeffreysPrior
+#include "RooListProxy.h"               // for RooListProxy, RooArgList
+#include "RooMsgService.h"              // for RooMsgService, coutE
+#include "RooNumIntConfig.h"            // for kFALSE, ClassImp, Double_t, etc
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "TError.h"                     // for R__ASSERT
+#include "TIterator.h"                  // for TIterator
+#include "TMatrixDSymfwd.h"             // for TMatrixDSym
+#include "TMatrixTSym.h"                // for TMatrixTSym
 
 using namespace std;
 

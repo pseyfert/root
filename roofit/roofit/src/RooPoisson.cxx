@@ -14,18 +14,18 @@
 Poisson pdf
 **/
 
-#include <iostream> 
+#include <math.h>                       // for fabs, log, exp, floor
 
-#include "RooPoisson.h" 
-#include "RooAbsReal.h" 
-#include "RooAbsCategory.h" 
-
-#include "RooRandom.h"
-#include "RooMath.h"
-#include "TMath.h"
-#include "Math/ProbFuncMathCore.h"
-
-#include "TError.h"
+#include "Math/ProbFuncMathCore.h"      // for poisson_cdf, gamma_cdf
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooArgSet.h"                  // for Double_t, Int_t, Bool_t, etc
+#include "RooNumber.h"                  // for RooNumber
+#include "RooPoisson.h"                 // for RooPoisson
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "TError.h"                     // for R__ASSERT
+#include "TMath.h"                      // for Poisson, Floor, LnGamma
+#include "TRandom.h"                    // for TRandom
 
 using namespace std;
 

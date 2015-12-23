@@ -25,20 +25,23 @@ a one-sided exponential. Object of class RooGExpModel can be used
 for analytical convolutions with classes inheriting from RooAbsAnaConvPdf
 **/
 
-#include "RooFit.h"
+#include <math.h>                       // for exp, sqrt, fabs, log, atan2
+#include <complex>                      // for complex, operator*, etc
+#include <iostream>                     // for operator<<, basic_ostream, etc
 
-#include "Riostream.h"
-#include "RooGExpModel.h"
-#include "RooMath.h"
-#include "RooRealConstant.h"
-#include "RooRandom.h"
-#include "RooMath.h"
-#include "TMath.h"
-
-#include "TError.h"
-
-#include "RooRealVar.h"
-#include "RooRealProxy.h"
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooFormulaVar.h"              // for RooFormulaVar
+#include "RooGExpModel.h"               // for RooGExpModel, etc
+#include "RooMath.h"                    // for RooMath
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealConstant.h"            // for RooRealConstant
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for Double_t, RooAbsReal, etc
+#include "RooResolutionModel.h"         // for RooResolutionModel
+#include "TError.h"                     // for R__ASSERT
+#include "TMath.h"                      // for Power
+#include "TRandom.h"                    // for TRandom
+#include "TString.h"                    // for TString
 
 using namespace std;
 

@@ -14,22 +14,21 @@
  * with or without modification, are permitted according to the terms        *
  * listed in LICENSE (http://roofit.sourceforge.net/license.txt)             *
  *****************************************************************************/
-#include "RooFit.h"
+#include <ext/alloc_traits.h>
+#include <stdio.h>                      // for snprintf
+#include <algorithm>                    // for min, max, lower_bound, sort, etc
+#include <cmath>                        // for sqrt, floor, exp, pow, log
+#include <limits>                       // for numeric_limits
+#include <vector>                       // for vector
 
-#include <limits>
-#include <algorithm>
-#include <cmath>
-#include "Riostream.h"
-#include "TMath.h"
-
-#include "RooKeysPdf.h"
-#include "RooAbsReal.h"
-#include "RooRealVar.h"
-#include "RooRandom.h"
-#include "RooDataSet.h"
-#include "RooTrace.h"
-
-#include "TError.h"
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooDataSet.h"                 // for RooDataSet, RooArgSet
+#include "RooKeysPdf.h"                 // for RooKeysPdf, etc
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for Double_t, Int_t, RooRealVar, etc
+#include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
+#include "TError.h"                     // for R__ASSERT
+#include "TMath.h"                      // for Pi
 
 using namespace std;
 

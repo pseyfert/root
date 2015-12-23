@@ -13,22 +13,24 @@ true Higgs masses indicated in mrefpoints. the input parameter m is the true (co
 Morphing can be set to be linear, non-linear or a mixture of the two.
 */
 
-#include "Riostream.h" 
+#include <assert.h>                     // for assert
+#include <float.h>                      // for DBL_MAX
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string
 
-#include "Roo1DMomentMorphFunction.h" 
-#include "RooAbsCategory.h" 
-#include "RooRealIntegral.h"
-#include "RooRealConstant.h"
-#include "RooRealVar.h"
-#include "RooFormulaVar.h"
-#include "RooCustomizer.h"
-#include "RooAddPdf.h"
-#include "RooAddition.h"
-#include "RooMoment.h"
-#include "RooLinearVar.h"
-#include "RooChangeTracker.h"
-
-#include "TMath.h"
+#include "Roo1DMomentMorphFunction.h"   // for Roo1DMomentMorphFunction, etc
+#include "RooAbsCategory.h"             // for RooAbsArg
+#include "RooArgList.h"                 // for RooArgList
+#include "RooMsgService.h"              // for coutE
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for Int_t, RooAbsReal, Double_t
+#include "RooSetProxy.h"                // for RooSetProxy, ClassImp
+#include "TIterator.h"                  // for TIterator
+#include "TMath.h"                      // for Power
+#include "TMatrixDfwd.h"                // for TMatrixD
+#include "TMatrixT.h"                   // for TMatrixT
+#include "TVectorDfwd.h"                // for TVectorD
+#include "TVectorT.h"                   // for TVectorT
 
 using namespace std;
 

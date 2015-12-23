@@ -31,10 +31,14 @@ the error on the blind parameters is indentical to that
 of the unblind parameter
 **/
 
-#include "RooFit.h"
+#include "RooAbsHiddenReal.h"           // for RooAbsHiddenReal
+#include "RooBlindTools.h"              // for RooBlindTools, etc
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooUnblindOffset.h"           // for RooUnblindOffset
+#include "Rtypes.h"                     // for Double_t, ClassImp
 
-#include "RooArgSet.h"
-#include "RooUnblindOffset.h"
+class RooAbsCategory;
+class RooAbsReal;
 
 
 using namespace std;

@@ -23,14 +23,17 @@ Single or double sided decay function that can be analytically convolved
 with any RooResolutionModel implementation
 **/
 
-#include "RooFit.h"
+#include <math.h>                       // for log
 
-#include "Riostream.h"
-#include "RooDecay.h"
-#include "RooRealVar.h"
-#include "RooRandom.h"
+#include "RooAbsAnaConvPdf.h"           // for RooAbsAnaConvPdf
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooDecay.h"                   // for RooDecay, etc
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for Double_t, Int_t, RooAbsReal, etc
+#include "TError.h"                     // for R__ASSERT
 
-#include "TError.h"
+class RooResolutionModel;
 
 using namespace std;
 

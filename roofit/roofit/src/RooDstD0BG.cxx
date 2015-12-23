@@ -25,17 +25,18 @@ Special p.d.f shape that can be used to model the background of
 D*-D0 mass difference distributions
 **/
 
-#include "RooFit.h"
+#include <assert.h>                     // for assert
+#include <math.h>                       // for exp
 
-#include "Riostream.h"
-#include <math.h>
-#include "TMath.h"
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooDstD0BG.h"                 // for RooDstD0BG
+#include "RooIntegrator1D.h"            // for RooIntegrator1D
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for Double_t, Int_t, kTRUE, etc
+#include "TMath.h"                      // for Power
 
-#include "RooDstD0BG.h"
-#include "RooAbsReal.h"
-#include "RooRealVar.h"
-#include "RooIntegrator1D.h"
-#include "RooAbsFunc.h"
+class RooAbsFunc;
 
 using namespace std;
 

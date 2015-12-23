@@ -24,8 +24,14 @@ class cannot be persisted in a RooWorkspace without registering the function
 pointer first using RooCFunction1Binding<T1,T2>::register().
 **/
 
-#include "Riostream.h" 
-#include "RooFunctor1DBinding.h" 
+#include <ostream>                      // for operator<<, ostream, etc
+
+#include "Math/IFunction.h"             // for IBaseFunctionOneDim
+#include "RooAbsPdf.h"                  // for RooAbsReal, RooAbsPdf
+#include "RooFunctor1DBinding.h"        // for RooFunctor1DBinding, etc
+#include "RooRealProxy.h"               // for RooAbsProxy, RooRealProxy
+#include "Rtypes.h"                     // for ClassImp, Double_t, Int_t
+#include "TString.h"                    // for TString
 
 using namespace std ;
 

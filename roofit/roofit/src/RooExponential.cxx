@@ -22,13 +22,15 @@
 Exponential p.d.f
 **/
 
-#include "RooFit.h"
+#include <assert.h>                     // for assert
+#include <math.h>                       // for exp
 
-#include "Riostream.h"
-#include <math.h>
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooExponential.h"             // for RooExponential
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for Double_t, Int_t, ClassImp
 
-#include "RooExponential.h"
-#include "RooRealVar.h"
+class RooArgSet;
 
 using namespace std;
 

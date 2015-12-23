@@ -29,15 +29,15 @@ The combination only 'reject' can be chosen to be visible or not visible
 (and hence this efficiency is then equal to zero).
 **/
 
-#include "RooFit.h"
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string
+#include <vector>                       // for vector
 
-#include "RooMultiBinomial.h"
-#include "RooStreamParser.h"
-#include "RooArgList.h"
-#include "RooAbsCategory.h"
-#include "RooMsgService.h"
-#include <string>
-#include <vector>
+#include "RooAbsCategory.h"             // for RooAbsCategory
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooListProxy.h"               // for Double_t, RooArgList, etc
+#include "RooMsgService.h"              // for coutW, coutE
+#include "RooMultiBinomial.h"           // for RooMultiBinomial
 
 using namespace std ;
 

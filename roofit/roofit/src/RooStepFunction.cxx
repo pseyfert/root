@@ -27,18 +27,19 @@
 // but a not-normalized function (RooAbsReal)
 //
 
-#include "RooFit.h"
+#include <assert.h>                     // for assert
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string
+#include <vector>                       // for vector
 
-#include "Riostream.h"
-#include "TArrayD.h"
-#include <math.h>
-
-#include "RooStepFunction.h"
-#include "RooAbsReal.h"
-#include "RooRealVar.h"
-#include "RooArgList.h"
-#include "RooMsgService.h"
-#include "RooMath.h"
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooListProxy.h"               // for RooListProxy, RooArgList
+#include "RooMath.h"                    // for RooMath
+#include "RooMsgService.h"              // for coutE
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooAbsReal, Double_t, Int_t, etc
+#include "RooStepFunction.h"            // for RooStepFunction
+#include "TIterator.h"                  // for TIterator
 
 using namespace std;
 

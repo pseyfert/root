@@ -27,17 +27,14 @@ algorithm. Select the faster algorithm either in the constructor, or with
 the selectFastAlgorithm() method.
 **/
 
-#include <cmath>
-#include <complex>
+#include <cmath>                        // for sqrt, atan2, exp
+#include <complex>                      // for complex
 
-#include "RooFit.h"
-
-#include "Riostream.h"
-
-#include "RooVoigtian.h"
-#include "RooAbsReal.h"
-#include "RooRealVar.h"
-#include "RooMath.h"
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooMath.h"                    // for RooMath
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for Double_t, Bool_t, ClassImp
+#include "RooVoigtian.h"                // for RooVoigtian
 
 using namespace std;
 

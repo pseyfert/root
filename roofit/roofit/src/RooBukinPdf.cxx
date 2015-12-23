@@ -38,14 +38,14 @@ RooBukinPdf implements the NovosibirskA function
  *   -------------------------------------------			     *
  *****************************************************************************/
 
-#include "RooFit.h"
+#include <math.h>                       // for log, exp, sqrt
 
-#include <math.h>
-
-
-#include "RooBukinPdf.h"
-#include "RooRealVar.h"
-#include "TMath.h"
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooBukinPdf.h"                // for RooBukinPdf
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for ClassImp, Double_t
+#include "TMath.h"                      // for Power
+#include "TMathBase.h"                  // for Abs
 
 using namespace std;
 

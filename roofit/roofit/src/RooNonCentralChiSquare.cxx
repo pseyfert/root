@@ -37,20 +37,22 @@ http://live.boost.org/doc/libs/1_42_0/libs/math/doc/sf_and_dist/html/math_toolki
 http://wesnoth.repositoryhosting.com/trac/wesnoth_wesnoth/browser/trunk/include/boost/math/distributions/non_central_chi_squared.hpp?rev=6
 **/
 
-#include "Riostream.h" 
+#include <cmath>                        // for exp, pow
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooNonCentralChiSquare.h" 
-#include "RooAbsReal.h" 
-#include "RooAbsCategory.h" 
-#include <math.h> 
-#include "TMath.h" 
-//#include "RooNumber.h"
-#include "Math/DistFunc.h"
+#include "Math/PdfFuncMathCore.h"       // for chisquared_pdf
+#include "Math/PdfFuncMathMore.h"       // for noncentral_chisquared_pdf
+#include "Math/ProbFuncMathCore.h"      // for chisquared_cdf
+#include "RConfigure.h"                 // for R__HAS_MATHMORE
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooMsgService.h"              // for ccoutD, coutW, coutI
+#include "RooNonCentralChiSquare.h"     // for RooNonCentralChiSquare
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "Rtypes.h"                     // for Double_t, Int_t, Bool_t, etc
+#include "TError.h"                     // for R__ASSERT
+#include "TMath.h"                      // for Gamma, Floor
 
-
-#include "RooMsgService.h"
-
-#include "TError.h"
+class RooArgSet;
 
 using namespace std;
 

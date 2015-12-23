@@ -17,13 +17,13 @@
 
 **/
 
-#include "Riostream.h" 
-#include "RooTMathReg.h"
-#include "RooCFunction1Binding.h" 
-#include "RooCFunction2Binding.h" 
-#include "RooCFunction3Binding.h" 
-#include "RooCFunction4Binding.h" 
-#include "TMath.h"
+#include "RooCFunction1Binding.h"       // for RooCFunction1Map, etc
+#include "RooCFunction2Binding.h"       // for RooCFunction2Map, etc
+#include "RooCFunction3Binding.h"       // for RooCFunction3Map, etc
+#include "RooCFunction4Binding.h"       // for RooCFunction4Map, etc
+#include "RooTMathReg.h"                // for RooTMathReg
+#include "TMath.h"                      // for Gamma, ACos, ACosH, ASin, etc
+#include "TMathBase.h"                  // for Abs, Sign
 
 static RooTMathReg dummy ;
 

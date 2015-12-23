@@ -6,15 +6,22 @@
 
 // Your description goes here... 
 
-#include "Riostream.h" 
+#include <cmath>                        // for log, pow, sqrt
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string, etc
+#include <vector>                       // for vector, vector<>::iterator
 
-#include "RooHistConstraint.h" 
-#include "RooAbsReal.h" 
-#include "RooAbsCategory.h" 
-#include "RooParamHistFunc.h"
-#include "RooRealVar.h"
-#include <math.h> 
-#include "TMath.h" 
+#include "RooAbsCategory.h"             // for RooFIter, RooAbsArg
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooHistConstraint.h"          // for RooHistConstraint
+#include "RooListProxy.h"               // for RooListProxy
+#include "RooMsgService.h"              // for coutE, coutW
+#include "RooParamHistFunc.h"           // for RooParamHistFunc
+#include "RooRealVar.h"                 // for RooRealVar, Double_t, Int_t, etc
+#include "TMath.h"                      // for Poisson
+#include "TString.h"                    // for Form
 
 using namespace std;
 

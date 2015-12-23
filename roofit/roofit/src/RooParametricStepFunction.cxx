@@ -41,18 +41,19 @@
 //
 				
 
-#include "RooFit.h"
+#include <iostream>                     // for operator<<, basic_ostream, etc
 
-#include "Riostream.h"
-#include "TArrayD.h"
-#include <math.h>
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooListProxy.h"               // for RooListProxy, RooArgList
+#include "RooParametricStepFunction.h"  // for RooParametricStepFunction
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for Double_t, RooRealVar, Int_t, etc
+#include "TArrayD.h"                    // for TArrayD
+#include "TError.h"                     // for R__ASSERT
+#include "TIterator.h"                  // for TIterator
 
-#include "RooParametricStepFunction.h"
-#include "RooAbsReal.h"
-#include "RooRealVar.h"
-#include "RooArgList.h"
-
-#include "TError.h"
+class RooArgSet;
 
 using namespace std;
 

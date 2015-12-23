@@ -26,15 +26,19 @@ probability density functions have one degree of freedome
 less than polynomial functions due to the normalization condition
 **/
 
-#include <cmath>
-#include <cassert>
+#include <cmath>                        // for pow
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <vector>                       // for vector
 
-#include "RooPolynomial.h"
-#include "RooAbsReal.h"
-#include "RooArgList.h"
-#include "RooMsgService.h"
+#include "RooAbsArg.h"                  // for RooFIter, RooAbsArg
+#include "RooAbsPdf.h"                  // for RooAbsReal, RooAbsPdf
+#include "RooListProxy.h"               // for Double_t, RooListProxy, etc
+#include "RooMsgService.h"              // for coutE
+#include "RooPolynomial.h"              // for RooPolynomial
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "TError.h"                     // for R__ASSERT
 
-#include "TError.h"
+class RooArgSet;
 
 using namespace std;
 

@@ -27,15 +27,21 @@ be analytically convolved with any RooResolutionModel implementation
 **/
 
 
-#include "RooFit.h"
+#include <math.h>                       // for exp, cos, cosh, fabs, log, etc
+#include <stdlib.h>                     // for abort
+#include <iostream>                     // for operator<<, basic_ostream, etc
 
-#include "Riostream.h"
-#include "TMath.h"
-#include "RooBDecay.h"
-#include "RooRealVar.h"
-#include "RooRandom.h"
+#include "RooAbsAnaConvPdf.h"           // for RooAbsAnaConvPdf
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooBDecay.h"                  // for RooBDecay, etc
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooAbsReal, Double_t, Int_t, etc
+#include "TError.h"                     // for R__ASSERT
+#include "TMathBase.h"                  // for Abs
 
-#include "TError.h"
+class RooResolutionModel;
 
 using namespace std;
 

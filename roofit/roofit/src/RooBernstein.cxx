@@ -22,17 +22,21 @@ For any n, the n+1 basis polynomials 'form a partition of unity', eg.
 http://www.idav.ucdavis.edu/education/CAGDNotes/Bernstein-Polynomials.pdf
 **/
 
-#include "RooFit.h"
+#include <string.h>                     // for strlen
+#include <cmath>                        // for pow
+#include <iostream>                     // for operator<<, basic_ostream, etc
 
-#include "Riostream.h"
-#include <math.h>
-#include "TMath.h"
-#include "RooBernstein.h"
-#include "RooAbsReal.h"
-#include "RooRealVar.h"
-#include "RooArgList.h"
+#include "RooAbsArg.h"                  // for RooFIter, RooAbsArg
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooBernstein.h"               // for RooBernstein
+#include "RooListProxy.h"               // for RooListProxy, RooArgList
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooAbsReal, Double_t, Int_t, etc
+#include "TError.h"                     // for R__ASSERT
+#include "TIterator.h"                  // for TIterator
+#include "TMath.h"                      // for Binomial, SignalingNaN
 
-#include "TError.h"
+class RooArgSet;
 
 using namespace std;
 
