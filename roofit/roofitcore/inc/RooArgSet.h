@@ -16,7 +16,7 @@
 #ifndef ROO_ARG_SET
 #define ROO_ARG_SET
 
-#include "RooAbsCollection.h"
+#include "RooAbsCollection.h" // IWYU pragma: export
 
 class RooArgList ;
 

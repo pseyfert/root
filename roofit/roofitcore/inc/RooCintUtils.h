@@ -16,7 +16,7 @@
 #ifndef ROO_CINT_UTILS
 #define ROO_CINT_UTILS
 
-#include "Rtypes.h"
+#include "RtypesCore.h"
 #include <list>
 #include <string>
 namespace RooCintUtils {

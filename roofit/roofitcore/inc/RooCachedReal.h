@@ -12,9 +12,10 @@
 #ifndef ROOCACHEDREAL
 #define ROOCACHEDREAL
 
-#include "RooAbsCachedReal.h"
+#include "RooAbsCachedReal.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-#include "RooAbsReal.h"
+//#include "RooAbsReal.h"
+class RooAbsReal;
 
 
 class RooCachedReal : public RooAbsCachedReal {

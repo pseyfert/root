@@ -27,8 +27,6 @@
 **/
 
 #include "RooFit.h"
-
-#include "RooAbsLValue.h"
 #include "RooAbsLValue.h"
 
 using namespace std;

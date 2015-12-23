@@ -16,7 +16,7 @@
 #ifndef ROO_DERIVATIVE
 #define ROO_DERIVATIVE
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 #include "RooSetProxy.h"
 
@@ -26,7 +26,7 @@
 
 
 class RooRealVar;
-class RooArgList ;
+//class RooArgList ;
 
 class RooDerivative : public RooAbsReal {
 public:

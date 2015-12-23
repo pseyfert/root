@@ -16,7 +16,7 @@
 #ifndef ROO_EFFICIENCY
 #define ROO_EFFICIENCY
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooCategoryProxy.h"
 #include "RooRealProxy.h"
 #include "TString.h" 

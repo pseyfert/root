@@ -16,7 +16,7 @@
 #ifndef ROO_CONV_INTEGRAND_BINDING
 #define ROO_CONV_INTEGRAND_BINDING
 
-#include "RooAbsFunc.h"
+#include "RooAbsFunc.h" // IWYU pragma: export
 
 class RooAbsRealLValue;
 class RooAbsReal;

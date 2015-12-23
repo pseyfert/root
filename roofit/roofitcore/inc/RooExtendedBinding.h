@@ -7,11 +7,12 @@
 #ifndef ROOEXTENDEDBINDING
 #define ROOEXTENDEDBINDING
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-#include "RooCategoryProxy.h"
-#include "RooAbsPdf.h"
-#include "RooAbsCategory.h"
+//#include "RooCategoryProxy.h"
+//#include "RooAbsPdf.h"
+class RooAbsPdf;
+//#include "RooAbsCategory.h"
  
 class RooExtendedBinding : public RooAbsReal {
 public:

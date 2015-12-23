@@ -16,7 +16,7 @@
 #ifndef ROO_BRENT_ROOT_FINDER
 #define ROO_BRENT_ROOT_FINDER
 
-#include "RooAbsRootFinder.h"
+#include "RooAbsRootFinder.h" // IWYU pragma: export
 
 class RooBrentRootFinder : public RooAbsRootFinder {
 public:

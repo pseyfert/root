@@ -17,9 +17,9 @@
 #ifndef ROO_CODE_FACTORY
 #define ROO_CODE_FACTORY
 
-#include "TNamed.h"
-#include "RooArgSet.h"
-#include "RooPrintable.h"
+#include "TNamed.h" // IWYU pragma: export
+//#include "RooArgSet.h"
+#include "RooPrintable.h" // IWYU pragma: export
 #include "RooFactoryWSTool.h"
 
 class RooAbsReal ;

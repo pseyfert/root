@@ -16,8 +16,8 @@
 #ifndef ROO_DATA_WEIGHTED_AVERAGE
 #define ROO_DATA_WEIGHTED_AVERAGE
 
-#include "RooAbsOptTestStatistic.h"
-#include "RooCmdArg.h"
+#include "RooAbsOptTestStatistic.h" // IWYU pragma: export
+//#include "RooCmdArg.h"
 
 class RooDataWeightedAverage : public RooAbsOptTestStatistic {
 public:

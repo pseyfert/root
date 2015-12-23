@@ -17,16 +17,18 @@
 #ifndef ROO_ABS_MC_STUDY_MODULE
 #define ROO_ABS_MC_STUDY_MODULE
 
-#include "TList.h"
+// FIXME here i changed from forward declare to include. is this good?
+//#include "TList.h"
 #include "RooArgSet.h"
 #include "RooMCStudy.h"
-class RooAbsPdf;
-class RooDataSet ;
-class RooAbsData ;
-class RooAbsGenContext ;
-class RooFitResult ;
-class RooPlot ;
-class RooRealVar ;
+#include "TNamed.h" // IWYU pragma: export
+#include "RooAbsPdf.h"
+#include "RooDataSet.h"
+#include "RooAbsData.h"
+#include "RooAbsGenContext.h"
+#include "RooFitResult.h"
+//class RooPlot ;
+#include "RooRealVar.h"
 
 class RooAbsMCStudyModule : public TNamed {
 public:

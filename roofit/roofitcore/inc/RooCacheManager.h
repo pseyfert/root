@@ -20,15 +20,14 @@
 
 #include "RooMsgService.h"
 #include "RooNormSetCache.h"
-#include "RooAbsReal.h"
+//#include "RooAbsReal.h"
 #include "RooArgSet.h"
-#include "RooArgList.h"
-#include "RooAbsCache.h"
-#include "RooAbsCacheElement.h"
+//#include "RooArgList.h"
+#include "RooAbsCache.h" // IWYU pragma: export
+#include "RooAbsCacheElement.h" // checkme
 #include "RooNameReg.h"
 #include <vector>
-
-class RooNameSet ;
+#include "RooNameSet.h"
 
 
 template<class T>

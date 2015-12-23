@@ -17,7 +17,7 @@
 #ifndef ROO_DELTA_LL_SIGNIFICANCE_MCS_MODULE
 #define ROO_DELTA_LL_SIGNIFICANCE_MCS_MODULE
 
-#include "RooAbsMCStudyModule.h"
+#include "RooAbsMCStudyModule.h" /// IWYU pragma: export
 #include <string>
 
 class RooDLLSignificanceMCSModule : public RooAbsMCStudyModule {

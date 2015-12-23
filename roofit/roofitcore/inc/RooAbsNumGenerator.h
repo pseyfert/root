@@ -16,14 +16,14 @@
 #ifndef ROO_ABS_NUM_GENERATOR
 #define ROO_ABS_NUM_GENERATOR
 
-#include "TNamed.h"
-#include "RooPrintable.h"
+#include "TNamed.h"// IWYU pragma: export
+#include "RooPrintable.h"// IWYU pragma: export
 #include "RooArgSet.h"
 
 class RooAbsReal;
 class RooRealVar;
 class RooDataSet;
-class RooRealBinding;
+//class RooRealBinding;
 class RooNumGenConfig ;
 
 class RooAbsNumGenerator : public TNamed, public RooPrintable {

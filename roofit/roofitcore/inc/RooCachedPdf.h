@@ -12,9 +12,9 @@
 #ifndef ROOCACHEDPDF
 #define ROOCACHEDPDF
 
-#include "RooAbsCachedPdf.h"
+#include "RooAbsCachedPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-#include "RooAbsReal.h"
+//#include "RooAbsReal.h"
 
 
 class RooCachedPdf : public RooAbsCachedPdf {

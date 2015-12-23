@@ -16,8 +16,7 @@
 #ifndef ROO_COMPOSITE_DATA_STORE
 #define ROO_COMPOSITE_DATA_STORE
 
-#include "RooAbsDataStore.h" 
-#include "TString.h"
+#include "RooAbsDataStore.h"  // IWYU pragma: export
 #include <map>
 #include <string>
 

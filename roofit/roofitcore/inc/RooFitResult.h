@@ -18,25 +18,25 @@
 
 #include "Riosfwd.h"
 #include "RooAbsArg.h"
-#include "RooPrintable.h"
-#include "RooDirItem.h"
+#include "RooPrintable.h" // IWYU pragma: export
+#include "RooDirItem.h" // IWYU pragma: export
 #include "RooArgList.h"
 
-#include "RVersion.h"
+//#include "RVersion.h"
 #include "TMatrixFfwd.h"
 #include "TMatrixDSym.h"
-#include "TRootIOCtor.h"
+//#include "TRootIOCtor.h"
 
 #include "TList.h"
 
 #include <vector>
 #include <string>
-#include <map>
+//#include <map>
 
 class RooArgSet ;
 class RooAbsPdf ;
 class RooPlot;
-class TObject ;
+#include "TObject.h"
 class TH2 ;
 typedef RooArgSet* pRooArgSet ;
 

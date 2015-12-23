@@ -12,11 +12,11 @@
 #ifndef ROOABSSELFCACHEDPDF
 #define ROOABSSELFCACHEDPDF
 
-#include "RooAbsCachedPdf.h"
-#include "RooRealProxy.h"
-#include "RooAbsReal.h"
-#include "RooHistPdf.h"
-#include <list>
+#include "RooAbsCachedPdf.h" // IWYU pragma: export
+//#include "RooRealProxy.h"
+//#include "RooAbsReal.h"
+//#include "RooHistPdf.h"
+//#include <list>
  
 class RooAbsSelfCachedPdf : public RooAbsCachedPdf {
 public:

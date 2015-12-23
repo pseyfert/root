@@ -16,12 +16,10 @@
 #ifndef ROO_CONSTRAINT_SUM
 #define ROO_CONSTRAINT_SUM
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooListProxy.h"
 #include "RooSetProxy.h"
-#include "TStopwatch.h"
 
-class RooRealVar;
 class RooArgList ;
 
 class RooConstraintSum : public RooAbsReal {

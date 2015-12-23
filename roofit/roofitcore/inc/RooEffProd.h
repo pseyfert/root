@@ -12,7 +12,7 @@
 #ifndef ROO_EFF_PROD
 #define ROO_EFF_PROD
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooAbsReal.h"
 #include "RooRealProxy.h"
 #include "RooObjCacheManager.h"

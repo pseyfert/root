@@ -41,6 +41,7 @@ numerical integration algorithm.
 #include <iomanip>
 
 
+#include "RooNumIntConfig.h"
 
 using namespace std;
 

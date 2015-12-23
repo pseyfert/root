@@ -17,7 +17,7 @@
 #define ROO_CATEGORY
 
 #include "Riosfwd.h"
-#include "RooAbsCategoryLValue.h"
+#include "RooAbsCategoryLValue.h" // IWYU pragma: export
 
 #include "RooSharedPropertiesList.h"
 #include "RooCategorySharedProperties.h"

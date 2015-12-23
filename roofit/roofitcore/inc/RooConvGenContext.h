@@ -16,15 +16,15 @@
 #ifndef ROO_CONV_GEN_CONTEXT
 #define ROO_CONV_GEN_CONTEXT
 
-#include "RooAbsGenContext.h"
+#include "RooAbsGenContext.h"// IWYU pragma: export
 #include "RooArgSet.h"
 
 class RooAbsAnaConvPdf;
 class RooDataSet;
-class RooRealIntegral;
-class RooAcceptReject;
-class TRandom;
-class TIterator;
+//class RooRealIntegral;
+//class RooAcceptReject;
+//class TRandom;
+//class TIterator;
 class RooRealVar ;
 class RooNumConvPdf ;
 class RooFFTConvPdf ;

@@ -19,6 +19,7 @@
 #include "RooAbsIntegrator.h"
 #include "RooGrid.h"
 #include "TStopwatch.h"
+class RooNumIntFactory;
 class RooNumIntConfig;
 
 class RooMCIntegrator : public RooAbsIntegrator {

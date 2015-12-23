@@ -21,15 +21,14 @@
 #include "RooCurve.h"
 #include "RooArgSet.h"
 #include "RooArgList.h"
-#include "RooGlobalFunc.h"
+#include "RooGlobalFunc.h"  /// checkme
+#include <iostream>
 
-class RooArgList ;
 class RooDataSet ;
 class RooPlot;
 class RooRealVar;
 class RooAbsFunc;
 class RooAbsCategoryLValue ;
-class RooCategory ;
 class RooLinkedList ;
 class RooNumIntConfig ;
 class RooDataHist ;
@@ -42,13 +41,9 @@ class RooDerivative ;
 class RooVectorDataStore ;
 
 class TH1;
-class TH1F;
-class TH2F;
-class TH3F;
 
 #include <list>
 #include <string>
-#include <iostream>
 
 class RooAbsReal : public RooAbsArg {
 public:

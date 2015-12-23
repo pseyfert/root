@@ -17,9 +17,10 @@
 #define ROO_ABS_ARG
 
 #include <assert.h>
-#include "TNamed.h" // IWYU pragma: export
+#include "TNamed.h"             // IWYU pragma: export
 #include "TRefArray.h"
-#include "RooPrintable.h" // IWYU pragma: export
+#include "RooLinkedListIter.h"  // IWYU pragma: export
+#include "RooPrintable.h"       // IWYU pragma: export
 #include "RooRefCountList.h"
 #include "RooAbsCache.h"
 #include <map>
@@ -27,9 +28,6 @@
 #include <deque>
 #include <stack>
 
-
-//#include "RooLinkedListIter.h"
-class RooLinkedList;
 
 class TTree ;
 class RooArgSet ;
