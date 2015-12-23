@@ -31,6 +31,7 @@ for analytical convolutions with classes inheriting from RooAbsAnaConvPdf
 #include "Riostream.h"
 #include "RooGaussModel.h"
 #include "RooRealConstant.h"
+#include "RooRealVar.h"
 #include "RooRandom.h"
 
 #include "TError.h"
