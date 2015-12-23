@@ -46,8 +46,7 @@ i.e. all integrals of the product are handled numerically
 #include "RooNameSet.h"                 // for RooNameSet
 #include "RooObjCacheManager.h"         // for RooObjCacheManager
 #include "RooProduct.h"                 // for RooProduct
-#include "Rtypes.h"                     // for kTRUE, kFALSE, ClassImp
-#include "RtypesCore.h"                 // for Double_t, Bool_t, Int_t
+#include "Rtypes.h"                     // for Double_t, Bool_t, Int_t, kTRUE, kFALSE, ClassImp
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for TString
 class RooAbsData;

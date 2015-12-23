@@ -8,6 +8,7 @@
  */
 #ifndef _WIN32
 
+// IWYU pragma: no_include <bits/socket_type.h>
 #include "BidirMMapPipe.h"
 #include <fcntl.h>                      // for fcntl, FD_CLOEXEC, F_GETFD, etc
 #include <poll.h>                       // for pollfd, poll, POLLERR, etc

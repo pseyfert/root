@@ -21,7 +21,7 @@
 
 
 #ifndef ROOT_RtypesCore
-#include "RtypesCore.h"
+#include "RtypesCore.h" // IWYU pragma: export
 #endif
 #ifndef ROOT_DllImport
 #include "DllImport.h"

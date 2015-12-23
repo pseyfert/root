@@ -59,8 +59,7 @@ parallelized calculation of test statistics
 #include "RooRealVar.h"                 // for RooRealVar
 #include "RooSetProxy.h"                // for RooSetProxy
 #include "RooVectorDataStore.h"         // for RooVectorDataStore
-#include "Rtypes.h"                     // for kFALSE, kTRUE, ClassImp
-#include "RtypesCore.h"                 // for Bool_t, Double_t, Int_t
+#include "Rtypes.h"                     // for Bool_t, Double_t, Int_t, kFALSE, kTRUE, ClassImp
 #include "TIterator.h"                  // for TIterator
 #include "TString.h"                    // for Form, TString, operator<<
 

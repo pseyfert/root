@@ -34,8 +34,7 @@ by the RooRealVar::setRange() that takes RooAbsReal references as arguments
 #include "RooListProxy.h"               // for RooListProxy
 #include "RooMsgService.h"              // for coutE, coutW
 #include "RooParamBinning.h"            // for RooParamBinning
-#include "Rtypes.h"                     // for ClassImp, kFALSE, kTRUE
-#include "RtypesCore.h"                 // for Double_t, Int_t, Bool_t
+#include "Rtypes.h"                     // for Double_t, Int_t, Bool_t, ClassImp, kFALSE, kTRUE
 #include "TString.h"                    // for operator<<, Form, TString
 
 using namespace std;
