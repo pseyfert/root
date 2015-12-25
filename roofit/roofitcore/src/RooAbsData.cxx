@@ -190,7 +190,7 @@ RooAbsData::RooAbsData(const RooAbsData& other, const char* newname) :
   _cacheIter = _cachedVars.createIterator() ;
 
 
-  if (other._ownedComponents.size()>0) {
+  if (!other._ownedComponents.empty()) {
 
     // copy owned components here
 
@@ -2416,7 +2416,7 @@ void RooAbsData::resetBuffers()
 
 Bool_t RooAbsData::canSplitFast() const 
 {
-  if (_ownedComponents.size()>0) {
+  if (!_ownedComponents.empty()) {
     return kTRUE ;
   }
   return kFALSE ;

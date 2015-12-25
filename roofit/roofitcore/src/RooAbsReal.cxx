@@ -2807,7 +2807,7 @@ RooPlot* RooAbsReal::plotOnWithErrorBand(RooPlot* frame,const RooFitResult& fr, 
     // Cleanup 
     delete paramPdf ;
     delete cloneFunc ;
-    for (vector<RooCurve*>::iterator i=cvec.begin() ; i!=cvec.end() ; i++) {
+    for (vector<RooCurve*>::iterator i=cvec.begin() ; i!=cvec.end() ; ++i) {
       delete (*i) ;
     }
 
@@ -2892,10 +2892,10 @@ RooPlot* RooAbsReal::plotOnWithErrorBand(RooPlot* frame,const RooFitResult& fr, 
     
     // Cleanup 
     delete cloneFunc ;
-    for (vector<RooCurve*>::iterator i=plusVar.begin() ; i!=plusVar.end() ; i++) {
+    for (vector<RooCurve*>::iterator i=plusVar.begin() ; i!=plusVar.end() ; ++i) {
       delete (*i) ;
     }
-    for (vector<RooCurve*>::iterator i=minusVar.begin() ; i!=minusVar.end() ; i++) {
+    for (vector<RooCurve*>::iterator i=minusVar.begin() ; i!=minusVar.end() ; ++i) {
       delete (*i) ;
     }
 

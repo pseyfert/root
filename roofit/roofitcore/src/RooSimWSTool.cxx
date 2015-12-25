@@ -321,7 +321,7 @@ RooSimWSTool::ObjBuildConfig* RooSimWSTool::validateConfig(BuildConfig& bc)
       
     }
     // Need to add clause here for SplitRules without any split (which can happen in MultiBuildConfigs)
-    if (sr._paramSplitMap.size()==0) {
+    if (sr._paramSplitMap.empty()) {
 
       if (obc->_masterCat) {
 	list<string>::iterator misi ;
@@ -566,12 +566,12 @@ RooSimultaneous* RooSimWSTool::executeBuild(const char* simPdfName, ObjBuildConf
     fclIter->Reset() ;
     RooAbsCategory* splitCat ;
     Bool_t select(kFALSE) ;
-    if (obc._restr.size()>0) {
+    if (!obc._restr.empty()) {
       while((splitCat=(RooAbsCategory*)fclIter->Next())) {
 	// Find selected state list 
 	
 	list<const RooCatType*> slist = obc._restr[splitCat] ;    
-	if (slist.size()==0) {
+	if (slist.empty()) {
 	  continue ;
 	}
 	
@@ -867,7 +867,7 @@ void RooSimWSTool::ObjBuildConfig::print()
   map<RooAbsPdf*,ObjSplitRule>::iterator ri ;
   for (ri = _pdfmap.begin() ; ri != _pdfmap.end() ; ++ri ) {    
     cout << "Splitrule for p.d.f " << ri->first->GetName() << " with state list " ;
-    for (std::list<const RooCatType*>::iterator misi= ri->second._miStateList.begin() ; misi!=ri->second._miStateList.end() ; misi++) {
+    for (std::list<const RooCatType*>::iterator misi= ri->second._miStateList.begin() ; misi!=ri->second._miStateList.end() ; ++misi) {
       cout << (*misi)->GetName() << " " ;
     }
     cout << endl ;
@@ -887,7 +887,7 @@ void RooSimWSTool::ObjBuildConfig::print()
   for (riter=_restr.begin() ; riter!=_restr.end() ; ++riter) {
     cout << "Restricting build in category " << riter->first->GetName() << " to states " ;
     list<const RooCatType*>::iterator i ;
-    for (i=riter->second.begin() ; i!=riter->second.end() ; i++) {
+    for (i=riter->second.begin() ; i!=riter->second.end() ; ++i) {
       if (i!=riter->second.begin()) cout << "," ;
       cout << (*i)->GetName() ;
     }

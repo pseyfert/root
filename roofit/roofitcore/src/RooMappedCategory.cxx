@@ -122,7 +122,7 @@ RooCatType RooMappedCategory::evaluate() const
   const char* inKey = _inputCat.label() ;
 
   // Scan array of regexps
-  for ( std::map<string,Entry>::const_iterator iter = _mapArray.begin() ; iter != _mapArray.end() ; iter++) {
+  for ( std::map<string,Entry>::const_iterator iter = _mapArray.begin() ; iter != _mapArray.end() ; ++iter) {
     if (iter->second.match(inKey)) {
       return iter->second.outCat() ;
     }
@@ -153,7 +153,7 @@ void RooMappedCategory::printMultiline(ostream& os, Int_t content, Bool_t verbos
     _defCat->printStream(os,kName|kValue,kSingleLine);
     
     os << indent << "  Mapping rules:" << endl;
-    for (std::map<string,Entry>::const_iterator iter = _mapArray.begin() ; iter!=_mapArray.end() ; iter++) {
+    for (std::map<string,Entry>::const_iterator iter = _mapArray.begin() ; iter!=_mapArray.end() ; ++iter) {
       os << indent << "  " << iter->first << " -> " << iter->second.outCat().GetName() << endl ;
     }
   }
@@ -224,7 +224,7 @@ void RooMappedCategory::printMetaArgs(ostream& os) const
   RooCatType prevOutCat ;
   Bool_t first(kTRUE) ;
   os << "map=(" ;
-  for (std::map<string,Entry>::const_iterator iter = _mapArray.begin() ; iter!=_mapArray.end() ; iter++) {
+  for (std::map<string,Entry>::const_iterator iter = _mapArray.begin() ; iter!=_mapArray.end() ; ++iter) {
     if (iter->second.outCat().getVal()!=prevOutCat.getVal()) {
       if (!first) { os << " " ; }
       first=kFALSE ;
@@ -257,7 +257,7 @@ void RooMappedCategory::writeToStream(ostream& os, Bool_t compact) const
     // Scan array of regexps
     RooCatType prevOutCat ;
     Bool_t first(kTRUE) ;
-    for (std::map<string,Entry>::const_iterator iter = _mapArray.begin() ; iter!=_mapArray.end() ; iter++) {
+    for (std::map<string,Entry>::const_iterator iter = _mapArray.begin() ; iter!=_mapArray.end() ; ++iter) {
       if (iter->second.outCat().getVal()!=prevOutCat.getVal()) {
 	if (!first) { os << " " ; }
 	first=kFALSE ;
