@@ -188,8 +188,9 @@ RooAbsPdf::RooAbsPdf() : _norm(0), _normSet(0), _specGeneratorConfig(0)
 /// Constructor with name and title only
 
 RooAbsPdf::RooAbsPdf(const char *name, const char *title) : 
-  RooAbsReal(name,title), _norm(0), _normSet(0), _normMgr(this,10), _selectComp(kTRUE), _specGeneratorConfig(0)
+  RooAbsReal(name,title), _norm(0), _normSet(0), _normMgr(this,10), _specGeneratorConfig(0)
 {
+  _selectComp=kTRUE;
   resetErrorCounters() ;
   setTraceCounter(0) ;
 }
@@ -201,8 +202,9 @@ RooAbsPdf::RooAbsPdf(const char *name, const char *title) :
 
 RooAbsPdf::RooAbsPdf(const char *name, const char *title, 
 		     Double_t plotMin, Double_t plotMax) :
-  RooAbsReal(name,title,plotMin,plotMax), _norm(0), _normSet(0), _normMgr(this,10), _selectComp(kTRUE), _specGeneratorConfig(0)
+  RooAbsReal(name,title,plotMin,plotMax), _norm(0), _normSet(0), _normMgr(this,10), _specGeneratorConfig(0)
 {
+  _selectComp=kTRUE;
   resetErrorCounters() ;
   setTraceCounter(0) ;
 }
@@ -214,8 +216,9 @@ RooAbsPdf::RooAbsPdf(const char *name, const char *title,
 
 RooAbsPdf::RooAbsPdf(const RooAbsPdf& other, const char* name) : 
   RooAbsReal(other,name), _norm(0), _normSet(0),
-  _normMgr(other._normMgr,this), _selectComp(other._selectComp), _normRange(other._normRange)
+  _normMgr(other._normMgr,this), _normRange(other._normRange)
 {
+  _selectComp=other._selectComp;
   resetErrorCounters() ;
   setTraceCounter(other._traceCount) ;
 
