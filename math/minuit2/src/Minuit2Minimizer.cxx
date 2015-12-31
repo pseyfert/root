@@ -609,9 +609,9 @@ void Minuit2Minimizer::PrintResults() {
          if (par.IsFixed() )      std::cout << "(fixed)" << std::endl;
          else if (par.IsConst() ) std::cout << "(const)" << std::endl;
          else if (par.HasLimits() )
-            std::cout << "+/-  " << par.Error() << "\t(limited)"<< std::endl;
+            std::cout << "±  " << par.Error() << "\t(limited)"<< std::endl;
          else
-            std::cout << "+/-  " << par.Error() << std::endl;
+            std::cout << "±  " << par.Error() << std::endl;
       }
    }
    else {

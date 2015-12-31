@@ -110,7 +110,7 @@ std::ostream& operator<<(std::ostream& os, const MnUserParameters& par) {
    // print the MnUserParameter object
    os << std::endl;
 
-   os << "# ext. |" << "|   Name    |" << "|   type  |" << "|     Value     |" << "|  Error +/- " << std::endl;
+   os << "# ext. |" << "|   Name    |" << "|   type  |" << "|     Value     |" << "|  Error ± " << std::endl;
 
    os << std::endl;
    int pr = os.precision();

@@ -57,7 +57,7 @@ int printCheb( const ROOT::Math::ChebyshevApprox & c, double x0, double x1, FP f
     double ey10 = c.EvalErr(x,10).second;
     double fVal = 0;
     if (func) fVal = func(x,0);
-    std::cout << " x = " << x << " true Val = " << fVal << " y = " << y << " +/- " << ey << "    y@10 = " << y10 << " +/- " << ey10 << std::endl;
+    std::cout << " x = " << x << " true Val = " << fVal << " y = " << y << " +/- " << ey << "    y@10 = " << y10 << " ± " << ey10 << std::endl;
   }
 
 
