@@ -485,7 +485,7 @@ void FitResult::Print(std::ostream & os, bool doCovMatrix) const {
          os << std::setw(9) << " "  << std::setw(nn) << " " << " \t (fixed)";
       else {
          if (fErrors.size() != 0)
-            os << "   +/-   " << std::left << std::setw(nn) << fErrors[i] << std::right;
+            os << "   ±  " << std::left << std::setw(nn) << fErrors[i] << std::right;
          if (IsParameterBound(i) )
             os << " \t (limited)";
       }

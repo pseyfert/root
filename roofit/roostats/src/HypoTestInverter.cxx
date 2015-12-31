@@ -513,7 +513,7 @@ HypoTestResult * HypoTestInverter::Eval(HypoTestCalculatorGeneric &hc, bool adap
    double clsMid    = (fUseCLs ? hcResult->CLs()      : hcResult->CLsplusb());
    double clsMidErr = (fUseCLs ? hcResult->CLsError() : hcResult->CLsplusbError());
 
-   //if (fVerbose) std::cout << (fUseCLs ? "\tCLs = " : "\tCLsplusb = ") << clsMid << " +/- " << clsMidErr << std::endl;
+   //if (fVerbose) std::cout << (fUseCLs ? "\tCLs = " : "\tCLsplusb = ") << clsMid << " ± " << clsMidErr << std::endl;
    
    if (adaptive) {
  
@@ -529,16 +529,16 @@ HypoTestResult * HypoTestInverter::Eval(HypoTestCalculatorGeneric &hc, bool adap
       hcResult->Append(more.get());
       clsMid    = (fUseCLs ? hcResult->CLs()      : hcResult->CLsplusb());
       clsMidErr = (fUseCLs ? hcResult->CLsError() : hcResult->CLsplusbError());
-      if (fVerbose) std::cout << (fUseCLs ? "\tCLs = " : "\tCLsplusb = ") << clsMid << " +/- " << clsMidErr << std::endl;
+      if (fVerbose) std::cout << (fUseCLs ? "\tCLs = " : "\tCLsplusb = ") << clsMid << " ± " << clsMidErr << std::endl;
    }
 
    }
    if (fVerbose ) {
       oocoutP((TObject*)0,Eval) << "P values for  " << fScannedVariable->GetName()  << " =  " <<
          fScannedVariable->getVal() << "\n" <<
-         "\tCLs      = " << hcResult->CLs()      << " +/- " << hcResult->CLsError()      << "\n" <<
-         "\tCLb      = " << hcResult->CLb()      << " +/- " << hcResult->CLbError()      << "\n" <<
-         "\tCLsplusb = " << hcResult->CLsplusb() << " +/- " << hcResult->CLsplusbError() << "\n" <<
+         "\tCLs      = " << hcResult->CLs()      << " ± " << hcResult->CLsError()      << "\n" <<
+         "\tCLb      = " << hcResult->CLb()      << " ± " << hcResult->CLbError()      << "\n" <<
+         "\tCLsplusb = " << hcResult->CLsplusb() << " ± " << hcResult->CLsplusbError() << "\n" <<
          std::endl;
    }
    
@@ -707,7 +707,7 @@ bool HypoTestInverter::RunOnePoint( double rVal, bool adaptive, double clTarget)
    }
 
       // std::cout << "computed value for poi  " << rVal  << " : " << fResults->GetYValue(fResults->ArraySize()-1) 
-      //        << " +/- " << fResults->GetYError(fResults->ArraySize()-1) << endl;
+      //        << " ± " << fResults->GetYError(fResults->ArraySize()-1) << endl;
 
    fScannedVariable->setVal(oldValue);
    
@@ -758,7 +758,7 @@ bool HypoTestInverter::RunLimit(double &limit, double &limitErr, double absAccur
   //     double minDist=1e3;
   //     for (int i = 0, n = limitPlot_->GetN(); i < n; ++i) {
   //         double x = limitPlot_->GetX()[i], y = limitPlot_->GetY()[i], ey = limitPlot_->GetErrorY(i);
-  //         if (verbose > 0) std::cout << "  r " << x << (CLs_ ? ", CLs = " : ", CLsplusb = ") << y << " +/- " << ey << std::endl;
+  //         if (verbose > 0) std::cout << "  r " << x << (CLs_ ? ", CLs = " : ", CLsplusb = ") << y << " ± " << ey << std::endl;
   //         if (y-3*ey >= clsTarget) { rMin = x; clsMin = CLs_t(y,ey); }
   //         if (y+3*ey <= clsTarget) { rMax = x; clsMax = CLs_t(y,ey); }
   //         if (fabs(y-clsTarget) < minDist) { limit = x; minDist = fabs(y-clsTarget); }
@@ -901,7 +901,7 @@ bool HypoTestInverter::RunLimit(double &limit, double &limitErr, double absAccur
   if (!done) { // didn't reach accuracy with scan, now do fit
       if (fVerbose) {
          oocoutI((TObject*)0,Eval) << "HypoTestInverter::RunLimit - Before fit   --- \n"; 
-         std::cout << "Limit: " << r->GetName() << " < " << limit << " +/- " << limitErr << " [" << rMin << ", " << rMax << "]\n";
+         std::cout << "Limit: " << r->GetName() << " < " << limit << " ± " << limitErr << " [" << rMin << ", " << rMax << "]\n";
       }
       
       expoFit.FixParameter(0,clsTarget);
@@ -922,7 +922,7 @@ bool HypoTestInverter::RunLimit(double &limit, double &limitErr, double absAccur
           fLimitPlot->Sort();
           fLimitPlot->Fit(&expoFit,(fVerbose <= 1 ? "QNR EX0" : "NR EXO"));
           if (fVerbose) {
-               oocoutI((TObject*)0,Eval) << "Fit to " << npoints << " points: " << expoFit.GetParameter(2) << " +/- " << expoFit.GetParError(2) << std::endl;
+               oocoutI((TObject*)0,Eval) << "Fit to " << npoints << " points: " << expoFit.GetParameter(2) << " ± " << expoFit.GetParError(2) << std::endl;
           }
           if ((rMin < expoFit.GetParameter(2))  && (expoFit.GetParameter(2) < rMax) && (expoFit.GetParError(2) < 0.5*(rMaxBound-rMinBound))) { 
               // sanity check fit result
@@ -965,7 +965,7 @@ bool HypoTestInverter::RunLimit(double &limit, double &limitErr, double absAccur
   }
 
   oocoutI((TObject*)0,Eval) << "HypoTestInverter::RunLimit - Result:    \n" 
-                            << "\tLimit: " << r->GetName() << " < " << limit << " +/- " << limitErr << " @ " << (1-fSize) * 100 << "% CL\n";
+                            << "\tLimit: " << r->GetName() << " < " << limit << " ± " << limitErr << " @ " << (1-fSize) * 100 << "% CL\n";
   if (fVerbose > 1) oocoutI((TObject*)0,Eval) << "Total toys: " << fTotalToysRun << std::endl;
 
   // set value in results

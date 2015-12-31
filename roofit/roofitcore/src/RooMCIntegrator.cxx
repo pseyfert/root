@@ -347,8 +347,8 @@ Double_t RooMCIntegrator::vegas(Stage stage, UInt_t calls, UInt_t iterations, Do
       cum_int += (intgrl - cum_int) / (it + 1.0);
       cum_sig = 0.0;
     }         
-    oocxcoutD((TObject*)0,Integration) << "=== Iteration " << _it_num << " : I = " << intgrl << " +/- " << sqrt(sig) << endl
-				     << "    Cumulative : I = " << cum_int << " +/- " << cum_sig << "( chi2 = " << _chisq
+    oocxcoutD((TObject*)0,Integration) << "=== Iteration " << _it_num << " : I = " << intgrl << " ± " << sqrt(sig) << endl
+				     << "    Cumulative : I = " << cum_int << " ± " << cum_sig << "( chi2 = " << _chisq
 				     << ")" << endl;
     // print the grid after the final iteration
     if (oodologD((TObject*)0,Integration)) {

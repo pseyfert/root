@@ -346,7 +346,7 @@ bool GSLNLSMinimizer::Minimize() {
          std::cout << "NIterations  = " << iter << std::endl;
          std::cout << "NFuncCalls   = " << fChi2Func->NCalls() << std::endl;
          for (unsigned int i = 0; i < NDim(); ++i)
-            std::cout << std::setw(12) <<  VariableName(i) << " = " << std::setw(12) << X()[i] << "   +/-   " << std::setw(12) << fErrors[i] << std::endl;
+            std::cout << std::setw(12) <<  VariableName(i) << " = " << std::setw(12) << X()[i] << "   ±   " << std::setw(12) << fErrors[i] << std::endl;
       }
 
       return true;

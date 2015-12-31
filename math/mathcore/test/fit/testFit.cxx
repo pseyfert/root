@@ -32,16 +32,16 @@ void printData(const ROOT::Fit::BinData & data) {
       if (data.GetErrorType() == ROOT::Fit::BinData::kNoError)
          std::cout << data.Coords(i)[0] << "   " << data.Value(i) << std::endl;
       else if (data.GetErrorType() == ROOT::Fit::BinData::kValueError)
-         std::cout << data.Coords(i)[0] << "   " << data.Value(i) << " +/-  " << data.Error(i) << std::endl;
+         std::cout << data.Coords(i)[0] << "   " << data.Value(i) << " ±  " << data.Error(i) << std::endl;
       else if (data.GetErrorType() == ROOT::Fit::BinData::kCoordError) {
          double ey = 0;
          const double * ex = data.GetPointError(i,ey);
-         std::cout << data.Coords(i)[0] <<  " +/-  " << ex[0] <<  "   " << data.Value(i) << " +/-  " << ey << std::endl;
+         std::cout << data.Coords(i)[0] <<  " ±  " << ex[0] <<  "   " << data.Value(i) << " ±  " << ey << std::endl;
       }
       else if (data.GetErrorType() == ROOT::Fit::BinData::kAsymError) {
          double eyl = 0; double eyh = 0;
          const double * ex = data.GetPointError(i,eyl,eyh);
-         std::cout << data.Coords(i)[0] <<  " +/-  " << ex[0] <<  "   " << data.Value(i) << " -  " << eyl << " + " << eyh << std::endl;
+         std::cout << data.Coords(i)[0] <<  " ±  " << ex[0] <<  "   " << data.Value(i) << " -  " << eyl << " + " << eyh << std::endl;
       }
 
    }

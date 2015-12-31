@@ -161,7 +161,7 @@ void TMLPAnalyzer::CheckNetwork()
       if (!tmp) continue;
       std::cout << GetInputNeuronTitle(i)
            << " -> " << tmp->GetMean()
-           << " +/- " << tmp->GetRMS() << std::endl;
+           << " ± " << tmp->GetRMS() << std::endl;
    }
 }
 
