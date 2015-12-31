@@ -23,15 +23,13 @@ RooAbsIntegrator is the abstract interface for integrators of real-valued
 functions that implement the RooAbsFunc interface.
 **/
 
-#include "RooFit.h"
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "Riostream.h"
-
-
-#include "RooAbsIntegrator.h"
-#include "RooAbsIntegrator.h"
-#include "RooMsgService.h"
-#include "TClass.h"
+#include "RooAbsFunc.h"                 // for RooAbsFunc
+#include "RooAbsIntegrator.h"           // for RooAbsIntegrator
+#include "RooMsgService.h"              // for cxcoutD
+#include "Rtypes.h"                     // for Double_t, Bool_t, kFALSE, etc
+#include "TClass.h"                     // for TClass
 
 using namespace std;
 

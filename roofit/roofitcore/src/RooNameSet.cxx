@@ -26,18 +26,16 @@ the RooArgSet. A new RooArgSet can be created from a RooNameSet
 by offering it a list of new RooAbsArg objects. 
 **/
 
-#include <cstring>
-#include <algorithm>
-#include <cassert>
+#include <algorithm>                    // for min
+#include <cassert>                      // for assert
+#include <cstring>                      // for strlen, strcmp, strcpy, etc
+#include <ostream>                      // for operator<<, ostream
 
-#include "RooFit.h"
-#include "Riostream.h"
-
-#include "TObjString.h"
-#include "TClass.h"
-#include "RooNameSet.h"
-#include "RooArgSet.h"
-#include "RooArgList.h"
+#include "RooAbsArg.h"                  // for RooAbsArg, RooFIter
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet, Bool_t, Int_t, etc
+#include "RooNameSet.h"                 // for RooNameSet
+#include "TClass.h"                     // for TClass
 
 ClassImp(RooNameSet)
 ;

@@ -32,14 +32,13 @@ in defaultPrintStyle and defaultPrintContents to determine what is printed
 given a Print() option string. 
 **/
 
-#include "RooFit.h"
+#include <iomanip>                      // for operator<<, setw
+#include <iostream>                     // for ostream, operator<<, etc
 
-#include "RooPrintable.h"
-
-#include "Riostream.h"
-#include <iomanip>
-#include "TNamed.h"
-#include "TClass.h"
+#include "RooPrintable.h"               // for RooPrintable, etc
+#include "Rtypes.h"                     // for Int_t, Option_t, Bool_t, etc
+#include "TClass.h"                     // for TClass
+#include "TString.h"                    // for TString, operator<<
 
 using namespace std;
 

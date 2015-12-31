@@ -16,9 +16,13 @@
 #ifndef ROO_ABS_PROXY
 #define ROO_ABS_PROXY
 
-#include "TObject.h"
-#include "RooAbsArg.h"
+//#include "TObject.h"
+#include "Rtypes.h"
 #include "Riosfwd.h"
+#include "RooArgSet.h"
+class RooAbsArg;
+class RooObjectFactory;
+class RooAbsCollection;
 
 #ifdef _WIN32
 // Turn off 'warning C4355: 'this' : used in base member initializer list'

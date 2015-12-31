@@ -14,13 +14,12 @@
  * listed in LICENSE (http://roofit.sourceforge.net/license.txt)             *
  *****************************************************************************/
 
-#include "RooFit.h"
+#include <ostream>                      // for operator<<, ostream, etc
 
-#include "Riostream.h"
-#include "RooAbsProxy.h"
-#include "RooAbsProxy.h"
-#include "RooArgSet.h"
-#include "RooAbsArg.h"
+#include "RooAbsProxy.h"                // for RooAbsProxy
+#include "Rtypes.h"                     // for Bool_t, ClassImp
+
+class RooArgSet;
 
 /**
 \file RooAbsProxy.cxx

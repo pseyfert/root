@@ -16,9 +16,8 @@
 #ifndef ROO_SEGMENTED_INTEGRATOR_2D
 #define ROO_SEGMENTED_INTEGRATOR_2D
 
-#include "RooSegmentedIntegrator1D.h"
-#include "RooIntegrator1D.h"
-#include "RooNumIntConfig.h"
+#include "RooSegmentedIntegrator1D.h" // IWYU pragma: export
+class RooNumIntConfig;
 
 class RooSegmentedIntegrator2D : public RooSegmentedIntegrator1D {
 public:

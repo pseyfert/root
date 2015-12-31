@@ -16,14 +16,14 @@
 #ifndef ROO_CURVE
 #define ROO_CURVE
 
-#include "TGraph.h"
-#include "RooPlotable.h"
+#include "TGraph.h" // IWYU pragma: export
+#include "RooPlotable.h" // IWYU pragma: export
 #include <list>
 #include <vector>
 #include "TMatrixDfwd.h"
 
 class RooAbsReal;
-class RooRealVar;
+//class RooRealVar;
 class RooAbsFunc;
 class RooArgSet;
 class RooAbsRealLValue ;

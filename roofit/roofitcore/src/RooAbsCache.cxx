@@ -26,11 +26,13 @@ and the cache data member to communicate server redirects, operation
 mode changes and constant term optimization management calls.
 **/
 
+#include <iosfwd>                       // for ostream
 
-#include "RooFit.h"
-#include "RooAbsCache.h"
-#include "RooAbsArg.h"
-#include "RooArgList.h"
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsCache.h"                // for RooAbsCache
+#include "RooAbsCollection.h"           // for Bool_t, ClassImp, etc
+
+class RooArgSet;
 
 using namespace std;
 

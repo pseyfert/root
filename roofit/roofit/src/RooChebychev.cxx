@@ -21,20 +21,17 @@
 Chebychev polynomial p.d.f. of the first kind
 **/
 
-#include <cmath>
-#include <iostream>
+#include <iostream>                     // for operator<<, basic_ostream, etc
 
-#include "RooFit.h"
+#include "RooAbsArg.h"                  // for RooAbsArg, TNamed
+#include "RooChebychev.h"               // for RooChebychev, RooAbsReal, etc
+#include "RooListProxy.h"               // for RooListProxy, RooArgList, etc
+#include "RooNameReg.h"                 // for RooNameReg
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "TError.h"                     // for R__ASSERT
+#include "TIterator.h"                  // for TIterator
 
-#include "Riostream.h"
-
-#include "RooChebychev.h"
-#include "RooAbsReal.h"
-#include "RooRealVar.h"
-#include "RooArgList.h"
-#include "RooNameReg.h"
-
-#include "TError.h"
+class RooArgSet;
 
 #if defined(__my_func__)
 #undef __my_func__

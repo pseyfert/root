@@ -16,14 +16,12 @@
 #ifndef ROO_ACCEPT_REJECT
 #define ROO_ACCEPT_REJECT
 
-#include "RooAbsNumGenerator.h"
-#include "RooPrintable.h"
-#include "RooArgSet.h"
+#include "RooAbsNumGenerator.h"// IWYU pragma: export
+//#include "RooPrintable.h"
+//#include "RooArgSet.h"
+class RooArgSet;
 
 class RooAbsReal;
-class RooRealVar;
-class RooDataSet;
-class RooRealBinding;
 class RooNumGenFactory ;
 
 class RooAcceptReject : public RooAbsNumGenerator {

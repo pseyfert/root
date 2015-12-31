@@ -16,10 +16,8 @@
 #ifndef ROO_NOVOSIBIRSK
 #define ROO_NOVOSIBIRSK
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-
-class RooRealVar;
 class RooAbsReal;
 
 class RooNovosibirsk : public RooAbsPdf {

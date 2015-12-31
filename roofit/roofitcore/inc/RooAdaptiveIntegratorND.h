@@ -16,9 +16,10 @@
 #ifndef ROO_ADAPTIVE_INTEGRATOR_ND
 #define ROO_ADAPTIVE_INTEGRATOR_ND
 
-#include "RooAbsIntegrator.h"
-#include "RooNumIntConfig.h"
+#include "RooAbsIntegrator.h" // IWYU pragma: export
 #include "TString.h"
+class RooNumIntConfig;
+class RooNumIntFactory;
 
 namespace ROOT { namespace Math { class AdaptiveIntegratorMultiDim ; } } 
 class RooMultiGenFunction ;

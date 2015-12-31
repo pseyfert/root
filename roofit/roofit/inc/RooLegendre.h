@@ -14,7 +14,7 @@
 #ifndef ROO_LEGENDRE
 #define ROO_LEGENDRE
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 
 class RooLegendre : public RooAbsReal {

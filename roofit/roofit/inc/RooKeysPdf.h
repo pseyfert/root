@@ -17,7 +17,7 @@
 #ifndef ROO_KEYS
 #define ROO_KEYS
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 
 class RooRealVar;

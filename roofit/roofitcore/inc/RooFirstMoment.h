@@ -16,13 +16,13 @@
 #ifndef ROO_FIRST_MOMENT
 #define ROO_FIRST_MOMENT
 
-#include "RooAbsMoment.h"
+#include "RooAbsMoment.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-#include "RooSetProxy.h"
+//#include "RooSetProxy.h"
 
 
 class RooRealVar;
-class RooArgList ;
+//class RooArgList ;
 
 class RooFirstMoment : public RooAbsMoment {
 public:

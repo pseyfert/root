@@ -35,24 +35,26 @@ combined in the main thread.
 **/
 
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for string, char_traits
+#include <vector>                       // for vector
 
-#include "RooAbsTestStatistic.h"
-#include "RooAbsPdf.h"
-#include "RooSimultaneous.h"
-#include "RooAbsData.h"
-#include "RooArgSet.h"
-#include "RooRealVar.h"
-#include "RooNLLVar.h"
-#include "RooRealMPFE.h"
-#include "RooErrorHandler.h"
-#include "RooMsgService.h"
-#include "TTimeStamp.h"
-#include "RooProdPdf.h"
-#include "RooRealSumPdf.h"
-
-#include <string>
+#include "RooAbsCategoryLValue.h"       // for RooAbsCategoryLValue, etc
+#include "RooAbsData.h"                 // for RooArgSet, RooAbsData, etc
+#include "RooAbsTestStatistic.h"        // for RooAbsTestStatistic, etc
+#include "RooArgList.h"                 // for RooArgList
+#include "RooCatType.h"                 // for Int_t, Double_t, Bool_t, etc
+#include "RooGlobalFunc.h"              // for MPSplit, etc
+#include "RooMsgService.h"              // for ccoutD, coutE, coutI, etc
+#include "RooProdPdf.h"                 // for RooAbsPdf, RooAbsReal, etc
+#include "RooRealMPFE.h"                // for RooRealMPFE
+#include "RooRealSumPdf.h"              // for RooRealSumPdf
+#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooSimultaneous.h"            // for RooSimultaneous
+#include "TClass.h"                     // for TClass
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
+#include "TString.h"                    // for Form, TString
 
 using namespace std;
 

@@ -20,8 +20,7 @@
 #include <math.h>
 #include <float.h>
 
-#include "RooAbsReal.h"
-#include "RooRealVar.h"
+#include "RooAbsReal.h"// IWYU pragma: export
 #include "RooRealProxy.h"
 #include "RooSetProxy.h"
 class RooAbsAnaConvPdf ;

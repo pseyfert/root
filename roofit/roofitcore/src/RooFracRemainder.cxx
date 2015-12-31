@@ -27,18 +27,15 @@ a constrained split
 **/
 
 
-#include "RooFit.h"
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include <math.h>
-
-#include "RooFracRemainder.h"
-#include "RooAbsReal.h"
-#include "RooAbsPdf.h"
-#include "RooErrorHandler.h"
-#include "RooArgSet.h"
-#include "RooMsgService.h"
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooArgSet.h"                  // for RooArgSet, Double_t, etc
+#include "RooErrorHandler.h"            // for RooErrorHandler
+#include "RooFracRemainder.h"           // for RooFracRemainder, etc
+#include "RooListProxy.h"               // for RooListProxy
+#include "RooMsgService.h"              // for coutE
+#include "TIterator.h"                  // for TIterator
 
 using namespace std;
 

@@ -16,7 +16,7 @@
 #ifndef ROO_INV_TRANSFORM
 #define ROO_INV_TRANSFORM
 
-#include "RooAbsFunc.h"
+#include "RooAbsFunc.h" // IWYU pragma: export
 
 class RooInvTransform : public RooAbsFunc {
 public:

@@ -13,16 +13,10 @@
 #ifndef ROOFUNCTOR1DBINDING
 #define ROOFUNCTOR1DBINDING
 
-#include "TString.h"
-#include "RooAbsReal.h"
-#include "RooArgList.h"
-#include "RooListProxy.h"
-#include "RooAbsPdf.h"
+#include "RooAbsReal.h" // IWYU pragma: export
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-#include "RooMsgService.h"
-#include <string>
-#include <map>
-#include <vector>
+//#include "RooMsgService.h"
 #include "Math/IFunction.h"
 
 

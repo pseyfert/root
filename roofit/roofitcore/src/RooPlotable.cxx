@@ -24,12 +24,12 @@ advantage of its internal normalization and axis range adjustment features. The
 most useful implementation of RooPlotable are RooHist and RooCurve.
 **/
 
-#include "RooFit.h"
+#include <ostream>                      // for operator<<, ostream, etc
 
-#include "RooPlotable.h"
-#include "RooPlotable.h"
-#include "TObject.h"
-#include "Riostream.h"
+#include "RooPlotable.h"                // for RooPlotable
+#include "Rtypes.h"                     // for Bool_t, ClassImp, Int_t
+#include "TObject.h"                    // for TObject
+#include "TString.h"                    // for operator<<, TString
 
 using namespace std;
 

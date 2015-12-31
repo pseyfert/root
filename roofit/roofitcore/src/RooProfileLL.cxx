@@ -22,16 +22,19 @@ the -log(L) of the best fit. Note that this function is slow to evaluate
 as a MIGRAD minimization step is executed for each function evaluation
 **/
 
-#include "Riostream.h" 
+#include <map>                          // for map
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for string, char_traits
 
-#include "RooFit.h"
-#include "RooProfileLL.h" 
-#include "RooAbsReal.h" 
-#include "RooMinuit.h"
-#include "RooMinimizer.h"
-#include "RooMsgService.h"
-#include "RooRealVar.h"
-#include "RooMsgService.h"
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooMinimizer.h"               // for RooMinimizer
+#include "RooMsgService.h"              // for RooMsgService, cxcoutI, etc
+#include "RooProfileLL.h"               // for RooProfileLL, RooAbsReal, etc
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooSetProxy.h"                // for RooArgSet, RooSetProxy, etc
+#include "TIterator.h"                  // for TIterator
+
 
 using namespace std ;
 

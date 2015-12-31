@@ -34,16 +34,20 @@ number of expected events of an extended p.d.f
 **/
 
 
-#include "Riostream.h"
-#include "RooDataSet.h"
-#include "RooRealVar.h"
-#include "RooRandom.h"
-#include "TString.h"
-#include "RooFit.h"
-#include "RooFitResult.h"
-#include "RooAddition.h"
-#include "RooMsgService.h"
-#include "RooRandomizeParamMCSModule.h"
+#include <list>                         // for _List_iterator, list, etc
+#include <ostream>                      // for operator<<, basic_ostream, etc
+
+#include "RooAbsArg.h"                  // for RooAbsArg, operator<<
+#include "RooAddition.h"                // for RooAddition
+#include "RooArgList.h"                 // for RooArgList
+#include "RooDataSet.h"                 // for RooArgSet, Double_t, etc
+#include "RooMsgService.h"              // for oocoutW, oocoutI, oocoutE
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRandomizeParamMCSModule.h"  // for RooRandomizeParamMCSModule, etc
+#include "RooRealVar.h"                 // for RooRealVar
+#include "TIterator.h"                  // for TIterator
+#include "TRandom.h"                    // for TRandom
+#include "TString.h"                    // for Form, TString
 
 using namespace std ;
 

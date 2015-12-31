@@ -16,10 +16,8 @@
 #ifndef ROO_LANDAU
 #define ROO_LANDAU
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-
-class RooRealVar;
 
 class RooLandau : public RooAbsPdf {
 public:

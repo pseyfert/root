@@ -16,8 +16,8 @@
 #ifndef ROO_BINNING_CATEGORY
 #define ROO_BINNING_CATEGORY
 
-#include "TSortedList.h"
-#include "RooAbsCategory.h"
+//#include "TSortedList.h"
+#include "RooAbsCategory.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 #include "RooCatType.h"
 

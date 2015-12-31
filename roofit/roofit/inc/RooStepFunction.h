@@ -17,12 +17,10 @@
 #ifndef ROO_STEP_FUNCTION
 #define ROO_STEP_FUNCTION
 
-#include "TArrayD.h"
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 #include "RooListProxy.h"
 
-class RooRealVar;
 class RooArgList ;
 
 class RooStepFunction : public RooAbsReal {

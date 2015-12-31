@@ -17,7 +17,7 @@
 #ifndef ROO_CMD_CONFIG
 #define ROO_CMD_CONFIG
 
-#include "TObject.h"
+#include "TObject.h" // IWYU pragma: export
 #include "TString.h"
 #include "TList.h"
 #include "RooCmdArg.h"

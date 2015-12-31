@@ -17,10 +17,8 @@
 #ifndef ROO_BREITWIGNER
 #define ROO_BREITWIGNER
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-
-class RooRealVar;
 
 class RooBreitWigner : public RooAbsPdf {
 public:

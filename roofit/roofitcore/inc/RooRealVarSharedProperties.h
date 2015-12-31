@@ -16,8 +16,7 @@
 #ifndef ROO_REAL_VAR_SHARED_PROPERTY
 #define ROO_REAL_VAR_SHARED_PROPERTY
 
-#include "TObject.h"
-#include "RooSharedProperties.h"
+#include "RooSharedProperties.h" // IWYU pragma: export
 #include "RooLinkedList.h"
 
 class RooRealVarSharedProperties : public RooSharedProperties {

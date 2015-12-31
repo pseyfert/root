@@ -18,10 +18,9 @@
 
 #include "Rtypes.h"
 #include "TString.h"
-#include "RooPrintable.h"
+#include "RooPrintable.h" // IWYU pragma: export
 
 class TObject;
-class RooArgSet;
 
 class RooPlotable : public RooPrintable {
 public:

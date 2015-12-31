@@ -36,10 +36,8 @@
 #ifndef ROO_BUKINPDF
 #define ROO_BUKINPDF
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-
-class RooRealVar;
 class RooAbsReal;
 
 class RooBukinPdf : public RooAbsPdf {

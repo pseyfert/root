@@ -12,9 +12,7 @@
 #ifndef ROOABSCACHEDREAL
 #define ROOABSCACHEDREAL
 
-#include "RooAbsPdf.h"
-#include "RooRealProxy.h"
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooHistFunc.h"
 #include "RooObjCacheManager.h"
 #include <map>

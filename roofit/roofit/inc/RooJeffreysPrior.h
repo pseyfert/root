@@ -7,11 +7,10 @@
 #ifndef JEFFREYSPRIOR
 #define JEFFREYSPRIOR
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 #include "RooListProxy.h"
 
-class RooRealVar;
 class RooArgList ;
 
 class RooJeffreysPrior : public RooAbsPdf {

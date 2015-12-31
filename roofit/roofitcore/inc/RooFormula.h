@@ -18,9 +18,9 @@
 
 #include "Rtypes.h"
 #include "v5/TFormula.h"
-#include "RooAbsReal.h"
+//#include "RooAbsReal.h"
 #include "RooArgSet.h"
-#include "RooPrintable.h"
+#include "RooPrintable.h" // IWYU pragma: export
 #include "RooLinkedList.h"
 #include <vector>
 

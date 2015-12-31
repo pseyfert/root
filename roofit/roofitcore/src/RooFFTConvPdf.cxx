@@ -100,29 +100,34 @@
 //
 
 
-#include "Riostream.h" 
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string, etc
 
-#include "RooFit.h"
-#include "RooFFTConvPdf.h" 
-#include "RooAbsReal.h" 
-#include "RooMsgService.h"
-#include "RooDataHist.h"
-#include "RooHistPdf.h"
-#include "RooRealVar.h"
-#include "TComplex.h"
-#include "TVirtualFFT.h"
-#include "RooGenContext.h"
-#include "RooConvGenContext.h"
-#include "RooBinning.h"
-#include "RooLinearVar.h"
-#include "RooCustomizer.h"
-#include "RooGlobalFunc.h"
-#include "RooLinearVar.h"
-#include "RooConstVar.h"
-#include "TClass.h"
-#include "TSystem.h"
+#include "RooAbsArg.h"                  // for RooAbsArg, etc
+#include "RooArgList.h"                 // for Int_t, Double_t, kTRUE, etc
+#include "RooConstVar.h"                // for RooAbsReal, RooConstVar
+#include "RooConvGenContext.h"          // for RooConvGenContext
+#include "RooCustomizer.h"              // for RooCustomizer
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooFFTConvPdf.h"              // for RooFFTConvPdf, RooAbsPdf, etc
+#include "RooGenContext.h"              // for RooGenContext
+#include "RooGlobalFunc.h"              // for RooConst
+#include "RooLinearVar.h"               // for RooLinearVar, RooAbsLValue
+#include "RooMsgService.h"              // for cxcoutI, coutE
+#include "RooObjCacheManager.h"         // for RooAbsCacheElement::Action, etc
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooSetProxy.h"                // for RooArgSet, RooSetProxy
+#include "RooUniformBinning.h"          // for RooAbsBinning, etc
+#include "TClass.h"                     // for TClass
+#include "TComplex.h"                   // for TComplex
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for Form, TString
+#include "TVirtualFFT.h"                // for TVirtualFFT
 
-using namespace std ;
+class RooDataSet;
+
+using namespace std;
 
 ClassImp(RooFFTConvPdf) 
 

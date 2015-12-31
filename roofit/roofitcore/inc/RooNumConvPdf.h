@@ -16,7 +16,7 @@
 #ifndef ROO_NUM_CONV_PDF
 #define ROO_NUM_CONV_PDF
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooNumConvolution.h"
 
 class TH2 ;

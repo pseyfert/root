@@ -16,13 +16,15 @@
 #ifndef ROO_FORMULA_VAR
 #define ROO_FORMULA_VAR
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooFormula.h"
-#include "RooArgList.h"
+//#include "RooArgList.h"
+class RooArgList;
 #include "RooListProxy.h"
-#include "RooTrace.h"
+//#include "RooTrace.h"
 
-class RooArgSet ;
+//class RooArgSet ;
+#include "RooArgSet.h"
 
 class RooFormulaVar : public RooAbsReal {
 public:

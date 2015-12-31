@@ -26,15 +26,9 @@ RooRealVars. If an asymmetric error is defined on a given measurement the proper
 side of that asymmetric error will be used
 **/
 
-#include "RooFit.h"
-
-#include "Riostream.h"
-#include "Riostream.h"
-#include <math.h>
-
-#include "RooPullVar.h"
-#include "RooAbsReal.h"
-#include "RooRealVar.h"
+#include "RooPullVar.h"                 // for RooPullVar
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooRealVar, Double_t, etc
 
 using namespace std;
 

@@ -23,20 +23,20 @@ RooSegmentedIntegrator1D implements an adaptive one-dimensional
 numerical integration algorithm.
 **/
 
+#include <assert.h>                     // for assert
+#include <math.h>                       // for sqrt
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooFit.h"
-#include "Riostream.h"
-
-#include "TClass.h"
-#include "RooSegmentedIntegrator1D.h"
-#include "RooArgSet.h"
-#include "RooRealVar.h"
-#include "RooNumber.h"
-#include "RooMsgService.h"
-#include "RooNumIntFactory.h"
-
-#include <assert.h>
-
+#include "RooAbsFunc.h"                 // for RooAbsFunc
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooIntegrator1D.h"            // for RooIntegrator1D, etc
+#include "RooMsgService.h"              // for oocoutE
+#include "RooNumIntConfig.h"            // for RooNumIntConfig
+#include "RooNumIntFactory.h"           // for RooNumIntFactory
+#include "RooNumber.h"                  // for RooNumber
+#include "RooRealVar.h"                 // for Double_t, Int_t, Bool_t, etc
+#include "RooSegmentedIntegrator1D.h"   // for RooSegmentedIntegrator1D, etc
+#include "TClass.h"                     // for TClass
 
 
 using namespace std;

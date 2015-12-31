@@ -1,9 +1,6 @@
-#include "RooFit.h"
-
-#include "Rtypes.h"
-#include "Riostream.h"
-#include "TEnv.h"
-
+#include "RtypesCore.h"                 // for Int_t
+#include <iostream> // IWYU pragma: keep
+#include "TEnv.h"   // IWYU pragma: keep
 /**
 \file RooBanner.cxx
 \class RooBanner

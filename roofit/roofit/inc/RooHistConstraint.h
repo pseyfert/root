@@ -7,15 +7,9 @@
 #ifndef ROOHISTCONSTRAINT
 #define ROOHISTCONSTRAINT
 
-#include "RooAbsPdf.h"
-#include "RooRealProxy.h"
-#include "RooCategoryProxy.h"
-#include "RooAbsReal.h"
-#include "RooAbsCategory.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooListProxy.h"
 
-class RooParamHistFunc ;
- 
 class RooHistConstraint : public RooAbsPdf {
 public:
   RooHistConstraint() {} ; 

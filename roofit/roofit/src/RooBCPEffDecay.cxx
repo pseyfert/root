@@ -22,14 +22,20 @@ This function can be analytically convolved with any RooResolutionModel implemen
 */
 
 
-#include "RooFit.h"
+#include <assert.h>                     // for assert
+#include <math.h>                       // for log, fabs, cos, sin
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include "RooRealVar.h"
-#include "RooRandom.h"
-#include "RooBCPEffDecay.h"
-#include "RooRealIntegral.h"
+#include "RooAbsCategory.h"             // for RooAbsCategory
+#include "RooArgList.h"                 // for RooArgList, Int_t, Double_t
+#include "RooArgSet.h"                  // for Double_t, Int_t, RooArgSet, etc
+#include "RooBCPEffDecay.h"             // for RooBCPEffDecay, etc
+#include "RooCategoryProxy.h"           // for RooCategoryProxy
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealIntegral.h"            // for RooRealIntegral
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooAbsReal, ClassImp, etc
+
+class RooResolutionModel;
 
 using namespace std;
 

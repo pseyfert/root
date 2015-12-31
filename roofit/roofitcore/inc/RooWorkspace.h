@@ -16,7 +16,6 @@
 #ifndef ROO_WORKSPACE
 #define ROO_WORKSPACE
 
-#include "RooPrintable.h"
 #include "RooArgSet.h"
 #include "RooLinkedList.h"
 #include "RooCmdArg.h"
@@ -36,8 +35,8 @@ class RooAbsCategory ;
 class RooFactoryWSTool ;
 class RooAbsStudy ;
 
-#include "TNamed.h"
-#include "TDirectoryFile.h"
+#include "TNamed.h" // IWYU pragma: export
+#include "TDirectoryFile.h" // IWYU pragma: export
 
 class RooWorkspace : public TNamed {
 public:

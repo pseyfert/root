@@ -22,16 +22,20 @@ Two-dimensional kernel estimation PDF.
 <b>This function has been superseded by the more general RooNDKeysPdf.</b>
 */
 
-#include "RooFit.h"
+#include <math.h>                       // for exp, sqrt
+#include <string.h>                     // for strcmp
+#include <iostream>                     // for operator<<, basic_ostream, etc
 
-#include "Roo2DKeysPdf.h"
-#include "Roo2DKeysPdf.h"
-#include "RooRealVar.h"
-#include "TTree.h"
-#include "TH2.h"
-#include "TFile.h"
-#include "TBranch.h"
-#include "TMath.h"
+#include "Roo2DKeysPdf.h"               // for Roo2DKeysPdf, RooAbsReal, etc
+#include "RooArgList.h"                 // for RooArgList
+#include "RooDataSet.h"                 // for Double_t, Int_t, RooArgSet, etc
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooRealVar
+#include "TFile.h"                      // for TFile
+#include "TH2.h"                        // for TH2F
+#include "TMath.h"                      // for Power, Pi
+#include "TString.h"                    // for TString, operator<<
+#include "TTree.h"                      // for TTree
 
 //#include <math.h>
 

@@ -19,18 +19,17 @@
 
 **/
 
-#include "RooFit.h"
-#include "Riostream.h"
-#include <math.h>
-#include <string>
-#include <algorithm>
+#include <string.h>                     // for strlen
+#include <algorithm>                    // for max, min
+#include <cmath>                        // for fabs, pow
 
-#include "RooLegendre.h"
-#include "RooAbsReal.h"
-#include "Math/SpecFunc.h"
-#include "TMath.h"
-
-#include "TError.h"
+#include "Math/SpecFuncMathMore.h"      // for assoc_legendre
+#include "RConfigure.h"                 // for R__HAS_MATHMORE
+#include "RooArgSet.h"                  // for Int_t, Double_t, Bool_t, etc
+#include "RooLegendre.h"                // for RooLegendre, RooAbsReal
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "TError.h"                     // for R__ASSERT
+#include "TMath.h"                      // for Factorial, Gamma
 
 using namespace std;
 

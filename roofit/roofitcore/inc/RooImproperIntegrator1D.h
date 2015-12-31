@@ -16,11 +16,12 @@
 #ifndef ROO_IMPROPER_INTEGRATOR_1D
 #define ROO_IMPROPER_INTEGRATOR_1D
 
-#include "RooAbsIntegrator.h"
+#include "RooAbsIntegrator.h" // IWYU pragma: export
 #include "RooNumIntConfig.h"
 
-class RooInvTransform;
-class RooIntegrator1D;
+class RooNumIntFactory;
+class RooInvTransform; // not included??
+class RooIntegrator1D; // not included??
 
 class RooImproperIntegrator1D : public RooAbsIntegrator {
 public:

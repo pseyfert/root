@@ -19,7 +19,8 @@
 #include "Rtypes.h"
 #include "RooArgSet.h" 
 #include "RooAbsData.h"
-#include "TNamed.h"
+#include "TNamed.h"       // IWYU pragma: export
+#include "RooPrintable.h" // IWYU pragma: export
 #include <list>
 
 

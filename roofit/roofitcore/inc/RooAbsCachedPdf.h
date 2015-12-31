@@ -12,8 +12,7 @@
 #ifndef ROOABSCACHEDPDF
 #define ROOABSCACHEDPDF
 
-#include "RooAbsPdf.h"
-#include "RooRealProxy.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooAbsReal.h"
 #include "RooHistPdf.h"
 #include "RooObjCacheManager.h"

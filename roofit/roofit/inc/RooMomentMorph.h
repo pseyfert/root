@@ -7,11 +7,9 @@
 #ifndef ROOMOMENTMORPH
 #define ROOMOMENTMORPH
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-#include "RooCategoryProxy.h"
 #include "RooAbsReal.h"
-#include "RooAbsCategory.h"
 #include "RooSetProxy.h"
 #include "RooListProxy.h"
 #include "RooArgList.h"
@@ -19,8 +17,6 @@
 #include "TMatrixD.h"
 #include "TVectorD.h"
 
-#include <vector>
-#include <string>
 class RooChangeTracker ;
 
 class RooMomentMorph : public RooAbsPdf {

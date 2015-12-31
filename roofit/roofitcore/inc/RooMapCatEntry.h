@@ -16,8 +16,8 @@
 #ifndef ROO_MAP_CAT_ENTRY
 #define ROO_MAP_CAT_ENTRY
 
-#include "Riosfwd.h"
-#include "TNamed.h"
+//#include "Riosfwd.h"
+#include "TNamed.h" // IWYU pragma: export
 #include "TRegexp.h"
 #include "RooCatType.h"
 

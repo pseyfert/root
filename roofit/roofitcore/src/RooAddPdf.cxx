@@ -47,28 +47,32 @@
 //
 // 
 
-#include "RooFit.h"
-#include "RooMsgService.h"
+#include <assert.h>                     // for assert
+#include <algorithm>                    // for merge, unique
+#include <list>                         // for _List_iterator, list, etc
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <vector>                       // for vector
 
-#include "TIterator.h"
-#include "TIterator.h"
-#include "TList.h"
-#include "RooAddPdf.h"
-#include "RooDataSet.h"
-#include "RooRealProxy.h"
-#include "RooPlot.h"
-#include "RooRealVar.h"
-#include "RooAddGenContext.h"
-#include "RooRealConstant.h"
-#include "RooNameReg.h"
-#include "RooMsgService.h"
-#include "RooRecursiveFraction.h"
-#include "RooGlobalFunc.h"
-#include "RooRealIntegral.h"
-#include "RooTrace.h"
+#include "RooAICRegistry.h"             // for RooAICRegistry
+#include "RooAbsArg.h"                  // for operator<<, RooFIter, etc
+#include "RooAddGenContext.h"           // for RooAddGenContext
+#include "RooAddPdf.h"                  // for RooAddPdf, RooAbsPdf, etc
+#include "RooConstVar.h"                // for RooConstVar
+#include "RooGlobalFunc.h"              // for RooConst
+#include "RooListProxy.h"               // for RooListProxy, RooArgList
+#include "RooMsgService.h"              // for cxcoutD, coutE, coutW, etc
+#include "RooNameReg.h"                 // for RooNameReg
+#include "RooObjCacheManager.h"         // for RooObjCacheManager, etc
+#include "RooRealConstant.h"            // for RooRealConstant
+#include "RooRealIntegral.h"            // for RooRealIntegral
+#include "RooRealVar.h"                 // for Double_t, kFALSE, kTRUE, etc
+#include "RooRecursiveFraction.h"       // for RooRecursiveFraction
+#include "RooSetProxy.h"                // for RooArgSet, RooSetProxy
+#include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for TString, Form
 
-#include "Riostream.h"
-#include <algorithm>
+class RooDataSet;
 
 
 using namespace std;

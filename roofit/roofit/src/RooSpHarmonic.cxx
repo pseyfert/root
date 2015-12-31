@@ -48,13 +48,14 @@ integrals, using the orthogonality properties of \f$Y_l^m\f$...
 
 **/
 
-#include "RooFit.h"
-#include "Riostream.h"
-#include <math.h>
+#include <math.h>                       // for fabs, cos, sin, sqrt
+#include <string.h>                     // for strlen
 
-#include "RooSpHarmonic.h"
-#include "Math/SpecFunc.h"
-#include "TMath.h"
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooSpHarmonic.h"              // for RooSpHarmonic, RooLegendre
+#include "Rtypes.h"                     // for Bool_t, Int_t, Double_t, etc
+#include "TMath.h"                      // for Pi, Factorial, TwoPi, Sqrt2
 
 using namespace std;
 

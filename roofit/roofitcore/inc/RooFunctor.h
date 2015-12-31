@@ -17,10 +17,12 @@
 #define ROO_FUNCTOR
 
 #include "RooArgSet.h"
-#include "RooAbsReal.h"
+class RooAbsReal;
+//#include "RooAbsReal.h"
 
-class RooAbsFunc ;
-class RooAbsPdf ;
+#include "RooAbsFunc.h"
+//class RooAbsFunc ;
+//class RooAbsPdf ;
 
 class RooFunctor {
 

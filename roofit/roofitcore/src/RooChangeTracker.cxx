@@ -30,17 +30,14 @@ observable propates a valueDirty flag when an event is loaded even
 though usually only one observable actually changes.
 **/
 
+#include <vector>                       // for vector
 
-#include "RooFit.h"
+#include "RooAbsCategory.h"             // for RooAbsCategory, RooAbsArg
+#include "RooArgSet.h"                  // for RooArgSet, Int_t, Double_t, etc
+#include "RooChangeTracker.h"           // for RooChangeTracker, etc
+#include "RooListProxy.h"               // for RooListProxy
+#include "TIterator.h"                  // for TIterator
 
-#include "Riostream.h"
-#include <math.h>
-
-#include "RooChangeTracker.h"
-#include "RooAbsReal.h"
-#include "RooAbsCategory.h"
-#include "RooArgSet.h"
-#include "RooMsgService.h"
 
 using namespace std ;
 

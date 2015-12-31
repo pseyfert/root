@@ -23,21 +23,22 @@ RooCategory represents a fundamental (non-derived) discrete value object. The cl
 has a public interface to define the possible value states.
 **/
 
+#include <stddef.h>                     // for size_t
+#include <string.h>                     // for strtok, strlen
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooFit.h"
+#include "RooCatType.h"                 // for kTRUE, Bool_t, kFALSE, etc
+#include "RooCategory.h"                // for RooCategory, etc
+#include "RooCategorySharedProperties.h"
+#include "RooMsgService.h"              // for coutE, coutI, coutW
+#include "RooSharedPropertiesList.h"    // for RooSharedPropertiesList
+#include "RooStreamParser.h"            // for RooStreamParser
+#include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
+#include "TBuffer.h"                    // for TBuffer, operator>>
+#include "TList.h"                      // for TList
+#include "TString.h"                    // for TString
+#include "strlcpy.h"                    // for strlcpy
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include <stdlib.h>
-#include <string.h>
-#include "TTree.h"
-#include "TString.h"
-#include "TH1.h"
-#include "RooCategory.h"
-#include "RooArgSet.h"
-#include "RooStreamParser.h"
-#include "RooMsgService.h"
-#include "RooTrace.h"
 
 using namespace std;
 

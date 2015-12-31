@@ -31,18 +31,15 @@ Partial integrals that factorize that can be calculated are calculated
 analytically. Remaining non-factorizing observables are integrated numerically.
 **/
 
+#include "RooAbsArg.h"                  // for RooAbsArg, etc
+#include "RooAbsPdf.h"                  // for RooAbsReal, RooAbsPdf
+#include "RooGenProdProj.h"             // for RooGenProdProj
+#include "RooListProxy.h"               // for RooListProxy, RooArgList
+#include "RooProduct.h"                 // for RooProduct
+#include "RooSetProxy.h"                // for RooArgSet, RooSetProxy, etc
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for TString, Form
 
-#include "RooFit.h"
-
-#include "Riostream.h"
-#include "Riostream.h"
-#include <math.h>
-
-#include "RooGenProdProj.h"
-#include "RooAbsReal.h"
-#include "RooAbsPdf.h"
-#include "RooErrorHandler.h"
-#include "RooProduct.h"
 
 using namespace std;
 

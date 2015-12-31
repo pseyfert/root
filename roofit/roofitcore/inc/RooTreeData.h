@@ -16,7 +16,7 @@
 #ifndef ROO_TREE_DATA
 #define ROO_TREE_DATA
 
-#include "RooAbsData.h"
+#include "RooAbsData.h" // IWYU pragma: export
 #include "TString.h"
 #include "RooArgSet.h"
 class TTree ;

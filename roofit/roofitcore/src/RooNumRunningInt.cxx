@@ -25,15 +25,18 @@ cached in a histogram. The cache histogram is automatically recalculated
 when any of the parameters of the input p.d.f. has changed.
 **/
 
-#include "Riostream.h"
+#include <math.h>                       // for fabs
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <string>                       // for string, char_traits
 
-#include "RooAbsPdf.h"
+#include "RooAbsCacheElement.h"         // for RooAbsCacheElement::Action
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooHistFunc.h"                // for RooHistFunc
 #include "RooNumRunningInt.h"
-#include "RooAbsReal.h"
-#include "RooMsgService.h"
-#include "RooDataHist.h"
-#include "RooHistPdf.h"
-#include "RooRealVar.h"
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for Double_t, Int_t, RooRealVar, etc
 
 using namespace std;
 

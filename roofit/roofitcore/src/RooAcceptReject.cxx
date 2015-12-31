@@ -26,29 +26,20 @@ classes to take care of generation of observables for which p.d.fs
 do not define internal methods
 **/
 
+#include <assert.h>                     // for assert
+#include <iostream>                     // for operator<<, basic_ostream, etc
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include "RooAcceptReject.h"            // for RooAcceptReject, etc
+#include "RooCategory.h"                // for operator<<, RooCategory, etc
+#include "RooDataSet.h"                 // for RooArgSet, RooDataSet, etc
+#include "RooMsgService.h"              // for ccoutI, coutI, coutW, etc
+#include "RooNumGenConfig.h"            // for RooNumGenConfig
+#include "RooNumGenFactory.h"           // for RooNumGenFactory
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealVar.h"                 // for RooRealVar, RooAbsReal
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for operator<<
 
-#include "RooAcceptReject.h"
-#include "RooAcceptReject.h"
-#include "RooAbsReal.h"
-#include "RooCategory.h"
-#include "RooRealVar.h"
-#include "RooDataSet.h"
-#include "RooRandom.h"
-#include "RooErrorHandler.h"
-
-#include "TString.h"
-#include "TIterator.h"
-#include "RooMsgService.h"
-#include "TClass.h"
-#include "TFoam.h"
-#include "RooRealBinding.h"
-#include "RooNumGenFactory.h"
-#include "RooNumGenConfig.h"
-
-#include <assert.h>
 
 using namespace std;
 

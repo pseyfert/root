@@ -16,12 +16,9 @@
 #ifndef ROO_CHANGE_TRACKER
 #define ROO_CHANGE_TRACKER
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooListProxy.h"
 #include <vector>
-
-class RooRealVar;
-class RooArgList ;
 
 class RooChangeTracker : public RooAbsReal {
 public:

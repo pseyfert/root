@@ -23,15 +23,21 @@ Roo1DTable implements a one-dimensional table. A table is the category
 equivalent of a plot. To create a table use the RooDataSet::table method.
 **/
 
-#include "RooFit.h"
+#include <math.h>                       // for log10
+#include <string.h>                     // for strlen
+#include <iomanip>                      // for operator<<, setw, setfill
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <vector>                       // for vector
 
-#include "Riostream.h"
-#include <iomanip>
-#include "TString.h"
-#include "TMath.h"
-#include "Roo1DTable.h"
-#include "RooMsgService.h"
-#include "TClass.h"
+#include "Roo1DTable.h"                 // for Roo1DTable
+#include "RooAbsCategory.h"             // for RooAbsCategory, etc
+#include "RooCatType.h"                 // for Double_t, RooCatType, Int_t, etc
+#include "RooMsgService.h"              // for coutE, coutW
+#include "RooTable.h"                   // for RooTable
+#include "TClass.h"                     // for TClass
+#include "TIterator.h"                  // for TIterator
+#include "TObjArray.h"                  // for TObjArray
+#include "TString.h"                    // for operator<<, TString
 
 using namespace std ;
 

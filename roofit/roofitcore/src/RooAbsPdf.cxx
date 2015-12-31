@@ -111,53 +111,56 @@ the proxy holds a function, and will trigger an assert
 
 */
 
-#include "RooFit.h"
-#include "RooMsgService.h" 
+#include <math.h>                       // for log, sqrt, fabs
+#include <stddef.h>                     // for size_t
+#include <stdlib.h>                     // for abs
+#include <string.h>                     // for strlen, strtok, strchr
+#include <list>                         // for list, _List_iterator, etc
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string, etc
+#include <utility>                      // for pair, make_pair
+#include <vector>                       // for vector, vector<>::iterator
 
-#include "TClass.h"
-#include "Riostream.h"
-#include "TMath.h"
-#include "TObjString.h"
-#include "TPaveText.h"
-#include "TList.h"
-#include "TH1.h"
-#include "TH2.h"
-#include "TMatrixD.h"
-#include "TMatrixDSym.h"
-#include "RooAbsPdf.h"
-#include "RooDataSet.h"
-#include "RooArgSet.h"
-#include "RooArgProxy.h"
-#include "RooRealProxy.h"
-#include "RooRealVar.h"
-#include "RooGenContext.h"
-#include "RooBinnedGenContext.h"
-#include "RooPlot.h"
-#include "RooCurve.h"
-#include "RooNLLVar.h"
-#include "RooMinuit.h"
-#include "RooCategory.h"
-#include "RooNameReg.h"
-#include "RooCmdConfig.h"
-#include "RooGlobalFunc.h"
-#include "RooAddition.h"
-#include "RooRandom.h"
-#include "RooNumIntConfig.h"
-#include "RooProjectedPdf.h"
-#include "RooInt.h"
-#include "RooCustomizer.h"
-#include "RooConstraintSum.h"
-#include "RooParamBinning.h"
-#include "RooNumCdf.h"
-#include "RooFitResult.h"
-#include "RooNumGenConfig.h"
-#include "RooCachedReal.h"
-#include "RooXYChi2Var.h"
-#include "RooChi2Var.h"
-#include "RooMinimizer.h"
-#include "RooRealIntegral.h"
-#include "Math/CholeskyDecomp.h"
-#include <string>
+#include "Math/CholeskyDecomp.h"        // for CholeskyDecompGenDim
+#include "RooAddition.h"                // for RooAddition
+#include "RooArgList.h"                 // for RooArgList
+#include "RooBinnedGenContext.h"        // for RooAbsGenContext, etc
+#include "RooCachedReal.h"              // for RooCachedReal
+#include "RooCategory.h"                // for RooLinkedList, RooAbsArg, etc
+#include "RooChi2Var.h"                 // for RooChi2Var
+#include "RooCmdArg.h"                  // for RooCmdArg
+#include "RooCmdConfig.h"               // for RooCmdConfig
+#include "RooConstraintSum.h"           // for RooConstraintSum
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooDataSet.h"                 // for RooArgSet, Double_t, Int_t, etc
+#include "RooFitResult.h"               // for RooFitResult
+#include "RooGenContext.h"              // for RooGenContext
+#include "RooGlobalFunc.h"              // for NumEvents, Range, MPSplit, etc
+#include "RooInt.h"                     // for RooInt
+#include "RooMinimizer.h"               // for RooMinimizer
+#include "RooMinuit.h"                  // for RooMinuit
+#include "RooMsgService.h"              // for coutI, coutE, cxcoutD, etc
+#include "RooNLLVar.h"                  // for RooNLLVar
+#include "RooNameReg.h"                 // for RooNameReg
+#include "RooNameSet.h"                 // for RooNameSet
+#include "RooNumCdf.h"                  // for RooNumCdf
+#include "RooNumGenConfig.h"            // for RooNumGenConfig
+#include "RooObjCacheManager.h"         // for RooObjCacheManager
+#include "RooPlot.h"                    // for RooPlot
+#include "RooProjectedPdf.h"            // for RooAbsPdf, RooAbsReal, etc
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealIntegral.h"            // for RooRealIntegral
+#include "RooRealVar.h"                 // for RooRealVar, etc
+#include "RooXYChi2Var.h"               // for RooXYChi2Var
+#include "TClass.h"                     // for TClass
+#include "TIterator.h"                  // for TIterator
+#include "TMath.h"                      // for IsNaN
+#include "TMatrixDSymfwd.h"             // for TMatrixDSym
+#include "TMatrixTSym.h"                // for TMatrixTSym
+#include "TPaveText.h"                  // for TPaveText
+#include "TRandom.h"                    // for TRandom
+#include "TString.h"                    // for Form, TString, operator<<
+#include "strlcpy.h"                    // for strlcpy
 
 using namespace std;
 

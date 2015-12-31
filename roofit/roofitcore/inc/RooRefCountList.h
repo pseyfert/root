@@ -16,7 +16,7 @@
 #ifndef ROO_REF_COUNT_LIST
 #define ROO_REF_COUNT_LIST
 
-#include "RooLinkedList.h"
+#include "RooLinkedList.h" // IWYU pragma: export
 
 class RooRefCountList : public RooLinkedList {
 public:

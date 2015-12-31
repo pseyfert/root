@@ -38,25 +38,27 @@ The singleton instance is accessible through RooMsgService::instance() ;
 
 **/
 
+#include <ext/alloc_traits.h>
+#include <iostream>                     // for operator<<, ostream, etc
+#include <fstream>                      // IWYU pragma: keep
+#include <map>                          // for map, map<>::mapped_type, etc
+#include <stack>                        // for stack
+#include <string>                       // for string, operator<<, etc
+#include <utility>                      // for pair
+#include <vector>                       // for vector, vector<>::iterator
 
-#include <sys/types.h>
+#include "RooAbsArg.h"                  // for RooLinkedList, RooAbsArg
+#include "RooCmdArg.h"                  // for RooCmdArg
+#include "RooCmdConfig.h"               // for RooCmdConfig, kFALSE, Int_t, etc
+#include "RooGlobalFunc.h"              // for MsgTopic, MsgLevel, etc
+#include "RooMsgService.h"              // for RooMsgService::StreamConfig, etc
+#include "RooSentinel.h"                // for RooSentinel
+#include "RooWorkspace.h"               // for RooWorkspace
+#include "TClass.h"                     // for TClass
+#include "TString.h"                    // for TString, Form
+#include "TSystem.h"                    // for TSystem, gSystem
 
-#include "RooFit.h"
-#include "RooAbsArg.h"
-#include "TClass.h"
-#include "TROOT.h"
 
-#include "RooMsgService.h"
-#include "RooCmdArg.h"
-#include "RooCmdConfig.h"
-#include "RooGlobalFunc.h"
-#include "RooSentinel.h"
-#include "RooWorkspace.h"
-
-#include "TSystem.h"
-#include "Riostream.h"
-#include <iomanip>
-#include <fstream>
 using namespace std ;
 using namespace RooFit ;
 

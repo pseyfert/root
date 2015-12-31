@@ -25,12 +25,16 @@ generating events from a dedicated generator context of the input p.d.f.
 and applying an extra rejection step based on the efficiency function.
 **/
 
-#include <memory>
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooFit.h"
-#include "RooEffGenContext.h"
-#include "RooAbsPdf.h"
-#include "RooRandom.h"
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsPdf.h"                  // for RooAbsReal, RooAbsPdf
+#include "RooArgSet.h"                  // for RooArgSet, Int_t, kTRUE, etc
+#include "RooEffGenContext.h"           // for RooEffGenContext, etc
+#include "RooMsgService.h"              // for coutE
+#include "RooRandom.h"                  // for RooRandom
+
+class RooDataSet;
 
 using namespace std;
 

@@ -16,11 +16,10 @@
 #define ROO_PARAMETRIC_STEP_FUNCTION
 
 #include "TArrayD.h"
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 #include "RooListProxy.h"
 
-class RooRealVar;
 class RooArgList ;
 
 class RooParametricStepFunction : public RooAbsPdf {

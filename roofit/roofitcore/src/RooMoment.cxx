@@ -25,27 +25,20 @@ derivator class.
 **/
 
 
-#include "RooFit.h"
+#include <math.h>                       // for pow
+#include <string>                       // for string
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include <math.h>
-#include <string>
+#include "RooArgList.h"                 // for RooArgList
+#include "RooCategory.h"                // for RooCategory
+#include "RooFormulaVar.h"              // for RooFormulaVar
+#include "RooMoment.h"                  // for RooMoment, RooAbsReal, etc
+#include "RooNumIntConfig.h"            // for RooNumIntConfig
+#include "RooRealIntegral.h"            // for RooRealIntegral
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooSetProxy.h"                // for RooArgSet, kTRUE, Bool_t, etc
+#include "TString.h"                    // for Form
 
-#include "RooMoment.h"
-#include "RooAbsReal.h"
-#include "RooAbsPdf.h"
-#include "RooErrorHandler.h"
-#include "RooArgSet.h"
-#include "RooMsgService.h"
-#include "RooRealVar.h"
-#include "RooFunctor.h"
-#include "RooFormulaVar.h"
-#include "RooGlobalFunc.h"
-#include "RooConstVar.h"
-#include "RooRealIntegral.h"
-#include "RooNumIntConfig.h"
-#include <string>
 using namespace std ;
 
 

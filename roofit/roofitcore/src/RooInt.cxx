@@ -23,10 +23,9 @@ RooInt is a minimal implementation of a TObject holding a Int_t
 value.
 **/
 
-#include "RooFit.h"
-
-#include "RooInt.h"
-#include "RooInt.h"
+#include "RooInt.h"                     // for RooInt
+#include "RtypesCore.h"                 // for Int_t
+#include "TObject.h"                    // for ClassImp, TObject
 
 using namespace std;
 

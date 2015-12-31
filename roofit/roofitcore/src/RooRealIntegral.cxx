@@ -28,28 +28,32 @@ The actual analytical integrations (if any) are done in the PDF themselves, the 
 integration is performed in the various implemenations of the RooAbsIntegrator base class.
 **/
 
-#include "RooFit.h"
+#include <math.h>                       // for fabs
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "TClass.h"
-#include "RooMsgService.h"
-#include "Riostream.h"
-#include "TObjString.h"
-#include "TH1.h"
-#include "RooRealIntegral.h"
-#include "RooArgSet.h"
-#include "RooAbsRealLValue.h"
-#include "RooAbsCategoryLValue.h"
-#include "RooRealBinding.h"
-#include "RooRealAnalytic.h"
-#include "RooInvTransform.h"
-#include "RooSuperCategory.h"
-#include "RooNumIntFactory.h"
-#include "RooNumIntConfig.h"
-#include "RooNameReg.h"
-#include "RooExpensiveObjectCache.h"
-#include "RooConstVar.h"
-#include "RooDouble.h"
-#include "RooTrace.h"
+#include "RooAbsBinning.h"              // for RooAbsBinning
+#include "RooAbsIntegrator.h"           // for RooAbsIntegrator
+#include "RooAbsRealLValue.h"           // for RooAbsReal, etc
+#include "RooCatType.h"                 // for RooCatType
+#include "RooConstVar.h"                // for RooConstVar
+#include "RooDouble.h"                  // for RooDouble
+#include "RooExpensiveObjectCache.h"    // for RooExpensiveObjectCache
+#include "RooListProxy.h"               // for RooListProxy
+#include "RooMsgService.h"              // for oocxcoutI, coutE, oocxcoutD, etc
+#include "RooNameReg.h"                 // for RooNameReg
+#include "RooNumIntFactory.h"           // for RooNumIntFactory
+#include "RooRealAnalytic.h"            // for RooAbsFunc, RooRealAnalytic, etc
+#include "RooRealIntegral.h"            // for RooRealIntegral, etc
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRefCountList.h"            // for RooRefCountList
+#include "RooSetProxy.h"                // for RooArgSet, RooSetProxy, etc
+#include "RooSuperCategory.h"           // for RooAbsArg, operator<<, etc
+#include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
+#include "TClass.h"                     // for TClass
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for operator<<, Form, TString
+
+class RooNumIntConfig;
 
 using namespace std;
 

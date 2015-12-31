@@ -27,18 +27,16 @@ is provided to modify the contents
 **/
 // 
 
-#include "RooFit.h"
+#include <assert.h>                     // for assert
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include "TObjString.h"
-#include "TH1.h"
-#include "TTree.h"
-
-#include "RooArgSet.h"
-#include "RooAbsString.h"
-#include "RooStringVar.h"
-#include "RooMsgService.h"
+#include "RooArgSet.h"                  // for Bool_t, kFALSE, Int_t, etc
+#include "RooMsgService.h"              // for cxcoutD, coutE
+#include "RooStringVar.h"               // for RooAbsString, RooAbsArg, etc
+#include "TBranch.h"                    // for TBranch
+#include "TString.h"                    // for TString
+#include "TTree.h"                      // for TTree
+#include "strlcpy.h"                    // for strlcpy
 
 using namespace std;
 

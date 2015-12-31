@@ -38,19 +38,18 @@
 //
 //
 
-#include "Riostream.h"
-#include <iomanip>
-#include <fstream>
-#include "TClass.h"
-#include "RooArgList.h"
-#include "RooErrorHandler.h"
-#include "RooStreamParser.h"
-#include "RooFormula.h"
-#include "RooAbsRealLValue.h"
-#include "RooAbsCategoryLValue.h"
-#include "RooStringVar.h"
-#include "RooTrace.h"
-#include "RooMsgService.h"
+#include <fstream>                      // for operator<<, basic_ostream, etc
+
+#include "RooAbsCategoryLValue.h"       // for RooAbsArg
+#include "RooArgList.h"                 // for RooArgList, etc
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooErrorHandler.h"            // for RooErrorHandler
+#include "RooMsgService.h"              // for coutE, coutW
+#include "RooStreamParser.h"            // for RooStreamParser
+#include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
+#include "TCollection.h"                // for TCollection
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for operator<<, TString
 
 using namespace std;
 

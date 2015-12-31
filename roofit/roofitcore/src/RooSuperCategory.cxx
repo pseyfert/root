@@ -30,20 +30,18 @@ RooSuperCategory state are automatically defined and updated whenever an input
 category modifies its list of states
 **/
 
-#include "RooFit.h"
+#include <string.h>                     // for strlen, strtok
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include "TString.h"
-#include "TClass.h"
-#include "RooSuperCategory.h"
-#include "RooStreamParser.h"
-#include "RooArgSet.h"
-#include "RooMultiCatIter.h"
-#include "RooAbsCategoryLValue.h"
-#include "RooMsgService.h"
+#include "RooCatType.h"                 // for Bool_t, kTRUE, Int_t, etc
+#include "RooMsgService.h"              // for coutE, ccoutE
+#include "RooMultiCatIter.h"            // for TIterator, RooMultiCatIter
+#include "RooSetProxy.h"                // for RooSetProxy, RooArgSet
+#include "RooSuperCategory.h"           // for RooSuperCategory, etc
+#include "TClass.h"                     // for TClass
+#include "TObjString.h"                 // for TObjString
+#include "TString.h"                    // for TString, operator<<
+#include "strlcpy.h"                    // for strlcpy
 
 using namespace std;
 

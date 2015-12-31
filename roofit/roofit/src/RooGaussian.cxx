@@ -22,17 +22,16 @@
 Plain Gaussian p.d.f
 **/
 
-#include "RooFit.h"
+#include <assert.h>                     // for assert
+#include <math.h>                       // for sqrt, atan2, exp, log
+#include <iostream>                     // for operator<<, basic_ostream, etc
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include <math.h>
-
-#include "RooGaussian.h"
-#include "RooAbsReal.h"
-#include "RooRealVar.h"
-#include "RooRandom.h"
-#include "RooMath.h"
+#include "RooArgSet.h"                  // for Double_t, Int_t, Bool_t, etc
+#include "RooGaussian.h"                // for RooGaussian, RooAbsPdf
+#include "RooMath.h"                    // for RooMath
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "TRandom.h"                    // for TRandom
 
 using namespace std;
 

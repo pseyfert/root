@@ -6,13 +6,10 @@
 
 // Your description goes here... 
 
-#include "Riostream.h" 
-
-#include "RooExtendedBinding.h" 
-#include "RooAbsPdf.h" 
-#include "RooAbsCategory.h" 
-#include <math.h> 
-#include "TMath.h" 
+#include "RooAbsPdf.h"                  // for RooAbsPdf
+#include "RooExtendedBinding.h"         // for RooExtendedBinding, etc
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "Rtypes.h"                     // for ClassImp, Double_t
 
 ClassImp(RooExtendedBinding) 
 

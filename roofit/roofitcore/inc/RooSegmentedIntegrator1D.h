@@ -16,7 +16,7 @@
 #ifndef ROO_SEGMENTED_INTEGRATOR_1D
 #define ROO_SEGMENTED_INTEGRATOR_1D
 
-#include "RooAbsIntegrator.h"
+#include "RooAbsIntegrator.h" // IWYU pragma: export
 #include "RooIntegrator1D.h"
 #include "RooNumIntConfig.h"
 

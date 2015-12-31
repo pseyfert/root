@@ -24,15 +24,17 @@ to ROOT directories. Concrete classes inherit the appendToDir and removeToDir
 methods that can be used to safely attach and detach one self from a TDirectory
 **/
 
-#include "RooFit.h"
+#include "RooDirItem.h"                 // for RooDirItem
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include "TROOT.h"
-#include "TList.h"
-#include "TDirectoryFile.h"
-#include "TString.h"
-#include "RooDirItem.h"
+#include "Rtypes.h"                     // for Bool_t, ClassImp
+#include "TDirectory.h"                 // for TDirectory, gDirectory
+#include "TDirectoryFile.h"             // for TDirectoryFile, etc
+#include "TList.h"                      // for TList
+#include "TROOT.h"                      // for TROOT, gROOT
+#include "TString.h"                    // for TString, operator!=
+
+class TObject;
+
 
 using namespace std;
 

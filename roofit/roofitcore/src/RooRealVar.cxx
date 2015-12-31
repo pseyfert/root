@@ -26,25 +26,35 @@ a optionally series of alternate named ranges.
 **/
 
 
-#include "RooFit.h"
-#include "Riostream.h"
-#include "RooTrace.h"
+#include <assert.h>                     // for assert
+#include <stdio.h>                      // for snprintf
+#include <cmath>                        // for floor, fabs, log10, pow
+#include <list>                         // for list
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string
 
-#include <math.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <iomanip>
-#include "TObjString.h"
-#include "TTree.h"
-#include "RooRealVar.h"
-#include "RooStreamParser.h"
-#include "RooErrorVar.h"
-#include "RooRangeBinning.h"
-#include "RooCmdConfig.h"
-#include "RooMsgService.h"
-#include "RooParamBinning.h"
-#include "RooVectorDataStore.h"
+#include "RooAbsArg.h"                  // for RooLinkedList, RooAbsArg, etc
+#include "RooCmdArg.h"                  // for RooCmdArg
+#include "RooCmdConfig.h"               // for kTRUE, Double_t, Bool_t, etc
+#include "RooErrorVar.h"                // for RooErrorVar
+#include "RooMsgService.h"              // for coutW, coutI, coutE
+#include "RooNumber.h"                  // for RooNumber
+#include "RooParamBinning.h"            // for RooParamBinning
+#include "RooRangeBinning.h"            // for RooRangeBinning
+#include "RooRealVar.h"                 // for RooRealVar, etc
+#include "RooRealVarSharedProperties.h"  // for RooRealVarSharedProperties, etc
+#include "RooSharedPropertiesList.h"    // for RooSharedPropertiesList
+#include "RooStreamParser.h"            // for RooStreamParser
+#include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
+#include "RooUniformBinning.h"          // for RooAbsBinning, etc
+#include "RooVectorDataStore.h"         // for RooVectorDataStore, etc
+#include "TBranch.h"                    // for TBranch
+#include "TBuffer.h"                    // for TBuffer, operator>>, etc
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for TString, Form, operator<<, etc
+#include "TTree.h"                      // for TTree
+
+class RooArgSet;
 
 
 using namespace std;

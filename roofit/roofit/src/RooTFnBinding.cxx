@@ -6,12 +6,14 @@
 
 // Your description goes here...
 
-#include "Riostream.h" 
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooTFnBinding.h" 
-#include "RooAbsReal.h" 
-#include "RooAbsCategory.h" 
-#include "TF3.h"
+#include "RooListProxy.h"               // for RooListProxy, RooArgList, etc
+#include "RooTFnBinding.h"              // for RooTFnBinding, RooAbsReal
+#include "TF1.h"                        // for TF1
+#include "TF2.h"                        // for TF2
+#include "TF3.h"                        // for TF3
+#include "TString.h"                    // for TString
 
 using namespace std;
 

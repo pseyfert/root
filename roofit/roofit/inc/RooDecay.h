@@ -16,7 +16,7 @@
 #ifndef ROO_DECAY
 #define ROO_DECAY
 
-#include "RooAbsAnaConvPdf.h"
+#include "RooAbsAnaConvPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 
 class RooDecay : public RooAbsAnaConvPdf {

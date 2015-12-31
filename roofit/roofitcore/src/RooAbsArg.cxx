@@ -33,42 +33,45 @@ setting/clearing/testing named attributes.
 
 */
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <assert.h>                     // for assert
+#include <stdio.h>                      // for snprintf
+#include <stdlib.h>                     // for strtol
+#include <string.h>                     // for strlen, strtok, strcmp
+#include <algorithm>                    // for remove
+#include <deque>                        // for _Deque_iterator, deque, etc
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <fstream>                      // IWYU pragma: keep
+#include <map>                          // for map, etc
+#include <set>                          // for set, set<>::iterator, etc
+#include <stack>                        // for stack
+#include <string>                       // for char_traits, string, etc
+#include <utility>                      // for pair, make_pair
 
-#include "TBuffer.h"
-#include "TClass.h"
-#include "TObjString.h"
-#include "TVirtualStreamerInfo.h"
-// #include "TGraphStruct.h"
+#include "RooAbsArg.h"                  // for RooAbsArg, RooFIter, etc
+#include "RooAbsCache.h"                // for RooAbsCache
+#include "RooAbsData.h"                 // for RooArgSet, Bool_t, kFALSE, etc
+#include "RooArgProxy.h"                // for RooArgProxy, RooAbsProxy
+#include "RooConstVar.h"                // for RooConstVar
+#include "RooExpensiveObjectCache.h"    // for RooExpensiveObjectCache
+#include "RooListProxy.h"               // for RooListProxy, RooAbsProxy
+#include "RooMsgService.h"              // for coutE, cxcoutD, coutI, etc
+#include "RooNameReg.h"                 // for RooNameReg, etc
+#include "RooRealIntegral.h"            // for RooRealIntegral
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooRefCountList.h"            // for RooRefCountList
+#include "RooResolutionModel.h"         // for RooResolutionModel
+#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooTreeDataStore.h"           // for RooAbsDataStore, etc
+#include "RooVectorDataStore.h"         // for RooVectorDataStore
+#include "TBuffer.h"                    // for TBuffer
+#include "TClass.h"                     // for TClass
+#include "TIterator.h"                  // for TIterator
+#include "TRefArray.h"                  // for TRefArray
+#include "TString.h"                    // for TString, operator<<, Form
+#include "strlcpy.h"                    // for strlcpy
 
-#include "RooSecondMoment.h"
+class TTree;
 
-#include "RooMsgService.h"
-#include "RooAbsArg.h"
-#include "RooArgSet.h"
-#include "RooArgProxy.h"
-#include "RooSetProxy.h"
-#include "RooListProxy.h"
-#include "RooAbsData.h"
-#include "RooAbsCategoryLValue.h"
-#include "RooAbsRealLValue.h"
-#include "RooTrace.h"
-#include "RooStringVar.h"
-#include "RooRealIntegral.h"
-#include "RooConstVar.h"
-#include "RooMsgService.h"
-#include "RooExpensiveObjectCache.h"
-#include "RooAbsDataStore.h"
-#include "RooResolutionModel.h"
-#include "RooVectorDataStore.h"
-#include "RooTreeDataStore.h"
-
-#include <string.h>
-#include <iomanip>
-#include <fstream>
-#include <algorithm>
-#include <sstream>
 
 using namespace std ;
 

@@ -24,28 +24,19 @@ of any RooAbsReal as calculated (numerically) by the MathCore Richardson
 derivator class.
 **/
 
+#include <string>                       // for string
 
-#include "RooFit.h"
+#include "RooArgList.h"                 // for RooArgList
+#include "RooCategory.h"                // for kTRUE, kFALSE, RooCategory, etc
+#include "RooFirstMoment.h"             // for RooFirstMoment, RooAbsReal, etc
+#include "RooNumIntConfig.h"            // for RooNumIntConfig
+#include "RooProduct.h"                 // for RooProduct
+#include "RooRealIntegral.h"            // for RooRealIntegral
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooSetProxy.h"                // for RooArgSet, RooSetProxy
+#include "TString.h"                    // for Form
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include <math.h>
-#include <string>
-
-#include "RooFirstMoment.h"
-#include "RooAbsReal.h"
-#include "RooAbsPdf.h"
-#include "RooErrorHandler.h"
-#include "RooArgSet.h"
-#include "RooMsgService.h"
-#include "RooRealVar.h"
-#include "RooFunctor.h"
-#include "RooGlobalFunc.h"
-#include "RooConstVar.h"
-#include "RooRealIntegral.h"
-#include "RooNumIntConfig.h"
-#include "RooProduct.h"
-#include <string>
 using namespace std ;
 
 

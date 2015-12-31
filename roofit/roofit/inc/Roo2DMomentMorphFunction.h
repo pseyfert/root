@@ -13,17 +13,11 @@
 #ifndef ROO2DMOMENTMORPHFUNCTION
 #define ROO2DMOMENTMORPHFUNCTION
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-#include "RooCategoryProxy.h"
-#include "RooAbsReal.h"
-#include "RooAbsCategory.h"
 
-#include "TMatrix.h"
+#include "TMatrixD.h"
 #include "TVectorD.h"
-
-#include <vector>
-#include <string>
 
 class Roo2DMomentMorphFunction : public RooAbsReal {
 

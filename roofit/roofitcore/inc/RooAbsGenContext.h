@@ -16,8 +16,8 @@
 #ifndef ROO_ABS_GEN_CONTEXT
 #define ROO_ABS_GEN_CONTEXT
 
-#include "TNamed.h"
-#include "RooPrintable.h"
+#include "TNamed.h"       // IWYU pragma: export
+#include "RooPrintable.h" // IWYU pragma: export
 #include "RooArgSet.h"
 #include "RooAbsPdf.h"
 

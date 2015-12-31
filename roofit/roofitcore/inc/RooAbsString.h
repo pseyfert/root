@@ -16,11 +16,10 @@
 #ifndef ROO_ABS_STRING
 #define ROO_ABS_STRING
 
-#include "RooAbsArg.h"
+#include "RooAbsArg.h"// IWYU pragma: export
 
 class RooArgSet ;
 class RooVectorDataStore ;
-class TH1F ;
 
 class RooAbsString : public RooAbsArg {
 public:

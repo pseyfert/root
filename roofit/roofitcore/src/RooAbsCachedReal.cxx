@@ -28,18 +28,26 @@ by the user to getVal() and on which parameters need to be tracked
 for changes to trigger a refilling of the cache histogram.
 **/
 
-#include "Riostream.h" 
 using namespace std ;
 
-#include "RooFit.h"
-#include "TString.h"
-#include "RooAbsCachedReal.h" 
-#include "RooAbsReal.h" 
-#include "RooMsgService.h"
-#include "RooDataHist.h"
-#include "RooHistFunc.h"
-#include "RooChangeTracker.h"
-#include "RooExpensiveObjectCache.h"
+#include <map>                          // for map, map<>::mapped_type
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string
+#include <utility>                      // for pair
+
+#include "RooAbsArg.h"                  // for RooAbsArg, operator<<, etc
+#include "RooAbsCachedReal.h"           // for RooAbsCachedReal, etc
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet, Int_t, kTRUE, etc
+#include "RooChangeTracker.h"           // for RooChangeTracker
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooExpensiveObjectCache.h"    // for Int_t, etc
+#include "RooHistFunc.h"                // for RooHistFunc
+#include "RooMsgService.h"              // for ccoutD
+#include "RooObjCacheManager.h"         // for RooObjCacheManager, etc
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for TString, Form
+
 
 ClassImp(RooAbsCachedReal) 
 

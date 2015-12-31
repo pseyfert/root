@@ -23,20 +23,29 @@ RooTreeDataStore is the abstract base class for data collection that
 use a TTree as internal storage mechanism
 **/
 
-#include "RooFit.h"
-#include "RooMsgService.h"
-#include "RooTreeDataStore.h"
+#include <math.h>                       // for sqrt
+#include <list>                         // for list, _List_iterator, etc
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string
 
-#include "Riostream.h"
-#include "TTree.h"
-#include "TChain.h"
-#include "TDirectory.h"
-#include "TROOT.h"
-#include "RooFormulaVar.h"
-#include "RooRealVar.h"
-#include "RooHistError.h"
+#include "RooAbsArg.h"                  // for RooAbsArg, RooFIter, etc
+#include "RooAbsData.h"                 // for RooArgSet, Int_t, Double_t, etc
+#include "RooArgList.h"                 // for RooArgList
+#include "RooFormulaVar.h"              // for RooFormulaVar
+#include "RooHistError.h"               // for RooHistError
+#include "RooMsgService.h"              // for coutE, coutI
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooTreeDataStore.h"           // for RooTreeDataStore, etc
+#include "TBranch.h"                    // for TBranch
+#include "TBuffer.h"                    // for TBuffer
+#include "TChain.h"                     // for TChain
+#include "TDirectory.h"                 // for TDirectory, gDirectory
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
+#include "TROOT.h"                      // for TROOT, gROOT
+#include "TString.h"                    // for TString, Form, operator!=
+#include "TTree.h"                      // for TTree
 
-#include <iomanip>
 using namespace std ;
 
 ClassImp(RooTreeDataStore)

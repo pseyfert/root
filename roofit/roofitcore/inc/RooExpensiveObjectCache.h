@@ -17,7 +17,9 @@
 #define ROO_EXPENSIVE_OBJECT_CACHE
 
 #include "Rtypes.h"
-#include "RooArgSet.h"
+#include "TObject.h" // IWYU pragma: export
+//#include "RooArgSet.h"
+class RooArgSet;
 #include "TString.h"
 #include <list>
 #include <map>

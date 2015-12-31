@@ -27,39 +27,52 @@ points for its contents and provides an iterator over its elements
 
 #include "RooAbsData.h"
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <assert.h>                     // for assert
+#include <ext/alloc_traits.h>
+#include <stddef.h>                     // for size_t
+#include <stdlib.h>                     // for abs
+#include <string.h>                     // for strlen, strtok, strchr
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <utility>                      // for pair
+#include <vector>                       // for vector
 
-#include "TBuffer.h"
-#include "TClass.h"
-#include "TMath.h"
+#include "Roo1DTable.h"                 // for Roo1DTable
+#include "RooCatType.h"                 // for RooCatType
+#include "RooCategory.h"                // for RooAbsArg, RooLinkedList, etc
+#include "RooCmdConfig.h"               // for RooCmdConfig
+#include "RooCompositeDataStore.h"      // for RooAbsDataStore, etc
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooFormula.h"                 // for RooFormula
+#include "RooFormulaVar.h"              // for RooFormulaVar
+#include "RooGlobalFunc.h"              // for Binning, AutoBinning, YVar, etc
+#include "RooHist.h"                    // for RooHist
+#include "RooMsgService.h"              // for coutE, coutW, coutI, etc
+#include "RooMultiCategory.h"           // for RooMultiCategory
+#include "RooNumber.h"                  // for RooNumber
+#include "RooPlot.h"                    // for RooPlot
+#include "RooRealVar.h"                 // for RooRealVar, etc
+#include "RooTrace.h"                   // for RooTrace
+#include "RooTreeDataStore.h"           // for RooTreeDataStore
+#include "RooUniformBinning.h"          // for RooAbsBinning, etc
+#include "RooVectorDataStore.h"         // for RooVectorDataStore
+#include "TArrayD.h"                    // for TArrayD
+#include "TAttFill.h"                   // for TAttFill
+#include "TAttLine.h"                   // for TAttLine
+#include "TAttMarker.h"                 // for TAttMarker
+#include "TAxis.h"                      // for TAxis
+#include "TBuffer.h"                    // for TBuffer
+#include "TClass.h"                     // for TClass
+#include "TH1.h"                        // for TH1F, TH1
+#include "TH2.h"                        // for TH2
+#include "TH3.h"                        // for TH3
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
+#include "TMath.h"                      // for Power
+#include "TMatrixTSym.h"                // for TMatrixTSym
+#include "TPaveText.h"                  // for TPaveText
+#include "strlcpy.h"                    // for strlcpy
 
-#include "RooAbsData.h"
-#include "RooFormulaVar.h"
-#include "RooCmdConfig.h"
-#include "RooAbsRealLValue.h"
-#include "RooMsgService.h"
-#include "RooMultiCategory.h"
-#include "Roo1DTable.h"
-#include "RooAbsDataStore.h"
-#include "RooVectorDataStore.h"
-#include "RooTreeDataStore.h"
-#include "RooDataHist.h"
-#include "RooCompositeDataStore.h"
-#include "RooCategory.h"
-#include "RooTrace.h"
-
-#include "RooRealVar.h"
-#include "RooGlobalFunc.h"
-#include "RooPlot.h"
-#include "RooCurve.h"
-#include "RooHist.h"
-
-#include "TMatrixDSym.h"
-#include "TPaveText.h"
-#include "TH1.h"
-#include "TH2.h"
-#include "TH3.h"
+class TTree;
 
 
 using namespace std;

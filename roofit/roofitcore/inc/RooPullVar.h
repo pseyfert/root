@@ -20,7 +20,6 @@
 #include "RooRealProxy.h"
 
 class RooRealVar;
-class RooAbsReal ;
 
 class RooPullVar : public RooAbsReal {
 public:

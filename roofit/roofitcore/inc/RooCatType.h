@@ -17,8 +17,8 @@
 #define ROO_CAT_TYPE
 
 #include "Riosfwd.h"
-#include "TObject.h"
-#include "RooPrintable.h"
+#include "TObject.h" // IWYU pragma: export
+#include "RooPrintable.h" // IWYU pragma: export
 
 class RooCatType : public TObject, public RooPrintable {
 public:

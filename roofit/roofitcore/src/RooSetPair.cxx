@@ -22,10 +22,11 @@
 RooSetPair is a utility class that stores a pair of RooArgSets
 **/
 
-#include "RooFit.h"
+#include "Rtypes.h"                     // for ClassImp
+
+class RooSetPair;
 
 #define ROOSETPAIR_CXX
-#include "RooSetPair.h"
 
 using namespace std;
 

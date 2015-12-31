@@ -20,8 +20,10 @@ class TDirectory ;
 class RooAbsRealLValue ;
 class RooRealVar ;
 class RooDataHist ;
-#include "RooAbsData.h"
-#include "RooDirItem.h"
+class TH2F;
+#include "RooAbsData.h" // IWYU pragma: export
+#include "RooDirItem.h" // IWYU pragma: export
+#include <list>
 
 #define USEMEMPOOL
 

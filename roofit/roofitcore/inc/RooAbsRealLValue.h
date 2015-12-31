@@ -21,11 +21,13 @@
 #include <float.h>
 #include "TString.h"
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooNumber.h"
-#include "RooAbsLValue.h"
-#include "RooAbsBinning.h"
-
+#include "RooAbsLValue.h" // IWYU pragma: export
+#include "RooAbsBinning.h" // IWYU pragma: keep
+class TH1F;
+class TH2F;
+class TH3F;
 class RooArgSet ;
 
 class RooAbsRealLValue : public RooAbsReal, public RooAbsLValue {

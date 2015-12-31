@@ -18,10 +18,8 @@
 #ifndef ROO_DstD0_BG
 #define ROO_DstD0_BG
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-
-class RooRealVar;
 
 class RooDstD0BG : public RooAbsPdf {
 public:

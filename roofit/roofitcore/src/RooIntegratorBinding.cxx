@@ -23,10 +23,11 @@ Function binding representing the output of a RooAbsIntegrator
 **/
 
 
-#include "RooFit.h"
 
-#include "RooIntegratorBinding.h"
-#include "RooIntegratorBinding.h"
+
+#include "Rtypes.h"                     // for ClassImp
+
+class RooIntegratorBinding;
 
 using namespace std;
 

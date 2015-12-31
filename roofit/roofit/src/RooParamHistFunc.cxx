@@ -6,13 +6,17 @@
 
 // Your description goes here... 
 
-#include "Riostream.h" 
-#include "RooParamHistFunc.h" 
-#include "RooAbsReal.h" 
-#include "RooAbsCategory.h" 
-#include "RooRealVar.h"
-#include <math.h> 
-#include "TMath.h" 
+#include <list>                         // for list
+
+#include "RooAbsBinning.h"              // for RooAbsBinning
+#include "RooAbsCategory.h"             // for RooFIter, RooAbsArg
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooListProxy.h"               // for RooListProxy, etc
+#include "RooParamHistFunc.h"           // for RooParamHistFunc
+#include "RooRealVar.h"                 // for Double_t, RooRealVar, Int_t, etc
+#include "TError.h"                     // for R__ASSERT
+#include "TString.h"                    // for Form
 
 
 using namespace std ;

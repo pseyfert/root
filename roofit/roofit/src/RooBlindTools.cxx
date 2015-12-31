@@ -18,17 +18,16 @@
 // This Class's Header --
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "RooFit.h"
+#include <ctype.h>                      // for tolower
+#include <math.h>                       // for log, sin, sqrt
+#include <string.h>                     // for strlen
+#include <iostream>                     // for operator<<, basic_ostream, etc
 
-#include "RooBlindTools.h"
-#include "RooBlindTools.h"
-
-#include "RooErrorHandler.h"
-#include "Riostream.h"
-#include <fstream>
-#include <math.h>  
-#include <string.h>
-#include <ctype.h>
+#include "RooBlindTools.h"              // for RooBlindTools, etc
+#include "RooErrorHandler.h"            // for RooErrorHandler
+#include "Rtypes.h"                     // for Double_t, Int_t, UInt_t, etc
+#include "TString.h"                    // for TString, operator<<
+#include "strlcpy.h"                    // for strlcpy
 
 using namespace std;
 

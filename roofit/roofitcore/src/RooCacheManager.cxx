@@ -35,9 +35,7 @@ configurations can be cached.
 **/
 // 
 
-#include "RooFit.h"
-#include <vector>
-#include "RooCacheManager.h"
+#include "Rtypes.h"                     // for templateClassImp
 
 using namespace std ;
 

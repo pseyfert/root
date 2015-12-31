@@ -16,12 +16,12 @@
 #ifndef ROO_LIST_PROXY
 #define ROO_LIST_PROXY
 
-#include "TObject.h"
+//#include "TObject.h"
 #include "Riosfwd.h"
-#include "RooAbsProxy.h"
-#include "RooLinkedListIter.h"
+#include "RooAbsProxy.h" // IWYU pragma: export
+//#include "RooLinkedListIter.h"
 #include "RooAbsArg.h"
-#include "RooArgList.h"
+#include "RooArgList.h" // IWYU pragma: export
 
 class RooListProxy : public RooArgList, public RooAbsProxy  {
 public:

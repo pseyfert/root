@@ -23,10 +23,12 @@ RooConstVar represent a constant real-valued object
 **/
 
 
-#include "RooFit.h"
+#include <iosfwd>                       // for ostream
 
-#include "Riostream.h"
-#include "RooConstVar.h"
+#include "RooConstVar.h"                // for RooConstVar, RooAbsReal
+#include "Rtypes.h"                     // for Double_t, Bool_t, ClassImp, etc
+
+class RooArgSet;
 
 using namespace std;
 

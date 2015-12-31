@@ -27,17 +27,12 @@
 class RooDataHist ;
 class RooDataSet ;
 class RooFitResult ;
-class RooAbsPdf ;
 class RooAbsRealLValue ;
-class RooRealConstant ;
-class RooMsgService ;
 class RooFormulaVar ;
 class RooAbsData ;
 class RooArgSet ;
 class RooCategory ;
-class RooAbsReal ;
 class RooAbsBinning ;
-class RooAbsCollection ;
 class RooAbsPdf ;
 class RooConstVar ;
 class RooRealVar ;
@@ -46,9 +41,6 @@ class RooNumIntConfig ;
 class RooArgList ;
 class RooAbsCollection ;
 class TH1 ;
-class TF1 ;
-class TF2 ;
-class TF3 ;
 class TTree ;
 
 namespace RooFit {

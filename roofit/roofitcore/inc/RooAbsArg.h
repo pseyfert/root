@@ -17,22 +17,17 @@
 #define ROO_ABS_ARG
 
 #include <assert.h>
-#include "TNamed.h"
-#include "THashList.h"
+#include "TNamed.h"             // IWYU pragma: export
 #include "TRefArray.h"
-#include "RooPrintable.h"
+#include "RooLinkedListIter.h"  // IWYU pragma: export
+#include "RooPrintable.h"       // IWYU pragma: export
 #include "RooRefCountList.h"
 #include "RooAbsCache.h"
-#include "RooLinkedListIter.h"
-#include "RooNameReg.h"
 #include <map>
 #include <set>
 #include <deque>
 #include <stack>
 
-#include <iostream>
-
-#include "TClass.h"
 
 class TTree ;
 class RooArgSet ;

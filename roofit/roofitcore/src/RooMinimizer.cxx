@@ -38,38 +38,34 @@ automatic PDF optimization.
 
 #ifndef __ROOFIT_NOROOMINIMIZER
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <fstream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string
+#include <utility>                      // for pair
+#include <vector>                       // for vector
 
-#include "TClass.h"
-
-#include <fstream>
-#include <iomanip>
-
-#include "TH1.h"
-#include "TH2.h"
-#include "TMarker.h"
-#include "TGraph.h"
-#include "Fit/FitConfig.h"
-#include "TStopwatch.h"
-#include "TDirectory.h"
-#include "TMatrixDSym.h"
-
-#include "RooArgSet.h"
-#include "RooArgList.h"
-#include "RooAbsReal.h"
-#include "RooAbsRealLValue.h"
-#include "RooRealVar.h"
-#include "RooAbsPdf.h"
-#include "RooSentinel.h"
-#include "RooMsgService.h"
-#include "RooPlot.h"
-
-
-#include "RooMinimizer.h"
-#include "RooFitResult.h"
-
-#include "Math/Minimizer.h"
+#include "Fit/FitConfig.h"              // for FitConfig
+#include "Fit/FitResult.h"              // for FitResult
+#include "Fit/Fitter.h"                 // for Fitter
+#include "Fit/ParameterSettings.h"      // for ParameterSettings
+#include "Math/Minimizer.h"             // for Minimizer
+#include "Math/MinimizerOptions.h"      // for MinimizerOptions
+#include "RooAbsArg.h"                  // for RooAbsArg, etc
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for Double_t, Int_t, kFALSE, etc
+#include "RooFitResult.h"               // for RooFitResult
+#include "RooMinimizer.h"               // for RooMinimizer
+#include "RooMinimizerFcn.h"            // for RooMinimizerFcn
+#include "RooMsgService.h"              // for coutI, coutW, coutE, etc
+#include "RooPlot.h"                    // for RooPlot
+#include "RooRealVar.h"                 // for RooAbsReal, RooRealVar, etc
+#include "RooSentinel.h"                // for RooSentinel
+#include "TGraph.h"                     // for TGraph
+#include "TIterator.h"                  // for TIterator
+#include "TMarker.h"                    // for TMarker
+#include "TMatrixDSymfwd.h"             // for TMatrixDSym
+#include "TMatrixTSym.h"                // for TMatrixTSym
+#include "TStopwatch.h"                 // for TStopwatch
+#include "TString.h"                    // for TString, Form, operator<<
 
 #if (__GNUC__==3&&__GNUC_MINOR__==2&&__GNUC_PATCHLEVEL__==3)
 char* operator+( streampos&, char* );

@@ -16,11 +16,11 @@
 #ifndef ROO_PROD_PDF
 #define ROO_PROD_PDF
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooListProxy.h"
 #include "RooLinkedList.h"
 #include "RooAICRegistry.h"
-#include "RooCacheManager.h"
+//#include "RooCacheManager.h"
 #include "RooObjCacheManager.h"
 #include "RooCmdArg.h"
 #include <vector>

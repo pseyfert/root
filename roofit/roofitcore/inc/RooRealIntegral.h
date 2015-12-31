@@ -16,17 +16,12 @@
 #ifndef ROO_REAL_INTEGRAL
 #define ROO_REAL_INTEGRAL
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooArgSet.h"
-#include "RooAbsPdf.h"
 #include "RooRealProxy.h"
 #include "RooSetProxy.h"
 #include "RooListProxy.h"
 
-class RooArgSet ;
-class TH1F ;
-class RooAbsCategory ;
-class RooRealVar ;
 class RooAbsIntegrator ;
 class RooNumIntConfig ;
 

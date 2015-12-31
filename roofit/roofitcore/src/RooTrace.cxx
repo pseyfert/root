@@ -26,16 +26,18 @@ are printed in addition at the construction and destruction of
 each object.
 **/
 
-#include "RooFit.h"
+#include <iomanip>                      // for operator<<, setw
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <map>                          // for map, _Rb_tree_iterator, etc
+#include <string>                       // for string, char_traits, etc
+#include <utility>                      // for pair
 
-#include "RooTrace.h"
-#include "RooAbsArg.h"
-#include "Riostream.h"
-#include "RooMsgService.h"
-
-#include <iomanip>
-
-
+#include "RooAbsArg.h"                  // for RooLinkedList, RooAbsArg
+#include "RooMsgService.h"              // for ooccoutD
+#include "RooTrace.h"                   // for RooTrace
+#include "TClass.h"                     // for TClass
+#include "TObject.h"                    // for TObject, Bool_t, Double_t, etc
+#include "TString.h"                    // for Form
 
 using namespace std;
 

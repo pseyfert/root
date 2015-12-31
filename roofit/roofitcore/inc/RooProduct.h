@@ -16,14 +16,11 @@
 #ifndef ROO_PRODUCT
 #define ROO_PRODUCT
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooListProxy.h"
-#include "RooCacheManager.h"
 #include "RooObjCacheManager.h"
-
-#include <vector>
 #include <utility>
-
+#include <list>
 
 class RooRealVar;
 class RooArgList ;

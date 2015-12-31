@@ -35,31 +35,26 @@ Support for calculation in partitions is needed to allow multi-core
 parallelized calculation of test statistics
 **/
 
-#include "RooFit.h"
+#include <string.h>                     // for strlen
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string
 
-#include "Riostream.h"
-#include <string.h>
+#include "RooAbsArg.h"                  // for RooAbsArg, operator<<, etc
+#include "RooAbsBinning.h"              // for RooAbsBinning
+#include "RooAbsOptTestStatistic.h"     // for RooAbsOptTestStatistic, etc
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooDataSet.h"                 // for RooArgSet, RooAbsData, etc
+#include "RooErrorHandler.h"            // for RooErrorHandler
+#include "RooGlobalFunc.h"              // for CutRange, SelectVars, etc
+#include "RooLinkedListIter.h"          // for RooFIter
+#include "RooMsgService.h"              // for cxcoutI, coutI, coutW, etc
+#include "RooProdPdf.h"                 // for RooProdPdf
+#include "RooRealVar.h"                 // for RooAbsReal, RooRealVar, etc
+#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooVectorDataStore.h"         // for RooAbsDataStore, etc
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for Form, TString, operator<<
 
-
-#include "RooAbsOptTestStatistic.h"
-#include "RooMsgService.h"
-#include "RooAbsPdf.h"
-#include "RooAbsData.h"
-#include "RooDataHist.h"
-#include "RooArgSet.h"
-#include "RooRealVar.h"
-#include "RooErrorHandler.h"
-#include "RooGlobalFunc.h"
-#include "RooBinning.h"
-#include "RooAbsDataStore.h"
-#include "RooCategory.h"
-#include "RooDataSet.h"
-#include "RooProdPdf.h"
-#include "RooAddPdf.h"
-#include "RooProduct.h"
-#include "RooRealSumPdf.h"
-#include "RooTrace.h"
-#include "RooVectorDataStore.h" 
 
 using namespace std;
 

@@ -12,15 +12,11 @@
 #ifndef ROOLINEARMORPH
 #define ROOLINEARMORPH
 
-#include "RooAbsCachedPdf.h"
+#include "RooAbsCachedPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-#include "RooCategoryProxy.h"
 #include "RooAbsReal.h"
-#include "RooAbsCategory.h"
 class RooBrentRootFinder ;
 
-class TH1D ;
- 
 class RooIntegralMorph : public RooAbsCachedPdf {
 public:
   RooIntegralMorph() {

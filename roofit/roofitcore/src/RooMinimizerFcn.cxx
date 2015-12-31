@@ -19,24 +19,27 @@
 // for minization.
 //                                                                                   
 
-#include <iostream>
+#include <ext/alloc_traits.h>
+#include <math.h>                       // for sqrt
+#include <iomanip>                      // for operator<<, setprecision
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <vector>                       // for vector
 
-#include "RooFit.h"
-#include "RooMinimizerFcn.h"
-
-#include "Riostream.h"
-
-#include "TIterator.h"
-#include "TClass.h"
-
-#include "RooAbsArg.h"
-#include "RooAbsPdf.h"
-#include "RooArgSet.h"
-#include "RooRealVar.h"
-#include "RooAbsRealLValue.h"
-#include "RooMsgService.h"
-
-#include "RooMinimizer.h"
+#include "Fit/FitResult.h"              // for FitResult
+#include "Fit/ParameterSettings.h"      // for ParameterSettings
+#include "Math/IFunction.h"             // for IBaseFunctionMultiDim
+#include "RooAbsArg.h"                  // for RooAbsArg, RooFIter, etc
+#include "RooAbsPdf.h"                  // for RooAbsReal, RooAbsPdf, etc
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for Double_t, Int_t, kFALSE, etc
+#include "RooMinimizer.h"               // for RooMinimizer
+#include "RooMinimizerFcn.h"            // for RooMinimizerFcn
+#include "RooMsgService.h"              // for oocoutI, ooccoutW, oocoutW
+#include "RooRealVar.h"                 // for RooRealVar, etc
+#include "TClass.h"                     // for TClass
+#include "TIterator.h"                  // for TIterator
+#include "TMatrixDSymfwd.h"             // for TMatrixDSym
+#include "TMatrixTSym.h"                // for TMatrixTSym
 
 using namespace std;
 

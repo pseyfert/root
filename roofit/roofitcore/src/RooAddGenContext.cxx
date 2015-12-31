@@ -28,18 +28,19 @@ with a probability proportional to its associated coefficient
 **/
 
 
-#include "RooFit.h"
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <vector>                       // for vector, vector<>::iterator, etc
 
-#include "Riostream.h"
-
-
-#include "RooMsgService.h"
-#include "RooAddGenContext.h"
-#include "RooAddGenContext.h"
-#include "RooAddPdf.h"
-#include "RooDataSet.h"
-#include "RooRandom.h"
-#include "RooAddModel.h"
+#include "RooAbsArg.h"                  // for operator<<, RooAbsArg, etc
+#include "RooAddGenContext.h"           // for RooAddGenContext, etc
+#include "RooAddModel.h"                // for RooAddModel
+#include "RooAddPdf.h"                  // for RooAbsPdf, RooAddPdf
+#include "RooDataSet.h"                 // for RooArgSet, Double_t, Int_t, etc
+#include "RooListProxy.h"               // for RooListProxy
+#include "RooMsgService.h"              // for ccxcoutI, cxcoutI
+#include "RooRandom.h"                  // for RooRandom
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for operator<<, TString
 
 using namespace std;
 

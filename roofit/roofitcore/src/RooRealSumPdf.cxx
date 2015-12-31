@@ -28,24 +28,25 @@
 // In the present version coef_i may not depend on x, but this limitation may be removed in the future
 //
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <assert.h>                     // for assert
+#include <algorithm>                    // for merge, unique
+#include <list>                         // for _List_iterator, list, etc
+#include <memory>                       // for auto_ptr
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "TIterator.h"
-#include "TList.h"
-#include "RooRealSumPdf.h"
-#include "RooRealProxy.h"
-#include "RooPlot.h"
-#include "RooRealVar.h"
-#include "RooAddGenContext.h"
-#include "RooRealConstant.h"
-#include "RooRealIntegral.h"
-#include "RooMsgService.h"
-#include "RooNameReg.h"
-#include <memory>
-#include <algorithm>
+#include "RooAbsArg.h"                  // for RooFIter, RooAbsArg, etc
+#include "RooArgSet.h"                  // for Double_t, RooArgSet, kFALSE, etc
+#include "RooListProxy.h"               // for RooListProxy, RooArgList
+#include "RooMsgService.h"              // for coutE, coutW, cxcoutD
+#include "RooNameReg.h"                 // for RooNameReg
+#include "RooNameSet.h"                 // for RooNameSet
+#include "RooObjCacheManager.h"         // for RooObjCacheManager
+#include "RooRealSumPdf.h"              // for RooRealSumPdf, RooAbsReal, etc
+#include "TClass.h"                     // for TClass
+#include "TError.h"                     // for R__ASSERT
+#include "TIterator.h"                  // for TIterator
 
-#include "TError.h"
+class RooAbsRealLValue;
 
 using namespace std;
 

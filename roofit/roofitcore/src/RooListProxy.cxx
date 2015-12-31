@@ -28,12 +28,10 @@ are clone and client-server links need to be redirected.
 **/
 
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <ostream>                      // for operator<<, ostream, etc
 
-#include "RooListProxy.h"
-#include "RooArgList.h"
-#include "RooAbsArg.h"
+#include "RooAbsArg.h"                  // for RooAbsArg, RooFIter, etc
+#include "RooListProxy.h"               // for RooListProxy, Bool_t, etc
 
 using namespace std;
 

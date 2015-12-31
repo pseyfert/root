@@ -9,19 +9,33 @@
  * with or without modification, are permitted according to the terms        *
  * listed in LICENSE (http://roofit.sourceforge.net/license.txt)             *
  *****************************************************************************/
-#include <iostream>
-#include <algorithm>
-#include <string>
+#include <ext/alloc_traits.h>
+#include <math.h>                       // for sqrt, fabs, exp
+#include <stdlib.h>                     // for exit
+#include <algorithm>                    // for lower_bound, sort, etc
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <map>                          // for map, _Rb_tree_iterator, etc
+#include <string>                       // for string, char_traits
+#include <utility>                      // for pair, make_pair
+#include <vector>                       // for vector, vector<>::iterator, etc
 
-#include "TMath.h"
-#include "TMatrixDSymEigen.h"
-#include "RooNDKeysPdf.h"
-#include "RooAbsReal.h"
-#include "RooRealVar.h"
-#include "RooRandom.h"
-#include "RooDataSet.h"
-#include "RooHist.h"
-#include "RooMsgService.h"
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooDataSet.h"                 // for Double_t, Int_t, Bool_t, etc
+#include "RooListProxy.h"               // for RooListProxy, RooArgList
+#include "RooMsgService.h"              // for cxcoutD, coutE, coutI, etc
+#include "RooNDKeysPdf.h"               // for RooNDKeysPdf, itVec, etc
+#include "RooRealVar.h"                 // for RooRealVar
+#include "TIterator.h"                  // for TIterator
+#include "TMath.h"                      // for Erf, Power, Pi
+#include "TMathBase.h"                  // for Abs
+#include "TMatrixDSymEigen.h"           // for TMatrixDSymEigen
+#include "TMatrixDSymfwd.h"             // for TMatrixDSym
+#include "TMatrixDfwd.h"                // for TMatrixD
+#include "TMatrixT.h"                   // for TMatrixT
+#include "TMatrixTSym.h"                // for TMatrixTSym
+#include "TString.h"                    // for TString, operator<<
+#include "TVectorDfwd.h"                // for TVectorD
+#include "TVectorT.h"                   // for TVectorT
 
 /**
 \file RooNDKeysPdf.cxx
@@ -42,7 +56,7 @@ constructed such that they reflect the correlation coefficients between the obse
 in the input dataset.
 **/
 
-#include "TError.h"
+#include "TError.h"                     // for R__ASSERT
 
 using namespace std;
 

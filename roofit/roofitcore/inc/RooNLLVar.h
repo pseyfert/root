@@ -16,7 +16,7 @@
 #ifndef ROO_NLL_VAR
 #define ROO_NLL_VAR
 
-#include "RooAbsOptTestStatistic.h"
+#include "RooAbsOptTestStatistic.h" //IWYU pragma: export
 #include "RooCmdArg.h"
 #include "RooAbsPdf.h"
 #include <vector>

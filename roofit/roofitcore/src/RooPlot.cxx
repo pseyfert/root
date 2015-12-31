@@ -42,32 +42,35 @@ object onto a one-dimensional plot.
 **/
 
 
-#include "RooFit.h"
+#include <assert.h>                     // for assert
+#include <math.h>                       // for fabs
+#include <string.h>                     // for strlen, strtok
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "TClass.h"
-#include "TH1D.h"
-#include "TBrowser.h"
-#include "TPad.h"
+#include "RooAbsRealLValue.h"           // for RooAbsRealLValue, Double_t, etc
+#include "RooArgSet.h"                  // for TObject, RooArgSet
+#include "RooCurve.h"                   // for RooPlotable, RooPrintable, etc
+#include "RooHist.h"                    // for RooHist
+#include "RooList.h"                    // for RooList, TObjOptLink, TList
+#include "RooMsgService.h"              // for coutE, coutI, coutW
+#include "RooPlot.h"                    // for RooPlot, RooPlot::DrawOpt, etc
+#include "TArrayD.h"                    // for TArrayD
+#include "TAttFill.h"                   // for TAttFill
+#include "TAttLine.h"                   // for TAttLine
+#include "TAttMarker.h"                 // for TAttMarker
+#include "TAttText.h"                   // for TAttText
+#include "TAxis.h"                      // for TAxis
+#include "TBuffer.h"                    // for operator>>, TBuffer
+#include "TClass.h"                     // for TClass
+#include "TDirectory.h"                 // for TDirectory, gDirectory
+#include "TDirectoryFile.h"             // for TDirectoryFile, etc
+#include "TH1.h"                        // for TH1, TH1D, TH1F
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for TString, operator<<, Form
+#include "TVirtualPad.h"                // for TVirtualPad, gPad
+#include "strlcpy.h"                    // for strlcpy, strlcat
 
-#include "RooPlot.h"
-#include "RooAbsReal.h"
-#include "RooAbsRealLValue.h"
-#include "RooPlotable.h"
-#include "RooArgSet.h"
-#include "RooCurve.h"
-#include "RooHist.h"
-#include "RooMsgService.h"
-
-#include "TAttLine.h"
-#include "TAttFill.h"
-#include "TAttMarker.h"
-#include "TAttText.h"
-#include "TDirectory.h"
-#include "TDirectoryFile.h"
-
-#include "Riostream.h"
-#include <string.h>
-#include <assert.h>
+class TBrowser;
 
 using namespace std;
 

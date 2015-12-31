@@ -19,7 +19,7 @@
 #include <cmath>
 #include <complex>
 
-#include "Rtypes.h"
+#include "RtypesCore.h"
 #include "TMath.h"
 #include "RooComplex.h"
 
@@ -49,7 +49,7 @@ public:
    *
    * The method described in
    *
-   * S.M. Abrarov, B.M. Quine: "Efficient algotithmic implementation of
+   * S.M. Abrarov, B.M. Quine: "Efficient algorithmic implementation of
    * Voigt/complex error function based on exponential series approximation"
    * published in Applied Mathematics and Computation 218 (2011) 1894-1902
    * doi:10.1016/j.amc.2011.06.072

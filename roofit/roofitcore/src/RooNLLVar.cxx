@@ -27,22 +27,26 @@ and a PDF. The NLL is calculated as
 In extended mode, a (Nexpect - Nobserved*log(NExpected) term is added
 **/
 
-#include <algorithm>
+#include <math.h>                       // for log, fabs
+#include <algorithm>                    // for swap
+#include <list>                         // for list, _List_iterator, etc
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <vector>                       // for vector
 
-#include "RooFit.h"
-#include "Riostream.h"
-#include "TMath.h"
+#include "RooAbsData.h"                 // for Double_t, RooAbsData, etc
+#include "RooAbsDataStore.h"            // for RooAbsDataStore
+#include "RooAbsOptTestStatistic.h"     // for RooAbsOptTestStatistic, etc
+#include "RooCmdConfig.h"               // for RooCmdConfig
+#include "RooGlobalFunc.h"              // for MPSplit, etc
+#include "RooMsgService.h"              // for coutI
+#include "RooNLLVar.h"                  // for RooNLLVar
+#include "RooRealMPFE.h"                // for RooRealMPFE
+#include "RooRealSumPdf.h"              // for RooRealSumPdf, RooAbsPdf, etc
+#include "RooRealVar.h"                 // for RooRealVar
+#include "TMath.h"                      // for LnGamma
+#include "TString.h"                    // for Form
 
-#include "RooNLLVar.h"
-#include "RooAbsData.h"
-#include "RooAbsPdf.h"
-#include "RooCmdConfig.h"
-#include "RooMsgService.h"
-#include "RooAbsDataStore.h"
-#include "RooRealMPFE.h"
-#include "RooRealSumPdf.h"
-#include "RooRealVar.h"
-#include "RooProdPdf.h"
+class RooCmdArg;
 
 ClassImp(RooNLLVar)
 ;

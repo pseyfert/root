@@ -19,15 +19,15 @@
 
 #include "Rtypes.h"
 #include "TList.h"
-#include "TNamed.h"
+#include "TNamed.h" // IWYU pragma: export
 #include "TString.h"
 #include "RooArgSet.h"
-#include "RooPrintable.h"
-#include "RooFactoryWSTool.h"
+#include "RooPrintable.h" // IWYU pragma: export
+#include "RooFactoryWSTool.h" // IWYU pragma: export
 class RooAbsCategoryLValue ; 
 class RooAbsCategory ;
 class RooAbsArg ;
-class RooAbsPdf ;
+//class RooAbsPdf ;
 
 class RooCustomizer : public TNamed, public RooPrintable {
 

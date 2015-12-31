@@ -16,13 +16,13 @@
 #ifndef ROO_EFFICIENCY
 #define ROO_EFFICIENCY
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooCategoryProxy.h"
 #include "RooRealProxy.h"
 #include "TString.h" 
-
-class RooArgList ;
-
+class RooAbsCategory;
+class RooAbsReal;
+class RooArgSet;
 
 class RooEfficiency : public RooAbsPdf {
 public:
@@ -42,7 +42,7 @@ protected:
 
   // Function evaluation
   virtual Double_t evaluate() const ;
-  RooCategoryProxy _cat ; // Accept/reject categort
+  RooCategoryProxy _cat ; // Accept/reject category
   RooRealProxy _effFunc ; // Efficiency modeling function
   TString _sigCatName ;   // Name of accept state of accept/reject category
 

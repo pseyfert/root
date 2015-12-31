@@ -23,19 +23,17 @@ Lightweight interface adaptor that binds a RooAbsReal object to a subset
 of its servers and present it as a simple array oriented interface.
 **/
 
+#include <assert.h>                     // for assert
+#include <list>                         // for list, list<>::iterator, etc
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooFit.h"
-#include "Riostream.h"
-
-#include "RooRealBinding.h"
-#include "RooAbsReal.h"
-#include "RooArgSet.h"
-#include "RooAbsRealLValue.h"
-#include "RooNameReg.h"
-#include "RooMsgService.h"
-
-#include <assert.h>
-
+#include "RooAbsArg.h"                  // for RooAbsArg, RooFIter
+#include "RooAbsRealLValue.h"           // for RooAbsReal, etc
+#include "RooArgSet.h"                  // for Double_t, RooArgSet, UInt_t, etc
+#include "RooMsgService.h"              // for oocoutE
+#include "RooNameReg.h"                 // for RooNameReg
+#include "RooRealBinding.h"             // for RooRealBinding, RooAbsFunc
+#include "TIterator.h"                  // for TIterator
 
 
 using namespace std;

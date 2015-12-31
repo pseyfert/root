@@ -16,10 +16,8 @@
 #ifndef ROO_UNIFORM
 #define ROO_UNIFORM
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooListProxy.h"
-
-class RooRealVar;
 
 class RooUniform : public RooAbsPdf {
 public:

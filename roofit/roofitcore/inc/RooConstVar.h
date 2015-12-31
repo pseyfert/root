@@ -16,9 +16,7 @@
 #ifndef ROO_CONST_VAR
 #define ROO_CONST_VAR
 
-#include "RooAbsReal.h"
-#include "RooArgList.h"
-#include "RooListProxy.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 
 class RooArgSet ;
 

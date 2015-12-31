@@ -16,7 +16,7 @@
 #ifndef ROO_EXTEND_PDF
 #define ROO_EXTEND_PDF
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 
 class RooExtendPdf : public RooAbsPdf {

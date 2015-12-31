@@ -16,9 +16,11 @@
 #ifndef ROO_THRESH_ENTRY
 #define ROO_THRESH_ENTRY
 
-#include "Riosfwd.h"
-#include "TNamed.h"
+//#include "Riosfwd.h"
+//#include "TNamed.h"
 #include "RooCatType.h"
+#include "Rtypes.h"
+#include "TObject.h" // IWYU pragma: export
 
 class RooThreshEntry : public TObject {
 public:

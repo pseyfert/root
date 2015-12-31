@@ -18,9 +18,10 @@
 
 #include "Riosfwd.h"
 #include <assert.h>
-#include "TNamed.h"
-#include "RooAbsCategory.h"
-#include "RooPrintable.h"
+#include "TNamed.h" // IWYU pragma: export
+//#include "RooAbsCategory.h"
+class RooAbsCategory;
+#include "RooPrintable.h" // IWYU pragma: export
 
 class RooTable : public TNamed, public RooPrintable {
 public:

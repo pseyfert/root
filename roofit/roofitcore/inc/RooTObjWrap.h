@@ -17,7 +17,7 @@
 #define ROO_TOBJ_WRAP
 
 #include "Rtypes.h"
-#include "TNamed.h"
+#include "TNamed.h" // IWYU pragma: export
 #include "RooLinkedList.h"
 
 class RooTObjWrap : public TNamed {

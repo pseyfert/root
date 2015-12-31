@@ -43,20 +43,23 @@ For integrands with integrable singulaties the Wynn epsilon rule
 can be selected to speed up the converges of these integrals
 **/
 
-#include "RooFit.h"
+#include <assert.h>                     // for assert
+#include <math.h>                       // for fabs
+#include <stddef.h>                     // for size_t
+#include <stdlib.h>                     // for free, malloc
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include <assert.h>
-#include <stdlib.h>
-#include "TClass.h"
-#include "Riostream.h"
+#include "RooAbsFunc.h"                 // for RooAbsFunc
 #include "RooAdaptiveGaussKronrodIntegrator1D.h"
-#include "RooArgSet.h"
-#include "RooRealVar.h"
-#include "RooNumber.h"
-#include "RooNumIntFactory.h"
-#include "RooIntegratorBinding.h"
-#include "TMath.h"
-#include "RooMsgService.h"
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCategory.h"                // for Double_t, RooCategory, etc
+#include "RooMsgService.h"              // for oocoutE, coutE
+#include "RooNumIntConfig.h"            // for RooNumIntConfig
+#include "RooNumIntFactory.h"           // for RooNumIntFactory
+#include "RooNumber.h"                  // for RooNumber
+#include "RooRealVar.h"                 // for RooRealVar
+#include "TClass.h"                     // for TClass
+#include "TMath.h"                      // for Power
 
 using namespace std ;
 

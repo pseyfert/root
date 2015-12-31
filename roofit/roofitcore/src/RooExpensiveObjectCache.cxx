@@ -26,19 +26,25 @@ the object is valid, so that other instances can, at a later moment
 retrieve these precalculated objects
 **/
 
+#include <math.h>                       // for fabs
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <map>                          // for map, _Rb_tree_iterator, etc
+#include <string>                       // for char_traits, operator==, etc
+#include <utility>                      // for pair
 
-#include "TClass.h"
-#include "RooFit.h"
-#include "RooSentinel.h"
-#include "RooAbsReal.h"
-#include "RooAbsCategory.h"
-#include "RooArgSet.h"
-#include "RooMsgService.h"
-#include <iostream>
-#include <math.h>
+#include "RooAbsCategory.h"             // for RooAbsArg, RooAbsCategory
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooArgSet.h"                  // for Int_t, Bool_t, RooArgSet, etc
+#include "RooExpensiveObjectCache.h"    // for RooExpensiveObjectCache, etc
+#include "RooMsgService.h"              // for oocoutI, oocoutW
+#include "RooSentinel.h"                // for RooSentinel
+#include "TClass.h"                     // for TClass
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for TString, operator<, etc
+
+
 using namespace std ;
 
-#include "RooExpensiveObjectCache.h"
 
 ClassImp(RooExpensiveObjectCache)
 ClassImp(RooExpensiveObjectCache::ExpensiveObject)

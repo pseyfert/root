@@ -22,19 +22,14 @@
 P.d.f implementing the Crystall Ball line shape
 **/
 
-#include "RooFit.h"
+#include <math.h>                       // for exp, fabs, log
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include <math.h>
-
-#include "RooCBShape.h"
-#include "RooAbsReal.h"
-#include "RooRealVar.h"
-#include "RooMath.h"
-#include "TMath.h"
-
-#include "TError.h"
+#include "RooArgSet.h"                  // for Double_t, Int_t, RooArgSet, etc
+#include "RooCBShape.h"                 // for RooCBShape, RooAbsPdf
+#include "RooMath.h"                    // for RooMath
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "TError.h"                     // for R__ASSERT
+#include "TMath.h"                      // for Power
 
 using namespace std;
 

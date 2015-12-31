@@ -30,14 +30,14 @@ owning class to update the pointers of RooArgSet contents to reflect
 the serverRedirect changes.
 **/
 
+#include <stddef.h>                     // for size_t
+#include <stdlib.h>                     // for free, malloc
+#include <ostream>                      // for operator<<, ostream, etc
 
-#include "RooFit.h"
+#include "RooAbsArg.h"                  // for RooAbsArg, etc
+#include "RooSetProxy.h"                // for RooSetProxy, Bool_t, etc
+#include "TIterator.h"                  // for TIterator
 
-#include "Riostream.h"
-#include "RooSetProxy.h"
-#include "RooSetProxy.h"
-#include "RooArgSet.h"
-#include "RooAbsArg.h"
 
 using namespace std;
 

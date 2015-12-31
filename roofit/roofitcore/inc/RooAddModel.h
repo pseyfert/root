@@ -16,13 +16,10 @@
 #ifndef ROO_ADD_MODEL
 #define ROO_ADD_MODEL
 
-#include "RooResolutionModel.h"
+#include "RooResolutionModel.h" // IWYU pragma: export
 #include "RooListProxy.h"
 #include "RooSetProxy.h"
 #include "RooAICRegistry.h"
-#include "RooNormSetCache.h"
-#include "RooNameSet.h"
-#include "RooCacheManager.h"
 #include "RooObjCacheManager.h"
 
 class RooAddModel : public RooResolutionModel {

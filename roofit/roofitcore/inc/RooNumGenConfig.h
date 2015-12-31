@@ -16,10 +16,10 @@
 #ifndef ROO_NUM_GEN_CONFIG
 #define ROO_NUM_GEN_CONFIG
 
-#include "TObject.h"
+#include "TObject.h" // IWYU pragma: export
+#include "RooPrintable.h" // IWYU pragma: export
 #include "RooCategory.h"
 #include "RooLinkedList.h"
-class RooNumGenFactory ;
 class RooAbsNumGenerator ;
 
 class RooNumGenConfig : public TObject, public RooPrintable {

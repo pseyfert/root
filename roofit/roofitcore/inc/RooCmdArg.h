@@ -18,10 +18,8 @@
 #define ROO_CMD_ARG
 
 #include <string>
-#include "TNamed.h"
-#include "TString.h"
+#include "TNamed.h" // IWYU pragma: export
 #include "RooLinkedList.h"
-class RooAbsData ;
 class RooArgSet ;
 
 class RooCmdArg : public TNamed {

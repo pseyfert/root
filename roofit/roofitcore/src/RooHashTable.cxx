@@ -14,15 +14,19 @@
  * listed in LICENSE (http://roofit.sourceforge.net/license.txt)             *
  *****************************************************************************/
 
-#include "RooFit.h"
+#include <assert.h>                     // for assert
+#include <string.h>                     // for memset
 
-#include "TMath.h"
-#include "TMath.h"
-#include "TCollection.h"
-#include "RooHashTable.h"
-#include "RooLinkedList.h"
-#include "RooAbsArg.h"
-#include "RooSetPair.h"
+#include "RooAbsArg.h"                  // for RooLinkedList, RooAbsArg, etc
+#include "RooHashTable.h"               // for RooHashTable, Int_t, kFALSE, etc
+#include "RooLinkedListElem.h"          // for RooLinkedListElem
+#include "RooNameReg.h"                 // for RooNameReg, etc
+#include "RooSetPair.h"                 // for RooSetPair
+#include "TCollection.h"                // for TCollection, etc
+#include "TMath.h"                      // for Hash
+#include "TMathBase.h"                  // for Max, NextPrime
+
+class RooArgSet;
 
 using namespace std;
 

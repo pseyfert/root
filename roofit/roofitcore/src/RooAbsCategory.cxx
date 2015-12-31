@@ -28,21 +28,24 @@ Implementation of RooAbsCategory may be derived, there no interface
 is provided to modify the contents, nor a public interface to define states.
 **/
 
-#include "RooFit.h"
+#include <assert.h>                     // for assert
+#include <stdlib.h>                     // for abs, strtol
+#include <string.h>                     // for strlen
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include <stdlib.h>
-#include "TString.h"
-#include "TH1.h"
-#include "TTree.h"
-#include "TLeaf.h"
-#include "RooAbsCategory.h"
-#include "RooArgSet.h"
-#include "Roo1DTable.h"
-#include "RooCategory.h"
-#include "RooMsgService.h"
-#include "RooVectorDataStore.h"
+#include "Roo1DTable.h"                 // for Roo1DTable
+#include "RooCatType.h"                 // for RooCatType, TObject
+#include "RooCategory.h"                // for RooAbsCategory, Bool_t, etc
+#include "RooMsgService.h"              // for coutE, cxcoutD, coutI, etc
+#include "RooVectorDataStore.h"         // for RooVectorDataStore, etc
+#include "TBranch.h"                    // for TBranch
+#include "TIterator.h"                  // for TIterator
+#include "TLeaf.h"                      // for TLeaf
+#include "TObjArray.h"                  // for TObjArray
+#include "TString.h"                    // for TString, operator<<, Form
+#include "TTree.h"                      // for TTree
+
+class RooArgSet;
 
 using namespace std;
 

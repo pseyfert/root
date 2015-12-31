@@ -29,20 +29,18 @@ constructed from all the categories in the dataset
 
 **/
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <assert.h>                     // for assert
+#include <iostream>                     // for operator<<, basic_ostream, etc
 
-#include "RooDataProjBinding.h"
-#include "RooAbsReal.h"
-#include "RooAbsData.h"
-#include "Roo1DTable.h"
-#include "RooSuperCategory.h"
-#include "RooCategory.h"
-#include "RooAbsPdf.h"
-#include "RooMsgService.h"
-
-#include <assert.h>
-
+#include "Roo1DTable.h"                 // for Roo1DTable
+#include "RooAbsData.h"                 // for Double_t, RooAbsData, etc
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooCatType.h"                 // for RooCatType
+#include "RooCategory.h"                // for RooAbsArg, RooCategory
+#include "RooDataProjBinding.h"         // for RooDataProjBinding, etc
+#include "RooMsgService.h"              // for ooccoutW, oocoutW, oodologW
+#include "RooSuperCategory.h"           // for RooSuperCategory
+#include "TIterator.h"                  // for TIterator
 
 
 using namespace std;

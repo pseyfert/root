@@ -16,9 +16,8 @@
 #ifndef ROO_NUM_CONVOLUTION
 #define ROO_NUM_CONVOLUTION
 
-#include "RooAbsPdf.h"
+#include "RooAbsReal.h"  //IWYU pragma: export
 #include "RooRealProxy.h"
-#include "RooSetProxy.h"
 #include "RooListProxy.h"
 #include "RooNumIntConfig.h"
 

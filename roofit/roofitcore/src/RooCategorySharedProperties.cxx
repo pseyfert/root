@@ -25,11 +25,14 @@ are clones of each other. At present the only property that is
 shared in this way is the list of alternate named range definitions
 **/
 
-#include "RooFit.h"
+#include <iostream>                     // for operator<<, basic_ostream, etc
+
+#include "RooCatType.h"                 // for RooCatType, ClassImp, kTRUE
 #include "RooCategorySharedProperties.h"
-#include "TList.h"
-#include "RooCatType.h"
-#include <iostream>
+#include "RooLinkedList.h"              // for RooLinkedList
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
+
 using namespace std ;
 
 ClassImp(RooCategorySharedProperties)

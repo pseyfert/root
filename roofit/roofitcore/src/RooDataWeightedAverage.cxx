@@ -30,15 +30,14 @@ plot option.
 
 **/
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <iostream>                     // for operator<<, basic_ostream, etc
 
-#include "RooDataWeightedAverage.h"
-#include "RooAbsData.h"
-#include "RooAbsPdf.h"
-#include "RooCmdConfig.h"
-#include "RooMsgService.h"
-#include "RooAbsDataStore.h"
+#include "RooAbsData.h"                 // for RooAbsData, Int_t, Double_t, etc
+#include "RooAbsDataStore.h"            // for RooAbsDataStore
+#include "RooAbsPdf.h"                  // for RooAbsReal
+#include "RooDataWeightedAverage.h"     // for RooDataWeightedAverage, etc
+#include "RooGlobalFunc.h"              // for MPSplit
+#include "RooMsgService.h"              // for ccoutP, coutI
 
 
 

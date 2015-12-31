@@ -18,18 +18,15 @@
 
 //#include "THashList.h"
 #include "TList.h"
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooCategoryProxy.h"
-#include "RooRealProxy.h"
 #include "RooSetProxy.h"
-#include "RooAICRegistry.h"
 #include "RooObjCacheManager.h"
-#include "RooAbsCacheElement.h"
+#include "RooAbsCacheElement.h" // IWYU pragma: export
 #include "RooArgList.h"
 #include <map>
 #include <string>
 class RooAbsCategoryLValue ;
-class RooFitResult ;
 class RooPlot ;
 class RooAbsData ;
 class RooLinkedList ;

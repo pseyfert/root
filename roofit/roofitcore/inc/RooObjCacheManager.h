@@ -18,17 +18,9 @@
 
 #include "Rtypes.h"
 
-#include "RooNormSetCache.h"
-#include "RooAbsReal.h"
 #include "RooArgSet.h"
-#include "RooArgList.h"
-#include "RooAbsCache.h"
-#include "RooAbsCacheElement.h"
-#include "RooCacheManager.h"
-#include <list>
-
-class RooNameSet ;
-
+#include "RooAbsCacheElement.h" // IWYU pragma: export
+#include "RooCacheManager.h" // IWYU pragma: export
 
 class RooObjCacheManager : public RooCacheManager<RooAbsCacheElement> {
 

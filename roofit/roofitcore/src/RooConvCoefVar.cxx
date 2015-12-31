@@ -25,11 +25,10 @@ to be able to interface these coefficient terms with the generic
 RooRealIntegral integration mechanism
 **/
 
-#include "RooFit.h"
-
-#include "RooAbsAnaConvPdf.h"
-#include "RooAbsAnaConvPdf.h"
-#include "RooConvCoefVar.h"
+#include "RooAbsAnaConvPdf.h"           // for RooAbsAnaConvPdf
+#include "RooConvCoefVar.h"             // for RooConvCoefVar, RooAbsReal
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooSetProxy.h"                // for Int_t, Double_t, kFALSE, etc
 
 using namespace std;
 

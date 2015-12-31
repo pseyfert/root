@@ -14,7 +14,7 @@
 #ifndef ROO_EFF_GEN_CONTEXT
 #define ROO_EFF_GEN_CONTEXT
 
-#include "RooAbsGenContext.h"
+#include "RooAbsGenContext.h" // IWYU pragma: export
 class RooAbsPdf;
 class RooArgSet;
 class RooDataSet;

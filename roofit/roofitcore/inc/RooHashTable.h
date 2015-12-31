@@ -16,8 +16,9 @@
 #ifndef ROO_HASH_TABLE
 #define ROO_HASH_TABLE
 
-#include "TObject.h"
+#include "TObject.h" // IWYU pragma: export
 #include "TString.h"
+//#include "RooLinkedList.h" // checkme
 
 class RooAbsArg ;
 class RooLinkedList ;

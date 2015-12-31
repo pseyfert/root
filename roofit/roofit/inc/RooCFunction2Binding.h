@@ -14,9 +14,9 @@
 #define ROOCFUNCTION2BINDING
 
 #include "RooAbsReal.h"
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-#include "RooMsgService.h"
+//#include "RooMsgService.h"
 
 #include "TBuffer.h"
 #include "TString.h"

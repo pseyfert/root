@@ -24,17 +24,15 @@ by a series of thresholds.
 **/
 
 
-#include "RooFit.h"
+#include <ostream>                      // for operator<<, ostream, etc
+#include <string>                       // for string
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include "TString.h"
-#include "RooBinningCategory.h"
-#include "RooStreamParser.h"
-#include "RooThreshEntry.h"
-#include "RooMsgService.h"
+#include "RooAbsBinning.h"              // for RooAbsBinning
+#include "RooAbsRealLValue.h"           // for RooAbsReal, etc
+#include "RooBinningCategory.h"         // for RooBinningCategory, etc
+#include "RooCatType.h"                 // for RooCatType
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "TString.h"                    // for Form, TString, operator<<
 
 using namespace std;
 

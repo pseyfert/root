@@ -25,7 +25,6 @@
 #include <map>
 #include <string>
 
-class RooAbsCategoryLValue ; 
 class RooAbsCategory ;
 class RooAbsArg ;
 class RooAbsPdf ;

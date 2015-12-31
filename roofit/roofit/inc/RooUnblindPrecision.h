@@ -16,12 +16,9 @@
 #ifndef ROO_UNBLIND_PRECISION
 #define ROO_UNBLIND_PRECISION
 
-#include "RooAbsHiddenReal.h"
+#include "RooAbsHiddenReal.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-#include "RooCategoryProxy.h"
 #include "RooBlindTools.h"
-
-class RooCategory ;
 
 class RooUnblindPrecision : public RooAbsHiddenReal {
 public:
