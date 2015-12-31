@@ -41,6 +41,12 @@
 #ifndef ROOT_TMVA_TActivationIdentity
 #include "TMVA/TActivationIdentity.h"
 #endif
+#ifndef ROOT_TMVA_TActivationSoftsign
+#include "TMVA/TActivationSoftsign.h"
+#endif
+#ifndef ROOT_TMVA_TActivationSimpleSigmoid
+#include "TMVA/TActivationSimpleSigmoid.h"
+#endif
 #ifndef ROOT_TMVA_TActivationSigmoid
 #include "TMVA/TActivationSigmoid.h"
 #endif
@@ -62,6 +68,8 @@
 TMVA::TActivationChooser::TActivationChooser() :
    fLINEAR("linear"),
    fSIGMOID("sigmoid"),
+   fSIMPLESIGMOID("simplesigmoid"),
+   fSOFTSIGN("softsign"),
    fTANH("tanh"),
    fRELU("ReLU"),
    fRADIAL("radial"),
@@ -85,6 +93,8 @@ TMVA::TActivationChooser::CreateActivation(EActivationType type) const
    switch (type) {
    case kLinear:  return new TActivationIdentity();
    case kSigmoid: return new TActivationSigmoid(); 
+   case kSimpleSigmoid: return new TActivationSimpleSigmoid();
+   case kSoftsign: return new TActivationSoftsign();
    case kTanh:    return new TActivationTanh();    
    case kReLU:    return new TActivationReLU();    
    case kRadial:  return new TActivationRadial();  
@@ -103,6 +113,8 @@ TMVA::TActivationChooser::CreateActivation(const TString& type) const
 
    if      (type == fLINEAR)  return CreateActivation(kLinear);
    else if (type == fSIGMOID) return CreateActivation(kSigmoid);
+   else if (type == fSIMPLESIGMOID) return CreateActivation(kSimpleSigmoid);
+   else if (type == fSOFTSIGN) return CreateActivation(kSoftsign);
    else if (type == fTANH)    return CreateActivation(kTanh);
    else if (type == fRELU)    return CreateActivation(kReLU);
    else if (type == fRADIAL)  return CreateActivation(kRadial);
@@ -120,6 +132,8 @@ TMVA::TActivationChooser::GetAllActivationNames() const
    std::vector<TString>* names = new std::vector<TString>();
    names->push_back(fLINEAR);
    names->push_back(fSIGMOID);
+   names->push_back(fSIMPLESIGMOID);
+   names->push_back(fSOFTSIGN);
    names->push_back(fTANH);
    names->push_back(fRELU);
    names->push_back(fRADIAL);

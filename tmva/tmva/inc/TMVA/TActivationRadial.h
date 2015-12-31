@@ -32,9 +32,6 @@
 //                                                                      //
 //////////////////////////////////////////////////////////////////////////
 
-#ifndef ROOT_TFormula
-#include "TFormula.h"
-#endif
 #ifndef ROOT_TString
 #include "TString.h"
 #endif
@@ -59,10 +56,10 @@ namespace TMVA {
       Double_t EvalDerivative(Double_t arg);
 
       // minimum of the range of the activation function
-      Double_t GetMin() { return 0; }
+      Double_t GetMin() { return 0.; }
 
       // maximum of the range of the activation function
-      Double_t GetMax() { return 1; }
+      Double_t GetMax() { return 1.; }
 
       // expression for the activation function
       TString GetExpression();
@@ -72,10 +69,7 @@ namespace TMVA {
 
    private:
 
-      TFormula* fEqn;                // equation of radial basis function
-      TFormula* fEqnDerivative;      // equation of derivative
-
-      ClassDef(TActivationRadial,0)  // Radial basis activation function for TNeuron
+      ClassDef(TActivationRadial,1)  // Radial basis activation function for TNeuron
    };
 
 } // namespace TMVA
