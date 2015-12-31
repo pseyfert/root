@@ -56,10 +56,10 @@ namespace TMVA {
       Double_t EvalDerivative(Double_t arg);
 
       // minimum of the range of the activation function
-      Double_t GetMin() { return 0; }
+      Double_t GetMin() { return 0.; }
 
       // maximum of the range of the activation function
-      Double_t GetMax() { return 1; }
+      Double_t GetMax() { return 1.; }
 
       // expression for the activation function
       TString GetExpression();

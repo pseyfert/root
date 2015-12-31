@@ -13,6 +13,8 @@
 #pragma link C++ class TMVA::TSynapse+;
 #pragma link C++ class TMVA::TActivationChooser+;
 #pragma link C++ class TMVA::TActivation+;
+#pragma link C++ class TMVA::TActivationSimpleSigmoid+;
+#pragma link C++ class TMVA::TActivationSoftsign+;
 #pragma link C++ class TMVA::TActivationSigmoid+;
 #pragma link C++ class TMVA::TActivationIdentity+;
 #pragma link C++ class TMVA::TActivationTanh+;
