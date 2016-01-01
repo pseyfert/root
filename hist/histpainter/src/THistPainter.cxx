@@ -3134,6 +3134,10 @@ Bool_t THistPainter::IsInside(Double_t x, Double_t y)
    return kTRUE;
 }
 
+Hoption_t* THistPainter::parseresult(Option_t* choptin) {
+  if (NULL!=choptin) MakeChopt(choptin);
+  return &Hoption;
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 /// Decode string `choptin` and fill Hoption structure.
