@@ -36,6 +36,7 @@ class TGaxis;
 class TPainter3dAlgorithms;
 class TGraph2DPainter;
 class TPie;
+class Hoption_t;
 const Int_t kMaxCuts = 16;
 
 class THistPainter : public TVirtualHistPainter {
@@ -60,6 +61,7 @@ protected:
 
 public:
    THistPainter();
+   virtual Hoption_t* parseresult(Option_t *option);
    virtual ~THistPainter();
    virtual void       DefineColorLevels(Int_t ndivz);
    virtual Int_t      DistancetoPrimitive(Int_t px, Int_t py);
