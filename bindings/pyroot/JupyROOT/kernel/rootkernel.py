@@ -21,20 +21,13 @@ try:
 except ImportError:
     raise Exception("Error: package metakernel not found.(install it running 'pip install metakernel')")
 
-#ROOT related imports
-try:
-    import ROOT
-except ImportError:
-    raise Exception("Error: PyROOT not found")
+import ROOT
 
-try:
-    from JupyROOT.utils import setStyle, invokeAclic
-    from JupyROOT.handlers import RunAsyncAndPrint
-    from JupyROOT.cppcompleter import CppCompleter
-    from JupyROOT.kernel.draw import LoadDrawer, CanvasDrawer
-    from JupyROOT.kernel.utils import GetIOHandler, GetExecutor, GetDeclarer, MagicLoader
-except ImportError:
-    raise Exception("Error: JupyROOT not found")
+from JupyROOT.utils import setStyle, invokeAclic
+from JupyROOT.handlers import RunAsyncAndPrint
+from JupyROOT.cppcompleter import CppCompleter
+from JupyROOT.kernel.draw import LoadDrawer, CanvasDrawer
+from JupyROOT.kernel.utils import GetIOHandler, GetExecutor, GetDeclarer, MagicLoader
 
 import IPython
 
@@ -53,7 +46,7 @@ class ROOTKernel(MetaKernel):
                      'codemirror_mode': 'text/x-c++src',
                      'mimetype': ' text/x-c++src',
                      'file_extension': '.C'}
-    banner = "CERN ROOT Kernel %s" % ROOT.gROOT.GetVersion()
+    banner = "ROOT Kernel"
 
     def __init__(self,**kwargs):
 
