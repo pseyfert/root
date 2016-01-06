@@ -60,12 +60,13 @@ _jsCode = """
 requirejs.config(
 {{
   paths: {{
-    'JSRootCore'    : '{jsROOTSourceDir}/scripts/JSRootCore',
-    'JSRootPainter' : '{jsROOTSourceDir}/scripts/JSRootPainter',
+    'JSRootCore'       : '{jsROOTSourceDir}/scripts/JSRootCore',
+    'JSRootPainter'    : '{jsROOTSourceDir}/scripts/JSRootPainter',
+    'JSRootGeoPainter' : '{jsROOTSourceDir}/scripts/JSRootGeoPainter',
   }}
 }}
 );
-require(['JSRootCore', 'JSRootPainter'],
+require(['JSRootCore', 'JSRootPainter', 'JSRootGeoPainter'],
         function(Core, Painter) {{
           var obj = Core.parse('{jsonContent}');
           Painter.draw("{jsDivId}", obj, "{jsDrawOptions}");
@@ -251,35 +252,67 @@ class StreamCapture(object):
     def register(self):
         self.shell.events.register('post_execute', self.post_execute)
 
-class CaptureDrawnCanvases(object):
+def GetCanvasDrawers():
+    lOfC = ROOT.gROOT.GetListOfCanvases()
+    return [NotebookDrawer(can) for can in lOfC if can.IsDrawn()]
+
+def GetGeometryDrawer():
+    if not hasattr(ROOT,'gGeoManager'): return
+    if not ROOT.gGeoManager: return
+    if not ROOT.gGeoManager.GetUserPaintVolume(): return
+    vol = ROOT.gGeoManager.GetTopVolume()
+    if vol:
+        return NotebookDrawer(vol)
+
+def GetDrawers():
+    drawers = GetCanvasDrawers()
+    geometryDrawer = GetGeometryDrawer()
+    if geometryDrawer: drawers.append(geometryDrawer)
+    return drawers
+
+def DrawGeometry():
+    drawer = GetGeometryDrawer()
+    if drawer:
+        drawer.Draw()
+
+def DrawCanvases():
+    drawers = GetCanvasDrawers()
+    for drawer in drawers:
+        drawer.Draw()
+
+def NotebookDraw():
+    DrawGeometry()
+    DrawCanvases()
+
+class CaptureDrawnPrimitives(object):
     '''
     Capture the canvas which is drawn to display it.
     '''
     def __init__(self, ip=get_ipython()):
         self.shell = ip
 
-    def _pre_execute(self):
-        pass
-
     def _post_execute(self):
-        for can in ROOT.gROOT.GetListOfCanvases():
-            if can.IsDrawn():
-               can.Draw()
-               can.ResetDrawn()
+        NotebookDraw()
 
     def register(self):
-        self.shell.events.register('pre_execute', self._pre_execute)
         self.shell.events.register('post_execute', self._post_execute)
 
-class CanvasDrawer(object):
+class NotebookDrawer(object):
     '''
     Capture the canvas which is drawn and decide if it should be displayed using
     jsROOT.
     '''
     jsUID = 0
 
-    def __init__(self, thePad):
-        self.canvas = thePad
+    def __init__(self, theObject):
+        self.drawableObject = theObject
+        self.isCanvas = self.drawableObject.ClassName() == "TCanvas"
+
+    def __del__(self):
+       if self.isCanvas:
+           self.drawableObject.ResetDrawn()
+       else:
+           ROOT.gGeoManager.SetUserPaintVolume(None)
 
     def _getListOfPrimitivesNamesAndTypes(self):
        """
@@ -288,10 +321,6 @@ class CanvasDrawer(object):
        """
        primitives = self.canvas.GetListOfPrimitives()
        primitivesNames = map(lambda p: p.ClassName(), primitives)
-       #primitivesWithFunctions = filter(lambda primitive: hasattr(primitive,"GetListOfFunctions"), primitives)
-       #for primitiveWithFunctions in primitivesWithFunctions:
-       #    for function in primitiveWithFunctions.GetListOfFunctions():
-       #        primitivesNames.append(function.GetName())
        return sorted(primitivesNames)
 
     def _getUID(self):
@@ -299,10 +328,14 @@ class CanvasDrawer(object):
         Every DIV containing a JavaScript snippet must be unique in the
         notebook. This methods provides a unique identifier.
         '''
-        CanvasDrawer.jsUID += 1
-        return CanvasDrawer.jsUID
+        NotebookDrawer.jsUID += 1
+        return NotebookDrawer.jsUID
 
     def _canJsDisplay(self):
+        if not hasattr(ROOT,"TBufferJSON"):
+            print("The TBufferJSON class is necessary for JS visualisation to work and cannot be found. Did you enable the http module (-D http=ON for CMake)?", file=sys.stderr)
+            return False
+        if not self.isCanvas: return True
         # to be optimised
         if not _enableJSVis: return False
         primitivesTypesNames = self._getListOfPrimitivesNamesAndTypes()
@@ -314,36 +347,46 @@ class CanvasDrawer(object):
         return True
 
 
-    def getJsCode(self):
+    def _getJsCode(self):
         # Workaround to have ConvertToJSON work
-        json = ROOT.TBufferJSON.ConvertToJSON(self.canvas, 3)
+        json = ROOT.TBufferJSON.ConvertToJSON(self.drawableObject, 3)
 
         # Here we could optimise the string manipulation
         divId = 'root_plot_' + str(self._getUID())
-        thisJsCode = _jsCode.format(jsCanvasWidth = _jsCanvasWidth,
-                                    jsCanvasHeight = _jsCanvasHeight,
+
+        height = _jsCanvasHeight
+        width = _jsCanvasHeight
+        options = "all"
+
+        if self.isCanvas:
+            height = self.drawableObject.GetWw()
+            width = self.drawableObject.GetWh()
+            options = ""
+
+        thisJsCode = _jsCode.format(jsCanvasWidth = height,
+                                    jsCanvasHeight = width,
                                     jsROOTSourceDir = _jsROOTSourceDir,
-                                    jsonContent=json.Data(),
-                                    jsDrawOptions="",
+                                    jsonContent = json.Data(),
+                                    jsDrawOptions = options,
                                     jsDivId = divId)
         return thisJsCode
 
+    def _getJsDiv(self):
+        return HTML(self._getJsCode())
 
     def _jsDisplay(self):
-        thisJsCode = self.getJsCode()
-        # display is the key point of this hook
-        IPython.display.display(HTML(thisJsCode))
+        IPython.display.display(self._getJsDiv())
         return 0
 
-    def getPngImage(self):
+    def _getPngImage(self):
         ofile = tempfile.NamedTemporaryFile(suffix=".png")
         with _setIgnoreLevel(ROOT.kError):
-            self.canvas.SaveAs(ofile.name)
+            self.drawableObject.SaveAs(ofile.name)
         img = IPython.display.Image(filename=ofile.name, format='png', embed=True)
         return img
 
     def _pngDisplay(self):
-        img = self.getPngImage()
+        img = self._getPngImage()
         IPython.display.display(img)
 
     def _display(self):
@@ -356,18 +399,18 @@ class CanvasDrawer(object):
          else:
             self._pngDisplay()
 
+    def GetDrawableObject(self):
+        if not self.isCanvas:
+           return self._getJsDiv()
+
+        if self._canJsDisplay():
+           return self._getJsDiv()
+        else:
+           return self._getPngImage()
 
     def Draw(self):
         self._display()
         return 0
-
-def _PyDraw(thePad):
-   """
-   Invoke the draw function and intercept the graphics
-   """
-   drawer = CanvasDrawer(thePad)
-   drawer.Draw()
-
 
 def setStyle():
     style=ROOT.gStyle
@@ -390,7 +433,7 @@ def loadExtensionsAndCapturers():
     cppcompleter.load_ipython_extension(ip)
     captures.append(StreamCapture(sys.stderr))
     captures.append(StreamCapture(sys.stdout))
-    captures.append(CaptureDrawnCanvases())
+    captures.append(CaptureDrawnPrimitives())
 
     for capture in captures: capture.register()
 
@@ -399,8 +442,6 @@ def enhanceROOTModule():
     ROOT.disableJSVis = disableJSVis
     ROOT.enableJSVisDebug = enableJSVisDebug
     ROOT.disableJSVisDebug = disableJSVisDebug
-    ROOT.TCanvas.DrawCpp = ROOT.TCanvas.Draw
-    ROOT.TCanvas.Draw = _PyDraw
 
 def enableCppHighlighting():
     ipDispJs = IPython.display.display_javascript
