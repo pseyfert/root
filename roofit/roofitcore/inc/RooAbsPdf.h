@@ -320,7 +320,8 @@ protected:
   mutable Int_t _traceCount ;        // Number of traces remaining to print
   mutable Int_t _negCount ;          // Number of negative probablities remaining to print
 
-  Bool_t _selectComp ;               // Component selection flag for RooAbsPdf::plotCompOn
+  // already defined in RooAbsReal
+  //Bool_t _selectComp ;               // Component selection flag for RooAbsPdf::plotCompOn
 
   static void raiseEvalError() ;
 

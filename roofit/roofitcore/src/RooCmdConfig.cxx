@@ -86,9 +86,8 @@ RooCmdConfig::RooCmdConfig(const char* methodName) :
 ////////////////////////////////////////////////////////////////////////////////
 /// Copy constructor
 
-RooCmdConfig::RooCmdConfig(const RooCmdConfig& other)  : TObject(other)
+RooCmdConfig::RooCmdConfig(const RooCmdConfig& other)  : TObject(other), _name(other._name)
 {
-  _name   = other._name ;
   _verbose = other._verbose ;
   _error = other._error ;
   _allowUndefined = other._allowUndefined ;

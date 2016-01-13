@@ -184,7 +184,7 @@ const TObject* RooExpensiveObjectCache::retrieveObject(const char* name, TClass*
 
 const TObject* RooExpensiveObjectCache::getObj(Int_t uid) 
 {
-  for (std::map<TString,ExpensiveObject*>::iterator iter = _map.begin() ; iter !=_map.end() ; iter++) {
+  for (std::map<TString,ExpensiveObject*>::iterator iter = _map.begin() ; iter !=_map.end() ; ++iter) {
     if (iter->second->uid() == uid) {
       return iter->second->payload() ;
     }
@@ -200,7 +200,7 @@ const TObject* RooExpensiveObjectCache::getObj(Int_t uid)
 
 Bool_t RooExpensiveObjectCache::clearObj(Int_t uid) 
 {
-  for (std::map<TString,ExpensiveObject*>::iterator iter = _map.begin() ; iter !=_map.end() ; iter++) {
+  for (std::map<TString,ExpensiveObject*>::iterator iter = _map.begin() ; iter !=_map.end() ; ++iter) {
     if (iter->second->uid() == uid) {
       _map.erase(iter->first) ;
       return kFALSE ;
@@ -217,7 +217,7 @@ Bool_t RooExpensiveObjectCache::clearObj(Int_t uid)
 
 Bool_t RooExpensiveObjectCache::setObj(Int_t uid, TObject* obj) 
 {
-  for (std::map<TString,ExpensiveObject*>::iterator iter = _map.begin() ; iter !=_map.end() ; iter++) {
+  for (std::map<TString,ExpensiveObject*>::iterator iter = _map.begin() ; iter !=_map.end() ; ++iter) {
     if (iter->second->uid() == uid) {
       iter->second->setPayload(obj) ;
       return kFALSE ;
@@ -245,10 +245,9 @@ void RooExpensiveObjectCache::clearAll()
 /// Construct ExpensiveObject oject for inPayLoad and store reference values
 /// for all RooAbsReal and RooAbsCategory parameters in params.
 
-RooExpensiveObjectCache::ExpensiveObject::ExpensiveObject(Int_t uidIn, const char* inOwnerName, TObject& inPayload, TIterator* parIter) 
+RooExpensiveObjectCache::ExpensiveObject::ExpensiveObject(Int_t uidIn, const char* inOwnerName, TObject& inPayload, TIterator* parIter) : _ownerName(inOwnerName)
 {
   _uid = uidIn ;
-  _ownerName = inOwnerName;
 
   _payload = &inPayload ;
 
@@ -353,7 +352,7 @@ void RooExpensiveObjectCache::print() const
 void RooExpensiveObjectCache::ExpensiveObject::print() 
 {
   cout << _payload->IsA()->GetName() << "::" << _payload->GetName() ;
-  if (_realRefParams.size()>0 || _catRefParams.size()>0) {
+  if ((!_realRefParams.empty() )||( !_catRefParams.empty())) {
     cout << " parameters=( " ;
     map<TString,Double_t>::iterator iter = _realRefParams.begin() ;
     while(iter!=_realRefParams.end()) {

@@ -107,7 +107,7 @@ void RooStudyPackage::driver(Int_t nExperiments)
 
 void RooStudyPackage::initialize() 
 {
-  for (list<RooAbsStudy*>::iterator iter=_studies.begin() ; iter!=_studies.end() ; iter++) {
+  for (list<RooAbsStudy*>::iterator iter=_studies.begin() ; iter!=_studies.end() ; ++iter) {
     (*iter)->attach(*_ws) ;
     (*iter)->initialize() ;
   }
@@ -135,7 +135,7 @@ void RooStudyPackage::run(Int_t nExperiments)
 
 void RooStudyPackage::runOne() 
 {
-  for (list<RooAbsStudy*>::iterator iter=_studies.begin() ; iter!=_studies.end() ; iter++) {
+  for (list<RooAbsStudy*>::iterator iter=_studies.begin() ; iter!=_studies.end() ; ++iter) {
     (*iter)->execute() ;
   }    
 }
@@ -148,7 +148,7 @@ void RooStudyPackage::runOne()
 
 void RooStudyPackage::finalize() 
 {   
-  for (list<RooAbsStudy*>::iterator iter=_studies.begin() ; iter!=_studies.end() ; iter++) {
+  for (list<RooAbsStudy*>::iterator iter=_studies.begin() ; iter!=_studies.end() ; ++iter) {
     (*iter)->finalize() ;
   }
 }
@@ -160,7 +160,7 @@ void RooStudyPackage::finalize()
 
 void RooStudyPackage::exportData(TList* olist, Int_t seqno)
 {
-  for (list<RooAbsStudy*>::iterator iter=_studies.begin() ; iter!=_studies.end() ; iter++) {
+  for (list<RooAbsStudy*>::iterator iter=_studies.begin() ; iter!=_studies.end() ; ++iter) {
 
     (*iter)->finalize() ;
 

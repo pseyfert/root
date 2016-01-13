@@ -64,6 +64,7 @@ void RooAdaptiveIntegratorND::registerIntegrator(RooNumIntFactory& fact)
 /// Default ctor
 
 RooAdaptiveIntegratorND::RooAdaptiveIntegratorND()
+  : _intName("(none)")
 {
   _xmin = 0 ;
   _xmax = 0 ;
@@ -75,7 +76,6 @@ RooAdaptiveIntegratorND::RooAdaptiveIntegratorND()
   _nError = 0 ;
   _nWarn = 0 ;
   _useIntegrandLimits = kTRUE ;
-  _intName = "(none)" ;
 }
 
 
