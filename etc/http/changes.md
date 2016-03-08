@@ -1,5 +1,42 @@
 # JSROOT changelog
 
+## Changes in 4.3
+1. Implement TGeoCtub, TGeoParaboloid and TGeoHype shapes
+2. Support TGeoTube with Rmin==0 
+3. Exclude empty faces in TGeoArb8  
+4. Improve TGeoSphere creation - handle all parameters combinations  
+5. Introduce JSROOT.cleanup() function to safely clear all drawn objects 
+6. Fix wrong resize method in 'tabs' and 'collapsible' layouts
+7. Fix canvas resize problem (issue #27)
+8. Fix zero-height canvas when draw TGgeo in collapsible layout
+9. Fix problem of simultaneous move TGeo drawings and canvas in flexible layout
+ 
+
+## Changes in 4.2
+1. Significant performance improvements in 3D drawings - TGeo/TH2/TH3 
+2. Implement TGeoPara, TGeoGtra, TGeoXtru and TGeoEltu shapes
+3. Optimize (reduce vertices number) for others TGeo shapes 
+4. Correct rotation/translation/scaling of TGeo nodes 
+5. Workaround for axis reflection (not directly supported in three.js) 
+6. Support array of objects in I/O (like in TAxis3D)
+7. Correct reading of multi-dim arrays like Double_t fXY[8][2];
+8. Provide canvas toolbar for actions like savepng or unzoom  
+9. Implement JSROOT.resize() function to let resize drawing after changes in page layout 
+10. Fix error with title display/update 
+ 
+
+## Changes in 4.1
+1. Introduce object inspector - one could browse object members of any class
+2. Let draw sub-items from TCanvas list of primitives like sub-pad or TLatex
+3. Provide possibility to save drawn SVG canvas as PNG 
+4. TGraph drawing optimization - limit number of drawn points   
+5. Implement painter for TPolyMarker3D
+6. Improve drawing and update of TMultiGraph 
+7. Reorganize 3D drawing of TH2/TH3 histograms, allow to mix 2D and 3D display together  
+8. Support overlay of 3D graphic over SVG canvas (used for IE)
+9. Fix problems and improve flex(ible) layout
+
+
 ## Changes in 4.0
 1. New TGeo classes support:
    - browsing  through volumes hieararchy

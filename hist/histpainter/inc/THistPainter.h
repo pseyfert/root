@@ -1,5 +1,5 @@
 // @(#)root/histpainter:$Id$
-// Author: Rene Brun   26/08/99
+// Author: Rene Brun, Olivier Couet
 
 /*************************************************************************
  * Copyright (C) 1995-2000, Rene Brun and Fons Rademakers.               *
@@ -29,6 +29,8 @@
 #endif
 
 class Hoption_t;
+#include <vector>
+#include <utility>
 
 
 class TH1;
@@ -39,6 +41,13 @@ class TPainter3dAlgorithms;
 class TGraph2DPainter;
 class TPie;
 const Int_t kMaxCuts = 16;
+
+struct THistRenderingRegion
+{
+   std::pair<Int_t, Int_t> fPixelRange;
+   std::pair<Int_t, Int_t> fBinRange;
+};
+
 
 class THistPainter : public TVirtualHistPainter {
 
@@ -84,6 +93,9 @@ public:
    virtual void       PaintCandlePlot(Option_t *option);
    virtual void       PaintViolinPlot(Option_t *option);
    virtual void       PaintColorLevels(Option_t *option);
+   virtual void       PaintColorLevelsFast(Option_t *option);
+   virtual std::vector<THistRenderingRegion> ComputeRenderingRegions(TAxis *pAxis, Int_t nPixels, bool isLog);
+
    virtual void       PaintTH2PolyBins(Option_t *option);
    virtual void       PaintTH2PolyColorLevels(Option_t *option);
    virtual void       PaintTH2PolyScatterPlot(Option_t *option);

@@ -10,12 +10,10 @@
 
 #include "NullDerefProtectionTransformer.h"
 
-#include "cling/Interpreter/Transaction.h"
 #include "cling/Utils/AST.h"
 
 #include "clang/AST/ASTContext.h"
 #include "clang/AST/Decl.h"
-#include "clang/AST/Mangle.h"
 #include "clang/AST/StmtVisitor.h"
 #include "clang/Basic/SourceLocation.h"
 #include "clang/Sema/Lookup.h"
@@ -33,62 +31,11 @@ namespace cling {
   NullDerefProtectionTransformer::~NullDerefProtectionTransformer()
   { }
 
-  // Copied from clad - the clang/opencl autodiff project
-  class NodeContext {
-  public:
-  private:
-    typedef llvm::SmallVector<clang::Stmt*, 2> Statements;
-    Statements m_Stmts;
-  private:
-    NodeContext() {};
-  public:
-    NodeContext(clang::Stmt* s) { m_Stmts.push_back(s); }
-    NodeContext(clang::Stmt* s0, clang::Stmt* s1) {
-      m_Stmts.push_back(s0);
-      m_Stmts.push_back(s1);
-    }
-
-    bool isSingleStmt() const { return m_Stmts.size() == 1; }
-
-    clang::Stmt* getStmt() {
-      assert(isSingleStmt() && "Cannot get multiple stmts.");
-      return m_Stmts.front();
-    }
-    const clang::Stmt* getStmt() const { return getStmt(); }
-    const Statements& getStmts() const {
-      return m_Stmts;
-    }
-
-    CompoundStmt* wrapInCompoundStmt(clang::ASTContext& C) const {
-      assert(!isSingleStmt() && "Must be more than 1");
-      llvm::ArrayRef<Stmt*> stmts
-        = llvm::makeArrayRef(m_Stmts.data(), m_Stmts.size());
-      clang::SourceLocation noLoc;
-      return new (C) clang::CompoundStmt(C, stmts, noLoc, noLoc);
-    }
-
-    clang::Expr* getExpr() {
-      assert(llvm::isa<clang::Expr>(getStmt()) && "Must be an expression.");
-      return llvm::cast<clang::Expr>(getStmt());
-    }
-    const clang::Expr* getExpr() const {
-      return getExpr();
-    }
-
-    void prepend(clang::Stmt* S) {
-      m_Stmts.insert(m_Stmts.begin(), S);
-    }
-
-    void append(clang::Stmt* S) {
-      m_Stmts.push_back(S);
-    }
-  };
-
-  class IfStmtInjector : public StmtVisitor<IfStmtInjector, NodeContext> {
+  class PointerCheckInjector : public StmtVisitor<PointerCheckInjector, void> {
   private:
     Sema& m_Sema;
-    typedef std::map<clang::FunctionDecl*, std::bitset<32> > decl_map_t;
-    std::map<clang::FunctionDecl*, std::bitset<32> > m_NonNullArgIndexs;
+    typedef llvm::DenseMap<clang::FunctionDecl*, std::bitset<32> > decl_map_t;
+    llvm::DenseMap<clang::FunctionDecl*, std::bitset<32> > m_NonNullArgIndexs;
 
     ///\brief Needed for the AST transformations, owned by Sema.
     ///
@@ -96,105 +43,36 @@ namespace cling {
 
     ///\brief cling_runtime_internal_throwIfInvalidPointer cache.
     ///
-    LookupResult* m_LookupResult;
+    LookupResult* m_clingthrowIfInvalidPointerCache;
 
   public:
-    IfStmtInjector(Sema& S) : m_Sema(S), m_Context(S.getASTContext()),
-    m_LookupResult(0) {}
-    CompoundStmt* Inject(CompoundStmt* CS) {
-      NodeContext result = VisitCompoundStmt(CS);
-      return cast<CompoundStmt>(result.getStmt());
-    }
+    PointerCheckInjector(Sema& S) : m_Sema(S), m_Context(S.getASTContext()),
+    m_clingthrowIfInvalidPointerCache(0) {}
 
-    NodeContext VisitStmt(Stmt* S) {
-      return NodeContext(S);
-    }
-
-    NodeContext VisitCompoundStmt(CompoundStmt* CS) {
-      ASTContext& C = m_Sema.getASTContext();
-      llvm::SmallVector<Stmt*, 16> stmts;
-      for (CompoundStmt::body_iterator I = CS->body_begin(), E = CS->body_end();
-           I != E; ++I) {
-        NodeContext nc = Visit(*I);
-        if (nc.isSingleStmt())
-          stmts.push_back(nc.getStmt());
-        else
-          stmts.append(nc.getStmts().begin(), nc.getStmts().end());
+    void VisitStmt(Stmt* S) {
+      for (auto child: S->children()) {
+        if (child)
+          Visit(child);
       }
-
-      llvm::ArrayRef<Stmt*> stmtsRef(stmts.data(), stmts.size());
-      CompoundStmt* newCS = new (C) CompoundStmt(C, stmtsRef,
-                                                 CS->getLBracLoc(),
-                                                 CS->getRBracLoc());
-      return NodeContext(newCS);
     }
 
-    NodeContext VisitIfStmt(IfStmt* If) {
-      // check the condition
-      NodeContext cond = Visit(If->getCond());
-      if (!cond.isSingleStmt())
-        If->setCond((clang::Expr*)cond.getStmt());
-
-      // No default constructor..
-      NodeContext result(If);
-      return result;
-    }
-
-    NodeContext VisitCastExpr(CastExpr* CE) {
-      NodeContext castExpr = Visit(CE->getSubExpr());
-      if (castExpr.isSingleStmt())
-        CE->setSubExpr((clang::Expr*)castExpr.getStmt());
-
-      // No default constructor..
-      NodeContext result(CE);
-      return result;
-    }
-
-    NodeContext VisitUnaryOperator(UnaryOperator* UnOp) {
+    void VisitUnaryOperator(UnaryOperator* UnOp) {
+      Visit(UnOp->getSubExpr());
       if (UnOp->getOpcode() == UO_Deref) {
-        UnOp->setSubExpr((clang::Expr*)SynthesizeCheck(UnOp->getLocStart(),
-                                 UnOp->getSubExpr()));
+        UnOp->setSubExpr(SynthesizeCheck(UnOp->getSubExpr()));
       }
-
-      // No default constructor..
-      NodeContext result(UnOp);
-      return result;
     }
 
-    NodeContext VisitBinaryOperator(BinaryOperator* BinOp) {
-      // Here we might get if(check) throw; binop rhs.
-      NodeContext rhs = Visit(BinOp->getRHS());
-      // Here we might get if(check) throw; binop lhs.
-      NodeContext lhs = Visit(BinOp->getLHS());
-
-      if (rhs.isSingleStmt()) {
-        // FIXME:we need to loop from 0 to n-1
-        BinOp->setRHS((clang::Expr*)rhs.getStmt());
-      }
-      if (lhs.isSingleStmt()) {
-        // FIXME:we need to loop from 0 to n-1
-        BinOp->setLHS((clang::Expr*)lhs.getStmt());
-      }
-
-      // No default constructor..
-      NodeContext result(BinOp);
-      return result;
-    }
-
-    NodeContext VisitMemberExpr(MemberExpr* ME) {
+    void VisitMemberExpr(MemberExpr* ME) {
+      Visit(ME->getBase());
       if (ME->isArrow()) {
-        NodeContext newBase = SynthesizeCheck(ME->getLocStart(), ME->getBase());
-        if (newBase.isSingleStmt())
-          ME->setBase((clang::Expr*)newBase.getStmt());
+        ME->setBase(SynthesizeCheck(ME->getBase()));
       }
-
-      NodeContext result(ME);
-      return result;
     }
 
-    NodeContext VisitCallExpr(CallExpr* CE) {
+   void VisitCallExpr(CallExpr* CE) {
+      Visit(CE->getCallee());
       FunctionDecl* FDecl = CE->getDirectCallee();
-      NodeContext result(CE);
       if (FDecl && isDeclCandidate(FDecl)) {
         decl_map_t::const_iterator it = m_NonNullArgIndexs.find(FDecl);
         const std::bitset<32>& ArgIndexs = it->second;
@@ -203,62 +81,61 @@ namespace cling {
           if (ArgIndexs.test(index)) {
             // Get the argument with the nonnull attribute.
             Expr* Arg = CE->getArg(index);
-            CE->setArg(index,
-                      (clang::Expr*)SynthesizeCheck(Arg->getLocStart(), Arg));
+            CE->setArg(index, SynthesizeCheck(Arg));
           }
         }
       }
-      return result;
-    }
-
-    NodeContext VisitCXXMemberCallExpr(CXXMemberCallExpr* CME) {
-      Expr* Callee = CME->getCallee();
-      if (isa<MemberExpr>(Callee)) {
-        NodeContext ME = Visit(Callee);
-        if (!ME.isSingleStmt())
-          CME->setCallee((clang::Expr*)ME.getStmt());
-      }
-
-      NodeContext result(CME);
-      return result;
     }
 
   private:
-    Stmt* SynthesizeCheck(SourceLocation Loc, Expr* Arg) {
+    Expr* SynthesizeCheck(Expr* Arg) {
       assert(Arg && "Cannot call with Arg=0");
 
-      if(!m_LookupResult)
+      if(!m_clingthrowIfInvalidPointerCache)
         FindAndCacheRuntimeLookupResult();
 
+      SourceLocation Loc = Arg->getLocStart();
       Expr* VoidSemaArg = utils::Synthesize::CStyleCastPtrExpr(&m_Sema,
                                                             m_Context.VoidPtrTy,
                                                             (uint64_t)&m_Sema);
-
       Expr* VoidExprArg = utils::Synthesize::CStyleCastPtrExpr(&m_Sema,
                                                           m_Context.VoidPtrTy,
                                                           (uint64_t)Arg);
-
-      Expr *args[] = {VoidSemaArg, VoidExprArg, Arg};
-
       Scope* S = m_Sema.getScopeForContext(m_Sema.CurContext);
-
       CXXScopeSpec CSS;
-      Expr* unresolvedLookup
-        = m_Sema.BuildDeclarationNameExpr(CSS, *m_LookupResult,
+
+      Expr* checkCall
+        = m_Sema.BuildDeclarationNameExpr(CSS,
+                                          *m_clingthrowIfInvalidPointerCache,
                                          /*ADL*/ false).get();
+      const clang::FunctionProtoType* checkCallType
+        = llvm::dyn_cast<const clang::FunctionProtoType>(
+            checkCall->getType().getTypePtr());
 
-      Expr* call = m_Sema.ActOnCallExpr(S, unresolvedLookup, Loc,
-                                        args, Loc).get();
+      TypeSourceInfo* constVoidPtrTSI = m_Context.getTrivialTypeSourceInfo(
+        checkCallType->getParamType(2), Loc);
 
-      TypeSourceInfo* TSI
-              = m_Context.getTrivialTypeSourceInfo(Arg->getType(), Loc);
-      Expr* castExpr = m_Sema.BuildCStyleCastExpr(Loc, TSI, Loc, call).get();
+      Expr* voidPtrArg
+        = m_Sema.BuildCStyleCastExpr(Loc, constVoidPtrTSI, Loc,
+                                     Arg).get();
 
-      return castExpr;
+      Expr *args[] = {VoidSemaArg, VoidExprArg, voidPtrArg};
+
+      if (Expr* call = m_Sema.ActOnCallExpr(S, checkCall,
+                                         Loc, args, Loc).get()) {
+        clang::TypeSourceInfo* argTSI = m_Context.getTrivialTypeSourceInfo(
+                                        Arg->getType(), Loc);
+        Expr* castExpr = m_Sema.BuildCStyleCastExpr(Loc, argTSI, Loc, call).get();
+        return castExpr;
+      }
+      return voidPtrArg;
     }
 
     bool isDeclCandidate(FunctionDecl * FDecl) {
       if (m_NonNullArgIndexs.count(FDecl))
+        return true;
+
+      if (llvm::isa<CXXRecordDecl>(FDecl))
         return true;
 
       std::bitset<32> ArgIndexs;
@@ -281,19 +158,18 @@ namespace cling {
     }
 
     void FindAndCacheRuntimeLookupResult() {
-      assert(!m_LookupResult && "Called multiple times!?");
+      assert(!m_clingthrowIfInvalidPointerCache && "Called multiple times!?");
 
       DeclarationName Name
         = &m_Context.Idents.get("cling_runtime_internal_throwIfInvalidPointer");
-
       SourceLocation noLoc;
-      m_LookupResult = new LookupResult(m_Sema, Name, noLoc,
+      m_clingthrowIfInvalidPointerCache = new LookupResult(m_Sema, Name, noLoc,
                                         Sema::LookupOrdinaryName,
                                         Sema::ForRedeclaration);
-      m_Sema.LookupQualifiedName(*m_LookupResult,
+      m_Sema.LookupQualifiedName(*m_clingthrowIfInvalidPointerCache,
                                  m_Context.getTranslationUnitDecl());
-      assert(!m_LookupResult->empty() &&
-              "cling_runtime_internal_throwIfInvalidPointer");
+      assert(!m_clingthrowIfInvalidPointerCache->empty() &&
+              "Lookup of cling_runtime_internal_throwIfInvalidPointer failed!");
     }
   };
 
@@ -307,9 +183,9 @@ namespace cling {
     if (!CS)
       return Result(D, true);
 
-    IfStmtInjector injector(*m_Sema);
-    CompoundStmt* newCS = injector.Inject(CS);
-    FD->setBody(newCS);
+    PointerCheckInjector injector(*m_Sema);
+    injector.Visit(CS);
+
     return Result(FD, true);
   }
 } // end namespace cling

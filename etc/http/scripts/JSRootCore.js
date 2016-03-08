@@ -28,9 +28,9 @@
             'touch-punch'          : dir+'touch-punch.min',
             'rawinflate'           : dir+'rawinflate'+ext,
             'MathJax'              : 'https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG&amp;delayStartupUntil=configured',
+            'saveSvgAsPng'         : dir+'saveSvgAsPng'+ext,
             'THREE'                : dir+'three'+ext,
-            'three.extra'          : dir+'three.extra'+ext,
-            'THREE_ALL'            : dir+'jquery.mousewheel'+ext,
+            'THREE_ALL'            : dir+'three.extra'+ext,
             'JSRootCore'           : dir+'JSRootCore'+ext,
             'JSRootMath'           : dir+'JSRootMath'+ext,
             'JSRootInterface'      : dir+'JSRootInterface'+ext,
@@ -38,7 +38,8 @@
             'JSRootPainter'        : dir+'JSRootPainter'+ext,
             'JSRootPainter.more'   : dir+'JSRootPainter.more'+ext,
             'JSRootPainter.jquery' : dir+'JSRootPainter.jquery'+ext,
-            'JSRoot3DPainter'      : dir+'JSRoot3DPainter'+ext
+            'JSRoot3DPainter'      : dir+'JSRoot3DPainter'+ext,
+            'JSRootGeoPainter'     : dir+'JSRootGeoPainter'+ext
          };
 
       // check if modules are already loaded
@@ -51,8 +52,7 @@
        paths: paths,
        shim: {
          'touch-punch': { deps: ['jquery'] },
-         'three.extra': { deps: ['THREE'] },
-         'THREE_ALL': { deps: ['jquery', 'jquery-ui', 'THREE', 'three.extra'] },
+         'THREE_ALL': { deps: ['THREE'] },
          'MathJax': {
              exports: 'MathJax',
              init: function () {
@@ -85,22 +85,25 @@
    }
 } (function(JSROOT) {
 
-   JSROOT.version = "4.0 16/12/2015";
+   JSROOT.version = "4.3 19/02/2016";
 
    JSROOT.source_dir = "";
    JSROOT.source_min = false;
 
    JSROOT.id_counter = 0;
 
-   JSROOT.touches = ('ontouchend' in document); // identify if touch events are supported
+   JSROOT.touches = false;
+   JSROOT.browser = { isOpera:false, isFirefox:true, isSafari: false, isChrome: false, isIE: false };
 
-   JSROOT.browser = {};
+   if ((typeof document !== "undefined") && (typeof window !== "undefined")) {
+      JSROOT.touches = ('ontouchend' in document); // identify if touch events are supported
+      JSROOT.browser.isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+      JSROOT.browser.isFirefox = typeof InstallTrigger !== 'undefined';
+      JSROOT.browser.isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+      JSROOT.browser.isChrome = !!window.chrome && !JSROOT.browser.isOpera;
+      JSROOT.browser.isIE = false || !!document.documentMode;
+   }
 
-   JSROOT.browser.isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
-   JSROOT.browser.isFirefox = typeof InstallTrigger !== 'undefined';
-   JSROOT.browser.isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
-   JSROOT.browser.isChrome = !!window.chrome && !JSROOT.browser.isOpera;
-   JSROOT.browser.isIE = false || !!document.documentMode;
    JSROOT.browser.isWebKit = JSROOT.browser.isChrome || JSROOT.browser.isSafari;
 
    // default draw styles, can be changed after loading of JSRootCore.js
@@ -110,6 +113,7 @@
          Zooming : true,
          MoveResize : true,   // enable move and resize of elements like statbox, title, pave, colz
          DragAndDrop : true,  // enables drag and drop functionality
+         ToolBar : true,    // show additional tool buttons on the canvas
          OptimizeDraw : 1, // drawing optimization: 0 - disabled, 1 - only for large (>5000 1d bins, >50 2d bins) histograms, 2 - always
          DefaultCol : 1,  // default col option 1-svg, 2-canvas
          AutoStat : true,
@@ -125,7 +129,9 @@
          Palette : 57,
          MathJax : 0,  // 0 - never, 1 - only for complex cases, 2 - always
          Interpolate : "basis", // d3.js interpolate methods, used in TGraph and TF1 painters
-         ProgressBox : true  // show progress box
+         ProgressBox : true,  // show progress box
+         Embed3DinSVG : 2,  // 0 - no embed, 1 - overlay over SVG (IE), 2 - embed into SVG (works only with Firefox and Chrome)
+         NoWebGL : false // if true, WebGL will be disabled
       };
 
    JSROOT.BIT = function(n) { return 1 << (n); }
@@ -219,63 +225,102 @@
 
    JSROOT.debug = 0;
 
-   // This should be similar to the jQuery.extend method
+   // This is simple replacement of jQuery.extend method
    // Just copy (not clone) all fields from source to the target object
    JSROOT.extend = function(tgt, src, map, deep_copy) {
-      if ((src == null) || (typeof src != 'object')) return src;
-
-      if (deep_copy) {
-         if (!map) map = { obj:[], clones:[] };
-         var i = map.obj.indexOf(src);
-         if (i>=0) return map.clones[i];
-
-         var proto = Object.prototype.toString.apply(src);
-
-         // process normal array
-         if (proto === '[object Array]') {
-            tgt = [];
-            map.obj.push(src);
-            map.clones.push(tgt);
-            for (i = 0; i < src.length; ++i)
-               tgt.push(JSROOT.extend(null, src[i], map, deep_copy));
-
-            return tgt;
-         }
-
-         // process typed array
-         if ((proto.indexOf('[object ') == 0) && (proto.indexOf('Array]')==proto.length-6)) {
-            tgt = [];
-            map.obj.push(src);
-            map.clones.push(tgt);
-            for (i = 0; i < src.length; ++i)
-               tgt.push(src[i]);
-
-            return tgt;
-         }
-
-         if ((tgt==null) || (typeof tgt != 'object')) {
-            tgt = {};
-            map.obj.push(src);
-            map.clones.push(tgt);
-         }
-      } else {
-         if ((tgt==null) || (typeof tgt != 'object')) tgt = {};
-      }
+      if ((src === null) || (typeof src !== 'object')) return src;
+      if ((tgt === null) || (typeof tgt !== 'object')) tgt = {};
 
       for (var k in src)
-         if (deep_copy)
-            tgt[k] = JSROOT.extend(tgt[k], src[k], map, true);
-         else
-            tgt[k] = src[k];
+         tgt[k] = src[k];
 
       return tgt;
    }
 
-   // Instead of jquery use JSROOT.extend function
-   // Make deep_copy of the object, including all sub-objects
-   JSROOT.clone = function(obj) {
-      return JSROOT.extend(null, obj, null, true);
+   // Make deep clone of the object, including all sub-objects
+   JSROOT.clone = function(src, map) {
+      if (src === null) return null;
+
+      if (!map) {
+         map = { obj:[], clones:[] };
+      } else {
+         var i = map.obj.indexOf(src);
+         if (i>=0) return map.clones[i];
+      }
+
+      var proto = Object.prototype.toString.apply(src);
+
+      // process normal array
+      if (proto === '[object Array]') {
+         var tgt = [];
+         map.obj.push(src);
+         map.clones.push(tgt);
+         for (var i = 0; i < src.length; ++i)
+            tgt.push(JSROOT.clone(src[i], map));
+
+         return tgt;
+      }
+
+      // process typed array
+      if ((proto.indexOf('[object ') == 0) && (proto.indexOf('Array]') == proto.length-6)) {
+         var tgt = [];
+         map.obj.push(src);
+         map.clones.push(tgt);
+         for (var i = 0; i < src.length; ++i)
+            tgt.push(src[i]);
+
+         return tgt;
+      }
+
+      var tgt = {};
+      map.obj.push(src);
+      map.clones.push(tgt);
+
+      for (var k in src) {
+         if (typeof src[k] === 'object')
+            tgt[k] = JSROOT.clone(src[k], map);
+         else
+            tgt[k] = src[k];
+      }
+
+      return tgt;
    }
+
+   // method can be used to delete all functions from objects
+   // only such objects can be cloned when transfer to Worker
+   JSROOT.clear_func = function(src, map) {
+      if (src === null) return;
+
+      var proto = Object.prototype.toString.apply(src);
+
+      if (proto === '[object Array]') {
+         for (var n=0;n<src.length;n++)
+            if (typeof src[n] === 'object')
+               JSROOT.clear_func(src[n], map);
+         return;
+      }
+
+      if ((proto.indexOf('[object ') == 0) && (proto.indexOf('Array]') == proto.length-6)) return;
+
+      if (!map) map = [];
+      var nomap = (map.length == 0);
+      if ('__clean_func__' in src) return;
+
+      map.push(src);
+      src['__clean_func__'] = true;
+
+      for (var k in src) {
+         if (typeof src[k] === 'object')
+            JSROOT.clear_func(src[k], map);
+         else
+         if (typeof src[k] === 'function') delete src[k];
+      }
+
+      if (nomap)
+         for (var n=0;n<map.length;++n)
+            delete map[n]['__clean_func__'];
+   }
+
 
    JSROOT.parse = function(arg) {
       if ((arg==null) || (arg=="")) return null;
@@ -290,9 +335,13 @@
       // In case of opt1 empty string will be returned, in case of opt2 '3'
       // If option not found, null is returned (or provided default value)
 
+      if (arguments.length < 3) dflt = null;
       if ((opt==null) || (typeof opt != 'string') || (opt.length==0)) return dflt;
 
-      if (!url) url = document.URL;
+      if (!url) {
+         if (typeof document === 'undefined') return dflt;
+         url = document.URL;
+      }
 
       var pos = url.indexOf("?");
       if (pos<0) return dflt;
@@ -387,9 +436,9 @@
       // { obj: object_pointer, func: name of method to call }
       // arg1, arg2 are optional arguments of the callback
 
-      if (func == null) return;
-
       if (typeof func == 'string') func = JSROOT.findFunction(func);
+
+      if (func == null) return;
 
       if (typeof func == 'function') return func(arg1,arg2);
 
@@ -678,6 +727,11 @@
          extrafiles += '$$$style/JSRootPainter' + ext + '.css;';
       }
 
+      if (kind.indexOf('savepng;')>=0) {
+         modules.push('saveSvgAsPng');
+         mainfiles += '$$$scripts/saveSvgAsPng' + ext + ".js;";
+      }
+
       if (kind.indexOf('jq;')>=0) need_jquery = true;
 
       if (kind.indexOf('math;')>=0)  {
@@ -699,17 +753,14 @@
       if ((kind.indexOf("3d;")>=0) || (kind.indexOf("geom;")>=0)) {
          mainfiles += "$$$scripts/three" + ext + ".js;" +
                       "$$$scripts/three.extra" + ext + ".js;";
-         modules.push('THREE', "three.extra");
-      }
-
-      if (kind.indexOf("3d;")>=0) {
-         need_jquery = true;
-         mainfiles += "$$$scripts/jquery.mousewheel" + ext + ".js;" +
-                      "$$$scripts/JSRoot3DPainter" + ext + ".js;";
-         modules.push('THREE_ALL', 'JSRoot3DPainter');
+         modules.push("THREE_ALL");
+         mainfiles += "$$$scripts/JSRoot3DPainter" + ext + ".js;";
+         modules.push('JSRoot3DPainter');
       }
 
       if (kind.indexOf("geom;")>=0) {
+         //mainfiles += "$$$scripts/csg.js;" +
+         //             "$$$scripts/ThreeCSG.js;";
          mainfiles += "$$$scripts/JSRootGeoPainter" + ext + ".js;";
          extrafiles += "$$$style/JSRootGeoPainter" + ext + ".css;";
          modules.push('JSRootGeoPainter');
@@ -735,11 +786,11 @@
          var has_jq = (typeof jQuery != 'undefined'), lst_jq = "";
 
          if (has_jq)
-            jsroot.console('Reuse existing jQuery ' + jQuery.fn.jquery + ", required 2.1.1", debugout);
+            jsroot.console('Reuse existing jQuery ' + jQuery.fn.jquery + ", required 2.1.4", debugout);
          else
             lst_jq += "$$$scripts/jquery.min.js;";
          if (has_jq && typeof $.ui != 'undefined')
-            jsroot.console('Reuse existing jQuery-ui ' + $.ui.version + ", required 1.11.0", debugout);
+            jsroot.console('Reuse existing jQuery-ui ' + $.ui.version + ", required 1.11.4", debugout);
          else {
             lst_jq += '$$$scripts/jquery-ui.min.js;';
             extrafiles += '$$$style/jquery-ui' + ext + '.css;';
@@ -789,6 +840,12 @@
    JSROOT.draw = function(divid, obj, opt) {
       JSROOT.AssertPrerequisites("2d", function() {
          JSROOT.draw(divid, obj, opt);
+      });
+   }
+
+   JSROOT.redraw = function(divid, obj, opt) {
+      JSROOT.AssertPrerequisites("2d", function() {
+         JSROOT.redraw(divid, obj, opt);
       });
    }
 
@@ -912,7 +969,7 @@
       } else
       if (typename == 'TH1I' || typename == 'TH1F' || typename == 'TH1D' || typename == 'TH1S' || typename == 'TH1C') {
          JSROOT.Create("TH1", obj);
-         JSROOT.extend(obj, { fArray: [] });
+         obj.fArray = [];
       } else
       if (typename == 'TH2') {
          JSROOT.Create("TH1", obj);
@@ -920,15 +977,20 @@
       } else
       if (typename == 'TH2I' || typename == 'TH2F' || typename == 'TH2D' || typename == 'TH2S' || typename == 'TH2C') {
          JSROOT.Create("TH2", obj);
-         JSROOT.extend(obj, { fArray: [] });
+         obj.fArray = [];
       } else
       if (typename == 'TGraph') {
          JSROOT.Create("TNamed", obj);
          JSROOT.Create("TAttLine", obj);
          JSROOT.Create("TAttFill", obj);
          JSROOT.Create("TAttMarker", obj);
-         JSROOT.extend(obj, { fFunctions: JSROOT.Create("TList"), fHistogram: JSROOT.CreateTH1(),
-                              fMaxSize: 0, fMaximum:0, fMinimum:0, fNpoints: 0, fX: [], fY: [] });
+         JSROOT.extend(obj, { fFunctions: JSROOT.Create("TList"), fHistogram: null,
+                              fMaxSize: 0, fMaximum:-1111, fMinimum:-1111, fNpoints: 0, fX: [], fY: [] });
+      } else
+      if (typename == 'TMultiGraph') {
+         JSROOT.Create("TNamed", obj);
+         JSROOT.extend(obj, { fFunctions: JSROOT.Create("TList"), fGraphs: JSROOT.Create("TList"),
+                              fHistogram: null, fMaximum: -1111, fMinimum: -1111 });
       }
 
       JSROOT.addMethods(obj, typename);
@@ -964,28 +1026,31 @@
       return histo;
    }
 
-   JSROOT.CreateTGraph = function(npoints) {
+   JSROOT.CreateTGraph = function(npoints, xpts, ypts) {
       var graph = JSROOT.Create("TGraph");
       JSROOT.extend(graph, { fBits: 0x3000408, fName: "dummy_graph_" + this.id_counter++, fTitle: "dummytitle" });
 
       if (npoints>0) {
          graph['fMaxSize'] = graph['fNpoints'] = npoints;
+
+         var usex = (typeof xpts == 'object') && (xpts.length === npoints);
+         var usey = (typeof ypts == 'object') && (ypts.length === npoints);
+
          for (var i=0;i<npoints;++i) {
-            graph['fX'].push(i/npoints);
-            graph['fY'].push(i/npoints);
+            graph['fX'].push(usex ? xpts[i] : i/npoints);
+            graph['fY'].push(usey ? ypts[i] : i/npoints);
          }
-
-         graph['fHistogram'] = JSROOT.CreateTH1(npoints);
-         graph['fHistogram'].fTitle = graph.fTitle;
-
-         graph['fHistogram']['fXaxis']['fXmin'] = 0;
-         graph['fHistogram']['fXaxis']['fXmax'] = 1;
-         graph['fHistogram']['fYaxis']['fXmin'] = 0;
-         graph['fHistogram']['fYaxis']['fXmax'] = 1;
       }
 
       return graph;
    }
+
+   JSROOT.CreateTMultiGraph = function() {
+      var mgraph = JSROOT.Create("TMultiGraph");
+      for(var i=0; i<arguments.length; ++i)
+          mgraph.fGraphs.Add(arguments[i], "");
+      return mgraph;
+    }
 
    JSROOT.addMethods = function(obj, obj_typename) {
       // check object type and add methods if needed
@@ -998,12 +1063,6 @@
          if (!('_typename' in obj)) return;
          obj_typename = obj['_typename'];
       }
-
-      var EBinErrorOpt = {
-          kNormal : 0,    // errors with Normal (Wald) approximation: errorUp=errorLow= sqrt(N)
-          kPoisson : 1,   // errors from Poisson interval at 68.3% (1 sigma)
-          kPoisson2 : 2   // errors from Poisson interval at 95% CL (~ 2 sigma)
-       };
 
       var EErrorType = {
           kERRORMEAN : 0,
@@ -1061,12 +1120,15 @@
               _func = _func.replace(/\b(abs)\b/g, 'TMath::Abs');
               _func = _func.replace('TMath::Exp(', 'Math.exp(');
               _func = _func.replace('TMath::Abs(', 'Math.abs(');
-              _func = _func.replace('TMath::Prob(', 'JSROOT.Math.Prob(');
-              _func = _func.replace('gaus(', 'JSROOT.Math.gaus(this, x, ');
-              _func = _func.replace('gausn(', 'JSROOT.Math.gausn(this, x, ');
-              _func = _func.replace('expo(', 'JSROOT.Math.expo(this, x, ');
-              _func = _func.replace('landau(', 'JSROOT.Math.landau(this, x, ');
-              _func = _func.replace('landaun(', 'JSROOT.Math.landaun(this, x, ');
+              if (typeof JSROOT.Math == 'object') {
+                 this['_math'] = JSROOT.Math;
+                 _func = _func.replace('TMath::Prob(', 'this._math.Prob(');
+                 _func = _func.replace('gaus(', 'this._math.gaus(this, x, ');
+                 _func = _func.replace('gausn(', 'this._math.gausn(this, x, ');
+                 _func = _func.replace('expo(', 'this._math.expo(this, x, ');
+                 _func = _func.replace('landau(', 'this._math.landau(this, x, ');
+                 _func = _func.replace('landaun(', 'this._math.landaun(this, x, ');
+              }
               _func = _func.replace('pi', 'Math.PI');
               for (var i=0;i<this['fNpar'];++i) {
                  while(_func.indexOf('['+i+']') != -1)
@@ -1077,7 +1139,6 @@
               _func = _func.replace(/\b(tan)\b/gi, 'Math.tan');
               _func = _func.replace(/\b(exp)\b/gi, 'Math.exp');
 
-              // use regex to replace ONLY the x variable (i.e. not 'x' in Math.exp...)
                this['_func'] = new Function("x", "return " + _func).bind(this);
                this['_title'] = this['fTitle'];
             }
@@ -1291,6 +1352,12 @@
 
    JSROOT.Initialize = function() {
 
+      if (typeof document === "undefined") {
+         JSROOT.source_dir = "";
+         JSROOT.source_min = false;
+         return this;
+      }
+
       function window_on_load(func) {
          if (func!=null) {
             if (document.attachEvent ? document.readyState === 'complete' : document.readyState !== 'loading')
@@ -1313,11 +1380,19 @@
          if (pos<0) continue;
 
          JSROOT.source_dir = src.substr(0, pos);
-         JSROOT.source_min = src.indexOf("scripts/JSRootCore.min.js")>=0;
+         JSROOT.source_min = src.indexOf("scripts/JSRootCore.min.js") >= 0;
 
-         JSROOT.console("Set JSROOT.source_dir to " + JSROOT.source_dir);
+         JSROOT.console("Set JSROOT.source_dir to " + JSROOT.source_dir + ", " + JSROOT.version);
 
-         if (JSROOT.GetUrlOption('gui', src)!=null)
+         if (JSROOT.source_min) {
+            if ( typeof define === "function" && define.amd ) {
+               // all references are done with 'JSRootCore' name,
+               // define it directly, otherwise it will be loaded once again
+               define('JSRootCore', [], JSROOT);
+            }
+         }
+
+         if (JSROOT.GetUrlOption('gui', src) !== null)
             return window_on_load( function() { JSROOT.BuildSimpleGUI(); } );
 
          if ( typeof define === "function" && define.amd )

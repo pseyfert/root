@@ -1,3 +1,14 @@
+/* @(#)root/core/cont:$Id$ */
+// Author: Danilo Piparo November 2015
+
+/*************************************************************************
+ * Copyright (C) 1995-2016, Rene Brun and Fons Rademakers.               *
+ * All rights reserved.                                                  *
+ *                                                                       *
+ * For the licensing terms see $ROOTSYS/LICENSE.                         *
+ * For the list of contributors see $ROOTSYS/README/CREDITS.             *
+ *************************************************************************/
+
 #ifndef ROOT_TSeq
 #define ROOT_TSeq
 
@@ -101,6 +112,12 @@ namespace ROOT {
          }
          T operator-(int v) {
             return fCounter - v;
+         }
+         T operator+(const iterator &other) {
+            return fCounter + other.fCounter;
+         }
+         T operator-(const iterator &other) {
+            return fCounter - other.fCounter;
          }
          iterator &operator--() {
             fCounter -= fStep;
