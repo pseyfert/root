@@ -36,18 +36,20 @@
 // doesn't hardcode any of the variable names it expects
 //
 
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <list>                         // for list
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include "RooAbsArg.h"                  // for RooFIter, RooAbsArg
+#include "RooChi2Var.h"                 // for RooChi2Var
+#include "RooFormula.h"                 // for RooFormula
+#include "RooFormulaVar.h"              // for RooFormulaVar, RooAbsReal
+#include "RooListProxy.h"               // for RooListProxy, Bool_t, etc
+#include "RooMsgService.h"              // for coutI, coutE
+#include "RooNLLVar.h"                  // for RooNLLVar
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for TString, operator<<
 
-#include "RooFormulaVar.h"
-#include "RooFormulaVar.h"
-#include "RooStreamParser.h"
-#include "RooNLLVar.h"
-#include "RooChi2Var.h"
-#include "RooMsgService.h"
-#include "RooTrace.h"
-
+class RooAbsRealLValue;
 
 using namespace std;
 

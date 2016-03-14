@@ -17,10 +17,12 @@
 #ifndef ROO_FACTORY_WS_TOOL
 #define ROO_FACTORY_WS_TOOL
 
+#include "RooPrintable.h" // IWYU pragma: export
+#include "TNamed.h" // IWYU pragma: export
 #include "RooArgSet.h"
 #include "RooArgList.h"
 #include <string>
-#include <list>
+//#include <list>
 #include <vector>
 #include <stack>
 
@@ -36,7 +38,7 @@ class RooSimultaneous ;
 class RooDataHist ;
 class RooDataSet ;
 class RooAbsData ;
-class RooFactoryWSToolSpec ;
+//class RooFactoryWSToolSpec ;
 class RooAbsCategoryLValue ;
 class RooAbsCategory ;
 class RooResolutionModel ;

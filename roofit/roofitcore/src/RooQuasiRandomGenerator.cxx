@@ -28,15 +28,13 @@ Quasi-random number sequences are useful for improving the
 convergence of a Monte Carlo integration.
 **/
 
-#include "RooFit.h"
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooQuasiRandomGenerator.h"
-#include "RooQuasiRandomGenerator.h"
-#include "RooMsgService.h"
-#include "TMath.h"
+#include "RooMsgService.h"              // for oocoutE
+#include "RooQuasiRandomGenerator.h"    // for RooQuasiRandomGenerator, etc
+#include "Rtypes.h"                     // for Int_t, Double_t, UInt_t, etc
 
-#include "Riostream.h"
-#include <assert.h>
+class TObject;
 
 using namespace std;
 

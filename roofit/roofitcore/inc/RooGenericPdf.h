@@ -16,7 +16,7 @@
 #ifndef ROO_GENERIC_PDF
 #define ROO_GENERIC_PDF
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooFormula.h"
 #include "RooListProxy.h"
 

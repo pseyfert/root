@@ -18,7 +18,7 @@
 
 #include <stdlib.h>
 #include <signal.h>
-#include "Rtypes.h"
+#include "RtypesCore.h"
 
 class RooErrorHandler
 {

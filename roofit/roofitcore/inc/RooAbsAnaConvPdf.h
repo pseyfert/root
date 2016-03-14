@@ -21,7 +21,6 @@ class TIterator  ;
 #include "RooAbsPdf.h"
 #include "RooRealProxy.h"
 #include "RooListProxy.h"
-#include "RooDataSet.h"
 #include "RooAICRegistry.h"
 #include "RooObjCacheManager.h"
 #include "RooAbsCacheElement.h"

@@ -25,6 +25,7 @@
 #include <map>
 #include <vector>
 #include <string>
+#include "RooListProxy.h"
 
 class RooRealVar;
 class RooArgList;

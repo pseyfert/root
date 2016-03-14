@@ -16,12 +16,11 @@
 #ifndef ROO_REAL_MPFE
 #define ROO_REAL_MPFE
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 #include "RooListProxy.h"
 #include "RooArgList.h"
 #include "RooMPSentinel.h"
-#include "TStopwatch.h"
 #include <vector> 
 
 class RooArgSet ;

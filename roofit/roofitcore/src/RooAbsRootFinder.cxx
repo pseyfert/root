@@ -23,13 +23,12 @@ RooAbsRootFinder is the abstract interface for finding roots of real-valued
 1-dimensional function that implements the RooAbsFunc interface.
 **/
 
-#include "RooFit.h"
-
-#include "RooAbsRootFinder.h"
-#include "RooAbsRootFinder.h"
-#include "RooAbsFunc.h"
-#include "RooMsgService.h"
-#include "Riostream.h"
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include "RooAbsFunc.h"                 // for RooAbsFunc
+#include "RooAbsRootFinder.h"           // for RooAbsRootFinder
+#include "RooMsgService.h"              // for oocoutE
+#include "Rtypes.h"                     // for ClassImp, kFALSE
+class TObject;
 
 using namespace std;
 

@@ -16,16 +16,11 @@
 #ifndef ROO_ABS_STUDY
 #define ROO_ABS_STUDY
 
-#include "TNamed.h"
+#include "TNamed.h"// IWYU pragma: export
 #include "RooLinkedList.h"
 #include "RooArgSet.h"
 
-class RooAbsPdf;
 class RooDataSet ;
-class RooAbsData ;
-class RooFitResult ;
-class RooPlot ;
-class RooRealVar ;
 class RooWorkspace ;
 class RooStudyManager ;
 class RooStudyPackage ;

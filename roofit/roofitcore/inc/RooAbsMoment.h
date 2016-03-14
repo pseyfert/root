@@ -16,13 +16,12 @@
 #ifndef ROO_ABS_MOMENT
 #define ROO_ABS_MOMENT
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 #include "RooSetProxy.h"
 
 
 class RooRealVar;
-class RooArgList ;
 
 class RooAbsMoment : public RooAbsReal {
 public:

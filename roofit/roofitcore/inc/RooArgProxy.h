@@ -16,8 +16,8 @@
 #ifndef ROO_ARG_PROXY
 #define ROO_ARG_PROXY
 
-#include "TNamed.h"
-#include "RooAbsProxy.h"
+#include "TNamed.h"// IWYU pragma: export
+#include "RooAbsProxy.h"// IWYU pragma: export
 #include "RooAbsArg.h"
 
 

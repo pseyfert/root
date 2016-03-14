@@ -12,7 +12,7 @@
 #ifndef ROONUMCDF
 #define ROONUMCDF
 
-#include "RooNumRunningInt.h"
+#include "RooNumRunningInt.h" //IWYU pragma: export
 
 class RooNumCdf : public RooNumRunningInt {
 public:

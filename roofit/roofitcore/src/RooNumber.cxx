@@ -22,8 +22,8 @@
 Class RooNumber implements numeric constants used by RooFit
 **/
 
-#include "RooFit.h"
-#include "RooNumber.h"
+#include "RooNumber.h"                  // for RooNumber
+#include "Rtypes.h"                     // for Double_t, ClassImp, Int_t
 
 using namespace std;
 
@@ -33,6 +33,7 @@ ClassImp(RooNumber)
 #ifdef HAS_NUMERIC_LIMITS
 
 #include <numeric_limits.h>
+
 Double_t RooNumber::_Infinity= numeric_limits<Double_t>::infinity();
 #else
 

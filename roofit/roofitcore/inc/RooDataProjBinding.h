@@ -16,7 +16,7 @@
 #ifndef ROO_DATA_PROJ_BINDING
 #define ROO_DATA_PROJ_BINDING
 
-#include "RooRealBinding.h"
+#include "RooRealBinding.h" // IWYU pragma: export
 class RooAbsReal ;
 class RooAbsData ;
 class RooSuperCategory ;

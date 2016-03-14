@@ -16,7 +16,7 @@
 #ifndef ROO_ARG_LIST
 #define ROO_ARG_LIST
 
-#include "RooAbsCollection.h"
+#include "RooAbsCollection.h"// IWYU pragma: export
 
 class RooArgList : public RooAbsCollection {
 public:

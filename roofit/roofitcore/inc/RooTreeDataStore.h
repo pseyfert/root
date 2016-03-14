@@ -16,8 +16,8 @@
 #ifndef ROO_TREE_DATA_STORE
 #define ROO_TREE_DATA_STORE
 
-#include "RooAbsDataStore.h" 
-#include "TString.h"
+#include "RooAbsDataStore.h"  // IWYU pragma: export
+//#include "TString.h"
 
 class RooAbsArg ;
 class RooArgList ;

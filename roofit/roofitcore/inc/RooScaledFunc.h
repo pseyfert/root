@@ -16,7 +16,7 @@
 #ifndef ROO_SCALED_FUNC
 #define ROO_SCALED_FUNC
 
-#include "RooAbsFunc.h"
+#include "RooAbsFunc.h" // IWYU pragma: export
 
 class RooScaledFunc : public RooAbsFunc {
 public:

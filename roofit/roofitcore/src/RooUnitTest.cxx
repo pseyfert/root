@@ -34,17 +34,34 @@ Object          | function
    RooWorkspace | regWS()
 **/
 
-#include "RooFit.h"
-#include "RooUnitTest.h"
-#include "TROOT.h"
-#include "TClass.h"
-#include "TSystem.h"
-#include "RooHist.h"
-#include "RooMsgService.h"
-#include "RooDouble.h"
-#include "RooTrace.h"
-#include "RooRandom.h"
-#include <math.h>
+#include <math.h>                       // for fabs
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <list>                         // for _List_iterator, list, etc
+#include <string>                       // for string, char_traits, etc
+#include <utility>                      // for pair, make_pair
+
+#include "RooCurve.h"                   // for RooCurve
+#include "RooDouble.h"                  // for RooDouble, TNamed
+#include "RooFitResult.h"               // for RooFitResult
+#include "RooGlobalFunc.h"              // for MsgLevel::ERROR
+#include "RooHist.h"                    // for RooHist
+#include "RooMsgService.h"              // for RooMsgService, etc
+#include "RooPlot.h"                    // for RooPlot
+#include "RooRandom.h"                  // for RooRandom
+#include "RooTable.h"                   // for RooTable
+#include "RooTrace.h"                   // for RooTrace
+#include "RooUnitTest.h"                // for RooUnitTest
+#include "RooWorkspace.h"               // for RooWorkspace
+#include "Rtypes.h"                     // for kFALSE, Int_t, Bool_t, etc
+#include "TAttLine.h"                   // for TAttLine, etc
+#include "TAttMarker.h"                 // for TAttMarker
+#include "TClass.h"                     // for TClass
+#include "TDirectory.h"                 // for TDirectory
+#include "TFile.h"                      // for TFile
+#include "TH1.h"                        // for TH1
+#include "TObject.h"                    // for TObject
+#include "TRandom.h"                    // for TRandom, gRandom
+#include "TString.h"                    // for Form
 
 ClassImp(RooUnitTest)
 ;

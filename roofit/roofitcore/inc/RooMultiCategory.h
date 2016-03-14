@@ -17,9 +17,12 @@
 #define ROO_MULTI_CATEGORY
 
 class TObject ;
-#include "RooAbsCategoryLValue.h"
-#include "RooCatType.h"
-#include "RooArgSet.h"
+//#include "RooAbsCategoryLValue.h"
+#include "RooAbsCategory.h" // IWYU pragma: export
+//#include "RooCatType.h"
+class RooCatType;
+//#include "RooArgSet.h"
+class RooArgSet;
 #include "RooSetProxy.h"
  
 

@@ -16,14 +16,11 @@
 #ifndef ROO_HIST_PDF
 #define ROO_HIST_PDF
 
-#include "RooAbsPdf.h"
-#include "RooRealProxy.h"
+#include "RooAbsPdf.h"   // IWYU pragma: export
 #include "RooSetProxy.h"
 #include "RooAICRegistry.h"
 
-class RooRealVar;
-class RooAbsReal;
-class RooDataHist ;
+#include "RooDataHist.h"
 
 class RooHistPdf : public RooAbsPdf {
 public:

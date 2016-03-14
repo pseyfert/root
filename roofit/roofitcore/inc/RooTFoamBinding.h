@@ -16,10 +16,9 @@
 #ifndef ROO_TFOAM_BINDING
 #define ROO_TFOAM_BINDING
 
-#include "TFoamIntegrand.h"
+#include "TFoamIntegrand.h" // IWYU pragma: export
 #include "RooArgSet.h"
 #include "RooRealBinding.h"
-class RooAbsPdf ;
 
 class RooTFoamBinding : public TFoamIntegrand {
 public:

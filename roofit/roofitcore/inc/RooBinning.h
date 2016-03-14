@@ -17,13 +17,13 @@
 #define ROO_BINNING
 
 #include "Rtypes.h"
-#include "TList.h"
-#include "RooDouble.h"
-#include "RooAbsBinning.h"
+//#include "TList.h"
+//#include "RooDouble.h"
+#include "RooAbsBinning.h" // IWYU pragma: export
 #include "RooNumber.h"
 #include <vector>
-class RooAbsPdf;
-class RooRealVar;
+//class RooAbsPdf;
+//class RooRealVar;
 
 
 class RooBinning : public RooAbsBinning {

@@ -16,7 +16,7 @@
 #ifndef ROO_INTEGRATOR_BINDING
 #define ROO_INTEGRATOR_BINDING
 
-#include "RooAbsFunc.h"
+#include "RooAbsFunc.h" // IWYU pragma: export
 #include "RooAbsIntegrator.h"
 
 class RooIntegratorBinding : public RooAbsFunc {

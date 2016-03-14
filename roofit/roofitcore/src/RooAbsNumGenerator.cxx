@@ -24,24 +24,18 @@ implementations like RooAcceptReject and RooFoam
 **/
 
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <assert.h>                     // for assert
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooAbsNumGenerator.h"
-#include "RooAbsReal.h"
-#include "RooCategory.h"
-#include "RooRealVar.h"
-#include "RooDataSet.h"
-#include "RooRandom.h"
-#include "RooErrorHandler.h"
-
-#include "TString.h"
-#include "TIterator.h"
-#include "RooMsgService.h"
-#include "TClass.h"
-#include "RooRealBinding.h"
-
-#include <assert.h>
+#include "RooAbsNumGenerator.h"         // for RooAbsNumGenerator, etc
+#include "RooCategory.h"                // for RooAbsArg, RooCategory
+#include "RooDataSet.h"                 // for RooArgSet, RooDataSet, etc
+#include "RooErrorHandler.h"            // for RooErrorHandler
+#include "RooMsgService.h"              // for coutE
+#include "RooRealVar.h"                 // for RooAbsReal, RooRealVar
+#include "TClass.h"                     // for TClass
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for operator<<
 
 using namespace std;
 

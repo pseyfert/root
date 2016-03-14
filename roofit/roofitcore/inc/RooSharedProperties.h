@@ -16,7 +16,7 @@
 #ifndef ROO_ABS_SHARED_PROPERTY
 #define ROO_ABS_SHARED_PROPERTY
 
-#include "TObject.h"
+#include "TObject.h" // IWYU pragma: export
 #include "TUUID.h"
 #include "TString.h"
 

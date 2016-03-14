@@ -23,9 +23,10 @@ RooDouble is a minimal implementation of a TObject holding a Double_t
 value.
 **/
 
-#include "RooFit.h"
-#include "RooDouble.h"
-#include <string>
+#include "RooDouble.h"                  // for RooDouble, TNamed
+#include "Rtypes.h"                     // for ClassImp, Double_t, Int_t
+#include "TObject.h"                    // for TObject
+#include "TString.h"                    // for Form
 
 using namespace std;
 

@@ -21,10 +21,11 @@
 #include <float.h>
 
 #include "RooNumber.h"
-#include "RooAbsReal.h"
+//#include "RooAbsReal.h"
 #include "RooRealVar.h"
 #include "RooRealProxy.h"
-class RooVectorDataStore ;
+#include "RooAbsRealLValue.h"
+//class RooVectorDataStore ;
 
 class RooErrorVar : public RooAbsRealLValue {
 public:

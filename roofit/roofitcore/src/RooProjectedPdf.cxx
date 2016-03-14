@@ -27,14 +27,19 @@ The performance of <pre>f->createProjection(x)->createProjection(y)</pre>
 is therefore identical to that of <pre>f->createProjection(RooArgSet(x,y))</pre>
 **/
 
-#include "Riostream.h" 
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooFit.h"
-#include "RooProjectedPdf.h" 
-#include "RooMsgService.h"
-#include "RooAbsReal.h" 
-#include "RooRealVar.h"
-#include "RooNameReg.h"
+#include "RooAbsArg.h"                  // for operator<<, RooAbsArg
+#include "RooArgList.h"                 // for RooArgList
+#include "RooMsgService.h"              // for coutI
+#include "RooNameReg.h"                 // for RooNameReg
+#include "RooNameSet.h"                 // for RooNameSet
+#include "RooObjCacheManager.h"         // for RooObjCacheManager, etc
+#include "RooProjectedPdf.h"            // for RooProjectedPdf, RooAbsReal, etc
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooSetProxy.h"                // for RooArgSet, RooSetProxy, etc
+#include "TString.h"                    // for TString, Form
+
 
 using namespace std;
 

@@ -18,12 +18,12 @@
 
 #include "Riosfwd.h"
 #include "TObjArray.h"
-#include "RooAbsArg.h"
+#include "RooAbsArg.h" // IWYU pragma: export
 #include "RooCatType.h"
 
 class TTree ;
 class RooArgSet ;
-class RooDataSet ;
+//class RooDataSet ;
 class Roo1DTable ;
 class RooVectorDataStore ;
 

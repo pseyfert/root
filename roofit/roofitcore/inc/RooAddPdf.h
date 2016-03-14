@@ -16,13 +16,13 @@
 #ifndef ROO_ADD_PDF
 #define ROO_ADD_PDF
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooListProxy.h"
 #include "RooSetProxy.h"
 #include "RooAICRegistry.h"
-#include "RooNormSetCache.h"
-#include "RooNameSet.h"
-#include "RooCacheManager.h"
+//#include "RooNormSetCache.h"
+//#include "RooNameSet.h"
+//#include "RooCacheManager.h"
 #include "RooObjCacheManager.h"
 #include "RooNameReg.h"
 

@@ -8,12 +8,15 @@
 #ifndef RooProofDriverSelector_h
 #define RooProofDriverSelector_h
 
-#include <TROOT.h>
-#include <TChain.h>
-#include <TFile.h>
-#include <TSelector.h>
-class RooStudyPackage ;
-class TIterator ;
+#include <TSelector.h>                  // for TSelector
+#include "Rtypes.h"                     // for Int_t, etc
+#include "TSelectorList.h"              // for TSelectorList
+#include "TString.h"                    // for TString
+#include "TTree.h"                      // for TTree
+class RooStudyPackage;  // lines 15-15
+class TBranch;
+class TList;
+class TObject;
 
 class RooProofDriverSelector : public TSelector {
 public :

@@ -16,19 +16,13 @@
 #ifndef ROO_ADD_GEN_CONTEXT
 #define ROO_ADD_GEN_CONTEXT
 
-#include "RooAbsGenContext.h"
+#include "RooAbsGenContext.h"// IWYU pragma: export
 #include "RooArgSet.h"
 #include <vector>
 #include "RooAddPdf.h"
 #include "RooAddModel.h"
 
-class RooAddPdf;
-class RooAddModel;
 class RooDataSet;
-class RooRealIntegral;
-class RooAcceptReject;
-class TRandom;
-class TIterator;
 
 class RooAddGenContext : public RooAbsGenContext {
 public:

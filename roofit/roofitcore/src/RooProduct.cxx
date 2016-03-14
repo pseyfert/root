@@ -25,20 +25,28 @@ of a given set of other RooAbsReal objects
 
 **/
 
+#include <assert.h>                     // for assert
+#include <list>                         // for list
+#include <memory>                       // for auto_ptr
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <utility>                      // for pair, make_pair
+#include <vector>                       // for vector, vector<>::iterator, etc
 
-#include <cmath>
-#include <vector>
-#include <utility>
-#include <memory>
-#include <algorithm>
+#include "RooAbsCategory.h"             // for RooFIter, operator<<, etc
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooErrorHandler.h"            // for RooErrorHandler
+#include "RooListProxy.h"               // for RooArgList, RooListProxy
+#include "RooMsgService.h"              // for cxcoutD, ccoutD, coutE, etc
+#include "RooNameReg.h"                 // for RooNameReg
+#include "RooNameSet.h"                 // for RooNameSet
+#include "RooObjCacheManager.h"         // for RooObjCacheManager, etc
+#include "RooProduct.h"                 // for RooProduct, RooAbsReal, etc
+#include "RooTrace.h"                   // for TRACE_CREATE, TRACE_DESTROY
+#include "Rtypes.h"                     // for Double_t, Int_t, Bool_t, etc
+#include "TString.h"                    // for TString
 
-#include "RooProduct.h"
-#include "RooNameReg.h"
-#include "RooAbsReal.h"
-#include "RooAbsCategory.h"
-#include "RooErrorHandler.h"
-#include "RooMsgService.h"
-#include "RooTrace.h"
+class RooAbsRealLValue;
+
 
 using namespace std ;
 

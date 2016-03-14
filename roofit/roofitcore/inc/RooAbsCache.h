@@ -22,7 +22,7 @@
 class RooAbsArg ;
 class RooAbsCollection ;
 class RooArgSet ;
-class RooArgList ;
+//class RooArgList ;
 class RooLinkedList ;
 
 class RooAbsCache {

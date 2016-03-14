@@ -16,16 +16,12 @@
 #ifndef ROO_BINNED_GEN_CONTEXT
 #define ROO_BINNED_GEN_CONTEXT
 
-#include "RooAbsGenContext.h"
-#include "RooArgSet.h"
+#include "RooAbsGenContext.h" // IWYU pragma: export
 #include <vector>
 
+class RooArgSet;
 class RooDataSet;
-class RooRealIntegral;
-class RooAcceptReject;
 class RooDataHist ;
-class TRandom;
-class TIterator;
 
 class RooBinnedGenContext : public RooAbsGenContext {
 public:

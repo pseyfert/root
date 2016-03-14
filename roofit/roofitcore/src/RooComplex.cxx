@@ -22,12 +22,11 @@
 Class RooComplex is a simple container class for complex values
 **/
 
-#include "RooFit.h"
-
 #define ROO_COMPLEX_CXX
-#include "RooComplex.h"
-#include "Riostream.h"
-#include <iomanip>
+
+#include <iostream>                     // for operator<<, ostream, etc
+#include "RooComplex.h"                 // for RooComplex
+#include "Rtypes.h"                     // for ClassImp
 
 using namespace std;
 

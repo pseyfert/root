@@ -17,10 +17,8 @@
 #define ROO_PARAM_BINNING
 
 #include "Rtypes.h"
-#include "RooAbsBinning.h"
-#include "RooRealVar.h"
+#include "RooAbsBinning.h" // IWYU pragma: export
 #include "RooListProxy.h"
-class TIterator ;
 
 class RooParamBinning : public RooAbsBinning {
 public:

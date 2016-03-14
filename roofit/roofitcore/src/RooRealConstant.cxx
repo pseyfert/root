@@ -30,15 +30,14 @@ RooRealConstant keeps an internal database of previously created
 RooRealVar objects and will recycle them as appropriate.
 **/
 
-#include "RooFit.h"
+#include <sstream>                      // for ostringstream, etc
 
-#include <math.h>
-#include <sstream>
-#include "RooRealConstant.h"
-#include "RooRealConstant.h"
-#include "RooConstVar.h"
-#include "RooArgList.h"
-#include "RooSentinel.h"
+#include "RooArgList.h"                 // for RooArgList
+#include "RooConstVar.h"                // for RooConstVar
+#include "RooRealConstant.h"            // for RooRealConstant
+#include "RooSentinel.h"                // for RooSentinel
+#include "Rtypes.h"                     // for kTRUE, ClassImp, Double_t
+#include "TIterator.h"                  // for TIterator
 
 using namespace std;
 

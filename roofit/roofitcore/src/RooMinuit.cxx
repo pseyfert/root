@@ -37,33 +37,34 @@ Various methods are available to control verbosity, profiling,
 automatic PDF optimization.
 **/
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <math.h>                       // for sqrt
+#include <iomanip>                      // for operator<<, setprecision
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string
+#include <utility>                      // for pair
+#include <vector>                       // for vector
 
-#include "TClass.h"
-
-#include <fstream>
-#include <iomanip>
-#include "TH1.h"
-#include "TH2.h"
-#include "TMarker.h"
-#include "TGraph.h"
-#include "TStopwatch.h"
-#include "TFitter.h"
-#include "TMinuit.h"
-#include "TDirectory.h"
-#include "TMatrixDSym.h"
-#include "RooMinuit.h"
-#include "RooArgSet.h"
-#include "RooArgList.h"
-#include "RooAbsReal.h"
-#include "RooAbsRealLValue.h"
-#include "RooRealVar.h"
-#include "RooFitResult.h"
-#include "RooAbsPdf.h"
-#include "RooSentinel.h"
-#include "RooMsgService.h"
-#include "RooPlot.h"
+#include "RooAbsArg.h"                  // for RooAbsArg, RooFIter, etc
+#include "RooAbsPdf.h"                  // for RooAbsReal, etc
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for Double_t, Int_t, kFALSE, etc
+#include "RooFitResult.h"               // for RooFitResult
+#include "RooMinuit.h"                  // for RooMinuit
+#include "RooMsgService.h"              // for coutI, ooccoutW, coutE, etc
+#include "RooPlot.h"                    // for RooPlot
+#include "RooRealVar.h"                 // for RooRealVar, etc
+#include "RooSentinel.h"                // for RooSentinel
+#include "TClass.h"                     // for TClass
+#include "TFitter.h"                    // for TFitter
+#include "TGraph.h"                     // for TGraph
+#include "TIterator.h"                  // for TIterator
+#include "TMarker.h"                    // for TMarker
+#include "TMatrixDSymfwd.h"             // for TMatrixDSym
+#include "TMatrixTSym.h"                // for TMatrixTSym
+#include "TMinuit.h"                    // for TMinuit, gMinuit
+#include "TStopwatch.h"                 // for TStopwatch
+#include "TString.h"                    // for TString, operator==, Form, etc
+#include "TVirtualFitter.h"             // for TVirtualFitter
 
 
 

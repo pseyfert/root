@@ -17,6 +17,7 @@
 #define ROO_STREAM_PARSER
 
 #include "Riosfwd.h"
+#include "Rtypes.h"
 #include "TString.h"
 
 class RooStreamParser {

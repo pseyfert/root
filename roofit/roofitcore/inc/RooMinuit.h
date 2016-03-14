@@ -16,13 +16,12 @@
 #ifndef ROO_MINUIT
 #define ROO_MINUIT
 
-#include "TObject.h"
+#include "TObject.h" // IWYU pragma: export
 #include "TStopwatch.h"
 #include <fstream>
 #include "TMatrixDSymfwd.h"
 #include <vector>
 #include <string>
-#include <map>
 
 class RooAbsReal ;
 class RooFitResult ;
@@ -31,7 +30,6 @@ class RooRealVar ;
 class RooArgSet ;
 class RooAbsArg ;
 class TVirtualFitter ;
-class TH2F ;
 class RooPlot ;
 
 void RooMinuitGlue(Int_t& /*np*/, Double_t* /*gin*/,  Double_t &f, Double_t *par, Int_t /*flag*/) ;

@@ -12,7 +12,7 @@
 #ifndef ROOPROJECTEDPDF
 #define ROOPROJECTEDPDF
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 #include "RooAbsReal.h"
 #include "RooObjCacheManager.h"

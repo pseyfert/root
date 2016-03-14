@@ -24,15 +24,11 @@ classes that keeps track of analytical integration codes and
 associated normalization and integration sets.  
 **/
 
-#include "RooFit.h"
+#include <vector>                       // for vector, operator==
 
-#include "RooAICRegistry.h"
-#include "RooMsgService.h"
-#include "RooArgSet.h"
-#include "RooMsgService.h"
-
-#include "Riostream.h"
-
+#include "RooAICRegistry.h"             // for RooAICRegistry, pRooArgSet
+#include "RooArgSet.h"                  // for RooArgSet
+#include "Rtypes.h"                     // for Int_t, kFALSE, UInt_t, etc
 
 using namespace std;
 

@@ -29,20 +29,23 @@
 //
 //
 
-#include "RooFit.h"
+#include <cmath>                        // for pow
+#include <list>                         // for list, _List_const_iterator, etc
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for string, char_traits
 
-#include "RooXYChi2Var.h"
-#include "RooDataSet.h"
-#include "RooAbsReal.h"
-
-#include "Riostream.h"
-
-#include "RooRealVar.h"
-
-#include "RooGaussKronrodIntegrator1D.h"
-#include "RooAbsDataStore.h"
-#include "RooRealBinding.h"
-#include "RooNumIntFactory.h"
+#include "RooAbsBinning.h"              // for RooAbsBinning
+#include "RooAbsDataStore.h"            // for RooAbsDataStore
+#include "RooAbsPdf.h"                  // for RooAbsPdf, RooAbsReal
+#include "RooCategory.h"                // for Double_t, kFALSE, Bool_t, etc
+#include "RooDataSet.h"                 // for RooArgSet, RooDataSet, etc
+#include "RooGlobalFunc.h"              // for MPSplit::Interleave
+#include "RooMsgService.h"              // for coutE
+#include "RooNumIntConfig.h"            // for RooNumIntConfig
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooXYChi2Var.h"               // for RooXYChi2Var, etc
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for Form
 
 using namespace std;
 

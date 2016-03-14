@@ -25,19 +25,20 @@ or Binomial statistics. A RooHist is used to represent histograms in
 a RooPlot.
 **/
 
-#include "RooFit.h"
+#include <cmath>                        // for pow, fabs, sqrt
+#include <iomanip>                      // for operator<<, setw
+#include <iostream>                     // for operator<<, basic_ostream, etc
 
-#include "RooHist.h"
-#include "RooHist.h"
-#include "RooHistError.h"
-#include "RooCurve.h"
-#include "RooMsgService.h"
-
-#include "TH1.h"
-#include "TClass.h"
-#include "Riostream.h"
-#include <iomanip>
-#include <math.h>
+#include "RVersion.h"                   // for ROOT_VERSION, etc
+#include "RooAbsData.h"                 // for Double_t, Int_t, RooAbsData, etc
+#include "RooCurve.h"                   // for RooCurve, RooPlotable
+#include "RooHist.h"                    // for RooHist, TGraphAsymmErrors
+#include "RooHistError.h"               // for RooHistError
+#include "RooMsgService.h"              // for coutW, coutE
+#include "TAxis.h"                      // for TAxis
+#include "TClass.h"                     // for TClass
+#include "TH1.h"                        // for TH1, TH1F
+#include "TString.h"                    // for operator<<, Form, TString
 
 using namespace std;
 

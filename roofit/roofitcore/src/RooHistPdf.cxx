@@ -25,18 +25,30 @@ normalized by RooHistPdf and can have an arbitrary number of real or
 discrete dimensions.
 **/
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <assert.h>                     // for assert
+#include <math.h>                       // for fabs
+#include <string.h>                     // for strlen
+#include <list>                         // for list, etc
+#include <map>                          // for map, map<>::mapped_type
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string
+#include <utility>                      // for make_pair, pair
 
-#include "RooHistPdf.h"
-#include "RooDataHist.h"
-#include "RooMsgService.h"
-#include "RooRealVar.h"
-#include "RooCategory.h"
-#include "RooWorkspace.h"
-#include "RooGlobalFunc.h"
-
-#include "TError.h"
+#include "RooAbsBinning.h"              // for RooAbsBinning
+#include "RooAbsData.h"                 // for RooArgSet, RooAbsCollection, etc
+#include "RooArgList.h"                 // for RooArgList
+#include "RooCategory.h"                // for RooAbsArg, RooFIter, etc
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooGlobalFunc.h"              // for Embedded, Rename
+#include "RooHistPdf.h"                 // for RooHistPdf, RooAbsPdf, etc
+#include "RooMsgService.h"              // for coutE
+#include "RooRealVar.h"                 // for Double_t, RooAbsRealLValue, etc
+#include "RooSetProxy.h"                // for RooSetProxy
+#include "RooWorkspace.h"               // for RooWorkspace
+#include "TBuffer.h"                    // for TBuffer
+#include "TError.h"                     // for R__ASSERT
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for TString, Form, operator<<, etc
 
 using namespace std;
 

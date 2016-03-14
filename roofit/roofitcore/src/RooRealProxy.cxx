@@ -27,12 +27,14 @@ RooRealProxy provides a cast operator to Double_t, allowing
 the proxy to functions a Double_t on the right hand side of expressions.
 **/
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <assert.h>                     // for assert
+#include <iostream>                     // for operator<<, basic_ostream, etc
 
-#include "TClass.h"
-#include "RooRealProxy.h"
-#include "RooRealVar.h"
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsRealLValue.h"           // for RooAbsReal, etc
+#include "RooArgSet.h"                  // for Bool_t, RooArgSet, kTRUE, etc
+#include "RooRealProxy.h"               // for RooRealProxy, RooArgProxy
+#include "TString.h"                    // for TString, Form
 
 using namespace std;
 

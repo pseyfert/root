@@ -103,30 +103,28 @@
 //
 
 
-#include "RooFit.h"
+#include <ext/alloc_traits.h>
+#include <string.h>                     // for strchr, strtok_r
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string, etc
+#include <vector>                       // for vector
 
-#include "TClass.h"
-#include "TStopwatch.h"
-
-#include "RooAbsCategoryLValue.h" 
-#include "RooAbsCategory.h"
-#include "RooAbsArg.h"
-#include "RooAbsPdf.h"
-#include "RooArgSet.h"
-#include "RooArgList.h"
-#include "RooMsgService.h"
-
-#include "RooCustomizer.h"
-
-#include "Riostream.h"
-#include "RooWorkspace.h"
-#include "RooGlobalFunc.h"
-#include "RooConstVar.h"
-#include "RooRealConstant.h"
+#include "RooAbsCategoryLValue.h"       // for RooAbsArg, RooAbsCategory, etc
+#include "RooArgSet.h"                  // for RooArgSet, Int_t, kTRUE, etc
+#include "RooConstVar.h"                // for RooConstVar
+#include "RooCustomizer.h"              // for RooCustomizer, etc
+#include "RooGlobalFunc.h"              // for NoRecursion, Silence, etc
+#include "RooMsgService.h"              // for coutI, coutE, coutW, etc
+#include "RooRealConstant.h"            // for RooRealConstant
+#include "RooWorkspace.h"               // for RooWorkspace
+#include "TClass.h"                     // for TClass
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
+#include "TString.h"                    // for TString, operator<<, Form
+#include "strlcpy.h"                    // for strlcpy
 
 
 #ifndef _WIN32
-#include <strings.h>
 #else
 static char *strtok_r(char *s1, const char *s2, char **lasts)
 {

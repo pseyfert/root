@@ -24,14 +24,15 @@ the Brent-Decker method. This implementation is based on the one
 in the GNU scientific library (v0.99).
 **/
 
-#include "RooFit.h"
+#include <math.h>                       // for fabs
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooBrentRootFinder.h"
-#include "RooBrentRootFinder.h"
-#include "RooAbsFunc.h"
-#include <math.h>
-#include "Riostream.h"
-#include "RooMsgService.h"
+#include "RooAbsFunc.h"                 // for RooAbsFunc
+#include "RooBrentRootFinder.h"         // for RooBrentRootFinder, etc
+#include "RooMsgService.h"              // for oocoutE, oocxcoutD
+#include "Rtypes.h"                     // for Double_t, kFALSE, kTRUE, etc
+
+class TObject;
 
 using namespace std;
 

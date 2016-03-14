@@ -37,31 +37,36 @@ These study modules should derive from classs RooAbsMCStudyModel
 
 **/
 
+#include <stdio.h>                      // for snprintf
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <list>                         // for list, list<>::iterator, etc
+#include <string>                       // for char_traits, string
 
+#include "RooAbsArg.h"                  // for RooLinkedList, RooAbsArg, etc
+#include "RooAbsGenContext.h"           // for RooAbsGenContext
+#include "RooAbsMCStudyModule.h"        // for RooAbsMCStudyModule
+#include "RooArgList.h"                 // for RooArgList
+#include "RooCmdArg.h"                  // for RooCmdArg
+#include "RooCmdConfig.h"               // for RooCmdConfig
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooDataSet.h"                 // for RooArgSet, RooDataSet, etc
+#include "RooErrorVar.h"                // for RooErrorVar
+#include "RooFitResult.h"               // for RooFitResult
+#include "RooGenericPdf.h"              // for RooAbsPdf, RooGenericPdf, etc
+#include "RooGlobalFunc.h"              // for ConditionalObservables, etc
+#include "RooMCStudy.h"                 // for RooMCStudy
+#include "RooMsgService.h"              // for oocoutE, RooMsgService, etc
+#include "RooProdPdf.h"                 // for RooProdPdf
+#include "RooPullVar.h"                 // for RooPullVar
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealVar.h"                 // for RooRealVar
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
+#include "TRandom.h"                    // for TRandom
+#include "TString.h"                    // for TString, Form
 
-#include "RooFit.h"
-#include "Riostream.h"
+class RooPlot;
 
-#include "RooMCStudy.h"
-#include "RooAbsMCStudyModule.h"
-
-#include "RooGenContext.h"
-#include "RooAbsPdf.h"
-#include "RooDataSet.h"
-#include "RooDataHist.h"
-#include "RooRealVar.h"
-#include "RooFitResult.h"
-#include "RooErrorVar.h"
-#include "RooFormulaVar.h"
-#include "RooArgList.h"
-#include "RooPlot.h"
-#include "RooGenericPdf.h"
-#include "RooRandom.h"
-#include "RooCmdConfig.h"
-#include "RooGlobalFunc.h"
-#include "RooPullVar.h"
-#include "RooMsgService.h"
-#include "RooProdPdf.h"
 
 using namespace std ;
 

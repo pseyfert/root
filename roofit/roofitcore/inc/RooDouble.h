@@ -17,7 +17,7 @@
 #define ROO_DOUBLE
 
 #include "Rtypes.h"
-#include "TNamed.h"
+#include "TNamed.h" // IWYU pragma: export
 
 class RooDouble : public TNamed {
 public:

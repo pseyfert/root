@@ -26,13 +26,8 @@ range cannot include zero.
 **/
 
 
-#include "RooFit.h"
-
-#include "RooInvTransform.h"
-#include "RooInvTransform.h"
-
-#include "Riostream.h"
-#include <math.h>
+#include "RooInvTransform.h"            // for RooAbsFunc, RooInvTransform
+#include "Rtypes.h"                     // for ClassImp
 
 using namespace std;
 

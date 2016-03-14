@@ -414,14 +414,7 @@
 //
 
 
-
-#include "RooFit.h"
-
-#include <string.h>
-#include <string.h>
-
 #ifndef _WIN32
-#include <strings.h>
 #else
 
 
@@ -446,34 +439,27 @@ static char *strtok_r(char *s1, const char *s2, char **lasts)
 
 #endif
 
-#include "Riostream.h"
-#include "RooSimPdfBuilder.h"
+#include <string.h>                     // for strtok_r, strtok, strchr, etc
+#include <list>                         // for list, _List_iterator, etc
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooRealVar.h"
-#include "RooFormulaVar.h"
-#include "RooAbsCategory.h"
-#include "RooCategory.h"
-#include "RooStringVar.h"
-#include "RooMappedCategory.h"
-#include "RooRealIntegral.h"
-#include "RooDataSet.h"
-#include "RooArgSet.h"
-#include "RooPlot.h"
-#include "RooAddPdf.h"
-#include "RooLinearVar.h"
-#include "RooTruthModel.h"
-#include "RooAddModel.h"
-#include "RooProdPdf.h"
-#include "RooCustomizer.h"
-#include "RooThresholdCategory.h"
-#include "RooMultiCategory.h"
-#include "RooSuperCategory.h"
-#include "RooSimultaneous.h"
-#include "RooTrace.h"
-#include "RooFitResult.h"
-#include "RooDataHist.h"
-#include "RooGenericPdf.h"
-#include "RooMsgService.h"
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet, Bool_t, kTRUE, etc
+#include "RooCatType.h"                 // for RooCatType, ClassImp
+#include "RooCategory.h"                // for RooAbsArg, operator<<, etc
+#include "RooCustomizer.h"              // for RooCustomizer
+#include "RooFormulaVar.h"              // for RooFormulaVar
+#include "RooMsgService.h"              // for coutE, coutI, coutW, etc
+#include "RooMultiCategory.h"           // for RooMultiCategory
+#include "RooSimPdfBuilder.h"           // for RooSimPdfBuilder
+#include "RooSimultaneous.h"            // for RooAbsPdf, RooSimultaneous, etc
+#include "RooStringVar.h"               // for RooStringVar
+#include "RooSuperCategory.h"           // for RooSuperCategory
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
+#include "TString.h"                    // for TString, Form, operator<<
+#include "strlcpy.h"                    // for strlcpy
+
 
 using namespace std ;
 

@@ -32,30 +32,26 @@ range when interpreted as a observable and a boundaries when
 interpreted as a parameter.
 **/
 
-#include "RooFit.h"
+#include <assert.h>                     // for assert
+#include <math.h>                       // for fabs
+#include <string.h>                     // for strlen
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include <math.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include "Riostream.h"
-#include "TObjString.h"
-#include "TTree.h"
-#include "TH1.h"
-#include "TH2.h"
-#include "TH3.h"
-#include "RooAbsRealLValue.h"
-#include "RooStreamParser.h"
-#include "RooRandom.h"
-#include "RooPlot.h"
-#include "RooArgList.h"
-#include "RooAbsBinning.h"
-#include "RooBinning.h"
-#include "RooUniformBinning.h"
-#include "RooCmdConfig.h"
-#include "RooTreeData.h"
-#include "RooRealVar.h"
-#include "RooMsgService.h"
+#include "RooAbsArg.h"                  // for RooLinkedList, RooAbsArg
+#include "RooArgList.h"                 // for RooArgList
+#include "RooCmdArg.h"                  // for RooCmdArg
+#include "RooCmdConfig.h"               // for RooCmdConfig
+#include "RooMsgService.h"              // for coutE, oocoutE, coutI
+#include "RooNumber.h"                  // for RooNumber
+#include "RooPlot.h"                    // for RooPlot
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealVar.h"                 // for RooAbsRealLValue, etc
+#include "RooTreeData.h"                // for Double_t, Int_t, Bool_t, etc
+#include "RooUniformBinning.h"          // for RooAbsBinning, etc
+#include "TH1.h"                        // for TH1F, TH1
+#include "TH2.h"                        // for TH2F
+#include "TH3.h"                        // for TH3F
+#include "TString.h"                    // for TString, operator<<, Form
 
 
 

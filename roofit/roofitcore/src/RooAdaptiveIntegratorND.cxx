@@ -24,23 +24,19 @@ numerical integration algorithm.
 **/
 
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for char_traits, string
 
-#include "TClass.h"
-#include "RooAdaptiveIntegratorND.h"
-#include "RooArgSet.h"
-#include "RooRealVar.h"
-#include "RooNumber.h"
-#include "RooMsgService.h"
-#include "RooNumIntFactory.h"
-#include "RooMultiGenFunction.h"
 #include "Math/AdaptiveIntegratorMultiDim.h"
-
-#include <assert.h>
-#include <iomanip>
-
-
+#include "RooAbsFunc.h"                 // for RooAbsFunc
+#include "RooAdaptiveIntegratorND.h"    // for RooAdaptiveIntegratorND, etc
+#include "RooArgSet.h"                  // for Double_t, RooArgSet, Int_t, etc
+#include "RooMsgService.h"              // for coutW, oocoutE
+#include "RooMultiGenFunction.h"        // for RooMultiGenFunction
+#include "RooNumIntConfig.h"            // for RooNumIntConfig
+#include "RooNumIntFactory.h"           // for RooNumIntFactory
+#include "RooRealVar.h"                 // for RooRealVar
+#include "TString.h"                    // for Form, TString, operator<<
 
 using namespace std;
 

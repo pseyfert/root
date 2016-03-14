@@ -24,6 +24,9 @@
 #include "TMath.h"
 #include "TH1.h"
 
+#include "RooAbsReal.h"
+#include "RooConstVar.h"
+
 using namespace std;
 
 ClassImp(RooMomentMorph) 

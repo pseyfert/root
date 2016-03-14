@@ -22,11 +22,18 @@
 // END_HTML
 //
 
-#include "RooFit.h"
-#include "RooEffProd.h"
-#include "RooEffGenContext.h"
-#include "RooNameReg.h"
-#include "RooRealVar.h"
+#include <assert.h>                     // for assert
+
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooEffGenContext.h"           // for RooEffGenContext
+#include "RooEffProd.h"                 // for RooEffProd, etc
+#include "RooNameReg.h"                 // for RooNameReg
+#include "RooObjCacheManager.h"         // for RooObjCacheManager, etc
+#include "Rtypes.h"                     // for Int_t, Double_t, Bool_t, etc
+#include "TString.h"                    // for Form
+
+class RooDataSet;
 
 using namespace std;
 

@@ -26,10 +26,14 @@ change calls and constant term optimization management calls
 **/
 
 
-#include "RooFit.h"
-#include "RooAbsCacheElement.h"
-#include "RooAbsArg.h"
-#include "RooArgList.h"
+#include <iosfwd>                       // for ostream
+
+#include "RooAbsArg.h"                  // for RooAbsArg, etc
+#include "RooAbsCacheElement.h"         // for RooAbsCacheElement, etc
+#include "RooArgList.h"                 // for RooArgList, Bool_t, Int_t, etc
+#include "TIterator.h"                  // for TIterator
+
+class RooArgSet;
 
 using namespace std;
 

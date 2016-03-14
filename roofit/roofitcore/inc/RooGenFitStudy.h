@@ -16,20 +16,12 @@
 #ifndef ROO_GEN_FIT_STUDY
 #define ROO_GEN_FIT_STUDY
 
-#include "RooAbsStudy.h"
-
-class RooAbsPdf;
-class RooDataSet ;
-class RooAbsData ;
-class RooFitResult ;
-class RooPlot ;
-class RooRealVar ;
-class RooWorkspace ;
-class RooAbsGenContext ;
-
+#include "RooAbsStudy.h" // IWYU pragma: export
+#include "RooRealVar.h"
 #include "RooArgSet.h"
 #include "RooLinkedList.h"
 #include "RooAbsPdf.h"
+class RooWorkspace ;
 
 
 class RooGenFitStudy : public RooAbsStudy {

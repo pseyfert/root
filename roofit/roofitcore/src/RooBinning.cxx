@@ -26,19 +26,19 @@ the user to add single bin boundaries, mirrored pairs, or sets of
 uniformly spaced boundaries.
 **/
 
-#include <cmath>
-#include <algorithm>
-#include "RooFit.h"
+#include <algorithm>                    // for lower_bound, binary_search, etc
+#include <cmath>                        // for abs
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for string
+#include <vector>                       // for vector, etc
 
-#include "Riostream.h"
-#include "RooBinning.h"
-#include "RooDouble.h"
-#include "RooAbsPdf.h"
-#include "RooRealVar.h"
-#include "RooNumber.h"
-#include "RooMsgService.h"
-#include "TBuffer.h"
-#include "TList.h"
+#include "RooBinning.h"                 // for RooBinning, RooAbsBinning
+#include "RooDouble.h"                  // for RooDouble
+#include "RooMsgService.h"              // for coutE
+#include "Rtypes.h"                     // for Double_t, Int_t, kTRUE, etc
+#include "TBuffer.h"                    // for TBuffer, operator>>
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
 
 using namespace std;
 

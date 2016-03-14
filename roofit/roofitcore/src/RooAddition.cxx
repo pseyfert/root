@@ -25,25 +25,31 @@ in the two sets. This class does not (yet) do any smart handling of integrals,
 i.e. all integrals of the product are handled numerically
 **/
 
+#include <assert.h>                     // for assert
+#include <algorithm>                    // for merge, unique
+#include <list>                         // for _List_iterator, list, etc
+#include <memory>                       // for auto_ptr, etc
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooFit.h"
+#include "RooAbsArg.h"                  // for RooAbsArg, RooFIter
+#include "RooAddition.h"                // for RooAddition, RooAbsReal, etc
+#include "RooArgSet.h"                  // for Double_t, RooArgSet, Bool_t, etc
+#include "RooChi2Var.h"                 // for RooChi2Var
+#include "RooErrorHandler.h"            // for RooErrorHandler
+#include "RooListProxy.h"               // for RooArgList, RooListProxy, etc
+#include "RooMsgService.h"              // for coutE, coutI
+#include "RooNLLVar.h"                  // for RooNLLVar
+#include "RooNameReg.h"                 // for RooNameReg
+#include "RooNameSet.h"                 // for RooNameSet
+#include "RooObjCacheManager.h"         // for RooObjCacheManager, etc
+#include "RooProduct.h"                 // for RooProduct
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for TString
 
-#include "Riostream.h"
-#include <math.h>
-#include <memory>
-#include <list>
-#include <algorithm>
+class RooAbsData;
+class RooAbsRealLValue;
+
 using namespace std ;
-
-#include "RooAddition.h"
-#include "RooProduct.h"
-#include "RooAbsReal.h"
-#include "RooErrorHandler.h"
-#include "RooArgSet.h"
-#include "RooNameReg.h"
-#include "RooNLLVar.h"
-#include "RooChi2Var.h"
-#include "RooMsgService.h"
 
 ClassImp(RooAddition)
 ;

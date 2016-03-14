@@ -24,13 +24,12 @@ RooAbsReal object (specified by a code) to a set of dependent variables.
 **/
 
 
-#include "RooFit.h"
+#include <assert.h>                     // for assert
 
-#include "RooRealAnalytic.h"
-#include "RooRealAnalytic.h"
-#include "RooAbsReal.h"
-
-#include <assert.h>
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooRealAnalytic.h"            // for RooRealAnalytic
+#include "Rtypes.h"                     // for Double_t, ClassImp
+#include "TNamed.h"                     // for TNamed
 
 using namespace std;
 

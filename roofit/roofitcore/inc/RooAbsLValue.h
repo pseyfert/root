@@ -19,8 +19,8 @@
 #include <list>
 #include <string>
 
-#include "Riosfwd.h"
-#include "Rtypes.h"
+//#include "Riosfwd.h"
+#include "Rtypes.h" // IWYU pragma: export
 
 class RooAbsBinning ;
 

@@ -16,8 +16,8 @@
 #ifndef ROO_LIN_TRANS_BINNING
 #define ROO_LIN_TRANS_BINNING
 
-#include "Rtypes.h"
-#include "RooAbsBinning.h"
+#include "RtypesCore.h"
+#include "RooAbsBinning.h" // IWYU pragma: export
 
 class RooLinTransBinning : public RooAbsBinning {
 public:

@@ -16,7 +16,7 @@
 #ifndef ROO_NAME_REG
 #define ROO_NAME_REG
 
-#include "TNamed.h"
+#include "TNamed.h" // IWYU pragma: export
 #include "RooHashTable.h"
 #include "RooLinkedList.h"
 

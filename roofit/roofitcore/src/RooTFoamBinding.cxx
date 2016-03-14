@@ -22,18 +22,12 @@
 Lightweight interface adaptor that binds a RooAbsPdf to TFOAM
 **/
 
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooRealBinding.h"             // for RooRealBinding
+#include "RooTFoamBinding.h"            // for RooTFoamBinding
+#include "Rtypes.h"                     // for Double_t, ClassImp, Int_t, etc
 
-#include "RooFit.h"
-#include "Riostream.h"
-
-#include "RooTFoamBinding.h"
-#include "RooRealBinding.h"
-#include "RooAbsReal.h"
-#include "RooAbsPdf.h"
-#include "RooArgSet.h"
-
-#include <assert.h>
-
+class RooAbsReal;
 
 
 using namespace std;

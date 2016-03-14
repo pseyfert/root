@@ -18,8 +18,8 @@
 
 #include <map>
 #include <string>
-#include "TObject.h"
-#include "RooLinkedList.h"
+#include "TObject.h" // IWYU pragma: export
+//#include "RooLinkedList.h"
 #include "RooAbsIntegrator.h"
 class RooNumIntConfig ;
 class RooAbsFunc ;

@@ -90,22 +90,33 @@
 // on the build command line
 //
 
+#include <ext/alloc_traits.h>
+#include <stdlib.h>                     // for atoi
+#include <string.h>                     // for strtok
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <list>                         // for list, _List_iterator, etc
+#include <map>                          // for _Rb_tree_iterator, map, etc
+#include <string>                       // for string, char_traits, etc
+#include <utility>                      // for pair
+#include <vector>                       // for vector
 
-#include "RooFit.h"
-#include "RooSimWSTool.h"
-#include "RooMsgService.h"
-#include "RooCategory.h"
-#include "RooRealVar.h"
-#include "RooAbsPdf.h"
-#include "RooStringVar.h"
-#include "RooSuperCategory.h"
-#include "RooCatType.h"
-#include "RooCustomizer.h"
-#include "RooMultiCategory.h"
-#include "RooSimultaneous.h"
-#include "RooGlobalFunc.h"
-#include "RooFracRemainder.h"
-#include "RooFactoryWSTool.h"
+#include "RooArgSet.h"                  // for RooArgSet, kFALSE, Int_t, etc
+#include "RooCatType.h"                 // for RooCatType, ClassImp, Int_t, etc
+#include "RooCategory.h"                // for RooAbsCategory, RooAbsArg, etc
+#include "RooCmdArg.h"                  // for RooCmdArg
+#include "RooCustomizer.h"              // for RooFactoryWSTool, etc
+#include "RooFracRemainder.h"           // for RooFracRemainder
+#include "RooGlobalFunc.h"              // for Silence, etc
+#include "RooMsgService.h"              // for coutE, coutI
+#include "RooMultiCategory.h"           // for RooMultiCategory
+#include "RooSimWSTool.h"               // for RooSimWSTool, etc
+#include "RooSimultaneous.h"            // for RooAbsPdf, RooSimultaneous, etc
+#include "RooSuperCategory.h"           // for RooSuperCategory
+#include "RooWorkspace.h"               // for RooWorkspace
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
+#include "TString.h"                    // for Form, TString
+#include "strlcpy.h"                    // for strlcpy
 
 ClassImp(RooSimWSTool) 
 ClassImp(RooSimWSTool::BuildConfig) 

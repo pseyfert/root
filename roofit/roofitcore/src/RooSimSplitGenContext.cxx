@@ -24,22 +24,29 @@ specific for RooSimultaneous PDFs when generating more than one of the
 component pdfs.
 **/
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <assert.h>                     // for assert
+#include <map>                          // for map
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for string, char_traits
+#include <vector>                       // for vector, vector<>::iterator
 
-#include "RooSimSplitGenContext.h"
-#include "RooSimultaneous.h"
-#include "RooRealProxy.h"
-#include "RooDataSet.h"
-#include "Roo1DTable.h"
-#include "RooCategory.h"
-#include "RooMsgService.h"
-#include "RooRandom.h"
-#include "RooGlobalFunc.h"
+#include "RooCatType.h"                 // for RooCatType
+#include "RooCategory.h"                // for RooAbsCategory, etc
+#include "RooCategoryProxy.h"           // for RooCategoryProxy
+#include "RooDataSet.h"                 // for RooArgSet, Double_t, kTRUE, etc
+#include "RooGlobalFunc.h"              // for Index, Link, OwnLinked
+#include "RooMsgService.h"              // for oocoutE, coutE, coutI
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooSimSplitGenContext.h"      // for RooSimSplitGenContext, etc
+#include "RooSimultaneous.h"            // for RooSimultaneous, RooAbsPdf
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
+#include "TString.h"                    // for operator<<, TString
+
 
 using namespace RooFit ;
 
-#include <string>
 
 using namespace std;
 

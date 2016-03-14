@@ -17,7 +17,7 @@
 #define ROO_THRESHOLD_CATEGORY
 
 #include "TSortedList.h"
-#include "RooAbsCategory.h"
+#include "RooAbsCategory.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 #include "RooCatType.h"
 

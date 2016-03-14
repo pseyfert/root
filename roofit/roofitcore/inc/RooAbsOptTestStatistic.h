@@ -17,14 +17,13 @@
 #define ROO_ABS_OPT_TEST_STATISTIC
 
 #include "Riosfwd.h"
-#include "RooAbsTestStatistic.h"
-#include "RooSetProxy.h"
-#include "RooCategoryProxy.h"
+#include "RooAbsTestStatistic.h"// IWYU pragma: export
+//#include "RooSetProxy.h"
+//#include "RooCategoryProxy.h"
 #include "TString.h"
-
-class RooArgSet ;
-class RooAbsData ;
-class RooAbsReal ;
+#include "RooArgSet.h"
+#include "RooAbsData.h"
+#include "RooAbsReal.h"
 
 class RooAbsOptTestStatistic : public RooAbsTestStatistic {
 public:

@@ -17,8 +17,9 @@
 #define ROO_SUPER_CATEGORY
 
 class TObject ;
-#include "RooAbsCategoryLValue.h"
-#include "RooCatType.h"
+#include "RooAbsCategoryLValue.h" // IWYU pragma: export
+//#include "RooCatType.h"
+class RooCatType;
 #include "RooArgSet.h"
 #include "RooSetProxy.h"
  

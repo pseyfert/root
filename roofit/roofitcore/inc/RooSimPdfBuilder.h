@@ -17,14 +17,11 @@
 #define ROO_SIM_PDF_BUILDER
 
 #include "Rtypes.h"
-#include "TObject.h"
-#include "RooArgSet.h"
-#include "RooArgList.h"
+#include "TObject.h" // IWYU pragma: export
 #include "RooAbsData.h"
+#include "RooArgSet.h"
 #include <list>
 class RooSimultaneous ;
-class RooAbsPdf ;
-class RooCategory ;
 class RooSuperCategory ;
 
 class RooSimPdfBuilder : public TObject {

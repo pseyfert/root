@@ -28,10 +28,13 @@ the proxy to functions a Int_t/'const char*' on the right hand side of expressio
 **/
 
 
-#include "RooFit.h"
-#include "Riostream.h"
-#include "RooArgSet.h"
-#include "RooCategoryProxy.h"
+#include <assert.h>                     // for assert
+#include <iostream>                     // for operator<<, basic_ostream, etc
+
+#include "RooAbsCategoryLValue.h"       // for RooAbsCategory, Bool_t, etc
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCategoryProxy.h"           // for RooCategoryProxy, etc
+#include "TString.h"                    // for TString, Form
 
 using namespace std;
 

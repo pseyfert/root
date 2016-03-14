@@ -25,20 +25,19 @@ and the outer two pieces, if required are calculated using a 1/x transform
 **/
 
 
-#include "RooFit.h"
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooImproperIntegrator1D.h"
-#include "RooImproperIntegrator1D.h"
-#include "RooIntegrator1D.h"
-#include "RooInvTransform.h"
-#include "RooNumber.h"
-#include "RooNumIntFactory.h"
-#include "RooArgSet.h"
-#include "RooMsgService.h"
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooImproperIntegrator1D.h"    // for RooImproperIntegrator1D, etc
+#include "RooIntegrator1D.h"            // for RooIntegrator1D, etc
+#include "RooInvTransform.h"            // for RooAbsFunc, RooInvTransform
+#include "RooMsgService.h"              // for oocoutE
+#include "RooNumIntFactory.h"           // for RooNumIntFactory
+#include "RooNumber.h"                  // for RooNumber
+#include "Rtypes.h"                     // for Double_t, kTRUE, Bool_t, etc
+#include "TClass.h"                     // for TClass
 
-#include "Riostream.h"
-#include <math.h>
-#include "TClass.h"
+class RooNumIntConfig;
 
 
 

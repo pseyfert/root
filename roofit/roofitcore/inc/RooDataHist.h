@@ -22,19 +22,19 @@
 #include <utility>
 
 #include "RooAbsData.h"
-#include "RooDirItem.h"
+#include "RooDirItem.h" // IWYU pragma: export
 #include "RooArgSet.h"
-#include "RooNameSet.h"
+//#include "RooNameSet.h"
 #include "RooCacheManager.h"
 
 class TObject ;
 class RooAbsArg;
-class RooAbsReal ;
-class RooAbsCategory ;
-class Roo1DTable ;
+//class RooAbsReal ;
+//class RooAbsCategory ;
+//class Roo1DTable ;
 class RooPlot;
-class RooArgSet ;
-class RooLinkedList ;
+//class RooArgSet ;
+//class RooLinkedList ;
 class RooAbsLValue ;
 
 class RooDataHist : public RooAbsData, public RooDirItem {

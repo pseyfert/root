@@ -16,11 +16,10 @@
 #ifndef ROO_SET_PROXY
 #define ROO_SET_PROXY
 
-#include "TObject.h"
 #include "Riosfwd.h"
-#include "RooAbsProxy.h"
+#include "RooAbsProxy.h" // IWYU pragma: export
 #include "RooAbsArg.h"
-#include "RooArgSet.h"
+#include "RooArgSet.h" // IWYU pragma: export
 
 class RooSetProxy : public RooArgSet, public RooAbsProxy  {
 public:

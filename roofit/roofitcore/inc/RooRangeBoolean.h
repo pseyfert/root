@@ -16,12 +16,9 @@
 #ifndef ROO_RANGE_BOOLEAN
 #define ROO_RANGE_BOOLEAN
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 #include "TString.h"
-
-class RooRealVar;
-class RooArgList ;
 #include <list>
 
 class RooRangeBoolean : public RooAbsReal {

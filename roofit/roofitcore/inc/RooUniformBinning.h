@@ -17,8 +17,7 @@
 #define ROO_UNIFORM_BINNING
 
 #include "Rtypes.h"
-#include "RooAbsBinning.h"
-class TIterator ;
+#include "RooAbsBinning.h" // IWYU pragma: export
 
 class RooUniformBinning : public RooAbsBinning {
 public:

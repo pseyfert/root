@@ -37,6 +37,9 @@ for analytical convolutions with classes inheriting from RooAbsAnaConvPdf
 
 #include "TError.h"
 
+#include "RooRealVar.h"
+#include "RooRealProxy.h"
+
 using namespace std;
 
 ClassImp(RooGExpModel) 

@@ -27,27 +27,16 @@ do not define internal methods
 **/
 
 
-#include "RooFit.h"
-#include "Riostream.h"
-
-#include "RooFoamGenerator.h"
-#include "RooAbsReal.h"
-#include "RooCategory.h"
-#include "RooRealVar.h"
-#include "RooDataSet.h"
-#include "RooRandom.h"
-#include "RooErrorHandler.h"
-
-#include "TString.h"
-#include "TIterator.h"
-#include "RooMsgService.h"
-#include "TClass.h"
-#include "TFoam.h"
-#include "RooTFoamBinding.h"
-#include "RooNumGenFactory.h"
-#include "RooNumGenConfig.h"
-
-#include <assert.h>
+#include "RooAbsNumGenerator.h"         // for RooAbsNumGenerator
+#include "RooDataSet.h"                 // for RooArgSet, Double_t, Int_t, etc
+#include "RooFoamGenerator.h"           // for RooFoamGenerator
+#include "RooNumGenConfig.h"            // for RooNumGenConfig
+#include "RooNumGenFactory.h"           // for RooNumGenFactory
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooTFoamBinding.h"            // for RooTFoamBinding
+#include "TFoam.h"                      // for TFoam
+#include "TIterator.h"                  // for TIterator
 
 using namespace std;
 

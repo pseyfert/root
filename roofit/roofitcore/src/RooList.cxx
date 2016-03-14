@@ -23,13 +23,13 @@ A RooList is a TList with extra support for working with options
 that are associated with each node. This is a utility class for RooPlot
 **/
 
-#include "RooFit.h"
+#include <string.h>                     // for strlen, strcmp
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooList.h"
-#include "RooList.h"
-#include "RooMsgService.h"
-
-#include "Riostream.h"
+#include "RooList.h"                    // for RooList, TObjOptLink, etc
+#include "RooMsgService.h"              // for coutE
+#include "TObject.h"                    // for kFALSE, Bool_t, TObject, etc
+#include "TString.h"                    // for TString
 
 using namespace std;
 

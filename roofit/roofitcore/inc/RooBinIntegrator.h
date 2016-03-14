@@ -16,8 +16,9 @@
 #ifndef ROO_BIN_INTEGRATOR
 #define ROO_BIN_INTEGRATOR
 
-#include "RooAbsIntegrator.h"
-#include "RooNumIntConfig.h"
+#include "RooAbsIntegrator.h" // IWYU pragma: export
+class RooNumIntConfig;
+class RooNumIntFactory;
 #include <vector>
 
 class RooBinIntegrator : public RooAbsIntegrator {

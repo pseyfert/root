@@ -16,7 +16,8 @@
 #ifndef ROO_TRACE
 #define ROO_TRACE
 
-#include <assert.h>
+#include <map>
+//#include <assert.h>
 #include "Riosfwd.h"
 #include "RooLinkedList.h"
 

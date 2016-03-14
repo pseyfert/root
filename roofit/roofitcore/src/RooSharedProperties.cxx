@@ -23,12 +23,12 @@ Class RooSharedProperties is the base class for shared properties
 that can be stored in RooSharedPropertiesList.
 **/
 
-#include "RooFit.h"
-#include "RooSharedProperties.h"
-#include "RooMsgService.h"
-#include "RooTrace.h"
+#include <iostream>                     // for operator<<, basic_ostream, etc
 
-#include "Riostream.h"
+#include "RooSharedProperties.h"        // for RooSharedProperties, kFALSE, etc
+#include "RooTrace.h"                   // for RooTrace
+#include "TUUID.h"                      // for TUUID, operator==
+
 using std::cout ;
 using std::endl ;
 

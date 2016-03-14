@@ -23,18 +23,13 @@
 Lightweight interface adaptor that exports a RooAbsPdf as a functor
 **/
 
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooFunctor.h"                 // for RooFunctor
+#include "RooRealBinding.h"             // for RooAbsFunc, RooRealBinding
+#include "Rtypes.h"                     // for Double_t, kFALSE, kTRUE, etc
 
-#include "RooFit.h"
-#include "Riostream.h"
-
-#include "RooFunctor.h"
-#include "RooRealBinding.h"
-#include "RooAbsReal.h"
-#include "RooAbsPdf.h"
-#include "RooArgSet.h"
-
-#include <assert.h>
-
+class RooAbsReal;
 
 
 using namespace std;

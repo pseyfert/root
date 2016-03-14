@@ -17,8 +17,8 @@
 #define ROO_CATEGORY_PROXY
 
 #include "RooAbsCategory.h"
-#include "RooArgProxy.h"
-#include "RooAbsCategoryLValue.h"
+#include "RooArgProxy.h" // IWYU pragma: export
+#include "RooAbsCategoryLValue.h" // IWYU pragma: keep
 
 class RooCategoryProxy : public RooArgProxy {
 public:

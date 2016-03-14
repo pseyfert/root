@@ -12,15 +12,16 @@
 #ifndef ROOFFTCONVPDF
 #define ROOFFTCONVPDF
 
-#include "RooAbsCachedPdf.h"
+#include "RooAbsCachedPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 #include "RooSetProxy.h"
-#include "RooAbsReal.h"
-#include "RooHistPdf.h"
+class RooAbsReal;
+//#include "RooAbsReal.h"
+//#include "RooHistPdf.h"
 #include "TVirtualFFT.h"
 class RooRealVar ;
 
-#include <map>
+//#include <map>
  
 class RooFFTConvPdf : public RooAbsCachedPdf {
 public:

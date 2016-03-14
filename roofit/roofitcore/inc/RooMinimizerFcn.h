@@ -18,14 +18,14 @@
 
 #include "Math/IFunction.h"
 #include "Fit/ParameterSettings.h"
-#include "Fit/FitResult.h"
-
-#include "TMatrixDSym.h"
+//#include "Fit/FitResult.h"
+namespace ROOT { namespace Fit { class FitResult; } }
 
 #include "RooAbsReal.h"
 #include "RooArgList.h"
+#include "TMatrixDSymfwd.h"
 
-#include <iostream>
+//#include <iostream>
 #include <fstream>
 
 class RooMinimizer;

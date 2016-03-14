@@ -16,7 +16,7 @@
 #ifndef ROO_CATEGORY_SHARED_PROPERTY
 #define ROO_CATEGORY_SHARED_PROPERTY
 
-#include "RooSharedProperties.h"
+#include "RooSharedProperties.h" // IWYU pragma: export
 #include "RooLinkedList.h"
 
 class RooCategorySharedProperties : public RooSharedProperties {

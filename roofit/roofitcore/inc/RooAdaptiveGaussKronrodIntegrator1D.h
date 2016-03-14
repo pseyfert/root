@@ -16,9 +16,9 @@
 #ifndef ROO_ADAPTIVE_GAUSS_KRONROD_INTEGRATOR_1D
 #define ROO_ADAPTIVE_GAUSS_KRONROD_INTEGRATOR_1D
 
-#include "RooAbsIntegrator.h"
-#include "RooNumIntConfig.h"
-
+#include "RooAbsIntegrator.h" // IWYU pragma: export
+class RooNumIntConfig;
+class RooNumIntFactory;
 double RooAdaptiveGaussKronrodIntegrator1D_GSL_GlueFunction(double x, void *data) ;
 
 class RooAdaptiveGaussKronrodIntegrator1D : public RooAbsIntegrator {

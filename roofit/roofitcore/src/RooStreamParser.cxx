@@ -33,21 +33,18 @@
 // from the context. The definition of what is punctuation can be redefined.
 //
 
+#include <ctype.h>                      // for isspace, isdigit
+#include <stdlib.h>                     // for strtod, strtol
+#include <string.h>                     // for strstr, strcasecmp, strlen, etc
+#include <istream>                      // for istream, operator<<, etc
 
-#include "RooFit.h"
+#include "RooMsgService.h"              // for oocoutW, oocoutE
+#include "RooNumber.h"                  // for RooNumber
+#include "RooStreamParser.h"            // for RooStreamParser
+#include "Rtypes.h"                     // for Bool_t, kFALSE, kTRUE, etc
+#include "TString.h"                    // for TString, operator<<
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include <stdlib.h>
-#include <ctype.h>
-
-#ifndef _WIN32
-#include <strings.h>
-#endif
-
-#include "RooStreamParser.h"
-#include "RooMsgService.h"
-#include "RooNumber.h"
+class TObject;
 
 
 using namespace std;

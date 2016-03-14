@@ -25,21 +25,15 @@
 
 // #include <unistd.h>
 #include "RooProofDriverSelector.h"
-#include <TH2.h>
-#include <TStyle.h>
-#include "RooDataSet.h"
-#include "RooWorkspace.h"
-#include "RooAbsPdf.h"
-#include "RooRealVar.h"
-#include "RooFitResult.h"
-#include "TRandom.h"
-#include "RooRandom.h"
-#include "RooAbsStudy.h"
-#include "TSystem.h"
-#include "RooStudyPackage.h"
-#ifndef __CINT__
-#include "RooGlobalFunc.h"
-#endif
+
+#include <iostream>                     // for operator<<, basic_ostream, etc
+
+#include "RooStudyPackage.h"            // for RooStudyPackage
+#include "RooWorkspace.h"               // for RooWorkspace
+#include "TIterator.h"                  // for TIterator
+#include "TList.h"                      // for TList
+#include "TObject.h"                    // for TObject
+#include "TSelector.h"
  
 using namespace RooFit ;
 using namespace std ;

@@ -16,11 +16,10 @@
 #ifndef ROO_ADDITION
 #define ROO_ADDITION
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooListProxy.h"
 #include "RooObjCacheManager.h"
 
-class RooRealVar;
 class RooArgList ;
 
 class RooAddition : public RooAbsReal {

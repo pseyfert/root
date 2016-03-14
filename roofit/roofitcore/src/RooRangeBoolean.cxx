@@ -22,19 +22,13 @@
 RooRangeBoolean
 **/
 
-#include "RooFit.h"
+#include <list>                         // for list
+#include <string>                       // for operator!=, basic_string, etc
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include <math.h>
-#include "TMath.h"
-
-#include "RooRangeBoolean.h"
-#include "RooAbsReal.h"
-#include "RooRealVar.h"
-#include "RooArgList.h"
-#include "RooMsgService.h"
-#include "TMath.h"
+#include "RooAbsRealLValue.h"           // for Double_t, RooAbsRealLValue, etc
+#include "RooRangeBoolean.h"            // for RooRangeBoolean
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "TString.h"                    // for TString
 
 using namespace std;
 

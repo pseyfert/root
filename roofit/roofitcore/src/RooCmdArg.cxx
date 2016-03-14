@@ -28,13 +28,12 @@ created using global helper functions defined in RooGlobalFunc.h
 that create and fill these generic containers
 **/
 
-#include "RooFit.h"
+#include <string>                       // for string
 
-#include "RooCmdArg.h"
-#include "RooCmdArg.h"
-#include "Riostream.h"
-#include "RooArgSet.h"
-#include <string>
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooCmdArg.h"                  // for RooCmdArg, TNamed
+#include "RooLinkedList.h"              // for RooLinkedList
+#include "Rtypes.h"                     // for Int_t, Double_t, kTRUE, etc
 
 using namespace std;
 

@@ -26,11 +26,11 @@ when the main ROOT process is exiting.
 **/
 
 
-#include "RooFit.h"
-
-#include "RooMPSentinel.h"
-#include "RooMPSentinel.h"
-#include "RooRealMPFE.h"
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooMPSentinel.h"              // for RooMPSentinel
+#include "RooRealMPFE.h"                // for RooRealMPFE
+#include "Rtypes.h"                     // for kTRUE, ClassImp
+#include "TIterator.h"                  // for TIterator
 
 using namespace std;
 

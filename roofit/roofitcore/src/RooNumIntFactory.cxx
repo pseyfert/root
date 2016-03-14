@@ -28,30 +28,29 @@ the nature of the integration limits (closed or open ended) and
 the preference of the caller as encoded in the configuration object.
 **/
 
-#include "TClass.h"
-#include "Riostream.h"
+#include <map>                          // for map, map<>::mapped_type, etc
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <string>                       // for string, basic_string, etc
+#include <utility>                      // for pair
 
-#include "RooFit.h"
-
-#include "RooNumIntFactory.h"
-#include "RooArgSet.h"
-#include "RooAbsFunc.h"
-#include "RooNumIntConfig.h"
-#include "RooNumber.h"
-
-#include "RooIntegrator1D.h"
-#include "RooBinIntegrator.h"
-#include "RooIntegrator2D.h"
-#include "RooSegmentedIntegrator1D.h"
-#include "RooSegmentedIntegrator2D.h"
-#include "RooImproperIntegrator1D.h"
-#include "RooMCIntegrator.h"
+#include "RooAbsFunc.h"                 // for RooAbsFunc
+#include "RooAdaptiveGaussKronrodIntegrator1D.h"  // for RooAbsIntegrator, etc
+#include "RooAdaptiveIntegratorND.h"    // for RooAdaptiveIntegratorND
+#include "RooArgSet.h"                  // for RooArgSet, TObject
+#include "RooBinIntegrator.h"           // for RooBinIntegrator
+#include "RooCategory.h"                // for RooCategory, Int_t, Bool_t, etc
 #include "RooGaussKronrodIntegrator1D.h"
-#include "RooAdaptiveGaussKronrodIntegrator1D.h"
-#include "RooAdaptiveIntegratorND.h"
-#include "RooSentinel.h"
-
-#include "RooMsgService.h"
+#include "RooImproperIntegrator1D.h"    // for RooImproperIntegrator1D
+#include "RooIntegrator2D.h"            // for RooIntegrator1D, etc
+#include "RooMCIntegrator.h"            // for RooMCIntegrator
+#include "RooMsgService.h"              // for oocoutE
+#include "RooNumIntConfig.h"            // for RooNumIntConfig
+#include "RooNumIntFactory.h"           // for RooNumIntFactory
+#include "RooNumber.h"                  // for RooNumber
+#include "RooSegmentedIntegrator2D.h"   // for RooSegmentedIntegrator1D, etc
+#include "RooSentinel.h"                // for RooSentinel
+#include "TClass.h"                     // for TClass
+#include "TString.h"                    // for TString
 
 using namespace std ;
 

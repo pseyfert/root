@@ -26,16 +26,21 @@ as a RooFormulaVar.  The 6 basis functions used in B mixing and decay and 2 basi
 functions used in D mixing have been hand coded for increased execution speed.
 **/
 
-#include "RooFit.h"
+#include <math.h>                       // for exp, fabs, cos, sin, cosh, etc
+#include <algorithm>                    // for max
 
-#include "Riostream.h"
-#include "RooTruthModel.h"
-#include "RooGenContext.h"
-#include "RooAbsAnaConvPdf.h"
+#include "RooAbsAnaConvPdf.h"           // for RooAbsAnaConvPdf
+#include "RooArgSet.h"                  // for Double_t, Int_t, RooArgSet, etc
+#include "RooFormulaVar.h"              // for RooFormulaVar
+#include "RooGenContext.h"              // for RooGenContext
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooRealVar
+#include "RooTruthModel.h"              // for RooTruthModel, RooAbsReal, etc
+#include "TError.h"                     // for R__ASSERT
+#include "TString.h"                    // for TString
 
-#include "TError.h"
+class RooDataSet;
 
-#include <algorithm>
 using namespace std ;
 
 ClassImp(RooTruthModel) 

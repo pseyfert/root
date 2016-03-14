@@ -7,6 +7,8 @@
 #include "TCanvas.h"
 #include "TLegend.h"
 #include "TMath.h"
+#include "TList.h"
+#include "TClass.h"
 
 #include "RooRealSumPdf.h"
 #include "RooProduct.h"

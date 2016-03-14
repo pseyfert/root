@@ -23,21 +23,21 @@ RooBinIntegrator implements an adaptive one-dimensional
 numerical integration algorithm. 
 **/
 
+#include <assert.h>                     // for assert
+#include <list>                         // for list, _List_iterator, etc
+#include <ostream>                      // for operator<<, basic_ostream, etc
+#include <vector>                       // for vector, vector<>::iterator
 
-#include "RooFit.h"
-#include "Riostream.h"
-
-#include "TClass.h"
-#include "RooBinIntegrator.h"
-#include "RooArgSet.h"
-#include "RooRealVar.h"
-#include "RooNumber.h"
-#include "RooIntegratorBinding.h"
-#include "RooNumIntConfig.h"
-#include "RooNumIntFactory.h"
-#include "RooMsgService.h"
-
-#include <assert.h>
+#include "RooAbsFunc.h"                 // for RooAbsFunc
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooBinIntegrator.h"           // for RooBinIntegrator, etc
+#include "RooCategory.h"                // for Double_t, UInt_t, kFALSE, etc
+#include "RooMsgService.h"              // for oocoutE, oocoutW
+#include "RooNumIntConfig.h"            // for RooNumIntConfig
+#include "RooNumIntFactory.h"           // for RooNumIntFactory
+#include "RooNumber.h"                  // for RooNumber
+#include "RooRealVar.h"                 // for RooRealVar
+#include "TClass.h"                     // for TClass
 
 
 

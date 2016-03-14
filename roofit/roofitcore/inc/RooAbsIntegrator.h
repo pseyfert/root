@@ -17,7 +17,8 @@
 #define ROO_ABS_INTEGRATOR
 
 #include "RooAbsFunc.h"
-#include "RooNumIntConfig.h"
+#include "TObject.h"
+class RooNumIntConfig;
 
 class RooAbsIntegrator : public TObject {
 public:

@@ -16,19 +16,22 @@
 #ifndef ROO_ABS_DATA
 #define ROO_ABS_DATA
 
-#include "TNamed.h"
-#include "RooPrintable.h"
-#include "RooArgSet.h"
-#include "RooFormulaVar.h"
-#include <math.h>
-#include "TMatrixDSym.h"
+#include "TNamed.h"       // IWYU pragma: export
+#include "RooPrintable.h" // IWYU pragma: export
 
+#include "RooArgSet.h"    // IWYU pragma: export
+#include "RooArgList.h"   // for covarianceMatrix argument
+#include <math.h>
+#include "TMatrixDSym.h"  // IWYU pragma: keep
+
+class RooAbsRealLValue;
 class RooAbsArg;
 class RooAbsReal ;
 class RooAbsCategory ;
-class Roo1DTable ;
+class RooAbsCategoryLValue;
+class RooFormulaVar;
+class RooRealVar;
 class RooPlot;
-class RooArgList;
 class TH1;
 class RooAbsBinning ;
 class Roo1DTable ;

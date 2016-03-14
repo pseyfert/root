@@ -24,19 +24,20 @@ numerical integration algorithm.
 **/
 
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <assert.h>                     // for assert
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "TClass.h"
-#include "RooSegmentedIntegrator2D.h"
-#include "RooArgSet.h"
-#include "RooIntegratorBinding.h"
-#include "RooRealVar.h"
-#include "RooNumber.h"
-#include "RooNumIntFactory.h"
-#include "RooMsgService.h"
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooIntegrator1D.h"            // for RooIntegrator1D
+#include "RooIntegratorBinding.h"       // for RooAbsFunc, etc
+#include "RooMsgService.h"              // for oocoutE
+#include "RooNumIntFactory.h"           // for RooNumIntFactory
+#include "RooNumber.h"                  // for RooNumber
+#include "RooSegmentedIntegrator2D.h"   // for RooSegmentedIntegrator2D, etc
+#include "Rtypes.h"                     // for Double_t, Bool_t, etc
+#include "TClass.h"                     // for TClass
 
-#include <assert.h>
+class RooNumIntConfig;
 
 
 

@@ -25,13 +25,11 @@ is 'elastic': if the range changes the binning will change accordingly, unlike
 e.g. the binning of class RooBinning.
 **/
 
-#include "RooFit.h"
+#include <ostream>                      // for operator<<, etc
 
-#include "RooUniformBinning.h"
-#include "RooUniformBinning.h"
-#include "RooMsgService.h"
-
-#include "Riostream.h"
+#include "RooMsgService.h"              // for coutE
+#include "RooUniformBinning.h"          // for RooUniformBinning, etc
+#include "Rtypes.h"                     // for Double_t, Int_t, ClassImp
 
 
 using namespace std;

@@ -27,14 +27,11 @@ RooCachedReal wrapper function that takes any RooAbsReal object as
 input.
 **/
 
-#include "Riostream.h" 
-
-#include "RooFit.h"
-#include "RooAbsSelfCachedReal.h" 
-#include "RooAbsReal.h" 
-#include "RooMsgService.h"
-#include "RooDataHist.h"
-#include "RooHistPdf.h"
+#include "RooAbsArg.h"                  // for RooAbsArg
+#include "RooAbsSelfCachedReal.h"       // for RooAbsSelfCachedReal, etc
+#include "RooArgSet.h"                  // for RooArgSet, kTRUE, Int_t, etc
+#include "RooDataHist.h"                // for RooDataHist
+#include "TIterator.h"                  // for TIterator
 
 using namespace std ;
 

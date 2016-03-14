@@ -16,10 +16,9 @@
 #ifndef ROO_RECURSIVE_FRACTION
 #define ROO_RECURSIVE_FRACTION
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooListProxy.h"
 
-class RooRealVar;
 class RooArgList ;
 
 class RooRecursiveFraction : public RooAbsReal {

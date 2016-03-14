@@ -12,7 +12,7 @@
 #ifndef ROOPROFILELL
 #define ROOPROFILELL
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 #include "RooSetProxy.h"
 #include <map>

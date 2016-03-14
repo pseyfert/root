@@ -24,10 +24,8 @@ Table objects are the category equivalent of RooPlot objects
 (which are used for real-valued objects)
 **/
 
-#include "RooFit.h"
-#include "Riostream.h"
-
-#include "RooTable.h"
+#include "RooTable.h"                   // for RooTable, TNamed, etc
+#include "Rtypes.h"                     // for ClassImp
 
 
 

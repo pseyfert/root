@@ -35,14 +35,14 @@ The latter form, while slightly less readable, is more versatile because it
 doesn't hardcode any of the variable names it expects
 **/
 
-#include "RooFit.h"
-#include "Riostream.h"
+#include <ostream>                      // for operator<<, ostream, etc
 
-#include "RooGenericPdf.h"
-#include "RooGenericPdf.h"
-#include "RooStreamParser.h"
-#include "RooMsgService.h"
-#include "RooArgList.h"
+#include "RooFormula.h"                 // for RooFormula
+#include "RooGenericPdf.h"              // for RooGenericPdf, RooAbsPdf
+#include "RooListProxy.h"               // for Bool_t, RooListProxy, etc
+#include "RooMsgService.h"              // for coutE
+#include "RooStreamParser.h"            // for RooStreamParser
+#include "TString.h"                    // for TString, operator<<
 
 
 

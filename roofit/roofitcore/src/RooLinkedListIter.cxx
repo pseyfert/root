@@ -22,10 +22,11 @@
 RooLinkedListIter is the TIterator implementation for RooLinkedList
 **/
 
-#include "RooFit.h"
 
-#include "RooLinkedListIter.h"
-#include "RooLinkedListIter.h"
+
+#include "Rtypes.h"                     // for ClassImp
+
+class RooLinkedListIter;
 
 using namespace std;
 

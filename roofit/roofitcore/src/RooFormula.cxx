@@ -28,20 +28,26 @@ e.g. 'tagCat::Kaon' will resolve to the numerical value of
 the 'Kaon' state of the RooAbsCategory object named tagCat.
 **/
 
-#include "RooFit.h"
+#include <stdlib.h>                     // for atoi
+#include <string.h>                     // for strstr
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <vector>                       // for vector, vector<>::reference
 
-#include "Riostream.h"
-#include "Riostream.h"
-#include <stdlib.h>
-#include "TROOT.h"
-#include "TClass.h"
-#include "TObjString.h"
-#include "RooFormula.h"
-#include "RooAbsReal.h"
-#include "RooAbsCategory.h"
-#include "RooArgList.h"
-#include "RooMsgService.h"
-#include "RooTrace.h"
+#include "RVersion.h"                   // for ROOT_VERSION, etc
+#include "RooAbsCategory.h"             // for RooLinkedList, RooAbsArg, etc
+#include "RooAbsReal.h"                 // for RooAbsReal
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet, RooAbsCollection
+#include "RooCatType.h"                 // for kTRUE, Bool_t, Int_t, etc
+#include "RooFormula.h"                 // for RooFormula
+#include "RooMsgService.h"              // for coutE
+#include "TClass.h"                     // for TClass
+#include "TIterator.h"                  // for TIterator
+#include "TObjString.h"                 // for TObjString
+#include "TString.h"                    // for TString, operator<<
+#include "strlcpy.h"                    // for strlcpy
+#include "v5/TFormula.h"                // for TFormula, etc
+
 
 using namespace std;
 

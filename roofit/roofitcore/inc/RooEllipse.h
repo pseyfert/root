@@ -16,8 +16,8 @@
 #ifndef ROO_ELLIPSE
 #define ROO_ELLIPSE
 
-#include "TGraph.h"
-#include "RooPlotable.h"
+#include "TGraph.h"      // IWYU pragma: export
+#include "RooPlotable.h"      // IWYU pragma: export
 
 class RooEllipse : public TGraph, public RooPlotable {
 public:

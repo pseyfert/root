@@ -14,23 +14,11 @@
  * listed in LICENSE (http://roofit.sourceforge.net/license.txt)             *
  *****************************************************************************/
 
-/**
-\file RooRandom.cxx
-\class RooRandom
-\ingroup Roofitcore
-
-This class provides a static interface for generating random numbers.
-By default a private copy of TRandom3 is used to generate all random numbers.
-**/
-#include <cassert>
-
-#include "RooFit.h"
-
-#include "RooRandom.h"
-#include "RooRandom.h"
-#include "RooQuasiRandomGenerator.h"
-
-#include "TRandom3.h"
+#include "RooQuasiRandomGenerator.h"    // for RooQuasiRandomGenerator
+#include "RooRandom.h"                  // for RooRandom, RooRandom::Guard
+#include "Rtypes.h"                     // for Double_t, UInt_t, Bool_t, etc
+#include "TRandom.h"                    // for TRandom
+#include "TRandom3.h"                   // for TRandom3
 
 using namespace std;
 

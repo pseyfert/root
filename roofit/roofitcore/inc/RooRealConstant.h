@@ -19,10 +19,9 @@
 #include "Rtypes.h"
 #include "Riosfwd.h"
 
-class RooAbsReal ;
 class RooArgList ;
 class TIterator ;
-#include "RooConstVar.h"
+class RooConstVar;
 
 class RooRealConstant {
 public:

@@ -24,15 +24,15 @@ but no binning. It it used to store named ranges created by
 the RooRealVar::setRange() method
 **/
 
-#include "RooFit.h"
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
-#include "RooNumber.h"
-#include "RooNumber.h"
-#include "RooMsgService.h"
-#include "Riostream.h"
-#include "RooMsgService.h"
+#include "RooMsgService.h"              // for oocoutE
+#include "RooNumber.h"                  // for RooNumber
+#include "RooRangeBinning.h"            // for RooRangeBinning, etc
+#include "Rtypes.h"                     // for Double_t, ClassImp
 
-#include "RooRangeBinning.h"
+class TObject;
+
 
 using namespace std;
 
