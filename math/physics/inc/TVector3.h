@@ -11,15 +11,15 @@
 #ifndef ROOT_TVector3
 #define ROOT_TVector3
 
-#ifndef ROOT_TError
-#include "TError.h"
-#endif
 #ifndef ROOT_TVector2
 #include "TVector2.h"
 #endif
 #ifndef ROOT_TMatrix
-#include "TMatrix.h"
+#include "TMatrixFfwd.h"
+typedef TMatrixT<Float_t> TMatrix;
 #endif
+
+
 
 class TRotation;
 

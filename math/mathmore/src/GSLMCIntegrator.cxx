@@ -27,10 +27,9 @@
 //
 //
 
-#include "Math/IFunctionfwd.h"
+//#include "Math/IFunctionfwd.h"
 #include "Math/IFunction.h"
 #include "Math/Error.h"
-#include <vector>
 
 #include "GSLMonteFunctionWrapper.h"
 
