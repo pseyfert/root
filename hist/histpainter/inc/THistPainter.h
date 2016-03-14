@@ -33,7 +33,6 @@
 #include <utility>
 ///=======
 class Hoption_t;
-///>>>>>>> mymaster
 
 
 class TH1;
