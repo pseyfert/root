@@ -2678,7 +2678,7 @@ TH1D* TH2::DoQuantiles(bool onX, const char * name, Double_t prob) const
     // quantile error  ~  sqrt (q*(1-q)/ *( n * f(xq) ) from Kendall
     // where f(xq) is the p.d.f value at the quantile xqp
     Double_t n = slice->GetEffectiveEntries();
-    Double_t f = TMath::Gaus(qq[0], slice->GetStdDev(), kTRUE);
+    Double_t f = TMath::Gaus(qq[0], slice->GetMean(), slice->GetStdDev(), kTRUE);
     Double_t error = TMath::Sqrt( prob*(1.-prob)/ ( n * f) );
     h1->SetBinError(ibin, error);
   }
