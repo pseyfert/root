@@ -58,7 +58,7 @@ int testDerivation() {
   double result = der->Eval(x0);
   std::cout << "Derivative of function inheriting from IGenFunction f(x) = 2 + 3x + 4x^2 at x = 2" << std::endl;
   std::cout << "Return code:  " << der->Status() << std::endl;
-  std::cout << "Result:       " << result << " +/- " << der->Error() << std::endl;
+  std::cout << "Result:       " << result << " ± " << der->Error() << std::endl;
   std::cout << "Exact result: " << f1->Derivative(x0) << std::endl;
   std::cout << "EvalForward:  " << der->EvalForward(*f1, x0) << std::endl;
   std::cout << "EvalBackward: " << der->EvalBackward(x0, step) << std::endl << std::endl;;

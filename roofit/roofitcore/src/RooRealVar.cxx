@@ -643,10 +643,10 @@ void RooRealVar::writeToStream(ostream& os, Bool_t compact) const
       os << Form(fmtVal,_value) ;
 
       if (hasAsymError()) {
-	os << " +/- (" << Form(fmtErr,getAsymErrorLo())
+	os << " ± (" << Form(fmtErr,getAsymErrorLo())
 	   << ", " << Form(fmtErr,getAsymErrorHi()) << ")" ;
       } else  if (hasError()) {
-	os << " +/- " << Form(fmtErr,getError()) ;
+	os << " ± " << Form(fmtErr,getError()) ;
       } 
 
       os << " " ;
@@ -697,9 +697,9 @@ void RooRealVar::printValue(ostream& os) const
   os << getVal() ;
 
   if(hasError() && !hasAsymError()) {
-    os << " +/- " << getError() ;
+    os << " ± " << getError() ;
   } else if (hasAsymError()) {
-    os << " +/- (" << getAsymErrorLo() << "," << getAsymErrorHi() << ")" ;
+    os << " ± (" << getAsymErrorLo() << "," << getAsymErrorHi() << ")" ;
   }
 
 }

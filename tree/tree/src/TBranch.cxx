@@ -1781,12 +1781,12 @@ void TBranch::Print(Option_t*) const
 
    Long64_t totBytes = GetTotalSize();
    if (fZipBytes) cx = (fTotBytes+0.00001)/fZipBytes;
-   if (titleLength) snprintf(bline,aLength,"*Br%5d :%-9s : %-54s *",fgCount,GetName(),titleContent.Data());
-   else             snprintf(bline,aLength,"*Br%5d :%-9s : %-54s *",fgCount,GetName()," ");
+   if (titleLength) snprintf(bline,aLength,"*Br%5d: %-9s : %-54s *",fgCount,GetName(),titleContent.Data());
+   else             snprintf(bline,aLength,"*Br%5d: %-9s : %-54s *",fgCount,GetName()," ");
    if (strlen(bline) > UInt_t(kLINEND)) {
       char *tmp = new char[strlen(bline)+1];
       if (titleLength) strlcpy(tmp, titleContent.Data(),strlen(bline)+1);
-      snprintf(bline,aLength,"*Br%5d :%-9s : ",fgCount,GetName());
+      snprintf(bline,aLength,"*Br%5d: %-9s : ",fgCount,GetName());
       int pos = strlen (bline);
       int npos = pos;
       int beg=0, end;

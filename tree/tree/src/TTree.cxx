@@ -6692,9 +6692,9 @@ void TTree::Print(Option_t* option) const
       cx = (fTotBytes + 0.00001) / fZipBytes;
    }
    Printf("******************************************************************************");
-   Printf("*Tree    :%-10s: %-54s *", GetName(), GetTitle());
-   Printf("*Entries : %8lld : Total = %15lld bytes  File  Size = %10lld *", fEntries, total, file);
-   Printf("*        :          : Tree compression factor = %6.2f                       *", cx);
+   Printf("*Tree   : %-10s: %-54s *", GetName(), GetTitle());
+   Printf("*Entries:  %8lld : Total = %15lld bytes  File  Size = %10lld *", fEntries, total, file);
+   Printf("*       :           : Tree compression factor = %6.2f                       *", cx);
    Printf("******************************************************************************");
 
    if (strncmp(option,"clusterRange",strlen("clusters"))==0) {

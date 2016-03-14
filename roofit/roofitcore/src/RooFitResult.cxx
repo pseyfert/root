@@ -545,7 +545,7 @@ void RooFitResult::printMultiline(ostream& os, Int_t /*contents*/, Bool_t verbos
       os << indent << "    Floating Parameter  InitialValue    FinalValue (+HiError,-LoError)    GblCorr." << endl
 	 << indent << "  --------------------  ------------  ----------------------------------  --------" << endl ;
     } else {
-      os << indent << "    Floating Parameter  InitialValue    FinalValue +/-  Error     GblCorr." << endl
+      os << indent << "    Floating Parameter  InitialValue    FinalValue ±  Error     GblCorr." << endl
 	 << indent << "  --------------------  ------------  --------------------------  --------" << endl ;
     }
 
@@ -559,7 +559,7 @@ void RooFitResult::printMultiline(ostream& os, Int_t /*contents*/, Bool_t verbos
 	                       -1*((RooRealVar*)_finalPars->at(i))->getAsymErrorLo()) ;
       } else {
 	Double_t err = ((RooRealVar*)_finalPars->at(i))->getError() ;
-	os << (doAsymErr?"        ":"") << " +/- " << setw(9)  << Form("%9.2e",err) ;
+	os << (doAsymErr?"        ":"") << " ± " << setw(9)  << Form("%9.2e",err) ;
       }
 
       if (_globalCorr) {
@@ -572,14 +572,14 @@ void RooFitResult::printMultiline(ostream& os, Int_t /*contents*/, Bool_t verbos
     }
 
   } else {
-    os << indent << "    Floating Parameter    FinalValue +/-  Error   " << endl
+    os << indent << "    Floating Parameter    FinalValue ±  Error   " << endl
        << indent << "  --------------------  --------------------------" << endl ;
 
     for (i=0 ; i<_finalPars->getSize() ; i++) {
       Double_t err = ((RooRealVar*)_finalPars->at(i))->getError() ;
       os << indent << "  "    << setw(20) << ((RooAbsArg*)_finalPars->at(i))->GetName()
 	 << "  "    << setw(12) << Form("%12.4e",((RooRealVar*)_finalPars->at(i))->getVal())
-	 << " +/- " << setw(9)  << Form("%9.2e",err)
+	 << " ± " << setw(9)  << Form("%9.2e",err)
 	 << endl ;
     }
   }
