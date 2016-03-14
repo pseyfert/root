@@ -317,8 +317,8 @@ RooAbsArg* RooFactoryWSTool::createArg(const char* className, const char* objNam
   
   try {
     Int_t i(0) ;
-    list<string>::iterator ti = ca.first.begin() ; ti++ ; ti++ ;
-    for (vector<string>::iterator ai = _args.begin() ; ai != _args.end() ; ai++,ti++,i++) {
+    list<string>::iterator ti = ca.first.begin() ; ++ti ; ++ti ;
+    for (vector<string>::iterator ai = _args.begin() ; ai != _args.end() ; ++ai,++ti,++i) {
       if ((*ti)=="RooAbsReal&" || (*ti)=="const RooAbsReal&") {
 	RooFactoryWSTool::as_FUNC(i) ;
 	cintExpr += Form(",RooFactoryWSTool::as_FUNC(%d)",i) ;
@@ -957,11 +957,11 @@ std::string RooFactoryWSTool::processCompositeExpression(const char* token)
 
   string ret ;
   list<char>::iterator ic = separator.begin() ;
-  for (list<string>::iterator ii = singleExpr.begin() ; ii!=singleExpr.end() ; ii++) {
+  for (list<string>::iterator ii = singleExpr.begin() ; ii!=singleExpr.end() ; ++ii) {
     ret += processSingleExpression(ii->c_str()) ;
     if (ic != separator.end()) {
       ret += *ic ;
-      ic++ ;
+      ++ic ;
     }
   }
 
@@ -1185,8 +1185,8 @@ string RooFactoryWSTool::processListExpression(const char* arg)
     if (!_autoNamePrefix.empty()) {
       _autoNamePrefix.pop() ;
     }
-    iter++ ;
-    i++ ;
+    ++iter ;
+    ++i ;
   }
   ret += "}" ;
 
@@ -1329,7 +1329,7 @@ string RooFactoryWSTool::processCreateVar(string& func, vector<string>& args)
 
     // Create a RooAbsCategory
     string allStates ;
-    for (vector<string>::iterator ai = args.begin() ; ai!=args.end() ; ai++) {
+    for (vector<string>::iterator ai = args.begin() ; ai!=args.end() ; ++ai) {
       if (allStates.size()>0) {
 	allStates += "," ;
       }
@@ -1376,12 +1376,12 @@ string RooFactoryWSTool::processCreateArg(string& func, vector<string>& args)
     _autoNamePrefix.pop() ;
     strlcat(pargs,tmp.c_str(),BUFFER_SIZE) ;
     pargv.push_back(tmp) ;
-    iter++ ;
-    iarg++ ;
+    ++iter ;
+    ++iarg ;
   }
 
   // Look up if func is a special
-  for (map<string,IFace*>::iterator ii=hooks().begin() ; ii!=hooks().end() ; ii++) {
+  for (map<string,IFace*>::iterator ii=hooks().begin() ; ii!=hooks().end() ; ++ii) {
   }
   if (hooks().find(className) != hooks().end()) {
     IFace* iface = hooks()[className] ;
@@ -1409,7 +1409,7 @@ std::string RooFactoryWSTool::processMetaArg(std::string& func, std::vector<std:
     string tmp = processExpression(iter->c_str()) ;
     strlcat(pargs,tmp.c_str(),BUFFER_SIZE) ;
     pargv.push_back(tmp) ;
-    iter++ ;
+    ++iter ;
   }
 
   string ret = func+"("+pargs+")" ;  
@@ -1929,7 +1929,7 @@ std::string RooFactoryWSTool::SpecialsIFace::create(RooFactoryWSTool& ft, const 
     string tmp = ft.processExpression(iter->c_str()) ;
     strlcat(pargs,tmp.c_str(),BUFFER_SIZE) ;
     pargv.push_back(tmp) ;
-    iter++ ;
+    ++iter ;
   }
 
   // Handling of special operator pdf class names

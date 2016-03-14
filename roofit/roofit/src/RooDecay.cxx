@@ -26,7 +26,6 @@ with any RooResolutionModel implementation
 #include "RooFit.h"
 
 #include "Riostream.h"
-#include "Riostream.h"
 #include "RooDecay.h"
 #include "RooRealVar.h"
 #include "RooRandom.h"

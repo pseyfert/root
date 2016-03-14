@@ -25,7 +25,6 @@ P.d.f implementing the Crystall Ball line shape
 #include "RooFit.h"
 
 #include "Riostream.h"
-#include "Riostream.h"
 #include <math.h>
 
 #include "RooCBShape.h"

@@ -20,7 +20,6 @@ Here we also implement the analytic integral.
 #include "RooFit.h"
 
 #include "Riostream.h"
-#include "Riostream.h"
 #include <math.h>
 #include "TMath.h"
 #include "RooChiSquarePdf.h"
