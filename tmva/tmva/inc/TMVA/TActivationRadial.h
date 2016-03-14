@@ -32,9 +32,6 @@
 //                                                                      //
 //////////////////////////////////////////////////////////////////////////
 
-#ifndef ROOT_TFormula
-#include "TFormula.h"
-#endif
 #ifndef ROOT_TString
 #include "TString.h"
 #endif
@@ -72,10 +69,7 @@ namespace TMVA {
 
    private:
 
-      TFormula* fEqn;                // equation of radial basis function
-      TFormula* fEqnDerivative;      // equation of derivative
-
-      ClassDef(TActivationRadial,0)  // Radial basis activation function for TNeuron
+      ClassDef(TActivationRadial,1)  // Radial basis activation function for TNeuron
    };
 
 } // namespace TMVA
