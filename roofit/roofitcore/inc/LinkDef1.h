@@ -66,6 +66,7 @@
 #pragma link C++ class RooAbsAnaConvPdf+ ;
 #pragma link C++ class RooAddPdf+ ;
 #pragma link C++ class RooEfficiency+ ; 
+#pragma link C++ class RooMultiEfficiency+ ; 
 #pragma link C++ class RooEffProd+ ;
 #pragma link C++ class RooExtendPdf+ ;
 #pragma link off class RooErrorHandler+ ;

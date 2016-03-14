@@ -538,6 +538,7 @@ public:
    virtual void            SetCacheLearnEntries(Int_t n=10);
    virtual void            SetChainOffset(Long64_t offset = 0) { fChainOffset=offset; }
    virtual void            SetCircular(Long64_t maxEntries);
+   virtual void            SetColor(Color_t mcolor=1) { SetLineColor(mcolor); SetMarkerColor(mcolor); }
    virtual void            SetDebug(Int_t level = 1, Long64_t min = 0, Long64_t max = 9999999); // *MENU*
    virtual void            SetDefaultEntryOffsetLen(Int_t newdefault, Bool_t updateExisting = kFALSE);
    virtual void            SetDirectory(TDirectory* dir);
