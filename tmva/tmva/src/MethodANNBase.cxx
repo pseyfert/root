@@ -1074,10 +1074,11 @@ void TMVA::MethodANNBase::MakeClassSpecific( std::ostream& fout, const TString& 
    fout << "{" << std::endl;
    fout << "   // build network structure" << std::endl;
    fout << "   fLayers = " << numLayers << ";" << std::endl;
-   for (Int_t lIdx = 0; lIdx < numLayers; lIdx++) {
+   for (Int_t lIdx = 1; lIdx < numLayers; lIdx++) { // fLayerSize[0] and fWeights[0] obsolete
       TObjArray* layer = (TObjArray*)fNetwork->At(lIdx);
       int numNodes = layer->GetEntries();
-      fout << "   fLayerSize[" << lIdx << "] = " << numNodes << "; fWeights["<<lIdx<<"] = new double["<<numNodes<<"]; " << std::endl;
+      fout << "   fLayerSize[" << lIdx << "] = " << numNodes << ";";
+      fout << "   fWeights["<<lIdx<<"] = new double["<<numNodes<<"]; " << std::endl;
    }
 
    for (Int_t i = 0; i < numLayers-1; i++) {
@@ -1100,41 +1101,56 @@ void TMVA::MethodANNBase::MakeClassSpecific( std::ostream& fout, const TString& 
    // writing of the GetMvaValue__ method
    fout << "inline double " << className << "::GetMvaValue__( const std::vector<double>& inputValues ) const" << std::endl;
    fout << "{" << std::endl;
-   fout << "   if (inputValues.size() != (unsigned int)fLayerSize[0]-1) {" << std::endl;
-   fout << "      std::cout << \"Input vector needs to be of size \" << fLayerSize[0]-1 << std::endl;" << std::endl;
+   fout << "   if (inputValues.size() != (unsigned int)" << ((TObjArray*)fNetwork->At(0))->GetEntries()-1 << ") {" << std::endl;
+   fout << "      std::cout << \"Input vector needs to be of size \" << " << ((TObjArray*)fNetwork->At(0))->GetEntries()-1 << " << std::endl;" << std::endl;
    fout << "      return 0;" << std::endl;
    fout << "   }" << std::endl;
    fout << std::endl;
-   fout << "   for (int l=0; l<fLayers; l++)" << std::endl;
-   fout << "      for (int i=0; i<fLayerSize[l]; i++) fWeights[l][i]=0;" << std::endl;
+   fout << "   for (int l=1; l<fLayers; l++)" << std::endl;
+   fout << "      for (int i=0; i<fLayerSize[l]-1; i++) fWeights[l][i]=0;" << std::endl;
    fout << std::endl;
-   fout << "   for (int l=0; l<fLayers-1; l++)" << std::endl;
+   fout << "   for (int l=1; l<fLayers-1; l++)" << std::endl;
    fout << "      fWeights[l][fLayerSize[l]-1]=1;" << std::endl;
+   fout << "   fWeights[" << numLayers-1 << "][0]=0;" << std::endl;   
    fout << std::endl;
-   fout << "   for (int i=0; i<fLayerSize[0]-1; i++)" << std::endl;
-   fout << "      fWeights[0][i]=inputValues[i];" << std::endl;
    fout << std::endl;
    for (Int_t i = 0; i < numLayers-1; i++) {
       fout << "   // layer " << i << " to " << i+1 << std::endl;
       if (i+1 == numLayers-1) {
-         fout << "   for (int o=0; o<fLayerSize[" << i+1 << "]; o++) {" << std::endl;
+         fout << "   for (int o=0; o<" << ((TObjArray*)fNetwork->At(i+1))->GetEntries() << "; o++) {" << std::endl;
       } 
       else {
-         fout << "   for (int o=0; o<fLayerSize[" << i+1 << "]-1; o++) {" << std::endl;
+         fout << "   for (int o=0; o<" << ((TObjArray*)fNetwork->At(i+1))->GetEntries()-1 << "; o++) {" << std::endl;
       }
-      fout << "      for (int i=0; i<fLayerSize[" << i << "]; i++) {" << std::endl;
-      fout << "         double inputVal = fWeightMatrix" << i << "to" << i+1 << "[o][i] * fWeights[" << i << "][i];" << std::endl;
-
+      fout << "      double buffer[" << ((TObjArray*)fNetwork->At(i))->GetEntries() << "];" << std::endl;
+      if (0 != i) {
+         fout << "      for (int i=0; i<" << ((TObjArray*)fNetwork->At(i))->GetEntries() << "; i++) {" << std::endl;
+         fout << "         buffer[i] = fWeightMatrix" << i << "to" << i+1 << "[o][i] * fWeights[" << i << "][i];" << std::endl;
+         fout << "      }" << std::endl;
+      } else {
+         fout << "      for (int i=0; i<" << ((TObjArray*)fNetwork->At(i))->GetEntries()-1 << "; i++) {" << std::endl;
+         fout << "         buffer[i] = fWeightMatrix0to1[o][i] * inputValues[i];" << std::endl;
+         fout << "      }" << std::endl;
+         fout << "      buffer[" << ((TObjArray*)fNetwork->At(i))->GetEntries()-1 << "] = fWeightMatrix0to1[o][" << ((TObjArray*)fNetwork->At(i))->GetEntries()-1 << "];" << std::endl; // offset node
+      }
+      fout << "      for (int i=0; i<" << ((TObjArray*)fNetwork->At(i))->GetEntries() << "; i++) {" << std::endl;
       if ( fNeuronInputType == "sum") {
-         fout << "         fWeights[" << i+1 << "][o] += inputVal;" << std::endl;
+         fout << "         fWeights[" << i+1 << "][o] += buffer[i];" << std::endl;
       } 
       else if ( fNeuronInputType == "sqsum") {
-         fout << "         fWeights[" << i+1 << "][o] += inputVal*inputVal;" << std::endl;
+         fout << "         fWeights[" << i+1 << "][o] += buffer[i]*buffer[i];" << std::endl;
       } 
       else { // fNeuronInputType == TNeuronInputChooser::kAbsSum
-         fout << "         fWeights[" << i+1 << "][o] += fabs(inputVal);" << std::endl;
+         fout << "         fWeights[" << i+1 << "][o] += fabs(buffer[i]);" << std::endl;
       }
       fout << "      }" << std::endl;
+      fout << "    }" << std::endl;
+      if (i+1 == numLayers-1) {
+         fout << "   for (int o=0; o<" << ((TObjArray*)fNetwork->At(i+1))->GetEntries() << "; o++) {" << std::endl;
+      } 
+      else {
+         fout << "   for (int o=0; o<" << ((TObjArray*)fNetwork->At(i+1))->GetEntries()-1 << "; o++) {" << std::endl;
+      }
       if (i+1 != numLayers-1) // in the last layer no activation function is applied
          fout << "      fWeights[" << i+1 << "][o] = ActivationFnc(fWeights[" << i+1 << "][o]);" << std::endl;
       else	fout << "      fWeights[" << i+1 << "][o] = OutputActivationFnc(fWeights[" << i+1 << "][o]);" << std::endl; //zjh
@@ -1155,7 +1171,7 @@ void TMVA::MethodANNBase::MakeClassSpecific( std::ostream& fout, const TString& 
    fout << "inline void " << className << "::Clear() " << std::endl;
    fout << "{" << std::endl;
    fout << "   // clean up the arrays" << std::endl;
-   fout << "   for (int lIdx = 0; lIdx < "<<numLayers<<"; lIdx++) {" << std::endl;
+   fout << "   for (int lIdx = 1; lIdx < "<<numLayers<<"; lIdx++) {" << std::endl;
    fout << "      delete[] fWeights[lIdx];" << std::endl;
    fout << "   }" << std::endl;
    fout << "}" << std::endl;
