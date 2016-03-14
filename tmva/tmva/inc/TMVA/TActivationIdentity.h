@@ -54,7 +54,7 @@ namespace TMVA {
 
       // evaluate the derivative of the activation function
       virtual Double_t EvalDerivative(Double_t) { 
-         return 1; // f'(x) = 1
+         return 1.; // f'(x) = 1
       } 
 
       // minimum of the range of the activation function

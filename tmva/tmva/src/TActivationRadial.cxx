@@ -85,6 +85,6 @@ void TMVA::TActivationRadial::MakeFunction( std::ostream& fout, const TString& f
 {
    fout << "double " << fncName << "(double x) const {" << std::endl;
    fout << "   // radial" << std::endl;
-   fout << "   return exp(-x*x/2.0);" << std::endl;
+   fout << "   return exp(-x*x*0.5);" << std::endl;
    fout << "}" << std::endl;
 }

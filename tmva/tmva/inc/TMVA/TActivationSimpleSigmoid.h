@@ -1,34 +1,34 @@
 // @(#)root/tmva $Id$
-// Author: Matt Jachowski
+// Author: Paul Seyfert
 
 /**********************************************************************************
  * Project: TMVA - a Root-integrated toolkit for multivariate data analysis       *
  * Package: TMVA                                                                  *
- * Class  : TMVA::TActivationRadial                                               *
+ * Class  : TActivationSimpleSigmoid                                              *
  * Web    : http://tmva.sourceforge.net                                           *
  *                                                                                *
  * Description:                                                                   *
- *      Radial basis activation function for TNeuron                              *
+ *      A x/sqrt(1+x^2) activation function for TNeuron                           *
  *                                                                                *
  * Authors (alphabetical):                                                        *
- *      Matt Jachowski  <jachowski@stanford.edu> - Stanford University, USA       *
+ *      Paul Seyfert  <pseyfert@cern.ch>                                          *
  *                                                                                *
- * Copyright (c) 2005:                                                            *
+ * Copyright (c) 2015:                                                            *
  *      CERN, Switzerland                                                         *
  *                                                                                *
  * Redistribution and use in source and binary forms, with or without             *
  * modification, are permitted according to the terms listed in LICENSE           *
  * (http://tmva.sourceforge.net/LICENSE)                                          *
- **********************************************************************************/ 
+ **********************************************************************************/
 
-#ifndef ROOT_TMVA_TActivationRadial
-#define ROOT_TMVA_TActivationRadial
+#ifndef ROOT_TMVA_TActivationSimpleSigmoid
+#define ROOT_TMVA_TActivationSimpleSigmoid
 
 //////////////////////////////////////////////////////////////////////////
 //                                                                      //
-// TActivationRadial                                                    //
+// TActivationSimpleSigmoid                                             //
 //                                                                      //
-// Radial basis activation function for TNeuron                         //
+// simple sigmoid activation function for TNeuron                       //
 //                                                                      //
 //////////////////////////////////////////////////////////////////////////
 
@@ -42,12 +42,12 @@
 
 namespace TMVA {
   
-   class TActivationRadial : public TActivation {
+   class TActivationSimpleSigmoid : public TActivation {
     
    public:
 
-      TActivationRadial();
-      ~TActivationRadial();
+      TActivationSimpleSigmoid();
+      ~TActivationSimpleSigmoid();
 
       // evaluate the activation function
       Double_t Eval(Double_t arg);
@@ -56,10 +56,10 @@ namespace TMVA {
       Double_t EvalDerivative(Double_t arg);
 
       // minimum of the range of the activation function
-      Double_t GetMin() { return 0.; }
+      Double_t GetMin() { return -1; }
 
       // maximum of the range of the activation function
-      Double_t GetMax() { return 1.; }
+      Double_t GetMax() { return 1; }
 
       // expression for the activation function
       TString GetExpression();
@@ -69,7 +69,7 @@ namespace TMVA {
 
    private:
 
-      ClassDef(TActivationRadial,1)  // Radial basis activation function for TNeuron
+      ClassDef(TActivationSimpleSigmoid,0) // simple sigmoid activation function for TNeuron
    };
 
 } // namespace TMVA
