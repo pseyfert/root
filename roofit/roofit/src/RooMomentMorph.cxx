@@ -6,26 +6,35 @@
 
 // Your description goes here... 
 
-#include "Riostream.h" 
+#include <assert.h>                     // for assert
+#include <float.h>                      // for DBL_MAX
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <string>                       // for string, char_traits
+#include <vector>                       // for vector
 
-#include "RooMomentMorph.h" 
-#include "RooAbsCategory.h" 
-#include "RooRealIntegral.h"
-#include "RooRealConstant.h"
-#include "RooRealVar.h"
-#include "RooFormulaVar.h"
-#include "RooCustomizer.h"
-#include "RooAddPdf.h"
-#include "RooAddition.h"
-#include "RooMoment.h"
-#include "RooLinearVar.h"
-#include "RooChangeTracker.h"
-
-#include "TMath.h"
-#include "TH1.h"
-
-#include "RooAbsReal.h"
-#include "RooConstVar.h"
+#include "RooAbsCategory.h"             // for RooAbsArg
+#include "RooAddPdf.h"                  // for RooAbsReal, RooAbsPdf, etc
+#include "RooAddition.h"                // for RooAddition
+#include "RooChangeTracker.h"           // for RooChangeTracker
+#include "RooConstVar.h"                // for RooConstVar
+#include "RooCustomizer.h"              // for RooCustomizer
+#include "RooFormulaVar.h"              // for RooFormulaVar
+#include "RooLinearVar.h"               // for RooLinearVar
+#include "RooListProxy.h"               // for RooArgList, RooListProxy
+#include "RooMoment.h"                  // for RooAbsMoment
+#include "RooMomentMorph.h"             // for RooMomentMorph, etc
+#include "RooMsgService.h"              // for coutE, coutW
+#include "RooObjCacheManager.h"         // for RooObjCacheManager, etc
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooRealVar, Int_t, kTRUE, etc
+#include "RooSetProxy.h"                // for RooSetProxy, RooArgSet, etc
+#include "TIterator.h"                  // for TIterator
+#include "TMath.h"                      // for Power, PiOver2, Sin
+#include "TMatrixDfwd.h"                // for TMatrixD
+#include "TMatrixT.h"                   // for TMatrixT
+#include "TString.h"                    // for Form
+#include "TVectorDfwd.h"                // for TVectorD
+#include "TVectorT.h"                   // for TVectorT
 
 using namespace std;
 

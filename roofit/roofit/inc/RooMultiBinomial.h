@@ -15,9 +15,8 @@
 #ifndef ROO_MULTIBINOMIAL
 #define ROO_MULTIBINOMIAL
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooListProxy.h"
-#include "TString.h" 
 
 class RooArgList ;
 

@@ -31,25 +31,15 @@
 // RooPoison(N,mu) and treating the function as a PDF in mu.
 
 
-#include "RooFit.h"
+#include <Math/ProbFuncMathCore.h>      // for gamma_cdf
 
-#include "Riostream.h"
-#include <math.h>
-
-#include "RooGamma.h"
-#include "RooAbsReal.h"
-#include "RooRealVar.h"
-#include "RooRandom.h"
-#include "RooMath.h"
-
-#include <iostream> 
-#include "TMath.h"
-
-#include <Math/SpecFuncMathCore.h>
-#include <Math/PdfFuncMathCore.h>
-#include <Math/ProbFuncMathCore.h>
-
-#include "TError.h"
+#include "RooArgSet.h"                  // for Double_t, Int_t, Bool_t, etc
+#include "RooGamma.h"                   // for RooGamma, RooAbsPdf
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "TError.h"                     // for R__ASSERT
+#include "TMath.h"                      // for Log, GammaDist, Sqrt
+#include "TRandom.h"                    // for TRandom
 
 using namespace std;
 

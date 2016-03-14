@@ -16,7 +16,7 @@
 #ifndef ROO_UNBLIND_OFFSET
 #define ROO_UNBLIND_OFFSET
 
-#include "RooAbsHiddenReal.h"
+#include "RooAbsHiddenReal.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 #include "RooBlindTools.h"
 

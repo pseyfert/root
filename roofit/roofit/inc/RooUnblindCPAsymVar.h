@@ -16,13 +16,10 @@
 #ifndef ROO_UNBLIND_CPASYM_VAR
 #define ROO_UNBLIND_CPASYM_VAR
 
-#include "RooAbsHiddenReal.h"
+#include "RooAbsHiddenReal.h" // IWYU pragma: export
 #include "RooAbsCategory.h"
 #include "RooRealProxy.h"
-#include "RooCategoryProxy.h"
 #include "RooBlindTools.h"
-
-class RooCategory ;
 
 class RooUnblindCPAsymVar : public RooAbsHiddenReal {
 public:

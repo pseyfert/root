@@ -77,16 +77,23 @@
 // 
 //
 
-#include "Riostream.h" 
+#include <math.h>                       // for fabs, sqrt
+#include <ostream>                      // for operator<<, basic_ostream, etc
 
+#include "RooAbsCacheElement.h"         // for RooAbsCacheElement::Action
+#include "RooArgList.h"                 // for RooArgList
+#include "RooArgSet.h"                  // for RooArgSet
+#include "RooBrentRootFinder.h"         // for RooBrentRootFinder
+#include "RooDataHist.h"                // for RooDataHist
+#include "RooHistPdf.h"                 // for RooHistPdf
 #include "RooIntegralMorph.h" 
-#include "RooAbsReal.h" 
-#include "RooAbsCategory.h" 
-#include "RooBrentRootFinder.h"
-#include "RooAbsFunc.h"
-#include "RooRealVar.h"
-#include "RooDataHist.h"
-#include "TH1.h"
+#include "RooMsgService.h"              // for oocxcoutD, ccoutP, oocoutE, etc
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for Double_t, RooRealVar, Int_t, etc
+#include "TIterator.h"                  // for TIterator
+#include "TString.h"                    // for TString
+
+class RooAbsArg;
 
 using namespace std;
 

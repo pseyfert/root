@@ -16,10 +16,9 @@
 #ifndef ROO_ARGUS_BG
 #define ROO_ARGUS_BG
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 
-class RooRealVar;
 class RooAbsReal;
 
 class RooArgusBG : public RooAbsPdf {

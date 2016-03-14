@@ -57,14 +57,20 @@ Usage example:
 */
 
 
-#include "Riostream.h" 
+#include <assert.h>                     // for assert
+#include <algorithm>                    // for sort
+#include <iostream>                     // for operator<<, basic_ostream, etc
+#include <utility>                      // for pair
+#include <vector>                       // for vector, vector<>::iterator
 
-#include "Roo2DMomentMorphFunction.h" 
-#include "RooAbsReal.h" 
-#include "RooAbsCategory.h" 
-#include <math.h> 
-#include "TMath.h" 
-#include "TTree.h"
+#include "Roo2DMomentMorphFunction.h"   // for Roo2DMomentMorphFunction, etc
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "Rtypes.h"                     // for Double_t, Int_t, Bool_t, etc
+#include "TMath.h"                      // for Sqrt
+#include "TMatrixDfwd.h"                // for TMatrixD
+#include "TMatrixT.h"                   // for TMatrixT
+#include "TVectorDfwd.h"                // for TVectorD
+#include "TVectorT.h"                   // for TVectorT
 
 
 using namespace std;

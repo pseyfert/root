@@ -8,7 +8,7 @@
 #define ROOTFNPDFBINDING
 
 #include "RooListProxy.h"
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 class TF1 ;
 class TF2 ;
 class TF3 ;

@@ -25,14 +25,14 @@ that models a non-relativistic Breit-Wigner shape
 **/
 
 
-#include "RooFit.h"
+#include <assert.h>                     // for assert
+#include <math.h>                       // for atan
 
-#include "Riostream.h"
-#include <math.h>
+#include "RooBreitWigner.h"             // for RooBreitWigner, RooAbsPdf
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for Double_t, Int_t, ClassImp
 
-#include "RooBreitWigner.h"
-#include "RooAbsReal.h"
-#include "RooRealVar.h"
+class RooArgSet;
 // #include "RooFitTools/RooRandom.h"
 
 using namespace std;

@@ -6,19 +6,12 @@
 #ifndef ROO1DMOMENTMORPHFUNC
 #define ROO1DMOMENTMORPHFUNC
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-#include "RooCategoryProxy.h"
-#include "RooAbsReal.h"
-#include "RooAbsCategory.h"
 #include "RooSetProxy.h"
-#include "RooArgList.h"
+class RooArgList;
 #include "TMatrixD.h"
 #include "TVectorD.h"
-
-#include <vector>
-#include <string>
-class RooChangeTracker ;
 
 class Roo1DMomentMorphFunction : public RooAbsReal {
 public:

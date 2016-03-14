@@ -12,9 +12,9 @@
 #ifndef ROOCFUNCTION3BINDING
 #define ROOCFUNCTION3BINDING
 
-#include "RooAbsReal.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-#include "RooMsgService.h"
+//#include "RooMsgService.h"
 #include "RooAbsPdf.h"
 
 #include "TBuffer.h"

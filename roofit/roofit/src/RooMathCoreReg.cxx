@@ -17,14 +17,15 @@
 
 **/
 
-#include "Riostream.h" 
-#include "RooMathCoreReg.h"
-#include "RooCFunction1Binding.h" 
-#include "RooCFunction2Binding.h" 
-#include "RooCFunction3Binding.h" 
-#include "RooCFunction4Binding.h" 
-#include "Math/SpecFunc.h"
-#include "Math/DistFunc.h"
+#include "Math/PdfFuncMathCore.h"       // for beta_pdf, binomial_pdf, etc
+#include "Math/ProbFuncMathCore.h"      // for beta_cdf, beta_cdf_c, etc
+#include "Math/QuantFuncMathCore.h"     // for gamma_quantile_c, etc
+#include "Math/SpecFuncMathCore.h"      // for beta, erf, erfc, inc_beta, etc
+#include "RooCFunction1Binding.h"       // for RooCFunction1Map, etc
+#include "RooCFunction2Binding.h"       // for RooCFunction2Map, etc
+#include "RooCFunction3Binding.h"       // for RooCFunction3Map, etc
+#include "RooCFunction4Binding.h"       // for RooCFunction4Map, etc
+#include "RooMathCoreReg.h"             // for RooMathCoreReg
 
 static RooMathCoreReg dummy ;
 

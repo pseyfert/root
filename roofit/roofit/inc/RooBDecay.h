@@ -18,7 +18,7 @@
 #ifndef ROO_BDECAY
 #define ROO_BDECAY
 
-#include "RooAbsAnaConvPdf.h"
+#include "RooAbsAnaConvPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 
 class RooBDecay : public RooAbsAnaConvPdf

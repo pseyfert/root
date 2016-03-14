@@ -14,7 +14,7 @@
 #ifndef ROO_SPHARMONIC
 #define ROO_SPHARMONIC
 
-#include "RooLegendre.h"
+#include "RooLegendre.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 
 class RooSpHarmonic : public RooLegendre {

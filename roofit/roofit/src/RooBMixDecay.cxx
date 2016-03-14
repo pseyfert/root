@@ -24,14 +24,21 @@ the decay of B mesons with the effects of B0/B0bar mixing.
 This function can be analytically convolved with any RooResolutionModel implementation
 **/
 
-#include "RooFit.h"
+#include <assert.h>                     // for assert
+#include <math.h>                       // for log, cos
 
-#include "Riostream.h"
-#include "TMath.h"
-#include "RooRealVar.h"
-#include "RooBMixDecay.h"
-#include "RooRealIntegral.h"
-#include "RooRandom.h"
+#include "RooAbsCategory.h"             // for RooAbsCategory
+#include "RooArgList.h"                 // for RooArgList, Int_t, Double_t
+#include "RooArgSet.h"                  // for Double_t, RooArgSet, Int_t, etc
+#include "RooBMixDecay.h"               // for RooBMixDecay, etc
+#include "RooCategoryProxy.h"           // for RooCategoryProxy
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealIntegral.h"            // for RooRealIntegral
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooAbsReal, ClassImp, etc
+#include "TMathBase.h"                  // for Abs
+
+class RooResolutionModel;
 
 using namespace std;
 

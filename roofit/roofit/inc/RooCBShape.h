@@ -16,10 +16,8 @@
 #ifndef ROO_CB_SHAPE
 #define ROO_CB_SHAPE
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-
-class RooRealVar;
 
 class RooCBShape : public RooAbsPdf {
 public:

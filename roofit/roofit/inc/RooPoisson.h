@@ -9,12 +9,9 @@
 #ifndef ROOPOISSON
 #define ROOPOISSON
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-#include "RooCategoryProxy.h"
 #include "RooAbsReal.h"
-#include "RooAbsCategory.h"
-#include "RooTrace.h"
  
 class RooPoisson : public RooAbsPdf {
 public:

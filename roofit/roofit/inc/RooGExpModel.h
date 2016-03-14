@@ -20,7 +20,7 @@
 #include <complex>
 
 #include "Rtypes.h"
-#include "RooResolutionModel.h"
+#include "RooResolutionModel.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 #include "RooMath.h"
 

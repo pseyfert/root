@@ -25,23 +25,18 @@ The parametrization here is physics driven and differs from the ROOT::Math::logn
   - x0 = 0
 **/
 
-#include "RooFit.h"
+#include <Math/PdfFuncMathCore.h>       // for lognormal_pdf
+#include <math.h>                       // for sqrt
 
-#include "Riostream.h"
-#include <math.h>
-
-#include "RooLognormal.h"
-#include "RooAbsReal.h"
-#include "RooRealVar.h"
-#include "RooRandom.h"
-#include "RooMath.h"
-#include "TMath.h"
-
-#include <Math/SpecFuncMathCore.h>
-#include <Math/PdfFuncMathCore.h>
-#include <Math/ProbFuncMathCore.h>
-
-#include "TError.h"
+#include "RooArgSet.h"                  // for Double_t, Int_t, Bool_t, etc
+#include "RooLognormal.h"               // for RooLognormal, RooAbsPdf
+#include "RooMath.h"                    // for RooMath
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "TError.h"                     // for R__ASSERT
+#include "TMath.h"                      // for Log, Exp
+#include "TMathBase.h"                  // for Abs
+#include "TRandom.h"                    // for TRandom
 
 using namespace std;
 

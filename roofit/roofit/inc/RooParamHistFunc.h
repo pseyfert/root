@@ -7,13 +7,8 @@
 #ifndef ROO_PARAM_HIST_FUNC
 #define ROO_PARAM_HIST_FUNC
 
-#include "RooAbsPdf.h"
-#include "RooRealProxy.h"
-#include "RooCategoryProxy.h"
-#include "RooAbsReal.h"
-#include "RooAbsCategory.h"
+#include "RooAbsReal.h" // IWYU pragma: export
 #include "RooListProxy.h"
-#include "RooSetProxy.h"
 #include "RooDataHist.h"
  
 class RooParamHistFunc : public RooAbsReal {

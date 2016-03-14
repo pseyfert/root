@@ -30,10 +30,12 @@ the error on the blind parameters is indentical to that
 of the unblind parameter
 **/
 
-#include "RooFit.h"
+#include "RooBlindTools.h"              // for RooBlindTools, etc
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooUnblindUniform.h"          // for RooUnblindUniform, etc
+#include "Rtypes.h"                     // for Double_t, ClassImp
 
-#include "RooArgSet.h"
-#include "RooUnblindUniform.h"
+class RooAbsReal;
 
 
 using namespace std;

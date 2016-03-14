@@ -13,7 +13,6 @@
  * with or without modification, are permitted according to the terms        *
  * listed in LICENSE (http://roofit.sourceforge.net/license.txt)             *
  *****************************************************************************/
-#include "RooFit.h"
 
 /**
 \file RooBifurGauss.cxx
@@ -25,13 +24,16 @@ side of maximum value
 **/
 
 
-#include "Riostream.h"
-#include "TMath.h"
-#include <math.h>
+#include <assert.h>                     // for assert
+#include <math.h>                       // for sqrt, atan2, exp
 
-#include "RooBifurGauss.h"
-#include "RooAbsReal.h"
-#include "RooMath.h"
+#include "RooBifurGauss.h"              // for RooBifurGauss, RooAbsPdf
+#include "RooMath.h"                    // for RooMath
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "Rtypes.h"                     // for Double_t, Int_t, ClassImp
+#include "TMathBase.h"                  // for Abs
+
+class RooArgSet;
 
 using namespace std;
 

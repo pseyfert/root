@@ -16,10 +16,9 @@
 #ifndef ROO_EXPONENTIAL
 #define ROO_EXPONENTIAL
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 
-class RooRealVar;
 class RooAbsReal;
 
 class RooExponential : public RooAbsPdf {

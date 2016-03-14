@@ -17,16 +17,16 @@ Oddly, this is hard to find in ROOT (except via relation to GammaDist).
 Here we also implement the analytic integral.
 **/
 
-#include "RooFit.h"
+#include <math.h>                       // for pow, exp
+#include <string.h>                     // for strlen
 
-#include "Riostream.h"
-#include <math.h>
-#include "TMath.h"
-#include "RooChiSquarePdf.h"
-#include "RooAbsReal.h"
-#include "RooRealVar.h"
+#include "RooChiSquarePdf.h"            // for RooChiSquarePdf, RooAbsPdf
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for Double_t, Int_t, ClassImp
+#include "TError.h"                     // for R__ASSERT
+#include "TMath.h"                      // for Gamma
 
-#include "TError.h"
+class RooArgSet;
 
 using namespace std;
 

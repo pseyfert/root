@@ -16,10 +16,8 @@
 #ifndef ROO_VOIGTIAN
 #define ROO_VOIGTIAN
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-
-class RooRealVar;
 
 class RooVoigtian : public RooAbsPdf {
 public:

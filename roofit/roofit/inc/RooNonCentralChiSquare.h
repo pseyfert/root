@@ -11,11 +11,9 @@
 #ifndef ROO_NONCENTRALCHISQUARE
 #define ROO_NONCENTRALCHISQUARE
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-#include "RooCategoryProxy.h"
 #include "RooAbsReal.h"
-#include "RooAbsCategory.h"
  
 class RooNonCentralChiSquare : public RooAbsPdf {
 public:

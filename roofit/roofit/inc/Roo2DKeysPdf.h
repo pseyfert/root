@@ -16,10 +16,12 @@
 #ifndef ROO_2DKEYS
 #define ROO_2DKEYS
 
-#include "RooAbsPdf.h"
+#include "RooAbsPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
-#include "RooAbsReal.h"
-#include "RooDataSet.h"
+class RooAbsReal;
+//#include "RooAbsReal.h"
+//#include "RooDataSet.h"
+class RooDataSet;
 
 ////////////////////////////////////////////////////////////////////////////////////
 class Roo2DKeysPdf : public RooAbsPdf 

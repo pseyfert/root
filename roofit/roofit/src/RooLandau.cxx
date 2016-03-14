@@ -22,13 +22,13 @@
 Landau Distribution p.d.f
 **/
 
-#include "TMath.h"
-#include "RooFit.h"
-
-#include "RooLandau.h"
-#include "RooRandom.h"
-
-#include "TError.h"
+#include "RooArgSet.h"                  // for Double_t, Int_t, Bool_t, etc
+#include "RooLandau.h"                  // for RooLandau, RooAbsPdf
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "TError.h"                     // for R__ASSERT
+#include "TMath.h"                      // for Landau
+#include "TRandom.h"                    // for TRandom
 
 using namespace std;
 

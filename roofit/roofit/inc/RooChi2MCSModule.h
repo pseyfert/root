@@ -17,8 +17,7 @@
 #ifndef ROO_CHI2_MCS_MODULE
 #define ROO_CHI2_MCS_MODULE
 
-#include "RooAbsMCStudyModule.h"
-#include <string>
+#include "RooAbsMCStudyModule.h" // IWYU pragma: export
 
 class RooChi2MCSModule : public RooAbsMCStudyModule {
 public:

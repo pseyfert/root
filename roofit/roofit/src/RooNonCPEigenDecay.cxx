@@ -45,14 +45,23 @@ get the parameters used here you have to change the sign of both
 where Q denotes the charge of the \f$\rho\f$ meson.
 **/
 
-#include "RooFit.h"
+#include <assert.h>                     // for assert
+#include <math.h>                       // for log, sqrt, cos, sin
+#include <iostream>                     // for operator<<, basic_ostream, etc
 
-#include "Riostream.h"
-#include "RooRealVar.h"
-#include "RooRandom.h"
-#include "RooNonCPEigenDecay.h"
-#include "TMath.h"
-#include "RooRealIntegral.h"
+#include "RooAbsCategory.h"             // for RooAbsCategory
+#include "RooArgList.h"                 // for RooArgList, Double_t, Int_t
+#include "RooArgSet.h"                  // for Double_t, RooArgSet, Int_t, etc
+#include "RooCategoryProxy.h"           // for RooCategoryProxy
+#include "RooNonCPEigenDecay.h"         // for RooNonCPEigenDecay, etc
+#include "RooRandom.h"                  // for RooRandom
+#include "RooRealIntegral.h"            // for RooRealIntegral
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for RooAbsReal, RooRealVar, etc
+#include "TMath.h"                      // for Power
+#include "TMathBase.h"                  // for Abs
+
+class RooResolutionModel;
 
 using namespace std;
 

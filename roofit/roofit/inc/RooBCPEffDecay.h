@@ -16,7 +16,7 @@
 #ifndef ROO_BCP_EFF_DECAY
 #define ROO_BCP_EFF_DECAY
 
-#include "RooAbsAnaConvPdf.h"
+#include "RooAbsAnaConvPdf.h" // IWYU pragma: export
 #include "RooRealProxy.h"
 #include "RooCategoryProxy.h"
 

@@ -20,18 +20,17 @@
 RooArgusBG is a RooAbsPdf implementation describing the ARGUS background shape.
 */
 
-#include "RooFit.h"
+#include <math.h>                       // for sqrt, exp, atan2
 
-#include "Riostream.h"
-#include <math.h>
+#include "RooArgusBG.h"                 // for RooArgusBG, RooAbsPdf, etc
+#include "RooMath.h"                    // for RooMath
+#include "RooRealConstant.h"            // for RooRealConstant
+#include "RooRealProxy.h"               // for RooRealProxy
+#include "RooRealVar.h"                 // for Double_t, Int_t, ClassImp, etc
+#include "TError.h"                     // for R__ASSERT
+#include "TMath.h"                      // for Power
 
-#include "RooArgusBG.h"
-#include "RooRealVar.h"
-#include "RooRealConstant.h"
-#include "RooMath.h"
-#include "TMath.h"
-
-#include "TError.h"
+class RooArgSet;
 
 using namespace std;
 
