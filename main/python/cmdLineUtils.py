@@ -259,6 +259,9 @@ def openROOTFile(fileName, mode="read"):
     """
     Open the ROOT file corresponding to fileName in the corresponding mode,
     redirecting the output not to see missing dictionnaries
+
+    Returns:
+        theFile (TFile)
     """
     #with stderrRedirected():
     with _setIgnoreLevel(ROOT.kError):
@@ -437,6 +440,21 @@ def getSourceListArgs(parser, wildcards = True):
 def getSourceListOptDict(parser, wildcards = True):
     """
     Get the list of tuples and the dictionary with options
+
+    returns:
+        sourceList: a list of tuples with one list element per file
+                    the first tuple entry being the root file,
+                    the second a list of subdirectories,
+                        each being represented as a list itself with a string per level
+                    e.g.
+                    rootls tutorial/tmva/TMVA.root:Method_BDT/BDT turns into
+                    [('tutorials/tmva/TMVA.root', [['Method_BDT','BDT']])]
+        vars(args): a dictionary of matched options, e.g.
+                    {'longListing': False,
+                     'oneColumn': False,
+                     'treeListing': False,
+                     'FILE': ['tutorials/tmva/TMVA.root:Method_BDT/BDT']
+                     }
     """
     sourceList, args = getSourceListArgs(parser, wildcards)
     if sourceList == []:
@@ -873,35 +891,6 @@ LONG_TEMPLATE = \
     isSpecial(ANSI_BOLD,"{0:{classWidth}}")+"{1:{timeWidth}}" + \
     "{2:{nameWidth}}{3:{titleWidth}}"
 
-def _rootLsPrintLongLs(keyList,indent,treeListing):
-    """Print a list of Tkey in columns
-    pattern : classname, datetime, name and title"""
-    if len(keyList) > 0: # Width informations
-        maxCharClass = max([len(key.GetClassName()) for key in keyList])
-        maxCharTime = 12
-        maxCharName = max([len(key.GetName()) for key in keyList])
-        dic = { \
-            "classWidth":maxCharClass+2, \
-            "timeWidth":maxCharTime+2, \
-            "nameWidth":maxCharName+2, \
-            "titleWidth":1}
-    date = ROOT.Long(0)
-    for key in keyList:
-        datime = key.GetDatime()
-        time = datime.GetTime()
-        date = datime.GetDate()
-        time = _prepareTime(time)
-        rec = \
-            [key.GetClassName(), \
-            MONTH[int(str(date)[4:6])]+" " +str(date)[6:]+ \
-            " "+time[:2]+":"+time[2:4], \
-            key.GetName(), \
-            "\""+key.GetTitle()+"\""]
-        write(LONG_TEMPLATE.format(*rec,**dic),indent,end="\n")
-        if treeListing and isTreeKey(key):
-            tree = key.ReadObj()
-            _recursifTreePrinter(tree,indent+2)
-
 ##
 # The code of the getTerminalSize function can be found here :
 # https://gist.github.com/jtriley/1108174
@@ -991,6 +980,35 @@ def _get_terminal_size_linux():
 # End of getTerminalSize code
 ##
 
+def _rootLsPrintLongLs(keyList,indent,treeListing):
+    """Print a list of Tkey in columns
+    pattern : classname, datetime, name and title"""
+    if len(keyList) > 0: # Width informations
+        maxCharClass = max([len(key.GetClassName()) for key in keyList])
+        maxCharTime = 12
+        maxCharName = max([len(key.GetName()) for key in keyList])
+        dic = { \
+            "classWidth":maxCharClass+2, \
+            "timeWidth":maxCharTime+2, \
+            "nameWidth":maxCharName+2, \
+            "titleWidth":1}
+    date = ROOT.Long(0)
+    for key in keyList:
+        datime = key.GetDatime()
+        time = datime.GetTime()
+        date = datime.GetDate()
+        time = _prepareTime(time)
+        rec = \
+            [key.GetClassName(), \
+            MONTH[int(str(date)[4:6])]+" " +str(date)[6:]+ \
+            " "+time[:2]+":"+time[2:4], \
+            key.GetName(), \
+            "\""+key.GetTitle()+"\""]
+        write(LONG_TEMPLATE.format(*rec,**dic),indent,end="\n")
+        if treeListing and isTreeKey(key):
+            tree = key.ReadObj()
+            _recursifTreePrinter(tree,indent+2)
+
 def _rootLsPrintSimpleLs(keyList,indent,oneColumn):
     """Print list of strings in columns
     - blue for directories
@@ -1051,11 +1069,32 @@ def _rootLsPrint(keyList, indent, oneColumn, \
 
 def _rootLsProcessFile(fileName, pathSplitList, manySources, indent, \
                        oneColumn, longListing, treeListing):
+    '''rootls main routine for one file looping over paths in the file
+
+    sorts out directories and key, and loops over all paths, then forwards to
+    (_rootLsPrintLongLs or _rootLsPrintSimpleLs) - split in _rootLsPrint
+
+    args:
+       oneColumn   (bool):
+       longListing (bool):
+       treeListing (bool):
+       indent       (int): how many columns the printout should be indented globally
+       manySources (bool): if more than one file is printed
+       fileName     (str): the root file name
+       pathSplitList: a list of subdirectories,
+                       each being represented as a list itself with a string per level
+                       e.g.
+                       [['Method_BDT','BDT']]
+    Returns:
+        retcode (int): 0 in case of success, 1 if the file could not be opened
+    '''
     retcode = 0
     rootFile = openROOTFile(fileName)
     if not rootFile: return 1
 
     keyList,dirList = keyClassSpliter(rootFile,pathSplitList)
+    # keyList lists the TKey objects from pathSplitList
+    # dirList is 'just the pathSplitList' for what aren't TKeys
     if manySources: write("{0} :".format(fileName)+"\n")
     _rootLsPrint(keyList, indent, oneColumn, longListing, treeListing)
 
@@ -1072,8 +1111,26 @@ def _rootLsProcessFile(fileName, pathSplitList, manySources, indent, \
     return retcode
 
 def rootLs(sourceList, oneColumn=False, longListing=False, treeListing=False):
+    '''rootls main routine for an arbitrary number of files
+
+    args:
+       oneColumn   (bool):
+       longListing (bool):
+       treeListing (bool):
+       sourceList: a list of tuples with one list element per file
+                   the first tuple entry being the root file,
+                   the second a list of subdirectories,
+                       each being represented as a list itself with a string per level
+                   e.g.
+                   rootls tutorial/tmva/TMVA.root:Method_BDT/BDT turns into
+                   [('tutorials/tmva/TMVA.root', [['Method_BDT','BDT']])]
+
+    returns:
+       retcode (int): 0 in case of success
+    '''
     # Check arguments
     if sourceList == []: return 1
+    # sort sourceList according to filenames
     tupleListSort(sourceList)
 
     # Loop on the ROOT files
