@@ -9241,6 +9241,12 @@ void THistPainter::SetHistogram(TH1 *h)
    fFunctions = fH->GetListOfFunctions();
 }
 
+Hoption_t* THistPainter::parseresult(Option_t* choptin) {
+  if (NULL!=choptin) MakeChopt(choptin);
+  return &Hoption;
+}
+
+
 ////////////////////////////////////////////////////////////////////////////////
 /// Initialize various options to draw 2D histograms.
 

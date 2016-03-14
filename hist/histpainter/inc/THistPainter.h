@@ -30,7 +30,7 @@
 
 #include <vector>
 #include <utility>
-
+class Hoption_t;
 
 class TH1;
 class TAxis;
@@ -70,6 +70,7 @@ protected:
 
 public:
    THistPainter();
+   virtual Hoption_t* parseresult(Option_t *option);
    virtual ~THistPainter();
    virtual void       DefineColorLevels(Int_t ndivz);
    virtual Int_t      DistancetoPrimitive(Int_t px, Int_t py);
