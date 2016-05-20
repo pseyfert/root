@@ -18,7 +18,7 @@ Describes a persistent version of a class.
 A ROOT file contains the list of TStreamerInfo objects for all the
 class versions written to this file.
 When reading a file, all the TStreamerInfo objects are read back in
-memory and registered to the TClass list of TStreamerInfo.                                                             
+memory and registered to the TClass list of TStreamerInfo.
 One can see the list and contents of the TStreamerInfo on a file
 with, e.g.,
 ~~~{.cpp}
@@ -127,6 +127,13 @@ static void R__TObjArray_InsertBefore(TObjArray *arr, TObject *newobj, TObject *
    }
    R__TObjArray_InsertAt(arr, newobj, at);
 }
+
+enum class EUniquePtrOffset : char
+   {
+      kNA = 0,
+      kZero = 1,
+      kNonZero = 2
+   };
 
 ////////////////////////////////////////////////////////////////////////////////
 /// Default ctor.
@@ -366,6 +373,8 @@ void TStreamerInfo::Build()
 
    Int_t dsize;
    TDataMember* dm = 0;
+   std::string uniquePtrTypeNameBuf;
+   std::string uniquePtrTrueTypeNameBuf;
    TIter nextd(fClass->GetListOfDataMembers());
    while ((dm = (TDataMember*) nextd())) {
       if (fClass->GetClassVersion() == 0) {
@@ -381,11 +390,72 @@ void TStreamerInfo::Build()
       }
       TStreamerElement* element = 0;
       dsize = 0;
-      const char* dmName = dm->GetName();
+
+      // Let's treat the unique_ptr case
+      const char* dmName  = dm->GetName();
       const char* dmTitle = dm->GetTitle();
-      const char* dmType = dm->GetTypeName();
-      const char* dmFull = dm->GetTrueTypeName(); // Used to be GetFullTypeName ...
+      const char* dmType  = dm->GetTypeName();
+      const char* dmFull  = dm->GetTrueTypeName(); // Used to be GetFullTypeName ...
       Bool_t dmIsPtr = dm->IsaPointer();
+
+      bool isUniquePtr = TClassEdit::IsUniquePtr(dmType);
+      if (isUniquePtr) {
+         // Now check if the implementation of the unique_ptr allows to stream it
+         // as a normal pointer
+         uniquePtrTypeNameBuf = TClassEdit::GetUniquePtrType(dmType);
+         dmType = uniquePtrTypeNameBuf.c_str();
+         uniquePtrTrueTypeNameBuf = uniquePtrTypeNameBuf + "*";
+         dmFull = uniquePtrTrueTypeNameBuf.c_str();
+         dmIsPtr = true;
+         dmTitle = "->";
+      }
+
+      // Let's check if we have a collection of unique pointers of T.
+      // In this case, we'll transform it in a collection of T*.
+      // e.g. list<unique_ptr<T>> --> list<T*>
+      bool isUniquePtrColl = false;
+      auto stlContType = dm->IsSTLContainer();
+      if (stlContType) {
+         // Simple case: something like stlcoll<T>, e.g. list or vector.
+         std::vector<std::string> v;
+         int i;
+         TClassEdit::GetSplit(dmType, v, i);
+         bool isArg1UniquePtr = TClassEdit::IsUniquePtr(v[1]);
+         bool isMapColl = stlContType == ROOT::kSTLmap ||
+                          stlContType == ROOT::kSTLunorderedmap ||
+                          stlContType == ROOT::kSTLmultimap ||
+                          stlContType == ROOT::kSTLunorderedmultimap;
+         bool isArg2UniquePtr = TClassEdit::IsUniquePtr(v[2]);
+         isUniquePtrColl = isArg1UniquePtr || isArg2UniquePtr;
+
+         // We could have a container with one or two template arguments, e.g.
+         // a forward_list or a map.
+         if (isUniquePtrColl) {
+            uniquePtrTypeNameBuf = v[0] + "<";
+
+            if (isArg1UniquePtr) {
+               uniquePtrTypeNameBuf += TClassEdit::GetUniquePtrType(v[1]);
+               uniquePtrTypeNameBuf += "*";
+            } else {
+               uniquePtrTypeNameBuf += v[1];
+            }
+
+            if (isMapColl){
+               uniquePtrTypeNameBuf += ",";
+               if (isArg2UniquePtr) {
+                  uniquePtrTypeNameBuf += TClassEdit::GetUniquePtrType(v[2]);
+                  uniquePtrTypeNameBuf += "*";
+               } else {
+                  uniquePtrTypeNameBuf += v[2];
+               }
+            }
+            uniquePtrTypeNameBuf += ">";
+            dmType = uniquePtrTypeNameBuf.c_str();
+            dmFull = uniquePtrTypeNameBuf.c_str();
+         }
+      }
+
+
       TDataMember* dmCounter = 0;
       if (dmIsPtr) {
          //
@@ -458,19 +528,29 @@ void TStreamerInfo::Build()
          if (!strcmp(dmType, "string") || !strcmp(dmType, "std::string") || !strcmp(dmType, full_string_name)) {
             element = new TStreamerSTLstring(dmName, dmTitle, offset, dmFull, dmIsPtr);
          } else if (dm->IsSTLContainer()) {
-            TVirtualCollectionProxy *proxy = TClass::GetClass(dm->GetTypeName() /* the underlying type */)->GetCollectionProxy();
+            TVirtualCollectionProxy *proxy = TClass::GetClass(dmType /* the underlying type */)->GetCollectionProxy();
             if (proxy) element = new TStreamerSTL(dmName, dmTitle, offset, dmFull, *proxy, dmIsPtr);
-            else element = new TStreamerSTL(dmName, dmTitle, offset, dmFull, dm->GetTrueTypeName(), dmIsPtr);
+            else element = new TStreamerSTL(dmName, dmTitle, offset, dmFull, dmFull, dmIsPtr);
             if (((TStreamerSTL*)element)->GetSTLtype() != ROOT::kSTLvector) {
+               auto printErrorMsg = [&](const char* category)
+                  {
+                     std::string uptr_msg;
+                     if (isUniquePtrColl) {
+                        uptr_msg = ": the collection \"";
+                        uptr_msg += element->GetClassPointer()->GetName();
+                        uptr_msg += "\" should be selected to allow ROOT to perform I/O operations";
+                     }
+                     Error("Build","The class \"%s\" is %s and for its data member \"%s\" we do not have a dictionary for the collection \"%s\"%s. Because of this, we will not be able to read or write this data member.",GetName(), category, dmName, dm->GetTypeName(), uptr_msg.c_str());
+                  };
                if (fClass->IsLoaded()) {
                   if (!element->GetClassPointer()->IsLoaded()) {
-                     Error("Build","The class \"%s\" is compiled and for its the data member \"%s\", we do not have a dictionary for the collection \"%s\", we will not be able to read or write this data member.",GetName(),dmName,element->GetClassPointer()->GetName());
+                     printErrorMsg("compiled");
                      delete element;
                      continue;
                   }
                } else if (fClass->GetState() == TClass::kInterpreted) {
                   if (element->GetClassPointer()->GetCollectionProxy()->GetProperties() & TVirtualCollectionProxy::kIsEmulated) {
-                     Error("Build","The class \"%s\" is interpreted and for its the data member \"%s\", we do not have a dictionary for the collection \"%s\", we will not be able to read or write this data member.",GetName(),dmName,element->GetClassPointer()->GetName());
+                     printErrorMsg("interpreted");
                      delete element;
                      continue;
                   }
@@ -1851,7 +1931,10 @@ void TStreamerInfo::BuildOld()
                }
 
                if (!bc) {
-                  Error("BuildOld", "Could not find STL base class: %s for %s\n", element->GetName(), GetName());
+                  // Error("BuildOld", "Could not find STL base class: %s for %s\n", element->GetName(), GetName());
+                  offset = kMissing;
+                  element->SetOffset(kMissing);
+                  element->SetNewType(-1);
                   continue;
                } else if (bc->GetClassPointer()->GetCollectionProxy()
                           && !bc->GetClassPointer()->IsLoaded()
@@ -1990,9 +2073,26 @@ void TStreamerInfo::BuildOld()
       Int_t newType = -1;
       TClassRef newClass;
 
+      // at this point, we still may not have a dm
+      std::string uniquePtrTypeNameBuf;
+      const char* dmType = nullptr;
+      Bool_t dmIsPtr = false;
+      if (dm) {
+         dmType = dm->GetTypeName();
+         dmIsPtr = dm->IsaPointer();
+      }
+
+
+      bool isUniquePtr = (nullptr != dm) && TClassEdit::IsUniquePtr(dmType);
+      if (isUniquePtr) {
+         dmIsPtr = true;
+         uniquePtrTypeNameBuf = TClassEdit::GetUniquePtrType(dmType);
+         dmType = uniquePtrTypeNameBuf.c_str();
+      }
+
+
       if (dm && dm->IsPersistent()) {
          if (dm->GetDataType()) {
-            Bool_t isPointer = dm->IsaPointer();
             Bool_t isArray = element->GetArrayLength() >= 1;
             Bool_t hasCount = element->HasCounter();
             // data member is a basic type
@@ -2003,16 +2103,16 @@ void TStreamerInfo::BuildOld()
                // All the values of EDataType have the same semantic in EReadWrite
                newType = (EReadWrite)dm->GetDataType()->GetType();
             }
-            if ((newType == ::kChar_t) && isPointer && !isArray && !hasCount) {
+            if ((newType == ::kChar_t) && dmIsPtr && !isArray && !hasCount) {
                newType = ::kCharStar;
-            } else if (isPointer) {
+            } else if (dmIsPtr) {
                newType += kOffsetP;
             } else if (isArray) {
                newType += kOffsetL;
             }
          }
          if (newType == -1) {
-            newClass = TClass::GetClass(dm->GetTypeName());
+            newClass = TClass::GetClass(dmType);
          }
       } else {
          // Either the class is not loaded or the data member is gone
@@ -2060,7 +2160,7 @@ void TStreamerInfo::BuildOld()
          newClass.Reset();
          TClass* oldClass = TClass::GetClass(TClassEdit::ShortType(element->GetTypeName(), TClassEdit::kDropTrailStar).c_str());
          if (oldClass == newClass.GetClass()) {
-            // Nothing to do :)
+            // Nothing to do, also in the unique_ptr case :)
          } else if (ClassWasMovedToNamespace(oldClass, newClass.GetClass())) {
             Int_t oldv;
             if (0 != (oldv = ImportStreamerInfo(oldClass, newClass.GetClass()))) {
@@ -2178,8 +2278,8 @@ void TStreamerInfo::BuildOld()
          Bool_t cannotConvert = kFALSE;
          if (element->GetNewType() != -2) {
             if (dm) {
-               if (dm->IsaPointer()) {
-                  if (strncmp(dm->GetTitle(),"->",2)==0) {
+               if (dmIsPtr) {
+                  if (isUniquePtr || strncmp(dm->GetTitle(),"->",2)==0) {
                      // We are fine, nothing to do.
                      if (newClass->IsTObject()) {
                         newType = kObjectp;
@@ -2212,7 +2312,7 @@ void TStreamerInfo::BuildOld()
                      newType = kAny;
                   }
                }
-               if ((!dm->IsaPointer() || newType==kSTLp) && dm->GetArrayDim() > 0) {
+               if ((!dmIsPtr || newType==kSTLp) && dm->GetArrayDim() > 0) {
                   newType += kOffsetL;
                }
             } else if (!fClass->IsLoaded()) {
@@ -2263,6 +2363,7 @@ void TStreamerInfo::BuildOld()
                   }
                } else {
                   // We have no clue
+                  printf("%s We have no clue\n", dm->GetName());
                   cannotConvert = kTRUE;
                }
             } else if (element->GetType() == kObjectP || element->GetType() == kAnyP) {
@@ -3649,6 +3750,10 @@ void TStreamerInfo::GenerateDeclaration(FILE *fp, FILE *sfp, const TList *subCla
 
 UInt_t TStreamerInfo::GenerateIncludes(FILE *fp, char *inclist, const TList *extrainfos)
 {
+   if (inclist[0]==0) {
+      // Always have this include for ClassDef.
+      TMakeProject::AddInclude( fp, "Rtypes.h", kFALSE, inclist);
+   }
    UInt_t ninc = 0;
 
    const char *clname = GetName();
@@ -3712,9 +3817,6 @@ UInt_t TStreamerInfo::GenerateIncludes(FILE *fp, char *inclist, const TList *ext
          // This is a template, we need to check the template parameter.
          ninc += TMakeProject::GenerateIncludeForTemplate(fp, element->GetTypeName(), inclist, kFALSE, extrainfos);
       }
-   }
-   if (inclist[0]==0) {
-      TMakeProject::AddInclude( fp, "TNamed.h", kFALSE, inclist);
    }
    return ninc;
 }
@@ -3923,7 +4025,7 @@ Int_t TStreamerInfo::GetSizeElements() const
 ////////////////////////////////////////////////////////////////////////////////
 /// Return the StreamerElement of "datamember" inside our
 /// class or any of its base classes.
-/// 
+///
 /// The offset information
 /// contained in the StreamerElement is related to its immediately
 /// containing class, so we return in 'offset' the offset inside
@@ -4714,6 +4816,7 @@ void TStreamerInfo::DestructorImpl(void* obj, Bool_t dtorOnly)
          case TStreamerInfo::kOffsetP + TStreamerInfo::kUInt:   DeleteBasicPointer(eaddr,ele,UInt_t);  continue;
          case TStreamerInfo::kOffsetP + TStreamerInfo::kULong:  DeleteBasicPointer(eaddr,ele,ULong_t);  continue;
          case TStreamerInfo::kOffsetP + TStreamerInfo::kULong64:DeleteBasicPointer(eaddr,ele,ULong64_t);  continue;
+         case TStreamerInfo::kCharStar:                         DeleteBasicPointer(eaddr,ele,Char_t);  continue;
       }
 
 

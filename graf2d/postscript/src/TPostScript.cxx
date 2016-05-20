@@ -366,6 +366,7 @@ void TPostScript::Open(const char *fname, Int_t wtype)
    fZone          = kFALSE;
    fSave          = 0;
    fFontEmbed     = kFALSE;
+   SetLineJoin(gStyle->GetJoinLinePS());
    SetLineScale(gStyle->GetLineScalePS());
    gStyle->GetPaperSize(fXsize, fYsize);
    fMode          = fType%10;
@@ -2418,12 +2419,14 @@ void TPostScript::SetLineColor( Color_t cindex )
 ///
 /// To change the line join behaviour just do:
 /// ~~~ {.cpp}
-/// TPostScript::SetLineJoin(2); // Set the PS line join to bevel.
+/// gStyle->SetLineJoinPS(2); // Set the PS line join to bevel.
 /// ~~~
 
 void TPostScript::SetLineJoin( Int_t linejoin )
 {
    fgLineJoin = linejoin;
+   if (fgLineJoin<0) fgLineJoin=0;
+   if (fgLineJoin>2) fgLineJoin=2;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2602,9 +2605,9 @@ void TPostScript::Text(Double_t xx, Double_t yy, const char *chars)
 
    // Text alignment.
    Int_t txalh = fTextAlign/10;
-   if (txalh <1) txalh = 1; if (txalh > 3) txalh = 3;
+   if (txalh <1) txalh = 1; else if (txalh > 3) txalh = 3;
    Int_t txalv = fTextAlign%10;
-   if (txalv <1) txalv = 1; if (txalv > 3) txalv = 3;
+   if (txalv <1) txalv = 1; else if (txalv > 3) txalv = 3;
    if (txalv == 3) {
       y -= 0.8*tsizey*TMath::Cos(kDEGRAD*fTextAngle);
       x += 0.8*tsizex*TMath::Sin(kDEGRAD*fTextAngle);
@@ -2810,9 +2813,9 @@ void TPostScript::Text(Double_t xx, Double_t yy, const wchar_t *chars)
 
    // Text alignment.
    Int_t txalh = fTextAlign/10;
-   if (txalh <1) txalh = 1; if (txalh > 3) txalh = 3;
+   if (txalh <1) txalh = 1; else if (txalh > 3) txalh = 3;
    Int_t txalv = fTextAlign%10;
-   if (txalv <1) txalv = 1; if (txalv > 3) txalv = 3;
+   if (txalv <1) txalv = 1; else if (txalv > 3) txalv = 3;
    if (txalv == 3) {
       y -= 0.8*tsizey*TMath::Cos(kDEGRAD*fTextAngle);
       x += 0.8*tsizex*TMath::Sin(kDEGRAD*fTextAngle);

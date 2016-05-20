@@ -377,10 +377,12 @@ Bool_t PyROOT::Utility::AddBinaryOperator( PyObject* pyclass, const std::string&
 // For GNU on clang, search the internal __gnu_cxx namespace for binary operators (is
 // typically the case for STL iterators operator==/!=.
    static TClassRef gnucxx( "__gnu_cxx" );
+   static bool gnucxx_exists = (bool)gnucxx.GetClass();
 
 // Same for clang on Mac. TODO: find proper pre-processor magic to only use those specific
 // namespaces that are actually around; although to be sure, this isn't expensive.
    static TClassRef std__1( "std::__1" );
+   static bool std__1_exists = (bool)std__1.GetClass();
 
 // One more, mostly for Mac, but again not sure whether this is not a general issue. Some
 // operators are declared as friends only in classes, so then they're not found in the
@@ -389,12 +391,12 @@ Bool_t PyROOT::Utility::AddBinaryOperator( PyObject* pyclass, const std::string&
    static TClassRef _pr_int( "_pyroot_internal" );
 
    PyCallable* pyfunc = 0;
-   if ( gnucxx.GetClass() ) {
+   if ( gnucxx_exists ) {
       Cppyy::TCppMethod_t func = FindAndAddOperator( lcname, rcname, op, gnucxx.GetClass() );
       if ( func ) pyfunc = new TFunctionHolder( Cppyy::GetScope( "__gnu_cxx" ), func );
    }
 
-   if ( ! pyfunc && std__1.GetClass() ) {
+   if ( ! pyfunc && std__1_exists ) {
       Cppyy::TCppMethod_t func = FindAndAddOperator( lcname, rcname, op, std__1.GetClass() );
       if ( func ) pyfunc = new TFunctionHolder( Cppyy::GetScope( "std::__1" ), func );
    }
@@ -481,24 +483,21 @@ PyObject* PyROOT::Utility::BuildTemplateName( PyObject* pyname, PyObject* args, 
          }
 
          PyROOT_PyUnicode_AppendAndDel( &pyname, tpName );
-      } else {
-      // last ditch attempt, works for things like int values; since this is a
-      // source of errors otherwise, it is limited to specific types and not
-      // generally used (str(obj) can print anything ...)
-         PyObject* pystr = 0;
-         if ( PyInt_Check( tn ) || PyLong_Check( tn ) || PyFloat_Check( tn ) )
-            pystr = PyObject_Str( tn );
-
-         if ( ! pystr ) {
-            Py_DECREF( pyname );
-            return 0;
-         }
+      } else if ( PyInt_Check( tn ) || PyLong_Check( tn ) || PyFloat_Check( tn ) ) {
+         // last ditch attempt, works for things like int values; since this is a
+         // source of errors otherwise, it is limited to specific types and not
+         // generally used (str(obj) can print anything ...)
+         PyObject* pystr = PyObject_Str( tn );
          PyROOT_PyUnicode_AppendAndDel( &pyname, pystr );
+      } else {
+         Py_DECREF( pyname );
+         PyErr_SetString( PyExc_SyntaxError, "could not get __name__ from provided template argument. Is it a str, class, type or int?" );
+         return 0;
       }
 
    // add a comma, as needed
       if ( i != nArgs - 1 )
-         PyROOT_PyUnicode_AppendAndDel( &pyname, PyROOT_PyUnicode_FromString( "," ) );
+         PyROOT_PyUnicode_AppendAndDel( &pyname, PyROOT_PyUnicode_FromString( ", " ) );
    }
 
 // close template name; prevent '>>', which should be '> >'
@@ -560,6 +559,11 @@ int PyROOT::Utility::GetBuffer( PyObject* pyobject, char tc, int size, void*& bu
       (*(bufprocs->bf_getbuffer))( pyobject, &bufinfo, PyBUF_WRITABLE );
       buf = (char*)bufinfo.buf;
       Py_ssize_t buflen = bufinfo.len;
+#if PY_VERSION_HEX < 0x03010000
+      PyBuffer_Release( pyobject, &bufinfo );
+#else
+      PyBuffer_Release( &bufinfo );
+#endif
 #endif
 
       if ( buf && check == kTRUE ) {
@@ -804,6 +808,8 @@ void PyROOT::Utility::ErrMsgHandler( int level, Bool_t abort, const char* locati
    if (level >= kError)
       ::DefaultErrorHandler( level, abort, location, msg );
    else if ( level >= kWarning ) {
+      static const char* emptyString = "";
+      if (!location) location = emptyString;
    // either printout or raise exception, depending on user settings
       PyErr_WarnExplicit( NULL, (char*)msg, (char*)location, 0, (char*)"ROOT", NULL );
    }

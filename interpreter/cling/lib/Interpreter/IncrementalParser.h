@@ -102,10 +102,11 @@ namespace cling {
     typedef llvm::PointerIntPair<Transaction*, 2, EParseResult>
       ParseResultTransaction;
     IncrementalParser(Interpreter* interp, int argc, const char* const *argv,
-                      const char* llvmdir);
+                      const char* llvmdir, bool isChildInterpreter);
     ~IncrementalParser();
 
-    void Initialize(llvm::SmallVectorImpl<ParseResultTransaction>& result);
+    void Initialize(llvm::SmallVectorImpl<ParseResultTransaction>& result,
+                    bool isChildInterpreter);
     clang::CompilerInstance* getCI() const { return m_CI.get(); }
     clang::Parser* getParser() const { return m_Parser.get(); }
     clang::CodeGenerator* getCodeGenerator() const { return m_CodeGen.get(); }
@@ -221,6 +222,10 @@ namespace cling {
     ///
     bool runStaticInitOnTransaction(Transaction* T) const;
 
+    ///\brief Add the trnasformers to the Incremental Parser.
+    ///
+    void SetTransformers(bool isChildInterpreter);
+
   private:
     ///\brief Finalizes the consumers (e.g. CodeGen) on a transaction.
     ///
@@ -251,6 +256,7 @@ namespace cling {
     /// duplicated by CodeGen.
     ///
     bool shouldIgnore(const clang::Decl* D) const;
+
   };
 } // end namespace cling
 #endif // CLING_INCREMENTAL_PARSER_H

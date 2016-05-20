@@ -43,7 +43,7 @@ public:
    // we trust that decltype(redfunc(std::vector<decltype(func(args[0]))>)) == decltype(args[0])
    // TODO document somewhere that fReducedResult must have a default ctor
    TPoolWorker(F func, const std::vector<T> &args, R redfunc) :
-      TMPWorker(), fFunc(func), fArgs(std::move(args)), fRedFunc(redfunc),
+      TMPWorker(), fFunc(func), fArgs(args), fRedFunc(redfunc),
       fReducedResult(), fCanReduce(false)
    {}
    ~TPoolWorker() {}
@@ -62,7 +62,9 @@ public:
          MPSend(s, PoolCode::kIdling);
          // reduce arguments if possible
          if (fCanReduce) {
-            fReducedResult = fRedFunc({res, fReducedResult}); //TODO try not to copy these into a vector, do everything by ref. std::vector<T&>?
+            using FINAL = decltype(fReducedResult);
+            using ORIGINAL = decltype(fRedFunc({res, fReducedResult}));
+            fReducedResult = ROOT::Internal::PoolUtils::ResultCaster<ORIGINAL, FINAL>::CastIfNeeded(fRedFunc({res, fReducedResult})); //TODO try not to copy these into a vector, do everything by ref. std::vector<T&>?
          } else {
             fCanReduce = true;
             fReducedResult = res;

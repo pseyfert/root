@@ -24,7 +24,7 @@ TMVAH1       := Configurable.h Event.h Factory.h MethodBase.h MethodCompositeBas
 		MethodKNN.h MethodCFMlpANN.h MethodCFMlpANN_Utils.h MethodLikelihood.h \
 		MethodHMatrix.h MethodPDERS.h MethodBDT.h MethodDT.h MethodSVM.h MethodBayesClassifier.h \
 		MethodFDA.h MethodMLP.h MethodCommittee.h MethodBoost.h \
-		MethodPDEFoam.h MethodLD.h MethodCategory.h
+		MethodPDEFoam.h MethodLD.h MethodCategory.h MethodNN.h
 TMVAH2       := TSpline2.h TSpline1.h PDF.h BinaryTree.h BinarySearchTreeNode.h BinarySearchTree.h \
 		Timer.h RootFinder.h CrossEntropy.h DecisionTree.h DecisionTreeNode.h MisClassificationError.h \
 		Node.h SdivSqrtSplusB.h SeparationBase.h RegressionVariance.h Tools.h Reader.h \
@@ -50,6 +50,7 @@ TMVAH3       := $(patsubst %,$(MODDIRI)/TMVA/%,$(TMVAH3))
 TMVAH4       := $(patsubst %,$(MODDIRI)/TMVA/%,$(TMVAH4))
 TMVAH        := $(filter-out $(MODDIRI)/LinkDef%,$(wildcard $(MODDIRI)/TMVA/*.h))
 TMVAINCH     := $(patsubst $(MODDIRI)/TMVA/%.h,include/TMVA/%.h,$(TMVAH))
+TMVAINCI     := $(patsubst $(MODDIRI)/TMVA/%.icc,include/TMVA/%.icc,$(MODDIRI)/TMVA/NeuralNet.icc)
 TMVAS        := $(filter-out $(MODDIRS)/G__%,$(wildcard $(MODDIRS)/*.cxx))
 TMVAO        := $(call stripsrc,$(TMVAS:.cxx=.o))
 
@@ -59,7 +60,7 @@ TMVALIB      := $(LPATH)/libTMVA.$(SOEXT)
 TMVAMAP      := $(TMVALIB:.$(SOEXT)=.rootmap)
 
 # used in the main Makefile
-ALLHDRS      += $(TMVAINCH)
+ALLHDRS      += $(TMVAINCH) $(TMVAINCI)
 ALLLIBS      += $(TMVALIB)
 ALLMAPS      += $(TMVAMAP)
 
@@ -75,10 +76,16 @@ include/TMVA/%.h: $(TMVADIRI)/TMVA/%.h
 		fi)
 		cp $< $@
 
+include/TMVA/%.icc: $(TMVADIRI)/TMVA/%.icc
+		@(if [ ! -d "include/TMVA" ]; then     \
+		   mkdir -p include/TMVA;              \
+		fi)
+		cp $< $@
+
 $(TMVALIB):     $(TMVAO) $(TMVADO) $(ORDER_) $(MAINLIBS) $(TMVALIBDEP)
 		@$(MAKELIB) $(PLATFORM) $(LD) "$(LDFLAGS)" \
 		   "$(SOFLAGS)" libTMVA.$(SOEXT) $@ "$(TMVAO) $(TMVADO)" \
-		   "$(TMVALIBEXTRA)"
+		   "$(OSTHREADLIBDIR) $(OSTHREADLIB) $(TMVALIBEXTRA)"
 
 $(call pcmrule,TMVA)
 	$(noop)
@@ -105,12 +112,3 @@ distclean-$(MODNAME): clean-$(MODNAME)
 		@rm -rf include/TMVA
 
 distclean::     distclean-$(MODNAME)
-
-#FIXME: Disable modules build the TMVA's dictionary on macos because there is
-#a bug in the toolchain (ROOT, clang?) saying there are too many open files.
-ifeq ($(CXXMODULES),yes)
-ifeq ($(PLATFORM),macosx)
-$(TMVADO): CXXFLAGS := $(filter-out $(ROOT_CXXMODULES_FLAGS),$(CXXFLAGS))
-         CFLAGS   := $(filter-out $(ROOT_CXXMODULES_FLAGS),$(CFLAGS))
-endif
-endif

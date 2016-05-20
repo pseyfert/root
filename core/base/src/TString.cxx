@@ -10,6 +10,7 @@
  *************************************************************************/
 
 /** \class TString
+\ingroup Base
 
 Basic string class.
 
@@ -276,6 +277,19 @@ TString& TString::operator=(const std::string &s)
       return *this;
    }
    return Replace(0, Length(), s.c_str(), s.length());
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/// Assign std::string s to TString.
+
+TString& TString::operator=(const std::string_view &s)
+{
+   if (s.length()==0) {
+      UnLink();
+      Zero();
+      return *this;
+   }
+   return Replace(0, Length(), s.data(), s.length());
 }
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -129,16 +129,16 @@ ClassImp(TMVA::Reader)
 /// constructor
 
 TMVA::Reader::Reader( const TString& theOption, Bool_t verbose )
-   : Configurable( theOption ),
-     fDataSetManager( NULL ), // DSMTEST
-     fDataSetInfo(),
-     fVerbose( verbose ),
-     fSilent ( kFALSE ),
-     fColor  ( kFALSE ),
-     fCalculateError(kFALSE),
-     fMvaEventError( 0 ),
-     fMvaEventErrorUpper( 0 ),
-     fLogger ( 0 )
+: Configurable( theOption ),
+   fDataSetManager( NULL ), // DSMTEST
+   fDataSetInfo(),
+   fVerbose( verbose ),
+   fSilent ( kFALSE ),
+   fColor  ( kFALSE ),
+   fCalculateError(kFALSE),
+   fMvaEventError( 0 ),
+   fMvaEventErrorUpper( 0 ),
+   fLogger ( 0 )
 {
    fDataSetManager = new DataSetManager( fDataInputHandler ); 
    fDataSetManager->AddDataSetInfo(fDataSetInfo); 
@@ -287,10 +287,14 @@ TMVA::Reader::~Reader( void )
    delete fDataSetManager; // DSMTEST
 
    delete fLogger;
+   
+   for (auto it=fMethodMap.begin(); it!=fMethodMap.end(); it++){
+      MethodBase * kl = dynamic_cast<TMVA::MethodBase*>(it->second);
+      delete kl;
+   }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-/// default initialisation (no member variables)
 /// default initialisation (no member variables)
 
 void TMVA::Reader::Init( void )
@@ -488,14 +492,14 @@ Double_t TMVA::Reader::EvaluateMVA( const std::vector<Float_t>& inputVec, const 
    MethodBase* meth = dynamic_cast<TMVA::MethodBase*>(imeth);
    if(meth==0) return 0;
 
-//   Event* tmpEvent=new Event(inputVec, 2); // ToDo resolve magic 2 issue
+   //   Event* tmpEvent=new Event(inputVec, 2); // ToDo resolve magic 2 issue
    Event* tmpEvent=new Event(inputVec, DataInfo().GetNVariables()); // is this the solution?
    for (UInt_t i=0; i<inputVec.size(); i++){
-     if (TMath::IsNaN(inputVec[i])) {
-       Log() << kERROR << i << "-th variable of the event is NaN --> return MVA value -999, \n that's all I can do, please fix or remove this event." << Endl;
-       delete tmpEvent;
-       return -999;
-     }
+      if (TMath::IsNaN(inputVec[i])) {
+         Log() << kERROR << i << "-th variable of the event is NaN --> return MVA value -999, \n that's all I can do, please fix or remove this event." << Endl;
+         delete tmpEvent;
+         return -999;
+      }
    }
 
    if (meth->GetMethodType() == TMVA::Types::kCuts) {
@@ -534,7 +538,7 @@ Double_t TMVA::Reader::EvaluateMVA( const TString& methodTag, Double_t aux )
    std::map<TString, IMethod*>::iterator it = fMethodMap.find( methodTag );
    if (it == fMethodMap.end()) {
       Log() << kINFO << "<EvaluateMVA> unknown classifier in map; "
-              << "you looked for \"" << methodTag << "\" within available methods: " << Endl;
+            << "you looked for \"" << methodTag << "\" within available methods: " << Endl;
       for (it = fMethodMap.begin(); it!=fMethodMap.end(); it++) Log() << " --> " << it->first << Endl;
       Log() << "Check calling string" << kFATAL << Endl;
    }
@@ -550,10 +554,10 @@ Double_t TMVA::Reader::EvaluateMVA( const TString& methodTag, Double_t aux )
    // it is not again checked in each of these subsequet calls..
    const Event* ev = kl->GetEvent();
    for (UInt_t i=0; i<ev->GetNVariables(); i++){
-     if (TMath::IsNaN(ev->GetValue(i))) {
-       Log() << kERROR << i << "-th variable of the event is NaN --> return MVA value -999, \n that's all I can do, please fix or remove this event." << Endl;
-       return -999;
-     }
+      if (TMath::IsNaN(ev->GetValue(i))) {
+         Log() << kERROR << i << "-th variable of the event is NaN --> return MVA value -999, \n that's all I can do, please fix or remove this event." << Endl;
+         return -999;
+      }
    }
    return this->EvaluateMVA( kl, aux );
 }
@@ -585,7 +589,7 @@ const std::vector< Float_t >& TMVA::Reader::EvaluateRegression( const TString& m
    std::map<TString, IMethod*>::iterator it = fMethodMap.find( methodTag );
    if (it == fMethodMap.end()) {
       Log() << kINFO << "<EvaluateMVA> unknown method in map; "
-              << "you looked for \"" << methodTag << "\" within available methods: " << Endl;
+            << "you looked for \"" << methodTag << "\" within available methods: " << Endl;
       for (it = fMethodMap.begin(); it!=fMethodMap.end(); it++) Log() << " --> " << it->first << Endl;
       Log() << "Check calling string" << kFATAL << Endl;
    }
@@ -599,9 +603,9 @@ const std::vector< Float_t >& TMVA::Reader::EvaluateRegression( const TString& m
    // it is not again checked in each of these subsequet calls..
    const Event* ev = kl->GetEvent();
    for (UInt_t i=0; i<ev->GetNVariables(); i++){
-     if (TMath::IsNaN(ev->GetValue(i))) {
-       Log() << kERROR << i << "-th variable of the event is NaN, \n regression values might evaluate to .. what do I know. \n sorry this warning is all I can do, please fix or remove this event." << Endl;
-     }
+      if (TMath::IsNaN(ev->GetValue(i))) {
+         Log() << kERROR << i << "-th variable of the event is NaN, \n regression values might evaluate to .. what do I know. \n sorry this warning is all I can do, please fix or remove this event." << Endl;
+      }
    }
 
    return this->EvaluateRegression( kl, aux );
@@ -616,9 +620,9 @@ const std::vector< Float_t >& TMVA::Reader::EvaluateRegression( MethodBase* meth
 {
    const Event* ev = method->GetEvent();
    for (UInt_t i=0; i<ev->GetNVariables(); i++){
-     if (TMath::IsNaN(ev->GetValue(i))) {
-       Log() << kERROR << i << "-th variable of the event is NaN, \n regression values might evaluate to .. what do I know. \n sorry this warning is all I can do, please fix or remove this event." << Endl;
-     }
+      if (TMath::IsNaN(ev->GetValue(i))) {
+         Log() << kERROR << i << "-th variable of the event is NaN, \n regression values might evaluate to .. what do I know. \n sorry this warning is all I can do, please fix or remove this event." << Endl;
+      }
    }
    return method->GetRegressionValues();
 }
@@ -650,7 +654,7 @@ const std::vector< Float_t >& TMVA::Reader::EvaluateMulticlass( const TString& m
    std::map<TString, IMethod*>::iterator it = fMethodMap.find( methodTag );
    if (it == fMethodMap.end()) {
       Log() << kINFO << "<EvaluateMVA> unknown method in map; "
-              << "you looked for \"" << methodTag << "\" within available methods: " << Endl;
+            << "you looked for \"" << methodTag << "\" within available methods: " << Endl;
       for (it = fMethodMap.begin(); it!=fMethodMap.end(); it++) Log() << " --> " << it->first << Endl;
       Log() << "Check calling string" << kFATAL << Endl;
    }
@@ -665,9 +669,9 @@ const std::vector< Float_t >& TMVA::Reader::EvaluateMulticlass( const TString& m
 
    const Event* ev = kl->GetEvent();
    for (UInt_t i=0; i<ev->GetNVariables(); i++){
-     if (TMath::IsNaN(ev->GetValue(i))) {
-       Log() << kERROR << i << "-th variable of the event is NaN, \n regression values might evaluate to .. what do I know. \n sorry this warning is all I can do, please fix or remove this event." << Endl;
-     }
+      if (TMath::IsNaN(ev->GetValue(i))) {
+         Log() << kERROR << i << "-th variable of the event is NaN, \n regression values might evaluate to .. what do I know. \n sorry this warning is all I can do, please fix or remove this event." << Endl;
+      }
    }
 
    return this->EvaluateMulticlass( kl, aux );
@@ -682,9 +686,9 @@ const std::vector< Float_t >& TMVA::Reader::EvaluateMulticlass( MethodBase* meth
 {
    const Event* ev = method->GetEvent();
    for (UInt_t i=0; i<ev->GetNVariables(); i++){
-     if (TMath::IsNaN(ev->GetValue(i))) {
-       Log() << kERROR << i << "-th variable of the event is NaN, \n regression values might evaluate to .. what do I know. \n sorry this warning is all I can do, please fix or remove this event." << Endl;
-     }
+      if (TMath::IsNaN(ev->GetValue(i))) {
+         Log() << kERROR << i << "-th variable of the event is NaN, \n regression values might evaluate to .. what do I know. \n sorry this warning is all I can do, please fix or remove this event." << Endl;
+      }
    }
    return method->GetMulticlassValues();
 }
@@ -735,7 +739,7 @@ Double_t TMVA::Reader::GetProba( const TString& methodTag,  Double_t ap_sig, Dou
    if (it == fMethodMap.end()) {
       for (it = fMethodMap.begin(); it!=fMethodMap.end(); it++) Log() << "M" << it->first << Endl;
       Log() << kFATAL << "<EvaluateMVA> unknown classifier in map: " << method << "; "
-              << "you looked for " << methodTag<< " while the available methods are : " << Endl;
+            << "you looked for " << methodTag<< " while the available methods are : " << Endl;
    }
    else method = it->second;
 
@@ -745,10 +749,10 @@ Double_t TMVA::Reader::GetProba( const TString& methodTag,  Double_t ap_sig, Dou
    // it is not again checked in each of these subsequet calls..
    const Event* ev = kl->GetEvent();
    for (UInt_t i=0; i<ev->GetNVariables(); i++){
-     if (TMath::IsNaN(ev->GetValue(i))) {
-       Log() << kERROR << i << "-th variable of the event is NaN --> return MVA value -999, \n that's all I can do, please fix or remove this event." << Endl;
-       return -999;
-     }
+      if (TMath::IsNaN(ev->GetValue(i))) {
+         Log() << kERROR << i << "-th variable of the event is NaN --> return MVA value -999, \n that's all I can do, please fix or remove this event." << Endl;
+         return -999;
+      }
    }
 
    if (mvaVal == -9999999) mvaVal = kl->GetMvaValue();
@@ -766,7 +770,7 @@ Double_t TMVA::Reader::GetRarity( const TString& methodTag, Double_t mvaVal )
    if (it == fMethodMap.end()) {
       for (it = fMethodMap.begin(); it!=fMethodMap.end(); it++) Log() << "M" << it->first << Endl;
       Log() << kFATAL << "<EvaluateMVA> unknown classifier in map: \"" << method << "\"; "
-              << "you looked for \"" << methodTag<< "\" while the available methods are : " << Endl;
+            << "you looked for \"" << methodTag<< "\" while the available methods are : " << Endl;
    }
    else method = it->second;
 
@@ -776,10 +780,10 @@ Double_t TMVA::Reader::GetRarity( const TString& methodTag, Double_t mvaVal )
    // it is not again checked in each of these subsequet calls..
    const Event* ev = kl->GetEvent();
    for (UInt_t i=0; i<ev->GetNVariables(); i++){
-     if (TMath::IsNaN(ev->GetValue(i))) {
-       Log() << kERROR << i << "-th variable of the event is NaN --> return MVA value -999, \n that's all I can do, please fix or remove this event." << Endl;
-       return -999;
-     }
+      if (TMath::IsNaN(ev->GetValue(i))) {
+         Log() << kERROR << i << "-th variable of the event is NaN --> return MVA value -999, \n that's all I can do, please fix or remove this event." << Endl;
+         return -999;
+      }
    }
 
    if (mvaVal == -9999999) mvaVal = kl->GetMvaValue();

@@ -26,10 +26,11 @@ namespace cling {
                                          Sema& S,
                                          const Transaction& T,
                                          unsigned Indentation,
-                                         bool printMacros)
+                                         bool printMacros,
+                                         IgnoreFilesFunc_t ignoreFiles)
     : m_Policy(clang::PrintingPolicy(clang::LangOptions())), m_Log(LogS),
       m_Indentation(Indentation), m_SMgr(S.getSourceManager()),
-      m_Ctx(S.getASTContext()), m_SkipFlag(false) {
+      m_Ctx(S.getASTContext()), m_SkipFlag(false), m_IgnoreFile(ignoreFiles) {
     m_PrintInstantiation = false;
     m_Policy.SuppressTagKeyword = true;
 
@@ -173,7 +174,7 @@ namespace cling {
     // Walk up the include chain.
     PresumedLoc PLoc = m_SMgr.getPresumedLoc(spellingLoc);
     llvm::SmallVector<PresumedLoc, 16> PLocs;
-    while (true) {
+    while (!m_IgnoreFile(PLoc)) {
       if (!m_SMgr.getPresumedLoc(PLoc.getIncludeLoc()).isValid())
         break;
       PLocs.push_back(PLoc);
@@ -1093,9 +1094,12 @@ namespace cling {
     case clang::TemplateArgument::Declaration:
       Visit(TA.getAsDecl());
       break;
-    case clang::TemplateArgument::Template: // intentional fall-through:
-    case clang::TemplateArgument::Pack:
+    case clang::TemplateArgument::Template:
       VisitTemplateName(TA.getAsTemplateOrTemplatePattern());
+      break;
+    case clang::TemplateArgument::Pack:
+      for (const auto& arg : TA.pack_elements())
+        VisitTemplateArgument(arg);
       break;
     case clang::TemplateArgument::Expression:
       {

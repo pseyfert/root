@@ -16,6 +16,7 @@
 #include "IncrementalExecutor.h"
 #include "IncrementalParser.h"
 #include "MultiplexInterpreterCallbacks.h"
+#include "ASTImportSource.h"
 
 #include "cling/Interpreter/CIFactory.h"
 #include "cling/Interpreter/ClangInternalState.h"
@@ -163,7 +164,8 @@ namespace cling {
   }
 
   Interpreter::Interpreter(int argc, const char* const *argv,
-                           const char* llvmdir /*= 0*/, bool noRuntime) :
+                           const char* llvmdir /*= 0*/, bool noRuntime,
+                           bool isChildInterp) :
     m_UniqueCounter(0), m_PrintDebug(false), m_DynamicLookupDeclared(false),
     m_DynamicLookupEnabled(false), m_RawInputEnabled(false) {
 
@@ -180,7 +182,7 @@ namespace cling {
 
     m_IncrParser.reset(new IncrementalParser(this, LeftoverArgs.size(),
                                              &LeftoverArgs[0],
-                                             llvmdir));
+                                             llvmdir, isChildInterp));
 
     Sema& SemaRef = getSema();
     Preprocessor& PP = SemaRef.getPreprocessor();
@@ -202,7 +204,7 @@ namespace cling {
 
     llvm::SmallVector<IncrementalParser::ParseResultTransaction, 2>
       IncrParserTransactions;
-    m_IncrParser->Initialize(IncrParserTransactions);
+    m_IncrParser->Initialize(IncrParserTransactions, isChildInterp);
 
     handleFrontendOptions();
 
@@ -220,9 +222,43 @@ namespace cling {
       m_IncrParser->commitTransaction(I);
     // Disable suggestions for ROOT
     bool showSuggestions = !llvm::StringRef(ClingStringify(CLING_VERSION)).startswith("ROOT");
-    std::unique_ptr<InterpreterCallbacks>
-       AutoLoadCB(new AutoloadCallback(this, showSuggestions));
-    setCallbacks(std::move(AutoLoadCB));
+
+    // We need InterpreterCallbacks only if it is a parent Interpreter.
+    if (!isChildInterp) {
+      std::unique_ptr<InterpreterCallbacks>
+         AutoLoadCB(new AutoloadCallback(this, showSuggestions));
+      setCallbacks(std::move(AutoLoadCB));
+    }
+
+    m_IncrParser->SetTransformers(isChildInterp);
+  }
+
+  ///\brief Constructor for the child Interpreter.
+  /// Passing the parent Interpreter as an argument.
+  ///
+  Interpreter::Interpreter(Interpreter &parentInterpreter, int argc,
+                           const char* const *argv,
+                           const char* llvmdir /*= 0*/, bool noRuntime) :
+    Interpreter(argc, argv, llvmdir, noRuntime, /* isChildInterp */ true) {
+    // Do the "setup" of the connection between this interpreter and
+    // its parent interpreter.
+
+    // The "bridge" between the interpreters.
+    ASTImportSource *myExternalSource =
+      new ASTImportSource(&parentInterpreter, this);
+
+    llvm::IntrusiveRefCntPtr <ExternalASTSource>
+      astContextExternalSource(myExternalSource);
+
+    getCI()->getASTContext().setExternalSource(astContextExternalSource);
+
+    // Inform the Translation Unit Decl of I2 that it has to search somewhere
+    // else to find the declarations.
+    getCI()->getASTContext().getTranslationUnitDecl()->setHasExternalVisibleStorage();
+
+    // Give my IncrementalExecutor a pointer to the Incremental executor of the
+    // parent Interpreter.
+    m_Executor->setExternalIncrementalExecutor(parentInterpreter.m_Executor.get());
   }
 
   Interpreter::~Interpreter() {
@@ -491,8 +527,16 @@ namespace cling {
   Interpreter::CompilationResult
   Interpreter::process(const std::string& input, Value* V /* = 0 */,
                        Transaction** T /* = 0 */) {
-    if (isRawInputEnabled() || !ShouldWrapInput(input))
-      return declare(input, T);
+    if (isRawInputEnabled() || !ShouldWrapInput(input)) {
+      CompilationOptions CO;
+      CO.DeclarationExtraction = 0;
+      CO.ValuePrinting = 0;
+      CO.ResultEvaluation = 0;
+      CO.DynamicScoping = isDynamicLookupEnabled();
+      CO.Debug = isPrintingDebug();
+      CO.CheckPointerValidity = 1;
+      return DeclareInternal(input, CO, T);
+    }
 
     CompilationOptions CO;
     CO.DeclarationExtraction = 1;
@@ -500,6 +544,7 @@ namespace cling {
     CO.ResultEvaluation = (bool)V;
     CO.DynamicScoping = isDynamicLookupEnabled();
     CO.Debug = isPrintingDebug();
+    CO.CheckPointerValidity = 1;
     if (EvaluateInternal(input, CO, V, T) == Interpreter::kFailure) {
       return Interpreter::kFailure;
     }
@@ -597,6 +642,7 @@ namespace cling {
     CO.ResultEvaluation = 0;
     CO.DynamicScoping = isDynamicLookupEnabled();
     CO.Debug = isPrintingDebug();
+    CO.CheckPointerValidity = 0;
 
     return DeclareInternal(input, CO, T);
   }
@@ -961,6 +1007,11 @@ namespace cling {
   Interpreter::DeclareInternal(const std::string& input,
                                const CompilationOptions& CO,
                                Transaction** T /* = 0 */) const {
+    assert(CO.DeclarationExtraction == 0
+           && CO.ValuePrinting == 0
+           && CO.ResultEvaluation == 0
+           && "Compilation Options not compatible with \"declare\" mode.");
+
     StateDebuggerRAII stateDebugger(this);
 
     IncrementalParser::ParseResultTransaction PRT
@@ -1082,7 +1133,15 @@ namespace cling {
 
     std::string code;
     code += "#include \"" + filename + "\"";
-    CompilationResult res = declare(code, T);
+
+    CompilationOptions CO;
+    CO.DeclarationExtraction = 0;
+    CO.ValuePrinting = 0;
+    CO.ResultEvaluation = 0;
+    CO.DynamicScoping = isDynamicLookupEnabled();
+    CO.Debug = isPrintingDebug();
+    CO.CheckPointerValidity = 1;
+    CompilationResult res = DeclareInternal(code, CO, T);
     return res;
   }
 
@@ -1301,12 +1360,13 @@ namespace cling {
   void Interpreter::forwardDeclare(Transaction& T, Sema& S,
                                    llvm::raw_ostream& out,
                                    bool enableMacros /*=false*/,
-                                   llvm::raw_ostream* logs /*=0*/) const {
+                                   llvm::raw_ostream* logs /*=0*/,
+                                   IgnoreFilesFunc_t ignoreFiles /*= return always false*/) const {
     llvm::raw_null_ostream null;
     if (!logs)
       logs = &null;
 
-    ForwardDeclPrinter visitor(out, *logs, S, T);
+    ForwardDeclPrinter visitor(out, *logs, S, T, 0, false, ignoreFiles);
     visitor.printStats();
 
     // Avoid assertion in the ~IncrementalParser.

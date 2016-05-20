@@ -46,6 +46,7 @@ namespace cling {
 
 IncrementalExecutor::IncrementalExecutor(clang::DiagnosticsEngine& diags,
                                          const clang::CodeGenOptions& CGOpt):
+  m_externalIncrementalExecutor(nullptr),
   m_CurrentAtExitModule(0)
 #if 0
   : m_Diags(diags)
@@ -59,8 +60,7 @@ IncrementalExecutor::IncrementalExecutor(clang::DiagnosticsEngine& diags,
   // can use this object yet.
   m_AtExitFuncs.reserve(256);
 
-  m_JIT.reset(new IncrementalJIT(*this,
-                                 std::move(CreateHostTargetMachine(CGOpt))));
+  m_JIT.reset(new IncrementalJIT(*this, CreateHostTargetMachine(CGOpt)));
 }
 
 // Keep in source: ~unique_ptr<ClingJIT> needs ClingJIT
@@ -108,7 +108,7 @@ std::unique_ptr<TargetMachine>
                                           Options,
                                           RelocModel, CMModel,
                                           OptLevel));
-  return std::move(TM);
+  return TM;
 }
 
 void IncrementalExecutor::shuttingDown() {
@@ -150,8 +150,7 @@ void* IncrementalExecutor::HandleMissingFunction(const std::string& mangled_name
   return (void*)reinterpret_cast<size_t>(unresolvedSymbol);
 }
 
-void*
-IncrementalExecutor::NotifyLazyFunctionCreators(const std::string& mangled_name)
+void* IncrementalExecutor::NotifyLazyFunctionCreators(const std::string& mangled_name)
 {
   for (std::vector<LazyFunctionCreatorFunc_t>::iterator it
          = m_lazyFuncCreator.begin(), et = m_lazyFuncCreator.end();
@@ -160,8 +159,12 @@ IncrementalExecutor::NotifyLazyFunctionCreators(const std::string& mangled_name)
     if (ret)
       return ret;
   }
+  llvm::StringRef name(mangled_name);
+  void *address = nullptr;
+  if (m_externalIncrementalExecutor)
+   address = m_externalIncrementalExecutor->getAddressOfGlobal(name);
 
-  return HandleMissingFunction(mangled_name);
+  return (address ? address : HandleMissingFunction(mangled_name));
 }
 
 #if 0

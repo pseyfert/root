@@ -10,6 +10,8 @@
  *************************************************************************/
 
 /** \class TPluginManager
+\ingroup Base
+
 This class implements a plugin library manager.
 
 It keeps track of a list of plugin handlers. A plugin handler knows which plugin
@@ -100,6 +102,7 @@ TFile, TSQLServer, TGrid, etc. functionality.
 #include "TObjString.h"
 #include "ThreadLocalStorage.h"
 
+#include <memory>
 
 TPluginManager *gPluginMgr;   // main plugin manager created in TROOT
 
@@ -183,7 +186,17 @@ Bool_t TPluginHandler::CanHandle(const char *base, const char *uri)
 
 void TPluginHandler::SetupCallEnv()
 {
-   fCanCall = -1;
+   int setCanCall = -1;
+
+   // Use a exit_scope guard, to insure that fCanCall is set (to the value of
+   // result) as the last action of this function before returning.
+
+   // When the standard supports it, we should use std::exit_code
+   // See N4189 for example.
+   //    auto guard = make_exit_scope( [...]() { ... } );
+   using exit_scope = std::shared_ptr<void*>;
+   exit_scope guard(nullptr,
+                    [this,&setCanCall](void *) { this->fCanCall = setCanCall; } );
 
    // check if class exists
    TClass *cl = TClass::GetClass(fClass);
@@ -221,7 +234,7 @@ void TPluginHandler::SetupCallEnv()
    fCallEnv = new TMethodCall;
    fCallEnv->Init(fMethod);
 
-   fCanCall = 1;
+   setCanCall = 1;
 
    return;
 }
@@ -265,8 +278,14 @@ Bool_t TPluginHandler::CheckForExecPlugin(Int_t nargs)
       return kFALSE;
    }
 
-   if (!fCallEnv && !fCanCall)
-      SetupCallEnv();
+   if (fCanCall == 0) {
+      // Not initialized yet.
+      R__LOCKGUARD2(gPluginManagerMutex);
+
+      // Now check if another thread did not already do the work.
+      if (fCanCall == 0)
+         SetupCallEnv();
+   }
 
    if (fCanCall == -1)
       return kFALSE;

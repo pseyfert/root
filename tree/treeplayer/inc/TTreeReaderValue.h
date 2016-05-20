@@ -32,6 +32,8 @@
 #include "TBranchProxy.h"
 #endif
 
+#include <type_traits>
+
 class TBranch;
 class TBranchElement;
 class TLeaf;
@@ -42,6 +44,7 @@ namespace Internal {
 
    class TTreeReaderValueBase {
    public:
+      TTreeReaderValueBase(const TTreeReaderValueBase&) = delete;
 
       // Status flags, 0 is good
       enum ESetupStatus {
@@ -120,9 +123,11 @@ namespace Internal {
 template <typename T>
 class TTreeReaderValue: public ROOT::Internal::TTreeReaderValueBase {
 public:
+   using NonConstT_t = typename std::remove_const<T>::type;
    TTreeReaderValue() {}
    TTreeReaderValue(TTreeReader& tr, const char* branchname):
-      TTreeReaderValueBase(&tr, branchname, TDictionary::GetDictionary(typeid(T))) {}
+      TTreeReaderValueBase(&tr, branchname,
+                           TDictionary::GetDictionary(typeid(NonConstT_t))) {}
 
    T* Get() {
       if (!fProxy){

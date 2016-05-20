@@ -52,11 +52,11 @@ packages and [subversion][4] and [git][5] to get the source code.
    * Configure, build and install them, either using CMake:
 
 ```bash
-    cd ..
+    cd ../../../
     mkdir build
     cd build
     cmake -DCMAKE_INSTALL_PREFIX=/some/install/dir \
-          -DLLVM_TARGETS_TO_BUILD=CBackend\;CppBackend\;X86 \
+          -DLLVM_TARGETS_TO_BUILD=host \
           -DCMAKE_BUILD_TYPE=Debug \
           ../src
     make
@@ -65,7 +65,7 @@ packages and [subversion][4] and [git][5] to get the source code.
    * or GNU Make (see ../src/configure --help for all options):
 
 ```bash
-    cd ..
+    cd ../../../
     mkdir build
     cd build
     ../src/configure --prefix=/some/install/dir
@@ -88,15 +88,25 @@ chmod +x cpt.py
 Full documentation of CPT can be found in [tools/packaging](https://github.com/root-mirror/cling/tree/master/tools/packaging).
 
 ##USAGE
-   `/some/install/dir/bin/cling '#include <stdio.h>' 'printf("Hello World!\n")'`
-   To get started run: `/some/install/dir/bin/cling --help`
-   or type
-   `/some/install/dir/bin/cling`
-   `[cling]$ .help`
+```c++
+/some/install/dir/bin/cling '#include <stdio.h>' 'printf("Hello World!\n")'`
+```
+
+To get started run:
+```bash
+/some/install/dir/bin/cling --help`
+```
+or type
+```
+/some/install/dir/bin/cling
+[cling]$ .help`
+```
 
 ## Jupyter
 
 cling comes with a [Jupyter][6] kernel. After building cling, install Jupyter and run ```jupyter kernelspec install cling```. It requires a fairly new Jupyter. Make sure cling is in your PATH when you start jupyter!
+
+See also the [tools/Jupyter/kernel](https://github.com/root-mirror/cling/tree/master/tools/Jupyter/kernel) subdirectory.
 
    [6]: http://jupyter.org
 

@@ -69,7 +69,7 @@ namespace TMVA {
 
    private:
 
-      ClassDef(TActivationReLU,0) // Tanh sigmoid activation function for TNeuron
+      ClassDef(TActivationReLU,0); // Tanh sigmoid activation function for TNeuron
    };
 
 } // namespace TMVA

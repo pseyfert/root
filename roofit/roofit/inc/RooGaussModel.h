@@ -23,6 +23,9 @@
 #include "RooRealProxy.h"
 #include "RooMath.h"
 
+#include <cmath>
+#include <complex>
+
 class RooGaussModel : public RooResolutionModel {
 public:
 

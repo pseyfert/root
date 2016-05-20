@@ -50,7 +50,9 @@ Various kinds of branches can be added to a tree:
 - any object (inheriting from TObject). (we expect this option be the most frequent)
 - a ClonesArray. (a specialized object for collections of same class objects)
 
+
 ## Case A
+
 ~~~ {.cpp}
     TBranch *branch = tree->Branch(branchname, address, leaflist, bufsize)
 ~~~
@@ -65,18 +67,18 @@ Various kinds of branches can be added to a tree:
   variable. If the first variable does not have a type, it is
   assumed of type F by default. The list of currently supported
   types is given below:
-   - C : a character string terminated by the 0 character
-   - B : an 8 bit signed integer (Char_t)
-   - b : an 8 bit unsigned integer (UChar_t)
-   - S : a 16 bit signed integer (Short_t)
-   - s : a 16 bit unsigned integer (UShort_t)
-   - I : a 32 bit signed integer (Int_t)
-   - i : a 32 bit unsigned integer (UInt_t)
-   - F : a 32 bit floating point (Float_t)
-   - D : a 64 bit floating point (Double_t)
-   - L : a 64 bit signed integer (Long64_t)
-   - l : a 64 bit unsigned integer (ULong64_t)
-   - O : [the letter 'o', not a zero] a boolean (Bool_t)
+   - `C` : a character string terminated by the 0 character
+   - `B` : an 8 bit signed integer (`Char_t`)
+   - `b` : an 8 bit unsigned integer (`UChar_t`)
+   - `S` : a 16 bit signed integer (`Short_t`)
+   - `s` : a 16 bit unsigned integer (`UShort_t`)
+   - `I` : a 32 bit signed integer (`Int_t`)
+   - `i` : a 32 bit unsigned integer (`UInt_t`)
+   - `F` : a 32 bit floating point (`Float_t`)
+   - `D` : a 64 bit floating point (`Double_t`)
+   - `L` : a 64 bit signed integer (`Long64_t`)
+   - `l` : a 64 bit unsigned integer (`ULong64_t`)
+   - `O` : [the letter `o`, not a zero] a boolean (`Bool_t`)
 - If the address points to a single numerical variable, the leaflist is optional:
   int value;
   `tree->Branch(branchname, &value);`
@@ -86,7 +88,9 @@ Various kinds of branches can be added to a tree:
   TTree (i.e. you will not be able to read it back on a platform with a different
   padding strategy).
 
+
 ## Case B
+
 ~~~ {.cpp}
     TBranch *branch = tree->Branch(branchname, &p_object, bufsize, splitlevel)
     TBranch *branch = tree->Branch(branchname, className, &p_object, bufsize, splitlevel)
@@ -123,11 +127,13 @@ Note: The pointer p_object must be initialized before calling TTree::Branch
     tree->Branch(branchname, &p_object);
 ~~~
 Whether the pointer is set to zero or not, the ownership of the object
-is not taken over by the TTree.  I.e. eventhough an object will be allocated
+is not taken over by the TTree.  I.e. even though an object will be allocated
 by TTree::Branch if the pointer p_object is zero, the object will <b>not</b>
 be deleted when the TTree is deleted.
 
+
 ## Case C
+
 ~~~ {.cpp}
     MyClass object;
     TBranch *branch = tree->Branch(branchname, &object, bufsize, splitlevel)
@@ -146,7 +152,9 @@ Note: The 2nd parameter must be the address of a valid object.
   of the object itself. In case the object member is a TClonesArray,
   it is processed as a TObject*, only one branch.
 
+
 ## Case D
+
 ~~~ {.cpp}
     TBranch *branch = tree->Branch(branchname,clonesarray, bufsize, splitlevel)
     clonesarray is the address of a pointer to a TClonesArray.
@@ -156,7 +164,9 @@ For example, if the TClonesArray is an array of TTrack objects,
 this function will create one subbranch for each data member of
 the object TTrack.
 
+
 ## Case E
+
 ~~~ {.cpp}
     TBranch *branch = tree->Branch( branchname, STLcollection, buffsize, splitlevel);
 ~~~
@@ -381,9 +391,11 @@ End_Macro
 #include "TBranchSTL.h"
 #include "TSchemaRuleSet.h"
 #include "TFileMergeInfo.h"
+#include "ROOT/StringConv.h"
 
 #include <chrono>
 #include <cstddef>
+#include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -1743,18 +1755,18 @@ Int_t TTree::Branch(const char* foldername, Int_t bufsize /* = 32000 */, Int_t s
 ///      the type of the variable is assumed to be the same as the previous
 ///      variable. If the first variable does not have a type, it is assumed
 ///      of type F by default. The list of currently supported types is given below:
-///         - C : a character string terminated by the 0 character
-///         - B : an 8 bit signed integer (Char_t)
-///         - b : an 8 bit unsigned integer (UChar_t)
-///         - S : a 16 bit signed integer (Short_t)
-///         - s : a 16 bit unsigned integer (UShort_t)
-///         - I : a 32 bit signed integer (Int_t)
-///         - i : a 32 bit unsigned integer (UInt_t)
-///         - F : a 32 bit floating point (Float_t)
-///         - D : a 64 bit floating point (Double_t)
-///         - L : a 64 bit signed integer (Long64_t)
-///         - l : a 64 bit unsigned integer (ULong64_t)
-///         - O : [the letter 'o', not a zero] a boolean (Bool_t)
+///         - `C` : a character string terminated by the 0 character
+///         - `B` : an 8 bit signed integer (`Char_t`)
+///         - `b` : an 8 bit unsigned integer (`UChar_t`)
+///         - `S` : a 16 bit signed integer (`Short_t`)
+///         - `s` : a 16 bit unsigned integer (`UShort_t`)
+///         - `I` : a 32 bit signed integer (`Int_t`)
+///         - `i` : a 32 bit unsigned integer (`UInt_t`)
+///         - `F` : a 32 bit floating point (`Float_t`)
+///         - `D` : a 64 bit floating point (`Double_t`)
+///         - `L` : a 64 bit signed integer (`Long64_t`)
+///         - `l` : a 64 bit unsigned integer (`ULong64_t`)
+///         - `O` : [the letter `o`, not a zero] a boolean (`Bool_t`)
 ///
 ///      Arrays of values are supported with the following syntax:
 ///         - If leaf name has the form var[nelem], where nelem is alphanumeric, then
@@ -3369,6 +3381,24 @@ Long64_t TTree::CopyEntries(TTree* tree, Long64_t nentries /* = -1 */, Option_t*
    } else {
       onIndexError = kBuild;
    }
+   Ssiz_t cacheSizeLoc = opt.Index("cachesize=");
+   Int_t cacheSize = -1;
+   if (cacheSizeLoc != TString::kNPOS) {
+      // If the parse faile, cacheSize stays at -1.
+      Ssiz_t cacheSizeEnd = opt.Index(" ",cacheSizeLoc+10) - (cacheSizeLoc+10);
+      TSubString cacheSizeStr( opt(cacheSizeLoc+10,cacheSizeEnd) );
+      auto parseResult = ROOT::FromHumanReadableSize(cacheSizeStr,cacheSize);
+      if (parseResult == ROOT::EFromHumanReadableSize::kParseFail) {
+         Warning("CopyEntries","The cachesize option can not be parsed: %s. The default size will be used.",cacheSizeStr.String().Data());
+      } else if (parseResult == ROOT::EFromHumanReadableSize::kOverflow) {
+         double m;
+         const char *munit = nullptr;
+         ROOT::ToHumanReadableSize(std::numeric_limits<decltype(cacheSize)>::max(),false,&m,&munit);
+
+         Warning("CopyEntries","The cachesize option is too large: %s (%g%s max). The default size will be used.",cacheSizeStr.String().Data(),m,munit);
+      }
+   }
+   if (gDebug > 0 && cacheSize != -1) Info("CopyEntries","Using Cache size: %d\n",cacheSize);
 
    Long64_t nbytes = 0;
    Long64_t treeEntries = tree->GetEntriesFast();
@@ -3399,6 +3429,7 @@ Long64_t TTree::CopyEntries(TTree* tree, Long64_t nentries /* = -1 */, Option_t*
          TTreeCloner cloner(tree->GetTree(), this, option, TTreeCloner::kNoWarnings);
          if (cloner.IsValid()) {
             this->SetEntries(this->GetEntries() + tree->GetTree()->GetEntries());
+            if (cacheSize != -1) cloner.SetCacheSize(cacheSize);
             cloner.Exec();
          } else {
             if (i == 0) {
@@ -3943,62 +3974,63 @@ Long64_t TTree::Draw(const char* varexp, const TCut& selection, Option_t* option
 /// ~~~ {.cpp}
 ///     tree.Draw("myvar","Entry$%2==0");
 /// ~~~
-/// - `Entry$`      : return the current entry number (`== TTree::GetReadEntry()`)
-/// - `LocalEntry$` : return the current entry number in the current tree of a
-///   chain (`== GetTree()->GetReadEntry()`)
-/// - `Entries$`    : return the total number of entries (== TTree::GetEntries())
-/// - `Length$`     : return the total number of element of this formula for this
-///   entry (`==TTreeFormula::GetNdata()`)
-/// - `Iteration$`  : return the current iteration over this formula for this
-///   entry (i.e. varies from 0 to `Length$`).
-/// - `Length$(formula )`  : return the total number of element of the formula
-///   given as a parameter.
-/// - `Sum$(formula )`  : return the sum of the value of the elements of the
-///   formula given as a parameter.  For example the mean for all the elements in
-///   one entry can be calculated with:
-///   `Sum$(formula )/Length$(formula )`
-/// - `Min$(formula )` : return the minimun (within one TTree entry) of the value of the
-///    elements of the formula given as a parameter.
-/// - `Max$(formula )` : return the maximum (within one TTree entry) of the value of the
-///   elements of the formula given as a parameter.
-/// - `MinIf$(formula,condition)`
-/// - `MaxIf$(formula,condition)` : return the minimum (maximum) (within one TTree entry)
-///   of the value of the elements of the formula given as a parameter
-///   if they match the condition. If no element matches the condition,
-///   the result is zero.  To avoid the resulting peak at zero, use the
-///   pattern:
+/// -  `Entry$`      : return the current entry number (`== TTree::GetReadEntry()`)
+/// -  `LocalEntry$` : return the current entry number in the current tree of a
+///     chain (`== GetTree()->GetReadEntry()`)
+/// -  `Entries$`    : return the total number of entries (== TTree::GetEntries())
+/// -  `LocalEntries$` : return the total number of entries in the current tree
+///     of a chain (== GetTree()->TTree::GetEntries())
+/// -  `Length$`     : return the total number of element of this formula for this
+///     entry (`==TTreeFormula::GetNdata()`)
+/// -  `Iteration$`  : return the current iteration over this formula for this
+///     entry (i.e. varies from 0 to `Length$`).
+/// -  `Length$(formula )`  : return the total number of element of the formula
+///     given as a parameter.
+/// -  `Sum$(formula )`  : return the sum of the value of the elements of the
+///     formula given as a parameter.  For example the mean for all the elements in
+///     one entry can be calculated with: `Sum$(formula )/Length$(formula )`
+/// -  `Min$(formula )` : return the minimun (within one TTree entry) of the value of the
+///     elements of the formula given as a parameter.
+/// -  `Max$(formula )` : return the maximum (within one TTree entry) of the value of the
+///     elements of the formula given as a parameter.
+/// -  `MinIf$(formula,condition)`
+/// -  `MaxIf$(formula,condition)` : return the minimum (maximum) (within one TTree entry)
+///     of the value of the elements of the formula given as a parameter
+///     if they match the condition. If no element matches the condition,
+///     the result is zero.  To avoid the resulting peak at zero, use the
+///     pattern:
 /// ~~~ {.cpp}
 ///        tree->Draw("MinIf$(formula,condition)","condition");
 /// ~~~
-///   which will avoid calculation `MinIf$` for the entries that have no match
-///   for the condition.
-/// - `Alt$(primary,alternate)` : return the value of "primary" if it is available
-///   for the current iteration otherwise return the value of "alternate".
-///   For example, with arr1[3] and arr2[2]
+///     which will avoid calculation `MinIf$` for the entries that have no match
+///     for the condition.
+/// -  `Alt$(primary,alternate)` : return the value of "primary" if it is available
+///     for the current iteration otherwise return the value of "alternate".
+///     For example, with arr1[3] and arr2[2]
 /// ~~~ {.cpp}
 ///        tree->Draw("arr1+Alt$(arr2,0)");
 /// ~~~
-///   will draw arr1[0]+arr2[0] ; arr1[1]+arr2[1] and arr1[2]+0
-///   Or with a variable size array arr3
+///     will draw arr1[0]+arr2[0] ; arr1[1]+arr2[1] and arr1[2]+0
+///     Or with a variable size array arr3
 /// ~~~ {.cpp}
 ///        tree->Draw("Alt$(arr3[0],0)+Alt$(arr3[1],0)+Alt$(arr3[2],0)");
 /// ~~~
-///   will draw the sum arr3 for the index 0 to min(2,actual_size_of_arr3-1)
-///   As a comparison
+///     will draw the sum arr3 for the index 0 to min(2,actual_size_of_arr3-1)
+///     As a comparison
 /// ~~~ {.cpp}
 ///        tree->Draw("arr3[0]+arr3[1]+arr3[2]");
 /// ~~~
-///   will draw the sum arr3 for the index 0 to 2 only if the
-///   actual_size_of_arr3 is greater or equal to 3.
-///   Note that the array in 'primary' is flattened/linearized thus using
-///   Alt$ with multi-dimensional arrays of different dimensions in unlikely
-///   to yield the expected results.  To visualize a bit more what elements
-///   would be matched by TTree::Draw, TTree::Scan can be used:
+///     will draw the sum arr3 for the index 0 to 2 only if the
+///     actual_size_of_arr3 is greater or equal to 3.
+///     Note that the array in 'primary' is flattened/linearized thus using
+///     `Alt$` with multi-dimensional arrays of different dimensions in unlikely
+///     to yield the expected results.  To visualize a bit more what elements
+///     would be matched by TTree::Draw, TTree::Scan can be used:
 /// ~~~ {.cpp}
 ///        tree->Scan("arr1:Alt$(arr2,0)");
 /// ~~~
-///   will print on one line the value of arr1 and (arr2,0) that will be
-///   matched by
+///     will print on one line the value of arr1 and (arr2,0) that will be
+///     matched by
 /// ~~~ {.cpp}
 ///        tree->Draw("arr1-Alt$(arr2,0)");
 /// ~~~
@@ -4007,6 +4039,7 @@ Long64_t TTree::Draw(const char* varexp, const TCut& selection, Option_t* option
 /// ~~~ {.cpp}
 ///     tree->Draw("(var2<20)*99+(var2>=20)*var1","");
 /// ~~~
+///
 /// ## Drawing a user function accessing the TTree data directly
 ///
 /// If the formula contains  a file name, TTree::MakeProxy will be used
@@ -4335,9 +4368,6 @@ void TTree::DropBuffers(Int_t)
 
 Int_t TTree::Fill()
 {
-   // create cache if wanted
-   if (fCacheDoAutoInit) SetCacheSizeAux();
-
    Int_t nbytes = 0;
    Int_t nerror = 0;
    Int_t nb = fBranches.GetEntriesFast();
@@ -4734,7 +4764,7 @@ TLeaf* TTree::FindLeaf(const char* searchname)
 ///
 /// Example:
 /// ~~~ {.cpp}
-///     tree.Fit(pol4,sqrt(x)>>hsqrt,y>0)
+///     tree.Fit(pol4,"sqrt(x)>>hsqrt","y>0")
 /// ~~~
 /// will fit sqrt(x) and save the histogram as "hsqrt" in the current
 /// directory.
@@ -4745,7 +4775,7 @@ TLeaf* TTree::FindLeaf(const char* searchname)
 ///
 ///  The function returns the status of the histogram fit (see TH1::Fit)
 ///  If no entries were selected, the function returns -1;
-///   (i.e. fitResult is null is the fit is OK)
+///   (i.e. fitResult is null if the fit is OK)
 
 Int_t TTree::Fit(const char* funcname, const char* varexp, const char* selection, Option_t* option, Option_t* goption, Long64_t nentries, Long64_t firstentry)
 {
@@ -5115,6 +5145,7 @@ Long64_t TTree::GetEntriesFriend() const
 /// When reading the Tree, one can choose one of these 3 options:
 ///
 /// ## OPTION 1
+///
 /// ~~~ {.cpp}
 ///     for (Long64_t i=0;i<nentries;i++) {
 ///        T.GetEntry(i);
@@ -6989,8 +7020,23 @@ char TTree::GetNewlineValue(std::istream &inputStream)
 
 Long64_t TTree::ReadStream(std::istream& inputStream, const char *branchDescriptor, char delimiter)
 {
-   char newline = GetNewlineValue(inputStream);
-   std::istream& in = inputStream;
+   char newline = 0;
+   std::stringstream ss;
+   std::istream *inTemp;
+   Long_t inPos = inputStream.tellg();
+   if (!inputStream.good()) {
+      Error("ReadStream","Error reading stream");
+      return 0;
+   }
+   if (inPos == -1) {
+      ss << std::cin.rdbuf();
+      newline = GetNewlineValue(ss);
+      inTemp = &ss;
+   } else {
+      newline = GetNewlineValue(inputStream);
+      inTemp = &inputStream;
+   }
+   std::istream& in = *inTemp;
    Long64_t nlines = 0;
 
    TBranch *branch = 0;
@@ -7872,7 +7918,19 @@ void TTree::SetBranchStatus(const char* bname, Bool_t status, UInt_t* found)
       }
    }
    if (!nb && !foundInFriend) {
-      if (found==0) Error("SetBranchStatus", "unknown branch -> %s", bname);
+      if (found==0) {
+         if (status) {
+            if (strchr(bname,'*') != 0)
+               Error("SetBranchStatus", "No branch name is matching wildcard -> %s", bname);
+            else
+               Error("SetBranchStatus", "unknown branch -> %s", bname);
+         } else {
+            if (strchr(bname,'*') != 0)
+               Warning("SetBranchStatus", "No branch name is matching wildcard -> %s", bname);
+            else
+               Warning("SetBranchStatus", "unknown branch -> %s", bname);
+         }
+      }
       return;
    }
    if (found) *found = nb + foundInFriend;

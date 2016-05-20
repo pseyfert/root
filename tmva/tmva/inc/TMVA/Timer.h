@@ -87,13 +87,15 @@ namespace TMVA {
       TString   fPrefix;                // prefix for outputs
       Bool_t    fColourfulOutput;       // flag for use of colors
 
+      Int_t     fProgressBarStringLength;
+      
       static const TString fgClassName; // used for output
       static const Int_t   fgNbins;     // number of bins in progress bar
 
       mutable MsgLogger*   fLogger;     // the output logger
       MsgLogger& Log() const { return *fLogger; }                       
 
-      ClassDef(Timer,0) // Timing information for training and evaluation of MVA methods
+      ClassDef(Timer,0); // Timing information for training and evaluation of MVA methods
    };
 
 } // namespace

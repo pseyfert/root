@@ -89,7 +89,11 @@ namespace {
 #endif
 #ifdef _MSC_VER
     HKEY regVS;
+#if (_MSC_VER >= 1900)
+    int VSVersion = (_MSC_VER / 100) - 5;
+#else
     int VSVersion = (_MSC_VER / 100) - 6;
+#endif
     std::stringstream subKey;
     subKey << "VisualStudio.DTE." << VSVersion << ".0";
     if (RegOpenKeyEx(HKEY_CLASSES_ROOT, subKey.str().c_str(), 0, KEY_READ, &regVS) == ERROR_SUCCESS) {
@@ -157,7 +161,7 @@ namespace {
 namespace cling {
   IncrementalParser::IncrementalParser(Interpreter* interp,
                                        int argc, const char* const *argv,
-                                       const char* llvmdir):
+                                       const char* llvmdir, bool isChildInterpreter):
     m_Interpreter(interp), m_Consumer(0), m_ModuleNo(0) {
 
     CompilerInstance* CI = CIFactory::createCI("", argc, argv, llvmdir);
@@ -179,30 +183,11 @@ namespace cling {
     }
 
     initializeVirtualFile();
-
-    // Add transformers to the IncrementalParser, which owns them
-    Sema* TheSema = &CI->getSema();
-    // Register the AST Transformers
-    typedef std::unique_ptr<ASTTransformer> ASTTPtr_t;
-    std::vector<ASTTPtr_t> ASTTransformers;
-    ASTTransformers.emplace_back(new AutoSynthesizer(TheSema));
-    ASTTransformers.emplace_back(new EvaluateTSynthesizer(TheSema));
-
-    typedef std::unique_ptr<WrapperTransformer> WTPtr_t;
-    std::vector<WTPtr_t> WrapperTransformers;
-    WrapperTransformers.emplace_back(new ValuePrinterSynthesizer(TheSema, 0));
-    WrapperTransformers.emplace_back(new DeclExtractor(TheSema));
-    WrapperTransformers.emplace_back(new NullDerefProtectionTransformer(TheSema));
-    WrapperTransformers.emplace_back(new ValueExtractionSynthesizer(TheSema));
-    WrapperTransformers.emplace_back(new CheckEmptyTransactionTransformer(TheSema));
-
-    m_Consumer->SetTransformers(std::move(ASTTransformers),
-                                std::move(WrapperTransformers));
   }
 
   void
   IncrementalParser::Initialize(llvm::SmallVectorImpl<ParseResultTransaction>&
-                                result) {
+                                result, bool isChildInterpreter) {
     m_TransactionPool.reset(new TransactionPool(getCI()->getSema()));
     if (hasCodeGenerator()) {
       getCodeGenerator()->Initialize(getCI()->getASTContext());
@@ -247,7 +232,9 @@ namespace cling {
     if (External)
       External->StartTranslationUnit(m_Consumer);
 
-    if (m_CI->getLangOpts().CPlusPlus) {
+    // If I belong to the parent Interpreter, only then do
+    // the #include <new>
+    if (!isChildInterpreter && m_CI->getLangOpts().CPlusPlus) {
       // <new> is needed by the ValuePrinter so it's a good thing to include it.
       // We need to include it to determine the version number of the standard
       // library implementation.
@@ -831,6 +818,32 @@ namespace cling {
     for(size_t i = 0, e = m_Transactions.size(); i < e; ++i) {
       m_Transactions[i]->printStructureBrief();
     }
+  }
+
+  void IncrementalParser::SetTransformers(bool isChildInterpreter) {
+    // Add transformers to the IncrementalParser, which owns them
+    Sema* TheSema = &m_CI->getSema();
+    // Register the AST Transformers
+    typedef std::unique_ptr<ASTTransformer> ASTTPtr_t;
+    std::vector<ASTTPtr_t> ASTTransformers;
+    ASTTransformers.emplace_back(new AutoSynthesizer(TheSema));
+    ASTTransformers.emplace_back(new EvaluateTSynthesizer(TheSema));
+    if (hasCodeGenerator()) {
+       // Don't protect against crashes if we cannot run anything.
+       // cling might also be in a PCH-generation mode; don't inject our Sema pointer
+       // into the PCH.
+       ASTTransformers.emplace_back(new NullDerefProtectionTransformer(m_Interpreter));
+    }
+
+    typedef std::unique_ptr<WrapperTransformer> WTPtr_t;
+    std::vector<WTPtr_t> WrapperTransformers;
+    WrapperTransformers.emplace_back(new ValuePrinterSynthesizer(TheSema, 0));
+    WrapperTransformers.emplace_back(new DeclExtractor(TheSema));
+    WrapperTransformers.emplace_back(new ValueExtractionSynthesizer(TheSema, isChildInterpreter));
+    WrapperTransformers.emplace_back(new CheckEmptyTransactionTransformer(TheSema));
+
+    m_Consumer->SetTransformers(std::move(ASTTransformers),
+                                std::move(WrapperTransformers));
   }
 
 

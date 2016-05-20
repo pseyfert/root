@@ -37,6 +37,7 @@ file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/rootalias.C "")
 file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/rootlogoff.C "{}")
 file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/.rootrc "
 Proof.Sandbox: /tmp/proof
+Rint.History:  .root_hist
 ")
 
 #---Definition of the helper function--------------------------------
@@ -116,6 +117,10 @@ if(NOT GRAPHVIZ_FOUND)
   set(gviz_veto graphs/graphstruct.C)
 endif()
 
+if(NOT TBB_FOUND)
+  set(tbb_veto  multicore/mtbb*.C)
+endif()
+
 #---These ones requires a display to run-----------------------------
 set(gui_veto fit/fitpanel_playback.C
              cocoa/*.C
@@ -177,7 +182,8 @@ set(all_veto hsimple.C
              ${opengl_veto}
              ${gviz_veto}
              ${r_veto}
-             ${histfactory_veto})
+             ${histfactory_veto}
+             ${tbb_veto})
 
 file(GLOB_RECURSE tutorials RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.C)
 file(GLOB tutorials_veto RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ${all_veto})
@@ -230,6 +236,7 @@ set(benchmarks-depends tutorial-hsimple
                        tutorial-fit-fit1
                        tutorial-fit-myfit
                        tutorial-hist-h1draw
+                       tutorial-hist-FirstContour
                        tutorial-geom-na49view
                        tutorial-tree-ntuple1
                        tutorial-tree-spider
@@ -262,7 +269,7 @@ set (tmva-TMVARegressionApplication-depends tutorial-tmva-TMVARegression)
 
 #---Define the primordial tutorials-----------------------------------
 ROOT_ADD_TEST(tutorial-hsimple COMMAND ${ROOT_root_CMD} -b -l -n -q ${CMAKE_CURRENT_SOURCE_DIR}/hsimple.C
-                PASSRC 1 FAILREGEX "Error in" "error:" LABELS tutorial)
+                PASSRC 255 FAILREGEX "Error in" "error:" LABELS tutorial)
 ROOT_ADD_TEST(tutorial-geom-geometry COMMAND ${ROOT_root_CMD} -b -l -n -q ${CMAKE_CURRENT_SOURCE_DIR}/geom/geometry.C
                 FAILREGEX "Error in" "error:" LABELS tutorial)
 
@@ -272,7 +279,7 @@ foreach(t ${tutorials})
   if(index EQUAL -1)
     set(rc 0)
   else()
-    set(rc 1)
+    set(rc 255)
   endif()
   string(REPLACE ".C" "" tname ${t})
   string(REPLACE "/" "-" tname ${tname})
@@ -329,7 +336,7 @@ if(ROOT_python_FOUND)
     if(index EQUAL -1)
       set(rc 0)
     else()
-      set(rc 1)
+      set(rc 255)
     endif()
 
     string(REPLACE ".py" "" tname ${t})
@@ -343,12 +350,3 @@ if(ROOT_python_FOUND)
                 ENVIRONMENT ${ROOT_environ})
   endforeach()
 endif()
-
-
-
-
-
-
-
-
-

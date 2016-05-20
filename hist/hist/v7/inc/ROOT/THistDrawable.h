@@ -15,7 +15,6 @@
 #ifndef ROOT7_THistDrawable
 #define ROOT7_THistDrawable
 
-#include "ROOT/TCoopPtr.h"
 #include "ROOT/TDrawable.h"
 #include "ROOT/THistDrawOptions.h"
 #include "ROOT/TLogger.h"
@@ -25,9 +24,9 @@
 #include <memory>
 
 namespace ROOT {
-namespace v7 {
+namespace Experimental {
 
-template<int DIMENSIONS, class PRECISION> class THist;
+template<class DATA> class THist;
 
 namespace Internal {
 
@@ -54,26 +53,26 @@ extern template class THistPainterBase<1>;
 extern template class THistPainterBase<2>;
 extern template class THistPainterBase<3>;
 
-template <int DIMENSION, class PRECISION>
+template <class DATA>
 class THistDrawable final: public TDrawable {
 private:
-  TCoopPtr<THist<DIMENSION, PRECISION>> fHist;
-  THistDrawOptions<DIMENSION> fOpts;
+  std::weak_ptr<THist<DATA>> fHist;
+  THistDrawOptions<DATA::GetNDim()> fOpts;
 
 public:
-  THistDrawable(TCoopPtr<THist<DIMENSION, PRECISION>> hist,
-                THistDrawOptions<DIMENSION> opts): fHist(hist), fOpts(opts) {}
+  THistDrawable(std::weak_ptr<THist<DATA>> hist,
+                THistDrawOptions<DATA::GetNDim()> opts): fHist(hist), fOpts(opts) {}
 
   ~THistDrawable() = default;
 
   /// Paint the histogram
   void Paint() final {
-    THistPainterBase<DIMENSION>::GetPainter()->Paint(*this, fOpts);
+    THistPainterBase<DATA::GetNDim()>::GetPainter()->Paint(*this, fOpts);
   }
 };
 
 } // namespace Internal
-} // namespace v7
+} // namespace Experimental
 } // namespace ROOT
 
 #endif

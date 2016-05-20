@@ -111,7 +111,9 @@ $(GLO) $(GLDO): CXXFLAGS += $(OPENGLINCDIR:%=-I%) -I$(WIN32GDKDIR)/gdk/src \
 $(GLDS):        CINTFLAGS += $(OPENGLINCDIR:%=-I%) -I$(WIN32GDKDIR)/gdk/src \
                              $(GDKDIRI:%=-I%) $(GLIBDIRI:%=-I%)
 else
-$(GLO) $(GLDO): CXXFLAGS += $(OPENGLINCDIR:%=-I%)
+# We need to disallow the direct use of gl.h. This way people will see the error
+# and the suggested fix. This happens by providing our own "fake" system gl.h.
+$(GLO) $(GLDO): CXXFLAGS += -isystem $(ROOT_SRCDIR)/graf3d/glew/isystem/ $(OPENGLINCDIR:%=-I%)
 $(GLDS):        CINTFLAGS += $(OPENGLINCDIR:%=-I%)
 endif
 
@@ -120,15 +122,6 @@ $(call stripsrc,$(GLDIRS)/TGLText.o): CXXFLAGS += $(FREETYPEINC) $(FTGLINC) $(FT
 
 $(call stripsrc,$(GLDIRS)/TGLFontManager.o): $(FREETYPEDEP)
 $(call stripsrc,$(GLDIRS)/TGLFontManager.o): CXXFLAGS += $(FREETYPEINC) $(FTGLINC) $(FTGLINCDIR:%=-I%) $(FTGLCPPFLAGS)
-
-#FIXME: Disable modules build for graf3d until the glew.h issue gets fixed.
-ifeq ($(CXXMODULES),yes)
-ifeq ($(PLATFORM),macosx)
-$(call stripsrc,$(GLDIRS)/TGLFontManager.o) \
-$(call stripsrc,$(GLDIRS)/TGLText.o): CXXFLAGS := $(filter-out $(ROOT_CXXMODULES_FLAGS),$(CXXFLAGS))
-        CFLAGS   := $(filter-out $(ROOT_CXXMODULES_FLAGS),$(CFLAGS))
-endif
-endif
 
 $(GLO): CXXFLAGS += $(GLEWINCDIR:%=-I%) $(GLEWCPPFLAGS)
 

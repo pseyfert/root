@@ -42,7 +42,7 @@ ClassImp(TEfficiency)
 
 ////////////////////////////////////////////////////////////////////////////////
 /** \class TEfficiency
-    \ingroup Hist 
+    \ingroup Hist
     \brief Class to handle efficiency histograms
 
 ## I. Overview
@@ -175,7 +175,7 @@ using the TEfficiency::SetPassedEvents or TEfficiency::SetTotalEvents method.
 The calculation of the estimated efficiency depends on the chosen statistic
 option. Let k denotes the number of passed events and N the number of total
 events.
- 
+
 ###Frequentist methods
 The expectation value of the number of passed events is given by the true
 efficiency times the total number of events. One can estimate the efficiency
@@ -207,14 +207,14 @@ By default the expectation value of this posterior distribution is used as estim
       \hat{\varepsilon} = \frac{k + \alpha}{N + \alpha + \beta}
 \f]
 
-Optionally the mode can also be used as value for the estimated efficiency. This can be done by calling 
+Optionally the mode can also be used as value for the estimated efficiency. This can be done by calling
 SetBit(kPosteriorMode) or TEfficiency::SetPosteriorMode. In this case the estimated efficiency is:
 
 \f[
        \hat{\varepsilon} = \frac{k + \alpha -1}{N + \alpha + \beta - 2}
 \f]
 
-In the case of a uniform prior distribution, B(x,1,1), the posterior mode is k/n, equivalent to the frequentist 
+In the case of a uniform prior distribution, B(x,1,1), the posterior mode is k/n, equivalent to the frequentist
 estimate (the maximum likelihood value).
 
 The statistic options also specifiy which confidence interval is used for calculating
@@ -371,16 +371,27 @@ End_Macro
 The following pictures illustrate the actual coverage probability for the
 different values of the true efficiency and the total number of events when a
 confidence level of 95% is desired.
-   <p><img src="http://root.cern.ch/drupal/sites/default/files/images/normal95.gif" alt="normal approximation" width="600" height="400" /></p>
-   <p><img src="http://root.cern.ch/drupal/sites/default/files/images/wilson95.gif" alt="wilson" width="600" height="400" /></p>
-   <p><img src="http://root.cern.ch/drupal/sites/default/files/images/ac95.gif" alt="agresti coull" width="600" height="400" /></p>
-   <p><img src="http://root.cern.ch/drupal/sites/default/files/images/cp95.gif" alt="clopper pearson" width="600" height="400" /></p>
-   <p><img src="http://root.cern.ch/drupal/sites/default/files/images/uni95.gif" alt="uniform prior" width="600" height="400" /></p>
-   <p><img src="http://root.cern.ch/drupal/sites/default/files/images/jeffrey95.gif" alt="jeffrey prior" width="600" height="400" /></p>
+
+\image html normal95.gif  "Normal Approximation"
+
+
+\image html wilson95.gif  "Wilson"
+
+
+\image html ac95.gif  "Agresti Coull"
+
+
+\image html cp95.gif  "Clopper Pearson"
+
+
+\image html uni95.gif  "Bayesian with Uniform Prior"
+
+
+\image html jeffrey95.gif  "Bayesian with Jeffrey Prior"
 
 The average (over all possible true efficiencies) coverage probability for
 different number of total events is shown in the next picture.
-<p><img src="http://root.cern.ch/drupal/sites/default/files/images/av_cov.png" alt="average coverage" width="600" height="400" /></p>
+\image html av_cov.png "Average Coverage"
 
 ## V. Merging and combining TEfficiency objects
 In many applications the efficiency should be calculated for an inhomogenous
@@ -396,7 +407,7 @@ efford is needed to handle several TEfficiency objects instead of one
 histogram. In the case of many different or even continuously distributed
 weights this approach becomes cumbersome. One possibility to overcome this
 problem is the usage of binned weights.
- 
+
 ### Example
 In particle physics weights arises from the fact that you want to
 normalise your results to a certain reference value. A very common formula for
@@ -458,22 +469,22 @@ alternatives processes for the efficiency. As the combination of two TEfficiency
 objects is not always consistent with the representation by two internal
 histograms, the result is not stored in a TEfficiency object but a TGraphAsymmErrors
 is returned which shows the estimated combined efficiency and its uncertainty
-for each bin. 
-At the moment the combination method TEfficiency::Combine only supports combination of 1-dimensional 
+for each bin.
+At the moment the combination method TEfficiency::Combine only supports combination of 1-dimensional
 efficiencies in a bayesian approach.
- 
 
-For calculating the combined efficiency and its uncertainty for each bin only Bayesian statistics 
+
+For calculating the combined efficiency and its uncertainty for each bin only Bayesian statistics
 is used. No frequentists methods are presently supported for computing the combined efficiency and
 its confidence interval.
-In the case of the Bayesian statistics a combined posterior is constructed taking into account the 
+In the case of the Bayesian statistics a combined posterior is constructed taking into account the
 weight of each TEfficiency object. The same prior is used for all the TEfficiency objects.
 
 \f{eqnarray*}{
   P_{comb}(\epsilon | {w_{i}}, {k_{i}} , {N_{i}}) = \frac{1}{norm} \prod_{i}{L(k_{i} | N_{i}, \epsilon)}^{w_{i}} \Pi( \epsilon )\\
 L(k_{i} | N_{i}, \epsilon)\ is\ the\ likelihood\ function\ for\ the\ sample\ i\ (a\ Binomial\ distribution)\\
-\Pi( \epsilon) is\ the\ prior,\ a\ beta\ distribution\ B(\epsilon, \alpha, \beta).\\
-The resulting combined posterior is \\
+\Pi( \epsilon)\ is\ the\ prior,\ a\ beta\ distribution\ B(\epsilon, \alpha, \beta).\\
+The\ resulting\ combined\ posterior\ is \\
 P_{comb}(\epsilon |{w_{i}}; {k_{i}}; {N_{i}}) = B(\epsilon, \sum_{i}{ w_{i} k_{i}} + \alpha, \sum_{i}{ w_{i}(n_{i}-k_{i})}+\beta) \\
 \hat{\varepsilon} = \int_{0}^{1} \epsilon \times P_{comb}(\epsilon | {k_{i}} , {N_{i}}) d\epsilon \\
 confidence\ level = 1 - \alpha \\
@@ -591,7 +602,7 @@ End_Macro
 
 ### VI.3 Draw a TEfficiency object
 A TEfficiency object can be drawn by calling the usual TEfficiency::Draw method.
-At the moment drawing is only supported for 1- and 2-dimensional TEfficiency objects. 
+At the moment drawing is only supported for 1- and 2-dimensional TEfficiency objects.
 In the 1-dimensional case you can use the same options as for the TGraphAsymmErrors::Draw
 method. For 2-dimensional TEfficiency objects you can pass the same options as
 for a TH2::Draw object.
@@ -1115,7 +1126,7 @@ Bool_t TEfficiency::FeldmanCousinsInterval(Double_t total,Double_t passed,Double
 ////////////////////////////////////////////////////////////////////////////////
 /**
 Calculates the boundaries using the  mid-P binomial
-interval (Lancaster method)  from B. Cousing and J. Tucker. 
+interval (Lancaster method)  from B. Cousing and J. Tucker.
 See http://arxiv.org/abs/0905.3831 for a description and references for the method
 
 Modify equal_tailed to get the kind of interval you want.
@@ -1130,7 +1141,7 @@ Double_t TEfficiency::MidPInterval(Double_t total,Double_t passed,Double_t level
    const double alpha = 1. - level;
    const bool equal_tailed = true;  // change if you don;t want equal tailed interval
    const double alpha_min = equal_tailed ? alpha/2 : alpha;
-   const double tol = 1e-9; // tolerance 
+   const double tol = 1e-9; // tolerance
    double pmin = 0;
    double pmax = 0;
    double p = 0;
@@ -1140,11 +1151,11 @@ Double_t TEfficiency::MidPInterval(Double_t total,Double_t passed,Double_t level
 
    // treat special case for 0<passed<1
    // do a linear interpolation of the upper limit values
-   if ( passed > 0 && passed < 1) { 
+   if ( passed > 0 && passed < 1) {
       double p0 =  MidPInterval(total,0.0,level,bUpper);
       double p1 =  MidPInterval(total,1.0,level,bUpper);
       p = (p1 - p0) * passed + p0;
-      return p; 
+      return p;
    }
 
    while (std::abs(pmax - pmin) > tol) {
@@ -1779,89 +1790,93 @@ Double_t TEfficiency::ClopperPearson(Double_t total,Double_t passed,Double_t lev
       return ((passed == 0) ? 0.0 : ROOT::Math::beta_quantile(alpha,passed,total-passed+1.0));
 }
 ////////////////////////////////////////////////////////////////////////////////
-/// Calculates the combined efficiency and its uncertainties
-///
-/// This method does a bayesian combination of the given samples.
-///
-/// \param[in] up  contains the upper limit of the confidence interval afterwards
-/// \param[in] low  contains the lower limit of the confidence interval afterwards
-/// \param[in] n    number of samples which are combined
-/// \param[in] pass array of length n containing the number of passed events
-/// \param[in] total array of length n containing the corresponding numbers of total events
-/// \param[in] alpha  shape parameters for the beta distribution as prior
-/// \param[in] beta   shape parameters for the beta distribution as prior
-/// \param[in] level  desired confidence level
-/// \param[in] w weights for each sample; if not given, all samples get the weight 1
-///           The weights do not need to be normalized, since they are internally renormalized
-///           to the number of effective entries.
-/// \param[in] opt
-///   -  mode : The mode is returned instead of the mean of the posterior as best value
-///             When using the mode the shortest interval is also computed instead of the central one
-///   -  shortest: compute shortest interval (done by default if mode option is set)
-///   -  central: compute central interval (done by default if mode option is NOT set)
-///
-/// Calculation:
-///
-/// The combined posterior distributions is calculated from the Bayes theorem assuming a common prior Beta distribution.
-///     It is easy to proof that the combined posterior is then:
-/** \f{eqnarray*}{
+/**
+    Calculates the combined efficiency and its uncertainties
+
+    This method does a bayesian combination of the given samples.
+
+    \param[in] up  contains the upper limit of the confidence interval afterwards
+    \param[in] low  contains the lower limit of the confidence interval afterwards
+    \param[in] n    number of samples which are combined
+    \param[in] pass array of length n containing the number of passed events
+    \param[in] total array of length n containing the corresponding numbers of total events
+    \param[in] alpha  shape parameters for the beta distribution as prior
+    \param[in] beta   shape parameters for the beta distribution as prior
+    \param[in] level  desired confidence level
+    \param[in] w weights for each sample; if not given, all samples get the weight 1
+              The weights do not need to be normalized, since they are internally renormalized
+              to the number of effective entries.
+    \param[in] opt
+      -  mode : The mode is returned instead of the mean of the posterior as best value
+                When using the mode the shortest interval is also computed instead of the central one
+      -  shortest: compute shortest interval (done by default if mode option is set)
+      -  central: compute central interval (done by default if mode option is NOT set)
+
+    Calculation:
+
+    The combined posterior distributions is calculated from the Bayes theorem assuming a common prior Beta distribution.
+        It is easy to proof that the combined posterior is then:
+ \f{eqnarray*}{
       P_{comb}(\epsilon |{w_{i}}; {k_{i}}; {N_{i}}) &=& B(\epsilon, \sum_{i}{ w_{i} k_{i}} + \alpha, \sum_{i}{ w_{i}(n_{i}-k_{i})}+\beta)\\
       w_{i} &=& weight\ for\ each\ sample\ renormalized\ to\ the\ effective\ entries\\
       w^{'}_{i} &=&  w_{i} \frac{ \sum_{i} {w_{i} } } { \sum_{i} {w_{i}^{2} } }
     \f}
-**/
-/// The estimated efficiency is the mode (or the mean) of the obtained posterior distribution
-///
-/// The boundaries of the confidence interval for a confidence level (1 - a)
-/// are given by the a/2 and 1-a/2 quantiles of the resulting cumulative
-/// distribution.
-///
-/// Example (uniform prior distribution):
-/// Begin_Macro(source)
-/// {
-///  TCanvas* c1 = new TCanvas("c1","",600,800);
-///  c1->Divide(1,2);
-///  c1->SetFillStyle(1001);
-///  c1->SetFillColor(kWhite);
-///
-///  TF1* p1 = new TF1("p1","TMath::BetaDist(x,19,9)",0,1);
-///  TF1* p2 = new TF1("p2","TMath::BetaDist(x,4,8)",0,1);
-///  TF1* comb = new TF1("comb2","TMath::BetaDist(x,[0],[1])",0,1);
-///  double nrm = 1./(0.6*0.6+0.4*0.4); // weight normalization
-///  double a = 0.6*18.0 + 0.4*3.0 + 1.0;  // new alpha parameter of combined beta dist.
-///  double b = 0.6*10+0.4*7+1.0;  // new beta parameter of combined beta dist.
-///  comb->SetParameters(nrm*a ,nrm *b );
-///  TF1* const1 = new TF1("const1","0.05",0,1);
-///  TF1* const2 = new TF1("const2","0.95",0,1);
-///
-///  p1->SetLineColor(kRed);
-///  p1->SetTitle("combined posteriors;#epsilon;P(#epsilon|k,N)");
-///  p2->SetLineColor(kBlue);
-///  comb->SetLineColor(kGreen+2);
-///
-///  TLegend* leg1 = new TLegend(0.12,0.65,0.5,0.85);
-///  leg1->AddEntry(p1,"k1 = 18, N1 = 26","l");
-///  leg1->AddEntry(p2,"k2 = 3, N2 = 10","l");
-///  leg1->AddEntry(comb,"combined: p1 = 0.6, p2=0.4","l");
-///
-///  c1->cd(1);
-///  comb->Draw();
-///  p1->Draw("same");
-///  p2->Draw("same");
-///  leg1->Draw("same");
-///  c1->cd(2);
-///  const1->SetLineWidth(1);
-///  const2->SetLineWidth(1);
-///  TGraph* gr = (TGraph*)comb->DrawIntegral();
-///  gr->SetTitle("cumulative function of combined posterior with boundaries for cl = 95%;#epsilon;CDF");
-///  const1->Draw("same");
-///  const2->Draw("same");
-///
-///  c1->cd(0);
-///  return c1;
-/// }
-/// End_Macro
 
+    The estimated efficiency is the mode (or the mean) of the obtained posterior distribution
+
+    The boundaries of the confidence interval for a confidence level (1 - a)
+    are given by the a/2 and 1-a/2 quantiles of the resulting cumulative
+    distribution.
+
+    Example (uniform prior distribution):
+
+Begin_Macro(source)
+{
+     TCanvas* c1 = new TCanvas("c1","",600,800);
+     c1->Divide(1,2);
+     c1->SetFillStyle(1001);
+     c1->SetFillColor(kWhite);
+
+     TF1* p1 = new TF1("p1","TMath::BetaDist(x,19,9)",0,1);
+     TF1* p2 = new TF1("p2","TMath::BetaDist(x,4,8)",0,1);
+     TF1* comb = new TF1("comb2","TMath::BetaDist(x,[0],[1])",0,1);
+     double nrm = 1./(0.6*0.6+0.4*0.4); // weight normalization
+     double a = 0.6*18.0 + 0.4*3.0 + 1.0;  // new alpha parameter of combined beta dist.
+     double b = 0.6*10+0.4*7+1.0;  // new beta parameter of combined beta dist.
+     comb->SetParameters(nrm*a ,nrm *b );
+     TF1* const1 = new TF1("const1","0.05",0,1);
+     TF1* const2 = new TF1("const2","0.95",0,1);
+
+     p1->SetLineColor(kRed);
+     p1->SetTitle("combined posteriors;#epsilon;P(#epsilon|k,N)");
+     p2->SetLineColor(kBlue);
+     comb->SetLineColor(kGreen+2);
+
+     TLegend* leg1 = new TLegend(0.12,0.65,0.5,0.85);
+     leg1->AddEntry(p1,"k1 = 18, N1 = 26","l");
+     leg1->AddEntry(p2,"k2 = 3, N2 = 10","l");
+     leg1->AddEntry(comb,"combined: p1 = 0.6, p2=0.4","l");
+
+     c1->cd(1);
+     comb->Draw();
+     p1->Draw("same");
+     p2->Draw("same");
+     leg1->Draw("same");
+     c1->cd(2);
+     const1->SetLineWidth(1);
+     const2->SetLineWidth(1);
+     TGraph* gr = (TGraph*)comb->DrawIntegral();
+     gr->SetTitle("cumulative function of combined posterior with boundaries for cl = 95%;#epsilon;CDF");
+     const1->Draw("same");
+     const2->Draw("same");
+
+     c1->cd(0);
+     return c1;
+}
+End_Macro
+
+**/
+////////////////////////////////////////////////////////////////////
 Double_t TEfficiency::Combine(Double_t& up,Double_t& low,Int_t n,
                               const Int_t* pass,const Int_t* total,
                               Double_t alpha, Double_t beta,
@@ -2848,7 +2863,7 @@ void TEfficiency::Paint(const Option_t* opt)
       if(fFunctions) {
          //paint box with fit parameters
          //the fit dtatistics will be painted if gStyle->SetOptFit(1) has been
-         // called by the user 
+         // called by the user
          TIter next(fFunctions);
          TObject* obj = 0;
          while((obj = next())) {

@@ -297,18 +297,8 @@ void TMarker3DBox::PaintH3(TH1 *h, Option_t *option)
    TAxis *yaxis = h->GetYaxis();
    TAxis *zaxis = h->GetZaxis();
 
-   //compute min and max of all cells
-   wmin = wmax = 0;
-   for (iz=zaxis->GetFirst();iz<=zaxis->GetLast();iz++) {
-      for (iy=yaxis->GetFirst();iy<=yaxis->GetLast();iy++) {
-         for (ix=xaxis->GetFirst();ix<=xaxis->GetLast();ix++) {
-            bin = h->GetBin(ix,iy,iz);
-            w = h->GetBinContent(bin);
-            if (w > wmax) wmax = w;
-            if (w < wmin) wmin = w;
-         }
-      }
-   }
+   wmin = h->GetMinimum();
+   wmax = h->GetMaximum();
 
    //Create or modify 3-d view object
    TView *view = gPad->GetView();
@@ -344,7 +334,8 @@ void TMarker3DBox::PaintH3(TH1 *h, Option_t *option)
             zmax = zmin + h->GetZaxis()->GetBinWidth(iz);
             bin = h->GetBin(ix,iy,iz);
             w = h->GetBinContent(bin);
-            if (w == 0) continue;
+            if (w < wmin) continue;
+            if (w > wmax) w = wmax;
             scale = (w-wmin)/(wmax-wmin);
             m3.SetPosition(0.5*(xmin+xmax),0.5*(ymin+ymax),0.5*(zmin+zmax));
             m3.SetSize(scale*(xmax-xmin),scale*(ymax-ymin),scale*(zmax-zmin));

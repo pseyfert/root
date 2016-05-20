@@ -13,13 +13,19 @@
 
 #include "cling/Interpreter/Interpreter.h"
 #include "cling/Interpreter/Value.h"
+#include "cling/MetaProcessor/MetaProcessor.h"
 
 #include "llvm/Support/raw_ostream.h"
 
 #include <map>
 #include <string>
 #include <cstring>
-#include <unistd.h>
+#ifndef LLVM_ON_WIN32
+# include <unistd.h>
+#else
+# include <io.h>
+# define write _write
+#endif
 
 // FIXME: should be moved into a Jupyter interp struct that then gets returned
 // from create.
@@ -42,7 +48,8 @@ namespace cling {
     /// Push MIME stuff to Jupyter. To be called from user code.
     ///\param contentDict - dictionary of MIME type versus content. E.g.
     /// {{"text/html", {"<div></div>", }}
-    void pushOutput(const std::map<std::string, MIMEDataRef> contentDict) {
+    ///\returns `false` if the output could not be sent.
+    bool pushOutput(const std::map<std::string, MIMEDataRef> contentDict) {
 
       // Pipe sees (all numbers are longs, except for the first:
       // - num bytes in a long (sent as a single unsigned char!)
@@ -57,19 +64,29 @@ namespace cling {
       // Write number of dictionary elements (and the size of that number in a
       // char)
       unsigned char sizeLong = sizeof(long);
-      write(pipeToJupyterFD, &sizeLong, 1);
+      if (write(pipeToJupyterFD, &sizeLong, 1) != 1)
+        return false;
       long dictSize = contentDict.size();
-      write(pipeToJupyterFD, &dictSize, sizeof(long));
+      if (write(pipeToJupyterFD, &dictSize, sizeof(long)) != sizeof(long))
+        return false;
 
       for (auto iContent: contentDict) {
         const std::string& mimeType = iContent.first;
         long mimeTypeSize = (long)mimeType.size();
-        write(pipeToJupyterFD, &mimeTypeSize, sizeof(long));
-        write(pipeToJupyterFD, mimeType.c_str(), mimeType.size() + 1);
+        if (write(pipeToJupyterFD, &mimeTypeSize, sizeof(long)) != sizeof(long))
+          return false;
+        if (write(pipeToJupyterFD, mimeType.c_str(), mimeType.size() + 1)
+            != (long)(mimeType.size() + 1))
+          return false;
         const MIMEDataRef& mimeData = iContent.second;
-        write(pipeToJupyterFD, &mimeData.m_Size, sizeof(long));
-        write(pipeToJupyterFD, mimeData.m_Data, mimeData.m_Size);
+        if (write(pipeToJupyterFD, &mimeData.m_Size, sizeof(long))
+            != sizeof(long))
+          return false;
+        if (write(pipeToJupyterFD, mimeData.m_Data, mimeData.m_Size)
+            != mimeData.m_Size)
+          return false;
       }
+      return true;
     }
   } // namespace Jupyter
 } // namespace cling
@@ -79,22 +96,24 @@ extern "C" {
 ///\name Cling4CTypes
 /// The Python compatible view of cling
 
-/// The Interpreter object cast to void*
-using TheInterpreter = void ;
+/// The MetaProcessor cast to void*
+using TheMetaProcessor = void;
 
 /// Create an interpreter object.
-TheInterpreter*
+TheMetaProcessor*
 cling_create(int argc, const char *argv[], const char* llvmdir, int pipefd) {
-  auto interp = new cling::Interpreter(argc, argv, llvmdir);
   pipeToJupyterFD = pipefd;
-  return interp;
+  auto I = new cling::Interpreter(argc, argv, llvmdir);
+  return new cling::MetaProcessor(*I, llvm::errs());
 }
 
 
 /// Destroy the interpreter.
-void cling_destroy(TheInterpreter *interpVP) {
-  cling::Interpreter *interp = (cling::Interpreter *) interpVP;
-  delete interp;
+void cling_destroy(TheMetaProcessor *metaProc) {
+  cling::MetaProcessor *M = (cling::MetaProcessor*)metaProc;
+  cling::Interpreter *I = const_cast<cling::Interpreter*>(&M->getInterpreter());
+  delete M;
+  delete I;
 }
 
 /// Stringify a cling::Value
@@ -109,14 +128,18 @@ static std::string ValueToString(const cling::Value& V) {
 
 /// Evaluate a string of code. Returns nullptr on failure.
 /// Returns a string representation of the expression (can be "") on success.
-char* cling_eval(TheInterpreter *interpVP, const char *code) {
-  cling::Interpreter *interp = (cling::Interpreter *) interpVP;
+char* cling_eval(TheMetaProcessor *metaProc, const char *code) {
+  cling::MetaProcessor *M = (cling::MetaProcessor*)metaProc;
   cling::Value V;
-  cling::Interpreter::CompilationResult Res = interp->process(code, &V);
+  cling::Interpreter::CompilationResult Res;
+  if (M->process(code, Res, &V)) {
+    cling::Jupyter::pushOutput({{"text/html", "Incomplete input! Ignored."}});
+    M->cancelContinuation();
+    return nullptr;
+  }
   if (Res != cling::Interpreter::kSuccess)
     return nullptr;
 
-  cling::Jupyter::pushOutput({{"text/html", "You just executed C++ code!"}});
   if (!V.isValid())
     return strdup("");
   return strdup(ValueToString(V).c_str());
