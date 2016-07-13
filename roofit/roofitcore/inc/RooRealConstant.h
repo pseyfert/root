@@ -18,10 +18,10 @@
 
 #include "Rtypes.h"
 #include "Riosfwd.h"
+#include "RooConstVar.h" // IWYU pragma: export
 
 class RooArgList ;
 class TIterator ;
-class RooConstVar;
 
 class RooRealConstant {
 public:
