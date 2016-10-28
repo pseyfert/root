@@ -4,7 +4,10 @@
 ###################################################################### 
 BINS = TMVAClassification \
         TMVAClassificationCategory \
-        TMVAClassificationApplication \
+        TMVAClassificationApplication1 \
+        TMVAClassificationApplication2 \
+        TMVAClassificationApplication3 \
+        TMVAClassificationApplication4 \
         TMVAClassificationCategoryApplication \
         TMVARegression \
         TMVARegressionApplication \
@@ -16,7 +19,7 @@ BINS = TMVAClassification \
 
 
 CXX = g++
-CCFLAGS = -O0 -ggdb -std=c++11 
+CCFLAGS = -std=c++11 
 
 
 LD = g++
@@ -28,11 +31,13 @@ INCS = $(shell root-config --incdir)
 
 default : $(BINS)
 
-$(BINS): % : %.C 
-	@echo -n "Building $@ ... "
-	$(CXX) $(CCFLAGS) $<  $(addprefix -I, $(INCS))  $(shell root-config --libs) -lMLP -lMinuit -lTreePlayer -lTMVA -lTMVAGui -lXMLIO  -lMLP -lm  -g -o $@
-	@echo "Done"
+%.o : %.C 
+	@echo -n "Compiling $@ ... "
+	$(CXX) $(CCFLAGS) $<  $(addprefix -I, $(INCS)) -O2 -march=native -c -g -o $@
 
+$(BINS): % : %.o 
+	@echo -n "Linking $@ ... "
+	$(CXX) $<  $(shell root-config --libs) -lMLP -lMinuit -lTreePlayer -lTMVA -lTMVAGui -lXMLIO  -lMLP -lm -O2 -march=native  -g -o $@
 
 clean: 
 	rm -f *.o	$(BINS)
