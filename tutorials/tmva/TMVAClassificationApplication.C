@@ -22,6 +22,7 @@
 #include "TString.h"
 #include "TSystem.h"
 #include "TROOT.h"
+#include "TPluginManager.h"
 #include "TStopwatch.h"
 
 #include "TMVA/Tools.h"
@@ -94,6 +95,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    Use["BDTB"]            = 0; // uses Bagging
    Use["BDTD"]            = 0; // decorrelation + Adaptive Boost
    Use["BDTF"]            = 0; // allow usage of fisher discriminant for node splitting
+   Use["FastBDT"]         = 1; // use FastBDT
    //
    // Friedman's RuleFit method, ie, an optimised series of cuts ("rules")
    Use["RuleFit"]         = 1;
@@ -161,6 +163,12 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    TString dir    = "dataset/weights/";
    TString prefix = "TMVAClassification";
 
+   if (Use["FastBDT"]) {// FastBDT
+      TPluginManager* pluginManager = gROOT->GetPluginManager();
+      pluginManager->AddHandler("TMVA@@MethodBase", ".*_FastBDT.*", "TMVA::MethodFastBDT", "TMVAFastBDT", "MethodFastBDT(TMVA::DataSetInfo&,TString)");
+      pluginManager->AddHandler("TMVA@@MethodBase", ".*FastBDT.*", "TMVA::MethodFastBDT", "TMVAFastBDT", "MethodFastBDT(TString&,TString&,TMVA::DataSetInfo&,TString&)");
+   }
+
    // Book method(s)
    for (std::map<std::string,int>::iterator it = Use.begin(); it != Use.end(); it++) {
       if (it->second) {
@@ -178,6 +186,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    TH1F   *histNnC(0), *histNnT(0), *histNdn(0), *histBdt(0), *histBdtG(0), *histBdtB(0), *histBdtD(0);
    TH1F   *histBdtF(0), *histRf(0), *histSVMG(0), *histSVMP(0), *histSVML(0), *histFDAMT(0), *histFDAGA(0);
    TH1F   *histCat(0), *histPBdt(0);
+   TH1F   *histFastBDT(0);
 
    if (Use["Likelihood"])    histLk      = new TH1F( "MVA_Likelihood",    "MVA_Likelihood",    nbin, -1, 1 );
    if (Use["LikelihoodD"])   histLkD     = new TH1F( "MVA_LikelihoodD",   "MVA_LikelihoodD",   nbin, -1, 0.9999 );
@@ -204,6 +213,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    if (Use["BDTB"])          histBdtB    = new TH1F( "MVA_BDTB",          "MVA_BDTB",          nbin, -1.0, 1.0 );
    if (Use["BDTD"])          histBdtD    = new TH1F( "MVA_BDTD",          "MVA_BDTD",          nbin, -0.8, 0.8 );
    if (Use["BDTF"])          histBdtF    = new TH1F( "MVA_BDTF",          "MVA_BDTF",          nbin, -1.0, 1.0 );
+   if (Use["FastBDT"])       histFastBDT = new TH1F( "MVA_FastBDT",       "MVA_FastBDT",       nbin, -1.0, 1.0 );
    if (Use["RuleFit"])       histRf      = new TH1F( "MVA_RuleFit",       "MVA_RuleFit",       nbin, -2.0, 2.0 );
    if (Use["SVM_Gauss"])     histSVMG    = new TH1F( "MVA_SVM_Gauss",     "MVA_SVM_Gauss",     nbin,  0.0, 1.0 );
    if (Use["SVM_Poly"])      histSVMP    = new TH1F( "MVA_SVM_Poly",      "MVA_SVM_Poly",      nbin,  0.0, 1.0 );
@@ -310,6 +320,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
       if (Use["BDTB"         ])   histBdtB   ->Fill( reader->EvaluateMVA( "BDTB method"          ) );
       if (Use["BDTD"         ])   histBdtD   ->Fill( reader->EvaluateMVA( "BDTD method"          ) );
       if (Use["BDTF"         ])   histBdtF   ->Fill( reader->EvaluateMVA( "BDTF method"          ) );
+      if (Use["FastBDT"      ])   histFastBDT->Fill( reader->EvaluateMVA( "FastBDT method"       ) );
       if (Use["RuleFit"      ])   histRf     ->Fill( reader->EvaluateMVA( "RuleFit method"       ) );
       if (Use["SVM_Gauss"    ])   histSVMG   ->Fill( reader->EvaluateMVA( "SVM_Gauss method"     ) );
       if (Use["SVM_Poly"     ])   histSVMP   ->Fill( reader->EvaluateMVA( "SVM_Poly method"      ) );
@@ -395,6 +406,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    if (Use["BDTB"         ])   histBdtB   ->Write();
    if (Use["BDTD"         ])   histBdtD   ->Write();
    if (Use["BDTF"         ])   histBdtF   ->Write();
+   if (Use["FastBDT"      ])   histFastBDT->Write();
    if (Use["RuleFit"      ])   histRf     ->Write();
    if (Use["SVM_Gauss"    ])   histSVMG   ->Write();
    if (Use["SVM_Poly"     ])   histSVMP   ->Write();
