@@ -4,10 +4,13 @@
 ###################################################################### 
 BINS = TMVAClassification \
         TMVAClassificationCategory \
+        TMVAClassificationApplication \
         TMVAClassificationApplication1 \
         TMVAClassificationApplication2 \
         TMVAClassificationApplication3 \
         TMVAClassificationApplication4 \
+        TMVAClassificationApplication5 \
+        TMVAClassificationApplication6 \
         TMVAClassificationCategoryApplication \
         TMVARegression \
         TMVARegressionApplication \
