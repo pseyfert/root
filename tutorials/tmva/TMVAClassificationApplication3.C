@@ -201,10 +201,11 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    TTree* theTree = (TTree*)input->Get("TreeS");
    std::vector<double> vars(4);
    Float_t userVar1, userVar2;
+   Float_t userVar3, userVar4;
    theTree->SetBranchAddress( "var1", &userVar1 );
    theTree->SetBranchAddress( "var2", &userVar2 );
-   theTree->SetBranchAddress( "var3", &vars[2] );
-   theTree->SetBranchAddress( "var4", &vars[3] );
+   theTree->SetBranchAddress( "var3", &userVar3 );
+   theTree->SetBranchAddress( "var4", &userVar4 );
 
    // Efficiency calculator for cut method
    Int_t    nSelCutsGA = 0;
@@ -218,6 +219,8 @@ void TMVAClassificationApplication( TString myMethodList = "" )
 
        vars[0] = userVar1 + userVar2;
        vars[1] = userVar1 - userVar2;
+       vars[2] = userVar3;
+       vars[3] = userVar4;
 
        if (Use["MLP"          ])   histNn     ->Fill( reader->GetMvaValue( vars  ) );
        if (Use["BDT"          ])   histBdt    ->Fill( reader->GetMvaValue( vars  ) );

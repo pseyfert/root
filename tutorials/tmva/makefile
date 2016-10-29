@@ -45,3 +45,5 @@ $(BINS): % : %.o
 clean: 
 	rm -f *.o	$(BINS)
 
+callgrind%.out: TMVAClassificationApplication%
+	valgrind --tool=callgrind -v --dump-instr=yes --trace-jump=yes --smc-check=all-non-file --callgrind-out-file=$@ ./$< > main$i.log > callgrind$i.log 2>&1
