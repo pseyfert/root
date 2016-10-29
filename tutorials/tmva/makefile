@@ -1,3 +1,5 @@
+.DELETE_ON_ERROR:
+
 ######################################################################
 # Project: TMVA - Toolkit for Multivariate Data Analysis             #
 # Code   : Example usage for TMVA analyses                           #
