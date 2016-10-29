@@ -52,6 +52,7 @@
 #include "TString.h"
 #include "TObjString.h"
 #include "TSystem.h"
+#include "TPluginManager.h"
 #include "TROOT.h"
 
 #include "TMVA/Factory.h"
@@ -138,6 +139,7 @@ int TMVAClassification( TString myMethodList = "" )
    Use["BDTB"]            = 0; // uses Bagging
    Use["BDTD"]            = 0; // decorrelation + Adaptive Boost
    Use["BDTF"]            = 0; // allow usage of fisher discriminant for node splitting
+   Use["FastBDT"]         = 1; // use FastBDT
    //
    // Friedman's RuleFit method, ie, an optimised series of cuts ("rules")
    Use["RuleFit"]         = 1;
@@ -501,6 +503,13 @@ int TMVAClassification( TString myMethodList = "" )
    if (Use["BDTF"])  // Allow Using Fisher discriminant in node splitting for (strong) linearly correlated variables
       factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDTMitFisher",
                            "!H:!V:NTrees=50:MinNodeSize=2.5%:UseFisherCuts:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:SeparationType=GiniIndex:nCuts=20" );
+
+   if (Use["FastBDT"]) { // Use FastBDT
+      TPluginManager* pluginmanager = gROOT->GetPluginManager();
+      pluginmanager->AddHandler("TMVA@@MethodBase", ".*_FastBDT.*", "TMVA::MethodFastBDT", "TMVAFastBDT", "MethodFastBDT(TMVA::DataSetInfo&,TString)");
+      pluginmanager->AddHandler("TMVA@@MethodBase", ".*FastBDT.*", "TMVA::MethodFastBDT", "TMVAFastBDT", "MethodFastBDT(TString&,TString&,TMVA::DataSetInfo&,TString&)");
+      factory->BookMethod( dataloader, TMVA::Types::kPlugins, "FastBDT", "H:V:NTrees=850:Shrinkage=0.1:RandRatio=0.5:NTreeLayers=3:NCutLevel=20");
+   }
 
    // RuleFit -- TMVA implementation of Friedman's method
    if (Use["RuleFit"])
