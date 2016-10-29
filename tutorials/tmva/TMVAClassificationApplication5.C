@@ -286,6 +286,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
 
        if (Use["MLP"          ])   histNn     ->Fill( reader->EvaluateMVA( "MLP method"           ) );
        if (Use["BDT"          ])   histBdt    ->Fill( reader->EvaluateMVA( "BDT method"           ) );
+       if (Use["DNN"          ])   histNdn    ->Fill( reader->EvaluateMVA( "DNN method"           ) );
      }
    }
 
