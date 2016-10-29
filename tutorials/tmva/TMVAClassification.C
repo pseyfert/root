@@ -500,7 +500,7 @@ int TMVAClassification( TString myMethodList = "" )
       TPluginManager* pluginmanager = gROOT->GetPluginManager();
       pluginmanager->AddHandler("TMVA@@MethodBase", ".*_FastBDT.*", "TMVA::MethodFastBDT", "TMVAFastBDT", "MethodFastBDT(TMVA::DataSetInfo&,TString)");
       pluginmanager->AddHandler("TMVA@@MethodBase", ".*FastBDT.*", "TMVA::MethodFastBDT", "TMVAFastBDT", "MethodFastBDT(TString&,TString&,TMVA::DataSetInfo&,TString&)");
-      factory->BookMethod(TMVA::Types::kPlugins, "FastBDT", "H:V:NTrees=850:Shrinkage=0.1:RandRatio=0.5:NTreeLayers=3:NCutLevel=20");
+      factory->BookMethod( dataloader, TMVA::Types::kPlugins, "FastBDT", "H:V:NTrees=850:Shrinkage=0.1:RandRatio=0.5:NTreeLayers=3:NCutLevel=20");
    }
 
    // RuleFit -- TMVA implementation of Friedman's method
