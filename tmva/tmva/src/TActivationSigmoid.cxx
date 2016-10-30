@@ -57,9 +57,21 @@ TMVA::TActivationSigmoid::~TActivationSigmoid()
 ////////////////////////////////////////////////////////////////////////////////
 /// evaluate the sigmoid
 
+namespace {
+  inline float fast_tanh(float arg) {
+    if (arg > 4.97) return 1;
+    if (arg < -4.97) return -1;
+    float arg2 = arg * arg;
+    float a = arg * (135135.0f + arg2 * (17325.0f + arg2 * (378.0f + arg2)));
+    float b = 135135.0f + arg2 * (62370.0f + arg2 * (3150.0f + arg2 * 28.0f));
+    return a/b;
+  }
+}
+
 Double_t TMVA::TActivationSigmoid::Eval(Double_t arg)
 {
-   return 1.0/(1.0+TMath::Exp(-arg));
+   return 0.5*(1.+fast_tanh(0.5*arg));
+   //return 1.0/(1.0+TMath::Exp(-arg));
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -68,9 +80,12 @@ Double_t TMVA::TActivationSigmoid::Eval(Double_t arg)
 Double_t TMVA::TActivationSigmoid::EvalDerivative(Double_t arg)
 {
    Double_t expon = TMath::Exp(-arg);
-   Double_t denom = (1.0+expon);
-   denom *= denom;
-   return expon/denom;
+   Double_t frac = Eval(arg);
+   frac *= frac;
+   return expon*frac;
+   //Double_t denom = (1.0+expon);
+   //denom *= denom;
+   //return expon/denom;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
