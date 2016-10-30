@@ -156,6 +156,44 @@ inline float fast_atanf( float xx ) {
    return details::spORuint32(y,sign_mask);
 }
 
+inline double fast_tanh(const double x) noexcept
+{
+  // for very large |x| > 20, tanh(x) is x/|x| anyway (at least to double
+  // precision)
+  //
+  // NB: branch-free code takes longer to execute
+  if (std::abs(x) > 20.) return std::copysign(1., x);
+  // strategy for large arguments: tanh(2x) = 2 tanh(x)/(1 + tanh^2(x))
+  // idea is to use this "argument halving" a couple of times, and use a
+  // very short Padé approximation for the rest of the way
+  const auto xx = x * 0.125;
+  const auto xx2 = xx * xx;
+  const auto numer = 135135 + xx2 * (17325 + xx2 * ( 378 + xx2 *  1));
+  const auto denom = 135135 + xx2 * (62370 + xx2 * (3150 + xx2 * 28));
+
+  auto tanh = xx * numer / denom;
+  tanh = 2 * tanh / (tanh * tanh + 1);
+  tanh = 2 * tanh / (tanh * tanh + 1);
+  return 2 * tanh / (tanh * tanh + 1);
+}
+
+inline float fast_tanhf(const float x) noexcept
+{
+  // same strategy as double version above, but even shorter Padé
+  // approximation is sufficient for float
+  //
+  // NB: branch-free code takes longer to execute
+  if (std::abs(x) > 9.1f) return std::copysign(1.f, x);
+  const auto xx = x * 0.125f;
+  const auto xx2 = xx * xx;
+  auto tanh = xx * (xx2 + 15) / (6 * xx2 + 15);
+  tanh = 2 * tanh / (tanh * tanh + 1);
+  tanh = 2 * tanh / (tanh * tanh + 1);
+  return 2 * tanh / (tanh * tanh + 1);
+}
+
+
+
 //------------------------------------------------------------------------------
 // // Vector signatures
 //

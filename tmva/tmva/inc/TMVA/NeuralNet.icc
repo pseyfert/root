@@ -5,6 +5,7 @@
 
 #include <tuple>
 #include <future>
+#include "vdt/atan.h"
 
 #include "Math/Util.h"
 
@@ -47,7 +48,7 @@ namespace TMVA
         static std::shared_ptr<std::function<double(double)>> Sigmoid = std::make_shared<std::function<double(double)>> ([](double value){ value = std::max (-100.0, std::min (100.0,value)); return 1.0/(1.0 + std::exp (-value)); });
         static std::shared_ptr<std::function<double(double)>> InvSigmoid = std::make_shared<std::function<double(double)>> ([](double value){ double s = (*Sigmoid.get ()) (value); return s*(1.0-s); });
 
-        static std::shared_ptr<std::function<double(double)>> Tanh = std::make_shared<std::function<double(double)>> ([](double value){ return tanh (value); });
+        static std::shared_ptr<std::function<double(double)>> Tanh = std::make_shared<std::function<double(double)>> ([](double value){ return vdt::fast_tanh (value); });
         static std::shared_ptr<std::function<double(double)>> InvTanh = std::make_shared<std::function<double(double)>> ([](double value){ return 1.0 - std::pow (value, 2.0); });
 
         static std::shared_ptr<std::function<double(double)>> Linear = std::make_shared<std::function<double(double)>> ([](double value){ return value; });
@@ -62,7 +63,7 @@ namespace TMVA
         static std::shared_ptr<std::function<double(double)>> SoftPlus = std::make_shared<std::function<double(double)>> ([](double value){ return std::log (1.0+ std::exp (value)); });
         static std::shared_ptr<std::function<double(double)>> InvSoftPlus = std::make_shared<std::function<double(double)>> ([](double value){ return 1.0 / (1.0 + std::exp (-value)); });
 
-        static std::shared_ptr<std::function<double(double)>> TanhShift = std::make_shared<std::function<double(double)>> ([](double value){ return tanh (value-0.3); });
+        static std::shared_ptr<std::function<double(double)>> TanhShift = std::make_shared<std::function<double(double)>> ([](double value){ return vdt::fast_tanh (value-0.3); });
         static std::shared_ptr<std::function<double(double)>> InvTanhShift = std::make_shared<std::function<double(double)>> ([](double value){ return 0.3 + (1.0 - std::pow (value, 2.0)); });
 
         static std::shared_ptr<std::function<double(double)>> SoftSign = std::make_shared<std::function<double(double)>> ([](double value){ return value / (1.0 + fabs (value)); });
