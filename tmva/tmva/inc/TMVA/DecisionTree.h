@@ -29,6 +29,15 @@
  *                                                                                *
  **********************************************************************************/
 
+#ifndef ROOT_TMVA_Version
+#include "TMVA/Version.h"
+#endif
+
+#include <iosfwd>
+#ifndef ROOT_TROOT
+#include "TROOT.h"
+#endif
+
 #ifndef ROOT_TMVA_DecisionTree
 #define ROOT_TMVA_DecisionTree
 
@@ -50,12 +59,6 @@
 #ifndef ROOT_TMVA_DecisionTreeNode
 #include "TMVA/DecisionTreeNode.h"
 #endif
-#ifndef ROOT_TMVA_BinaryTree
-#include "TMVA/BinaryTree.h"
-#endif
-#ifndef ROOT_TMVA_BinarySearchTree
-#include "TMVA/BinarySearchTree.h"
-#endif
 #ifndef ROOT_TMVA_SeparationBase
 #include "TMVA/SeparationBase.h"
 #endif
@@ -69,8 +72,16 @@ class TRandom3;
 namespace TMVA {
 
    class Event;
+   class DecisionTree;
+   class MsgLogger;
 
-   class DecisionTree : public BinaryTree {
+   std::ostream& operator<< ( std::ostream& os, const DecisionTree& tree );
+   std::istream& operator>> ( std::istream& istr,     DecisionTree& tree );
+
+   class DecisionTree {
+
+      friend std::ostream& operator<< ( std::ostream& os, const DecisionTree& tree );
+      friend std::istream& operator>> ( std::istream& istr,     DecisionTree& tree );
 
    private:
 
@@ -98,12 +109,36 @@ namespace TMVA {
 
       virtual ~DecisionTree( void );
 
+      // set the root node of the tree
+      void SetRoot( DecisionTreeNode* r ) { fRoot = r; }
+
       // Retrieves the address of the root node
-      virtual DecisionTreeNode* GetRoot() const { return dynamic_cast<TMVA::DecisionTreeNode*>(fRoot); }
-      virtual DecisionTreeNode * CreateNode(UInt_t) const { return new DecisionTreeNode(); }
-      virtual BinaryTree* CreateTree() const { return new DecisionTree(); }
+      DecisionTreeNode* GetRoot() const { return fRoot; }
+      DecisionTreeNode * CreateNode(UInt_t size = 0) const { return new DecisionTreeNode(); }
+      DecisionTree* CreateTree() const { return new DecisionTree(); }
       static  DecisionTree* CreateFromXML(void* node, UInt_t tmva_Version_Code = TMVA_VERSION_CODE);
-      virtual const char* ClassName() const { return "DecisionTree"; }
+      const char* ClassName() const { return "DecisionTree"; }
+
+      // get number of Nodes in the Tree as counted while booking the nodes;
+      UInt_t GetNNodes() const { return fNNodes; }
+
+      // count the number of Nodes in the Tree by looping through the tree and updates
+      // the stored number. (e.g. useful when pruning, as the number count is updated when
+      // building the tree.
+      UInt_t CountNodes( DecisionTreeNode* n = NULL );
+
+      UInt_t GetTotalTreeDepth() const { return fDepth; }
+
+      void SetTotalTreeDepth( Int_t depth ) { fDepth = depth; }
+      void SetTotalTreeDepth( DecisionTreeNode* n = NULL );
+
+      DecisionTreeNode* GetLeftDaughter ( DecisionTreeNode* n);    
+      DecisionTreeNode* GetRightDaughter( DecisionTreeNode* n);
+
+      void Print( std::ostream& os ) const;
+      void Read ( std::istream& istr, UInt_t tmva_Version_Code = TMVA_VERSION_CODE );
+      void* AddXMLTo(void* parent) const;
+      void  ReadXML(void* node, UInt_t tmva_Version_Code = TMVA_VERSION_CODE );
 
       // building of a tree by recursivly splitting the nodes
 
@@ -169,13 +204,13 @@ namespace TMVA {
       void SetNodePurityLimit( Double_t p ) { fNodePurityLimit = p; }
       Double_t GetNodePurityLimit( ) const { return fNodePurityLimit; }
 
-      void DescendTree( Node *n = NULL );
-      void SetParentTreeInNodes( Node *n = NULL );
+      void DescendTree( DecisionTreeNode *n = NULL );
+      void SetParentTreeInNodes( DecisionTreeNode *n = NULL );
         
       // retrieve node from the tree. Its position (up to a maximal tree depth of 64)
       // is coded as a sequence of left-right moves starting from the root, coded as
       // 0-1 bit patterns stored in the "long-integer" together with the depth
-      Node* GetNode( ULong_t sequence, UInt_t depth );
+      DecisionTreeNode* GetNode( ULong_t sequence, UInt_t depth );
     
       UInt_t CleanTree(DecisionTreeNode *node=NULL);
      
@@ -188,7 +223,7 @@ namespace TMVA {
       Int_t GetNNodesBeforePruning(){return (fNNodesBeforePruning)?fNNodesBeforePruning:fNNodesBeforePruning=GetNNodes();}
       
 
-      UInt_t CountLeafNodes(TMVA::Node *n = NULL);
+      UInt_t CountLeafNodes(TMVA::DecisionTreeNode *n = NULL);
 
       void  SetTreeID(Int_t treeID){fTreeID = treeID;};
       Int_t GetTreeID(){return fTreeID;};
@@ -248,6 +283,19 @@ namespace TMVA {
       Types::EAnalysisType  fAnalysisType;   // kClassification(=0=false) or kRegression(=1=true)
 
       DataSetInfo*  fDataSetInfo;
+
+   protected:
+      DecisionTreeNode*      fRoot;                //the root node of the tree
+      // the tree only has it's root node, the "daughters" are taken car 
+      // of by the "node" properties of the "root"
+
+      // delete a node (and the corresponding event if owned by the tree)
+      void       DeleteNode( DecisionTreeNode* );
+
+      UInt_t     fNNodes;           // total number of nodes in the tree (counted)
+      UInt_t     fDepth;            // maximal depth in tree reached
+
+      MsgLogger& Log() const;
 
 
       ClassDef(DecisionTree,0);               // implementation of a Decision Tree

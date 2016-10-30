@@ -37,6 +37,9 @@
 //_______________________________________________________________________
 
 #include "TMVA/DecisionTreeNode.h"
+#include <stdexcept>
+#include <iosfwd>
+#include <iostream>
 
 #include "TMVA/Types.h"
 #include "TMVA/MsgLogger.h"
@@ -52,6 +55,8 @@
 #include <limits>
 #include <sstream>
 
+Int_t TMVA::DecisionTreeNode::fgCount = 0;
+
 using std::string;
 
 ClassImp(TMVA::DecisionTreeNode)
@@ -62,7 +67,12 @@ UInt_t   TMVA::DecisionTreeNode::fgTmva_Version_Code = 0;
 /// constructor of an essentially "empty" node floating in space
 
 TMVA::DecisionTreeNode::DecisionTreeNode()
-   : TMVA::Node(),
+   : fParent( NULL ),
+     fLeft  ( NULL),
+     fRight ( NULL ),
+     fPos   ( 'u' ),
+     fDepth ( 0 ),
+     fParentTree( NULL ),
      fCutValue(0),
      fCutType ( kTRUE ),
      fSelector ( -1 ),
@@ -72,6 +82,7 @@ TMVA::DecisionTreeNode::DecisionTreeNode()
      fPurity (-99),
      fIsTerminalNode( kFALSE )
 {
+   fgCount++;
    if (DecisionTreeNode::fgIsTraining){
       fTrainInfo = new DTNodeTrainingInfo();
       //std::cout << "Node constructor with TrainingINFO"<<std::endl;
@@ -85,8 +96,13 @@ TMVA::DecisionTreeNode::DecisionTreeNode()
 ////////////////////////////////////////////////////////////////////////////////
 /// constructor of a daughter node as a daughter of 'p'
 
-TMVA::DecisionTreeNode::DecisionTreeNode(TMVA::Node* p, char pos)
-   : TMVA::Node(p, pos),
+TMVA::DecisionTreeNode::DecisionTreeNode(TMVA::DecisionTreeNode* p, char pos)
+   : fParent ( p ), 
+     fLeft ( NULL ), 
+     fRight( NULL ),  
+     fPos  ( pos ), 
+     fDepth( p->GetDepth() + 1), 
+     fParentTree(p->GetParentTree()) ,
      fCutValue( 0 ),
      fCutType ( kTRUE ),
      fSelector( -1 ),
@@ -96,6 +112,9 @@ TMVA::DecisionTreeNode::DecisionTreeNode(TMVA::Node* p, char pos)
      fPurity (-99),
      fIsTerminalNode( kFALSE )
 {
+   fgCount++;
+   if (fPos == 'l' ) p->SetLeft(this);
+   else if (fPos == 'r' ) p->SetRight(this);
    if (DecisionTreeNode::fgIsTraining){
       fTrainInfo = new DTNodeTrainingInfo();
       //std::cout << "Node constructor with TrainingINFO"<<std::endl;
@@ -107,12 +126,17 @@ TMVA::DecisionTreeNode::DecisionTreeNode(TMVA::Node* p, char pos)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-/// copy constructor of a node. It will result in an explicit copy of
+/// copy constructor of a node. It will result in an explicit copy of,
 /// the node and recursively all it's daughters
 
 TMVA::DecisionTreeNode::DecisionTreeNode(const TMVA::DecisionTreeNode &n,
                                          DecisionTreeNode* parent)
-   : TMVA::Node(n),
+   : fParent( NULL ), 
+     fLeft  ( NULL), 
+     fRight ( NULL ), 
+     fPos   ( n.fPos ), 
+     fDepth ( n.fDepth ), 
+     fParentTree( NULL ),
      fCutValue( n.fCutValue ),
      fCutType ( n.fCutType ),
      fSelector( n.fSelector ),
@@ -122,6 +146,7 @@ TMVA::DecisionTreeNode::DecisionTreeNode(const TMVA::DecisionTreeNode &n,
      fPurity  ( n.fPurity),
      fIsTerminalNode( n.fIsTerminalNode )
 {
+   fgCount++;
    this->SetParent( parent );
    if (n.GetLeft() == 0 ) this->SetLeft(NULL);
    else this->SetLeft( new DecisionTreeNode( *((DecisionTreeNode*)(n.GetLeft())),this));
@@ -143,9 +168,93 @@ TMVA::DecisionTreeNode::DecisionTreeNode(const TMVA::DecisionTreeNode &n,
 /// destructor
 
 TMVA::DecisionTreeNode::~DecisionTreeNode(){
+   fgCount--;
    delete fTrainInfo;
 }
 
+////////////////////////////////////////////////////////////////////////////////
+/// retuns the global number of instantiated nodes
+
+int TMVA::DecisionTreeNode::GetCount()
+{
+   return fgCount;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+///recursively go through the part of the tree below this node and count all daughters
+
+Int_t TMVA::DecisionTreeNode::CountMeAndAllDaughters() const 
+{
+   Int_t n=1;
+   if (this->GetLeft() != NULL) 
+      n+= this->GetLeft()->CountMeAndAllDaughters(); 
+   if (this->GetRight() != NULL) 
+      n+= this->GetRight()->CountMeAndAllDaughters(); 
+  
+   return n;
+}
+// print a node
+
+////////////////////////////////////////////////////////////////////////////////
+/// output operator for a node  
+
+std::ostream& TMVA::operator<<( std::ostream& os, const TMVA::DecisionTreeNode& node )
+{ 
+   node.Print(os);
+   return os;                // Return the output stream.
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/// output operator with a pointer to the node (which still prints the node itself)
+
+std::ostream& TMVA::operator<<( std::ostream& os, const TMVA::DecisionTreeNode* node )
+{ 
+   if (node!=NULL) node->Print(os);
+   return os;                // Return the output stream.
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/// add attributes to XML
+
+void* TMVA::DecisionTreeNode::AddXMLTo( void* parent ) const
+{
+   std::stringstream s("");
+   AddContentToNode(s);
+   void* node = gTools().AddChild(parent, "Node", s.str().c_str());
+   gTools().AddAttr( node, "pos",   fPos );
+   gTools().AddAttr( node, "depth", fDepth );
+   this->AddAttributesToNode(node);
+   if (this->GetLeft())  this->GetLeft()->AddXMLTo(node);
+   if (this->GetRight()) this->GetRight()->AddXMLTo(node);
+   return node;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/// read attributes from XML
+
+void TMVA::DecisionTreeNode::ReadXML( void* node,  UInt_t tmva_Version_Code )
+{
+   ReadAttributes(node, tmva_Version_Code);
+   const char* content = gTools().GetContent(node);
+   if (content) {
+      std::stringstream s(content);
+      ReadContent(s);
+   }
+   gTools().ReadAttr( node, "pos",   fPos );
+   gTools().ReadAttr( node, "depth", fDepth );
+
+   void* ch = gTools().GetChild(node);
+   while (ch) {
+      DecisionTreeNode* n = CreateNode();
+      n->ReadXML(ch, tmva_Version_Code);
+      if (n->GetPos()=='l')     { this->SetLeft(n);  }
+      else if(n->GetPos()=='r') { this->SetRight(n); }
+      else { 
+         std::cout << "neither left nor right" << std::endl;
+      }
+      ch = gTools().GetNextChild(ch);
+   }
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 /// test event if it decends the tree at this node to the right

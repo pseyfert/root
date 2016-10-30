@@ -30,7 +30,7 @@
 
 namespace TMVA {
 
-   class Node;
+   class DecisionTreeNode;
    class MsgLogger;
 
    class RuleCut {
@@ -38,7 +38,7 @@ namespace TMVA {
    public:
 
       // main constructor
-      RuleCut( const std::vector< const TMVA::Node * > & nodes );
+      RuleCut( const std::vector< const TMVA::DecisionTreeNode * > & nodes );
 
       // copy constructor
    RuleCut( const RuleCut & other ) : fLogger(0) { Copy( other ); }
@@ -83,7 +83,7 @@ namespace TMVA {
       inline void Copy( const RuleCut & other);
 
       // make the cuts from the array of nodes
-      void MakeCuts( const std::vector< const TMVA::Node * > & nodes );
+      void MakeCuts( const std::vector< const TMVA::DecisionTreeNode * > & nodes );
 
       std::vector<UInt_t>   fSelector; // array of selectors (expressions)
       std::vector<Double_t> fCutMin;   // array of lower limits

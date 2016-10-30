@@ -60,7 +60,7 @@
 /// the main constructor for a Rule
 
 TMVA::Rule::Rule( RuleEnsemble *re,
-                  const std::vector< const Node * >& nodes )
+                  const std::vector< const DecisionTreeNode * >& nodes )
    : fCut           ( 0 )
    , fNorm          ( 1.0 )
    , fSupport       ( 0.0 )

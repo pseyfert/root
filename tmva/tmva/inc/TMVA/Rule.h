@@ -61,7 +61,7 @@ namespace TMVA {
    public:
 
       // main constructor
-      Rule( RuleEnsemble *re, const std::vector< const TMVA::Node * > & nodes );
+      Rule( RuleEnsemble *re, const std::vector< const TMVA::DecisionTreeNode * > & nodes );
 
       // main constructor
       Rule( RuleEnsemble *re );

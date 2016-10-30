@@ -54,14 +54,14 @@ namespace TMVA {
       //                                                         //
       /////////////////////////////////////////////////////////////
 
-      class CCTreeNode : virtual public Node {
+      class CCTreeNode : virtual public DecisionTreeNode {
 
       public:
 
          CCTreeNode( DecisionTreeNode* n = NULL );
          virtual ~CCTreeNode( );
       
-         virtual Node* CreateNode() const { return new CCTreeNode(); }
+         virtual DecisionTreeNode* CreateNode() const { return new CCTreeNode(); }
 
          // set |~T_t|, the number of terminal descendants of node t 
          inline void SetNLeafDaughters( Int_t N ) { fNLeafDaughters = (N > 0 ? N : 0); }

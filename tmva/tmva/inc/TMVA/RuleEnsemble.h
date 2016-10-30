@@ -149,7 +149,7 @@ namespace TMVA {
       // Calculate the number of possible rules from a given tree
       Int_t CalcNRules( const TMVA::DecisionTree* dtree );
       // Recursivly search for end-nodes; used by CalcNRules()
-      void  FindNEndNodes( const TMVA::Node* node, Int_t& nendnodes );
+      void  FindNEndNodes( const TMVA::DecisionTreeNode* node, Int_t& nendnodes );
 
       // set current event to be used
       void SetEvent( const Event & e ) { fEvent = &e; fEventCacheOK = kFALSE; }
@@ -342,10 +342,10 @@ namespace TMVA {
       void  MakeRulesFromTree( const DecisionTree *dtree );
 
       // add a rule with tghe given end-node
-      void  AddRule( const Node *node );
+      void  AddRule( const DecisionTreeNode *node );
 
       // make a rule
-      Rule *MakeTheRule( const Node *node );
+      Rule *MakeTheRule( const DecisionTreeNode *node );
 
 
       ELearningModel                fLearningModel;     // can be full (rules+linear), rules, linear

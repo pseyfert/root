@@ -62,7 +62,12 @@
 #include <fstream>
 #include <algorithm>
 #include <cassert>
+#include <string>
+#include <stdexcept>
 
+#include "ThreadLocalStorage.h"
+
+#include "TMVA/Types.h"
 #include "TRandom3.h"
 #include "TMath.h"
 #include "TMatrix.h"
@@ -70,7 +75,6 @@
 #include "TMVA/MsgLogger.h"
 #include "TMVA/DecisionTree.h"
 #include "TMVA/DecisionTreeNode.h"
-#include "TMVA/BinarySearchTree.h"
 
 #include "TMVA/Tools.h"
 
@@ -112,7 +116,9 @@ bool almost_equal_double(double x, double y, int ulp=4){
 }
    
 TMVA::DecisionTree::DecisionTree():
-   BinaryTree(),
+   fRoot  ( NULL ),
+   fNNodes( 0 ),
+   fDepth ( 0 ),
    fNvars          (0),
    fNCuts          (-1),
    fUseFisherCuts  (kFALSE),
@@ -149,7 +155,9 @@ TMVA::DecisionTree::DecisionTree():
 TMVA::DecisionTree::DecisionTree( TMVA::SeparationBase *sepType, Float_t minSize, Int_t nCuts, DataSetInfo* dataInfo, UInt_t cls,
                                   Bool_t randomisedTree, Int_t useNvars, Bool_t usePoissonNvars,
                                   UInt_t nMaxDepth, Int_t iSeed, Float_t purityLimit, Int_t treeID):
-   BinaryTree(),
+   fRoot  ( NULL ),
+   fNNodes( 0 ),
+   fDepth ( 0 ),
    fNvars          (0),
    fNCuts          (nCuts),
    fUseFisherCuts  (kFALSE),
@@ -197,7 +205,9 @@ TMVA::DecisionTree::DecisionTree( TMVA::SeparationBase *sepType, Float_t minSize
 /// the node copy will recursively copy all the nodes
 
 TMVA::DecisionTree::DecisionTree( const DecisionTree &d ):
-   BinaryTree(),
+   fRoot  ( NULL ),
+   fNNodes( 0 ),
+   fDepth ( 0 ),
    fNvars      (d.fNvars),
    fNCuts      (d.fNCuts),
    fUseFisherCuts  (d.fUseFisherCuts),
@@ -235,15 +245,187 @@ TMVA::DecisionTree::~DecisionTree()
 {
    // destruction of the tree nodes done in the "base class" BinaryTree
 
+   this->DeleteNode( fRoot );
+   fRoot=0;
    if (fMyTrandom) delete fMyTrandom;
    if (fRegType) delete fRegType;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/// protected, recursive, function used by the class destructor and when Pruning
+
+void TMVA::DecisionTree::DeleteNode( TMVA::DecisionTreeNode* node )
+{
+   if (node != NULL) { //If the node is not NULL...
+      this->DeleteNode(node->GetLeft());  //Delete its left node.
+      this->DeleteNode(node->GetRight()); //Delete its right node.
+
+      delete node;                // Delete the node in memory
+   }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/// get left daughter node current node "n"
+
+TMVA::DecisionTreeNode* TMVA::DecisionTree::GetLeftDaughter( DecisionTreeNode *n)
+{
+   return (DecisionTreeNode*) n->GetLeft();
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/// get right daughter node current node "n"
+
+TMVA::DecisionTreeNode* TMVA::DecisionTree::GetRightDaughter( DecisionTreeNode *n)
+{
+   return (DecisionTreeNode*) n->GetRight();
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/// return the number of nodes in the tree. (make a new count --> takes time)
+
+UInt_t TMVA::DecisionTree::CountNodes(TMVA::DecisionTreeNode *n)
+{
+   if (n == NULL){ //default, start at the tree top, then descend recursively
+      n = (DecisionTreeNode*)this->GetRoot();
+      if (n == NULL) return 0 ;
+   }
+
+   UInt_t countNodes=1;
+
+   if (this->GetLeftDaughter(n) != NULL){
+      countNodes += this->CountNodes( this->GetLeftDaughter(n) );
+   }
+   if (this->GetRightDaughter(n) != NULL) {
+      countNodes += this->CountNodes( this->GetRightDaughter(n) );
+   }
+
+   return fNNodes = countNodes;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/// recursively print the tree
+
+void TMVA::DecisionTree::Print(std::ostream & os) const
+{
+   this->GetRoot()->PrintRec(os);
+   os << "-1" << std::endl;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/// read attributes from XML
+
+void TMVA::DecisionTree::ReadXML(void* node, UInt_t tmva_Version_Code ) {
+   this->DeleteNode( fRoot );
+   fRoot= CreateNode();
+
+   void* trnode = gTools().GetChild(node);
+   fRoot->ReadXML(trnode, tmva_Version_Code);
+
+   this->SetTotalTreeDepth();
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/// print the tree recursinvely using the << operator
+
+std::ostream& TMVA::operator<< (std::ostream& os, const TMVA::DecisionTree& tree)
+{
+   tree.Print(os);
+   return os; // Return the output stream.
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/// Read the binary tree from an input stream.
+/// The input stream format depends on the tree type,
+/// it is defined be the node of the tree
+
+void TMVA::DecisionTree::Read(std::istream & istr, UInt_t tmva_Version_Code )
+{
+   DecisionTreeNode * currentNode = GetRoot();
+   DecisionTreeNode* parent = 0;
+
+   if(currentNode==0) {
+      currentNode=CreateNode();
+      SetRoot(currentNode);
+   }
+
+   while(1) {
+      if ( ! currentNode->ReadDataRecord(istr, tmva_Version_Code) ) {
+         delete currentNode;
+         this->SetTotalTreeDepth();
+         return;
+      }
+
+      // find parent node
+      while( parent!=0 && parent->GetDepth() != currentNode->GetDepth()-1) parent=parent->GetParent();
+
+      if (parent!=0) { // link new node to parent
+         currentNode->SetParent(parent);
+         if (currentNode->GetPos()=='l') parent->SetLeft(currentNode);
+         if (currentNode->GetPos()=='r') parent->SetRight(currentNode);
+      }
+
+      parent = currentNode; // latest node read might be parent of new one
+
+      currentNode = CreateNode(); // create a new node to be read next
+   }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/// read the tree from an std::istream
+
+std::istream& TMVA::operator>> (std::istream& istr, TMVA::DecisionTree& tree)
+{
+   tree.Read(istr);
+   return istr;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+/// descend a tree to find all its leaf nodes, fill max depth reached in the
+/// tree at the same time.
+
+void TMVA::DecisionTree::SetTotalTreeDepth( DecisionTreeNode *n)
+{
+   if (n == NULL){ //default, start at the tree top, then descend recursively
+      n = (DecisionTreeNode*) this->GetRoot();
+      if (n == NULL) {
+         Log() << kFATAL << "SetTotalTreeDepth: started with undefined ROOT node" <<Endl;
+         return ;
+      }
+   }
+   if (this->GetLeftDaughter(n) != NULL){
+      this->SetTotalTreeDepth( this->GetLeftDaughter(n) );
+   }
+   if (this->GetRightDaughter(n) != NULL) {
+      this->SetTotalTreeDepth( this->GetRightDaughter(n) );
+   }
+   if (n->GetDepth() > this->GetTotalTreeDepth()) this->SetTotalTreeDepth(n->GetDepth());
+
+   return;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+TMVA::MsgLogger& TMVA::DecisionTree::Log() const {
+   TTHREAD_TLS_DECL_ARG(MsgLogger,logger,"DecisionTree");
+   return logger;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/// add attributes to XML
+
+void* TMVA::DecisionTree::AddXMLTo(void* parent) const {
+   void* bdt = gTools().AddChild(parent, "DecisionTree");
+   gTools().AddAttr( bdt, "type" , ClassName() );
+   this->GetRoot()->AddXMLTo(bdt);
+   return bdt;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 /// descend a tree to find all its leaf nodes, fill max depth reached in the
 /// tree at the same time.
 
-void TMVA::DecisionTree::SetParentTreeInNodes( Node *n )
+void TMVA::DecisionTree::SetParentTreeInNodes( DecisionTreeNode *n )
 {
    if (n == NULL) { //default, start at the tree top, then descend recursively
       n = this->GetRoot();
@@ -787,7 +969,7 @@ Double_t TMVA::DecisionTree::GetSumWeights( const EventConstList* validationSamp
 ////////////////////////////////////////////////////////////////////////////////
 /// return the number of terminal nodes in the sub-tree below Node n
 
-UInt_t TMVA::DecisionTree::CountLeafNodes( TMVA::Node *n )
+UInt_t TMVA::DecisionTree::CountLeafNodes( TMVA::DecisionTreeNode *n )
 {
    if (n == NULL) { // default, start at the tree top, then descend recursively
       n =  this->GetRoot();
@@ -816,7 +998,7 @@ UInt_t TMVA::DecisionTree::CountLeafNodes( TMVA::Node *n )
 ////////////////////////////////////////////////////////////////////////////////
 /// descend a tree to find all its leaf nodes
 
-void TMVA::DecisionTree::DescendTree( Node* n )
+void TMVA::DecisionTree::DescendTree( DecisionTreeNode* n )
 {
    if (n == NULL) { // default, start at the tree top, then descend recursively
       n =  this->GetRoot();
@@ -887,9 +1069,9 @@ void TMVA::DecisionTree::PruneNodeInPlace( DecisionTreeNode* node ) {
 /// is coded as a sequence of left-right moves starting from the root, coded as
 /// 0-1 bit patterns stored in the "long-integer"  (i.e. 0:left ; 1:right
 
-TMVA::Node* TMVA::DecisionTree::GetNode( ULong_t sequence, UInt_t depth )
+TMVA::DecisionTreeNode* TMVA::DecisionTree::GetNode( ULong_t sequence, UInt_t depth )
 {
-   Node* current = this->GetRoot();
+   DecisionTreeNode* current = this->GetRoot();
   
    for (UInt_t i =0;  i < depth; i++) {
       ULong_t tmp = 1 << i;

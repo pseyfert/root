@@ -31,7 +31,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 /// main constructor
 
-TMVA::RuleCut::RuleCut(  const std::vector<const Node*> & nodes )
+TMVA::RuleCut::RuleCut(  const std::vector<const DecisionTreeNode*> & nodes )
    : fCutNeve(0),
      fPurity(0),
      fLogger(new MsgLogger("RuleFit"))
@@ -60,7 +60,7 @@ TMVA::RuleCut::~RuleCut() {
 ////////////////////////////////////////////////////////////////////////////////
 /// Construct the cuts from the given array of nodes
 
-void TMVA::RuleCut::MakeCuts( const std::vector<const Node*> & nodes )
+void TMVA::RuleCut::MakeCuts( const std::vector<const DecisionTreeNode*> & nodes )
 {
    // Atleast 2 nodes are required
    UInt_t nnodes = nodes.size();
@@ -92,7 +92,7 @@ void TMVA::RuleCut::MakeCuts( const std::vector<const Node*> & nodes )
    Int_t    sel;
    Double_t val;
    Int_t    dir;
-   const Node *nextNode;
+   const DecisionTreeNode *nextNode;
    for ( UInt_t i=0; i<nnodes-1; i++) {
       nextNode = nodes[i+1];
       const DecisionTreeNode* dtn_ = dynamic_cast<const DecisionTreeNode*>(nodes[i]);

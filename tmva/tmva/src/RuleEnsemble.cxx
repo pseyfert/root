@@ -1286,7 +1286,7 @@ void TMVA::RuleEnsemble::Copy( const RuleEnsemble & other )
 Int_t TMVA::RuleEnsemble::CalcNRules( const DecisionTree *dtree )
 {
    if (dtree==0) return 0;
-   Node *node = dtree->GetRoot();
+   DecisionTreeNode *node = dtree->GetRoot();
    Int_t nendnodes = 0;
    FindNEndNodes( node, nendnodes );
    return 2*(nendnodes-1);
@@ -1295,15 +1295,15 @@ Int_t TMVA::RuleEnsemble::CalcNRules( const DecisionTree *dtree )
 ////////////////////////////////////////////////////////////////////////////////
 /// find the number of leaf nodes
 
-void TMVA::RuleEnsemble::FindNEndNodes( const Node *node, Int_t & nendnodes )
+void TMVA::RuleEnsemble::FindNEndNodes( const DecisionTreeNode *node, Int_t & nendnodes )
 {
    if (node==0) return;
    if ((node->GetRight()==0) && (node->GetLeft()==0)) {
       ++nendnodes;
       return;
    }
-   const Node *nodeR = node->GetRight();
-   const Node *nodeL = node->GetLeft();
+   const DecisionTreeNode *nodeR = node->GetRight();
+   const DecisionTreeNode *nodeL = node->GetLeft();
    FindNEndNodes( nodeR, nendnodes );
    FindNEndNodes( nodeL, nendnodes );
 }
@@ -1313,14 +1313,14 @@ void TMVA::RuleEnsemble::FindNEndNodes( const Node *node, Int_t & nendnodes )
 
 void TMVA::RuleEnsemble::MakeRulesFromTree( const DecisionTree *dtree )
 {
-   Node *node = dtree->GetRoot();
+   DecisionTreeNode *node = dtree->GetRoot();
    AddRule( node );
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 /// add a new rule to the tree
 
-void TMVA::RuleEnsemble::AddRule( const Node *node )
+void TMVA::RuleEnsemble::AddRule( const DecisionTreeNode *node )
 {
    if (node==0) return;
    if (node->GetParent()==0) { // it's a root node, don't make a rule
@@ -1342,14 +1342,14 @@ void TMVA::RuleEnsemble::AddRule( const Node *node )
 
 ////////////////////////////////////////////////////////////////////////////////
 ///
-/// Make a Rule from a given Node.
+/// Make a Rule from a given DecisionTreeNode.
 /// The root node (ie no parent) does not generate a Rule.
 /// The first node in a rule is always the root node => fNodes.size()>=2
 /// Each node corresponds to a cut and the cut value is given by the parent node.
 ///
 ///
 
-TMVA::Rule *TMVA::RuleEnsemble::MakeTheRule( const Node *node )
+TMVA::Rule *TMVA::RuleEnsemble::MakeTheRule( const DecisionTreeNode *node )
 {
    if (node==0) {
       Log() << kFATAL << "<MakeTheRule> Input node is NULL. Should not happen. BUG!" << Endl;
@@ -1360,8 +1360,8 @@ TMVA::Rule *TMVA::RuleEnsemble::MakeTheRule( const Node *node )
       return 0;
    }
    //
-   std::vector< const Node * > nodeVec;
-   const Node *parent = node;
+   std::vector< const DecisionTreeNode * > nodeVec;
+   const DecisionTreeNode *parent = node;
    //
    // Make list with the input node at the end:
    // <root node> <node1> <node2> ... <node given as argument>

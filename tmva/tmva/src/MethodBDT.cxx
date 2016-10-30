@@ -2291,7 +2291,7 @@ void TMVA::MethodBDT::ReadWeightsFromXML(void* parent) {
      for (auto w : fBoostWeights ) sumOfWeights+=w;
      //sumOfWeights=1./sumOfWeights;
      sumOfWeights=( sumOfWeights > std::numeric_limits<double>::epsilon() ) ? 1./sumOfWeights : 0;
-     for (UInt_t i=0;i<fBoostWeights.size();++i) {
+     for (i=0;i<fBoostWeights.size();++i) {
        fBoostWeights[i]*=sumOfWeights;
      }
    }

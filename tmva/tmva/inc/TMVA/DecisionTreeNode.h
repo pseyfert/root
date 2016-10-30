@@ -38,8 +38,9 @@
 //                                                                      //
 //////////////////////////////////////////////////////////////////////////
 
-#ifndef ROOT_TMVA_Node
-#include "TMVA/Node.h"
+#include <iosfwd>
+#ifndef ROOT_Rtypes
+#include "Rtypes.h"
 #endif
 
 #ifndef ROOT_TMVA_Version
@@ -50,6 +51,13 @@
 #include <vector>
 #include <map>
 namespace TMVA {
+
+   class DecisionTreeNode;
+   class DecisionTree;
+   class Event;
+
+   std::ostream& operator<<( std::ostream& os, const DecisionTreeNode& node );
+   std::ostream& operator<<( std::ostream& os, const DecisionTreeNode* node );
 
    class DTNodeTrainingInfo
    {
@@ -117,14 +125,19 @@ namespace TMVA {
    class Event;
    class MsgLogger;
 
-   class DecisionTreeNode: public Node {
+   class DecisionTreeNode {
+     //
+      // output operator for a node
+      friend std::ostream& operator << (std::ostream& os, const DecisionTreeNode& node);
+      // output operator with a pointer to the node (which still prints the node itself)
+      friend std::ostream& operator << (std::ostream& os, const DecisionTreeNode* node);
 
    public:
 
       // constructor of an essentially "empty" node floating in space
       DecisionTreeNode ();
       // constructor of a daughter node as a daughter of 'p'
-      DecisionTreeNode (Node* p, char pos); 
+      DecisionTreeNode (DecisionTreeNode* p, char pos); 
     
       // copy constructor 
       DecisionTreeNode (const DecisionTreeNode &n, DecisionTreeNode* parent = NULL); 
@@ -132,7 +145,7 @@ namespace TMVA {
       // destructor
       virtual ~DecisionTreeNode();
 
-      virtual Node* CreateNode() const { return new DecisionTreeNode(); }
+      DecisionTreeNode* CreateNode() const { return new DecisionTreeNode(); }
 
       inline void SetNFisherCoeff(Int_t nvars){fFisherCoeff.resize(nvars);}
       inline UInt_t GetNFisherCoeff() const { return fFisherCoeff.size();}
@@ -142,10 +155,10 @@ namespace TMVA {
       Double_t GetFisherCoeff(Int_t ivar) const {return fFisherCoeff.at(ivar);}
 
       // test event if it decends the tree at this node to the right
-      virtual Bool_t GoesRight( const Event & ) const;
+      Bool_t GoesRight( const Event & ) const;
 
       // test event if it decends the tree at this node to the left
-      virtual Bool_t GoesLeft ( const Event & ) const;
+      Bool_t GoesLeft ( const Event & ) const;
 
       // set index of variable used for discrimination at this node
       void SetSelector( Short_t i) { fSelector = i; }
@@ -268,13 +281,36 @@ namespace TMVA {
       Float_t GetSeparationGain( void ) const  { return fTrainInfo->fSeparationGain; }
 
       // printout of the node
-      virtual void Print( std::ostream& os ) const;
+      void Print( std::ostream& os ) const;
 
       // recursively print the node and its daughters (--> print the 'tree')
-      virtual void PrintRec( std::ostream&  os ) const;
+      void PrintRec( std::ostream&  os ) const;
 
-      virtual void AddAttributesToNode(void* node) const;
-      virtual void AddContentToNode(std::stringstream& s) const;
+      void* AddXMLTo(void* parent) const;
+      void  ReadXML(void* node, UInt_t tmva_Version_Code = TMVA_VERSION_CODE );
+
+      void AddAttributesToNode(void* node) const;
+      void AddContentToNode(std::stringstream& s) const;
+
+      // Set depth, layer of the where the node is within the tree, seen from the top (root)
+      void SetDepth(UInt_t d){fDepth=d;}
+
+      // Return depth, layer of the where the node is within the tree, seen from the top (root)
+      UInt_t GetDepth() const {return fDepth;}
+
+      // set node position, i.e, the node is a left (l) or right (r) daugther
+      void SetPos(char s) {fPos=s;}
+
+      // Return the node position, i.e, the node is a left (l) or right (r) daugther
+      char GetPos() const {return fPos;}
+
+      // Return the pointer to the Parent tree to which the Node belongs 
+      TMVA::DecisionTree* GetParentTree() const {return fParentTree;}
+
+      // set the pointer to the Parent Tree to which the Node belongs 
+      void SetParentTree(TMVA::DecisionTree* t) {fParentTree = t;} 
+
+      int GetCount();
 
       // recursively clear the nodes content (S/N etc, but not the cut criteria)
       void ClearNodeAndAllDaughters();
@@ -282,17 +318,17 @@ namespace TMVA {
       // get pointers to children, mother in the tree
 
       // return pointer to the left/right daughter or parent node
-      inline virtual DecisionTreeNode* GetLeft( )   const { return dynamic_cast<DecisionTreeNode*>(fLeft); }
-      inline virtual DecisionTreeNode* GetRight( )  const { return dynamic_cast<DecisionTreeNode*>(fRight); }
-      inline virtual DecisionTreeNode* GetParent( ) const { return dynamic_cast<DecisionTreeNode*>(fParent); }
+      inline DecisionTreeNode* GetLeft( )   const { return fLeft; }
+      inline DecisionTreeNode* GetRight( )  const { return fRight; }
+      inline DecisionTreeNode* GetParent( ) const { return fParent; }
 
       // set pointer to the left/right daughter and parent node
-      inline virtual void SetLeft  (Node* l) { fLeft   = dynamic_cast<DecisionTreeNode*>(l);} 
-      inline virtual void SetRight (Node* r) { fRight  = dynamic_cast<DecisionTreeNode*>(r);} 
-      inline virtual void SetParent(Node* p) { fParent = dynamic_cast<DecisionTreeNode*>(p);} 
+      inline void SetLeft  (DecisionTreeNode* l) { fLeft   = l;} 
+      inline void SetRight (DecisionTreeNode* r) { fRight  = r;} 
+      inline void SetParent(DecisionTreeNode* p) { fParent = p;} 
 
-
-
+      //recursively go through the part of the tree below this node and count all daughters
+      Int_t  CountMeAndAllDaughters() const;
 
       // the node resubstitution estimate, R(t), for Cost Complexity pruning
       inline void SetNodeR( Double_t r ) { fTrainInfo->fNodeR = r;    }
@@ -353,7 +389,20 @@ namespace TMVA {
       static bool fgIsTraining; // static variable to flag training phase in which we need fTrainInfo
       static UInt_t fgTmva_Version_Code;  // set only when read from weightfile 
 
+      void ReadAttributes(void* node, UInt_t tmva_Version_Code = TMVA_VERSION_CODE );
+      Bool_t ReadDataRecord( std::istream& is, UInt_t tmva_Version_Code = TMVA_VERSION_CODE );
+      void ReadContent(std::stringstream& s);
+
    protected:
+
+      DecisionTreeNode*   fParent;              // the previous (parent) node
+      DecisionTreeNode*   fLeft;                // pointers to the two "daughter" nodes
+      DecisionTreeNode*   fRight;               // pointers to the two "daughter" nodes
+
+      char    fPos;                 // position, i.e. it is a left (l) or right (r) daughter 
+      UInt_t  fDepth;               // depth of the node within the tree (seen from root node)
+
+      DecisionTree*  fParentTree;     // pointer to the parent tree to which the Node belongs 
 
       static MsgLogger& Log();
 
@@ -374,9 +423,7 @@ namespace TMVA {
 
    private:
 
-      virtual void ReadAttributes(void* node, UInt_t tmva_Version_Code = TMVA_VERSION_CODE );
-      virtual Bool_t ReadDataRecord( std::istream& is, UInt_t tmva_Version_Code = TMVA_VERSION_CODE );
-      virtual void ReadContent(std::stringstream& s);
+      static Int_t fgCount;         // counter of all nodes present.. for debug.. to spot memory leaks...
 
       ClassDef(DecisionTreeNode,0); // Node for the Decision Tree 
    };

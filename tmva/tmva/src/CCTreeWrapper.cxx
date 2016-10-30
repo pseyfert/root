@@ -32,7 +32,7 @@ using namespace TMVA;
 ///constructor of the CCTreeNode
 
 TMVA::CCTreeWrapper::CCTreeNode::CCTreeNode( DecisionTreeNode* n ) :
-   Node(),
+   DecisionTreeNode(),
    fNLeafDaughters(0),
    fNodeResubstitutionEstimate(-1.0),
    fResubstitutionEstimate(-1.0),
