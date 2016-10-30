@@ -115,7 +115,8 @@ int TMVAClassification( TString myMethodList = "" )
    Use["FDA_MCMT"]        = 0;
    //
    // Neural Networks (all are feed-forward Multilayer Perceptrons)
-   Use["MLP"]             = 0; // Recommended ANN
+   Use["MLP"]             = 1; // Recommended ANN (tanh)
+   Use["MLPs"]            = 1; // Recommended ANN (sigmoid)
    Use["MLPBFGS"]         = 0; // Recommended ANN with optional training method
    Use["MLPBNN"]          = 1; // Recommended ANN with BFGS training method and bayesian regulator
    Use["CFMlpANN"]        = 0; // Depreciated ANN from ALEPH
@@ -422,6 +423,9 @@ int TMVAClassification( TString myMethodList = "" )
    // TMVA ANN: MLP (recommended ANN) -- all ANNs in TMVA are Multilayer Perceptrons
    if (Use["MLP"])
       factory->BookMethod( dataloader, TMVA::Types::kMLP, "MLP", "H:!V:NeuronType=tanh:VarTransform=N:NCycles=600:HiddenLayers=N+5:TestRate=5:!UseRegulator" );
+   // TMVA ANN: MLP (recommended ANN) -- all ANNs in TMVA are Multilayer Perceptrons
+   if (Use["MLPs"])
+      factory->BookMethod( dataloader, TMVA::Types::kMLP, "MLPs", "H:!V:NeuronType=sigmoid:VarTransform=N:NCycles=600:HiddenLayers=N+5:TestRate=5:!UseRegulator" );
 
    if (Use["MLPBFGS"])
       factory->BookMethod( dataloader, TMVA::Types::kMLP, "MLPBFGS", "H:!V:NeuronType=tanh:VarTransform=N:NCycles=600:HiddenLayers=N+5:TestRate=5:TrainingMethod=BFGS:!UseRegulator" );
@@ -500,7 +504,7 @@ int TMVAClassification( TString myMethodList = "" )
       TPluginManager* pluginmanager = gROOT->GetPluginManager();
       pluginmanager->AddHandler("TMVA@@MethodBase", ".*_FastBDT.*", "TMVA::MethodFastBDT", "TMVAFastBDT", "MethodFastBDT(TMVA::DataSetInfo&,TString)");
       pluginmanager->AddHandler("TMVA@@MethodBase", ".*FastBDT.*", "TMVA::MethodFastBDT", "TMVAFastBDT", "MethodFastBDT(TString&,TString&,TMVA::DataSetInfo&,TString&)");
-      factory->BookMethod( dataloader, TMVA::Types::kPlugins, "FastBDT", "H:V:NTrees=850:Shrinkage=0.1:RandRatio=0.5:NTreeLayers=3:NCutLevel=20");
+      factory->BookMethod( dataloader, TMVA::Types::kPlugins, "FastBDT", "H:V:NTrees=850:Shrinkage=0.1:RandRatio=0.5:NTreeLayers=3:NCutLevel=8");
    }
 
    // RuleFit -- TMVA implementation of Friedman's method

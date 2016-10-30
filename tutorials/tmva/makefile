@@ -13,6 +13,7 @@ BINS = TMVAClassification \
         TMVAClassificationApplication4 \
         TMVAClassificationApplication5 \
         TMVAClassificationApplication6 \
+        TMVAClassificationApplication7 \
         TMVAClassificationCategoryApplication \
         TMVARegression \
         TMVARegressionApplication \
@@ -38,7 +39,8 @@ default : $(BINS)
 
 %.o : %.C 
 	@echo -n "Compiling $@ ... "
-	$(CXX) $(CCFLAGS) $<  $(addprefix -I, $(INCS)) -O2 -march=native -c -g -o $@
+	#$(CXX) $(CCFLAGS) $<  $(addprefix -I, $(INCS)) -O2 -march=native -c -g -o $@
+	$(CXX) $(CCFLAGS) $<  $(addprefix -I, $(INCS)) -O0 -c -ggdb -o $@
 
 $(BINS): % : %.o 
 	@echo -n "Linking $@ ... "

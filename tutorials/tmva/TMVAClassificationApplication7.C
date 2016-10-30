@@ -80,6 +80,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    //
    // Neural Networks (all are feed-forward Multilayer Perceptrons)
    Use["MLP"]             = 0; // Recommended ANN
+   Use["MLPs"]            = 1; // Recommended ANN
    Use["MLPBFGS"]         = 0; // Recommended ANN with optional training method
    Use["MLPBNN"]          = 0; // Recommended ANN with BFGS training method and bayesian regulator
    Use["CFMlpANN"]        = 0; // Depreciated ANN from ALEPH
@@ -95,7 +96,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    Use["BDTB"]            = 0; // uses Bagging
    Use["BDTD"]            = 0; // decorrelation + Adaptive Boost
    Use["BDTF"]            = 0; // allow usage of fisher discriminant for node splitting
-   Use["FastBDT"]         = 1; // use FastBDT
+   Use["FastBDT"]         = 0; // use FastBDT
    //
    // Friedman's RuleFit method, ie, an optimised series of cuts ("rules")
    Use["RuleFit"]         = 0;
@@ -163,8 +164,8 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    TString dir    = "dataset/weights/";
    TString prefix = "TMVAClassification";
 
-   TPluginManager* pluginManager = gROOT->GetPluginManager();
    if (Use["FastBDT"]) {// FastBDT
+      TPluginManager* pluginManager = gROOT->GetPluginManager();
       pluginManager->AddHandler("TMVA@@MethodBase", ".*_FastBDT.*", "TMVA::MethodFastBDT", "TMVAFastBDT", "MethodFastBDT(TMVA::DataSetInfo&,TString)");
       pluginManager->AddHandler("TMVA@@MethodBase", ".*FastBDT.*", "TMVA::MethodFastBDT", "TMVAFastBDT", "MethodFastBDT(TString&,TString&,TMVA::DataSetInfo&,TString&)");
    }
@@ -182,7 +183,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    UInt_t nbin = 100;
    TH1F   *histLk(0), *histLkD(0), *histLkPCA(0), *histLkKDE(0), *histLkMIX(0), *histPD(0), *histPDD(0);
    TH1F   *histPDPCA(0), *histPDEFoam(0), *histPDEFoamErr(0), *histPDEFoamSig(0), *histKNN(0), *histHm(0);
-   TH1F   *histFi(0), *histFiG(0), *histFiB(0), *histLD(0), *histNn(0),*histNnbfgs(0),*histNnbnn(0);
+   TH1F   *histFi(0), *histFiG(0), *histFiB(0), *histLD(0), *histNn(0), *histNns(0), *histNnbfgs(0),*histNnbnn(0);
    TH1F   *histNnC(0), *histNnT(0), *histNdn(0), *histBdt(0), *histBdtG(0), *histBdtB(0), *histBdtD(0);
    TH1F   *histBdtF(0), *histRf(0), *histSVMG(0), *histSVMP(0), *histSVML(0), *histFDAMT(0), *histFDAGA(0);
    TH1F   *histCat(0), *histPBdt(0);
@@ -203,6 +204,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    if (Use["BoostedFisher"]) histFiB     = new TH1F( "MVA_BoostedFisher", "MVA_BoostedFisher", nbin, -2, 2 );
    if (Use["LD"])            histLD      = new TH1F( "MVA_LD",            "MVA_LD",            nbin, -2, 2 );
    if (Use["MLP"])           histNn      = new TH1F( "MVA_MLP",           "MVA_MLP",           nbin, -1.25, 1.5 );
+   if (Use["MLPs"])          histNns     = new TH1F( "MVA_MLPs",          "MVA_MLPs",          nbin, -1.25, 1.5 );
    if (Use["MLPBFGS"])       histNnbfgs  = new TH1F( "MVA_MLPBFGS",       "MVA_MLPBFGS",       nbin, -1.25, 1.5 );
    if (Use["MLPBNN"])        histNnbnn   = new TH1F( "MVA_MLPBNN",        "MVA_MLPBNN",        nbin, -1.25, 1.5 );
    if (Use["CFMlpANN"])      histNnC     = new TH1F( "MVA_CFMlpANN",      "MVA_CFMlpANN",      nbin,  0, 1 );
@@ -285,6 +287,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
        var2 = userVar1 - userVar2;
 
        if (Use["MLP"          ])   histNn     ->Fill( reader->EvaluateMVA( "MLP method"           ) );
+       if (Use["MLPs"         ])   histNns    ->Fill( reader->EvaluateMVA( "MLPs method"          ) );
        if (Use["BDT"          ])   histBdt    ->Fill( reader->EvaluateMVA( "BDT method"           ) );
        if (Use["DNN"          ])   histNdn    ->Fill( reader->EvaluateMVA( "DNN method"           ) );
      }
@@ -322,7 +325,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
 
    // Write histograms
 
-   TFile *target  = TFile::Open( "TMVApp.root","RECREATE" );
+   TFile *target  = new TFile( "TMVApp.root","RECREATE" );
    if (Use["Likelihood"   ])   histLk     ->Write();
    if (Use["LikelihoodD"  ])   histLkD    ->Write();
    if (Use["LikelihoodPCA"])   histLkPCA  ->Write();
@@ -338,6 +341,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    if (Use["BoostedFisher"])   histFiB    ->Write();
    if (Use["LD"           ])   histLD     ->Write();
    if (Use["MLP"          ])   histNn     ->Write();
+   if (Use["MLPs"         ])   histNns    ->Write();
    if (Use["MLPBFGS"      ])   histNnbfgs ->Write();
    if (Use["MLPBNN"       ])   histNnbnn  ->Write();
    if (Use["CFMlpANN"     ])   histNnC    ->Write();
@@ -364,17 +368,10 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    // Write also probability hists
    if (Use["Fisher"]) { if (probHistFi != 0) probHistFi->Write(); if (rarityHistFi != 0) rarityHistFi->Write(); }
    target->Close();
-   input->Close();
 
    std::cout << "--- Created root file: \"TMVApp.root\" containing the MVA output histograms" << std::endl;
 
    delete reader;
-   pluginManager->RemoveHandler("TMVA@@MethodBase", ".*_FastBDT.*");
-   pluginManager->RemoveHandler("TMVA@@MethodBase", ".*FastBDT.*");
-
-   Use.clear();
-
-   TMVA::Tools::DestroyInstance();
 
    std::cout << "==> TMVAClassificationApplication is done!" << std::endl << std::endl;
 }
