@@ -1373,6 +1373,15 @@ void TMVA::MethodBDT::Train()
       }
       itree++;
    }
+   {
+     double sumOfWeights = 0.;
+     for (auto w : fBoostWeights ) sumOfWeights+=w;
+     //sumOfWeights=1./sumOfWeights;
+     sumOfWeights=( sumOfWeights > std::numeric_limits<double>::epsilon() ) ? 1./sumOfWeights : 0;
+     for (UInt_t i=0;i<fBoostWeights.size();++i) {
+       fBoostWeights[i]*=sumOfWeights;
+     }
+   }
 
    // get elapsed time
    Log() << kDEBUG << "\t<Train> elapsed time: " << timer.GetElapsedTime()
@@ -1406,8 +1415,12 @@ void TMVA::MethodBDT::Train()
 ////////////////////////////////////////////////////////////////////////////////
 ///returns MVA value: -1 for background, 1 for signal
 
-Double_t TMVA::MethodBDT::GetGradBoostMVA(const TMVA::Event* e, UInt_t nTrees)
+Double_t TMVA::MethodBDT::GetGradBoostMVA(const TMVA::Event* e, UInt_t useNTrees)
 {
+   // allow for the possibility to use less trees in the actual MVA calculation
+   // than have been originally trained.
+   UInt_t nTrees = fForest.size();
+   if (useNTrees > 0 ) nTrees = useNTrees;
    Double_t sum=0;
    for (UInt_t itree=0; itree<nTrees; itree++) {
       //loop over all trees in forest
@@ -2273,6 +2286,15 @@ void TMVA::MethodBDT::ReadWeightsFromXML(void* parent) {
       fBoostWeights.push_back(boostWeight);
       ch = gTools().GetNextChild(ch);
    }
+   {
+     double sumOfWeights = 0.;
+     for (auto w : fBoostWeights ) sumOfWeights+=w;
+     //sumOfWeights=1./sumOfWeights;
+     sumOfWeights=( sumOfWeights > std::numeric_limits<double>::epsilon() ) ? 1./sumOfWeights : 0;
+     for (UInt_t i=0;i<fBoostWeights.size();++i) {
+       fBoostWeights[i]*=sumOfWeights;
+     }
+   }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2309,6 +2331,15 @@ void  TMVA::MethodBDT::ReadWeightsFromStream( std::istream& istr )
       fForest.back()->Read(istr, GetTrainingTMVAVersionCode());
       fBoostWeights.push_back(boostWeight);
    }
+   {
+     double sumOfWeights = 0.;
+     for (auto w : fBoostWeights ) sumOfWeights+=w;
+     //sumOfWeights=1./sumOfWeights;
+     sumOfWeights=( sumOfWeights > std::numeric_limits<double>::epsilon() ) ? 1./sumOfWeights : 0;
+     for (UInt_t i=0;i<fBoostWeights.size();++i) {
+       fBoostWeights[i]*=sumOfWeights;
+     }
+   }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2342,22 +2373,28 @@ Double_t TMVA::MethodBDT::PrivateGetMvaValue(const TMVA::Event* ev, Double_t* er
    // cannot determine error
    NoErrorCalc(err, errUpper);
    
+   if (fBoostType=="Grad") return GetGradBoostMVA(ev,useNTrees);
+
    // allow for the possibility to use less trees in the actual MVA calculation
    // than have been originally trained.
    UInt_t nTrees = fForest.size();
 
-   if (useNTrees > 0 ) nTrees = useNTrees;
-
-   if (fBoostType=="Grad") return GetGradBoostMVA(ev,nTrees);
-   
    Double_t myMVA = 0;
-   Double_t norm  = 0;
-   for (UInt_t itree=0; itree<nTrees; itree++) {
-      //
-      myMVA += fBoostWeights[itree] * fForest[itree]->CheckEvent(ev,fUseYesNoLeaf);
-      norm  += fBoostWeights[itree];
+
+   if (useNTrees > 0 ) {
+     nTrees = useNTrees;
+     Double_t norm  = 0;
+     for (UInt_t itree=0; itree<useNTrees; itree++) {
+       myMVA += fBoostWeights[itree] * fForest[itree]->CheckEvent(ev,fUseYesNoLeaf);
+       norm  += fBoostWeights[itree];
+     }
+     return ( norm > std::numeric_limits<double>::epsilon() ) ? myMVA /= norm : 0 ;
+   } else {
+     for (UInt_t itree=0; itree<nTrees; itree++) {
+       myMVA += fBoostWeights[itree] * fForest[itree]->CheckEvent(ev,fUseYesNoLeaf);
+     }
+     return myMVA;
    }
-   return ( norm > std::numeric_limits<double>::epsilon() ) ? myMVA /= norm : 0 ;
 }
 
 
@@ -2423,12 +2460,10 @@ const std::vector<Float_t> & TMVA::MethodBDT::GetRegressionValues()
 
       vector< Double_t > response(fForest.size());
       vector< Double_t > weight(fForest.size());
-      Double_t           totalSumOfWeights = 0;
 
       for (UInt_t itree=0; itree<fForest.size(); itree++) {
          response[itree]    = fForest[itree]->CheckEvent(ev,kFALSE);
          weight[itree]      = fBoostWeights[itree];
-         totalSumOfWeights += fBoostWeights[itree];
       }
 
       std::vector< std::vector<Double_t> > vtemp;
@@ -2438,7 +2473,7 @@ const std::vector<Float_t> & TMVA::MethodBDT::GetRegressionValues()
 
       Int_t t=0;
       Double_t sumOfWeights = 0;
-      while (sumOfWeights <= totalSumOfWeights/2.) {
+      while (sumOfWeights <= 0.5) {
          sumOfWeights += vtemp[1][t];
          t++;
       }
@@ -2458,16 +2493,15 @@ const std::vector<Float_t> & TMVA::MethodBDT::GetRegressionValues()
          myMVA += fForest[itree]->CheckEvent(ev,kFALSE);
       }
       //      fRegressionReturnVal->push_back( myMVA+fBoostWeights[0]);
-      evT->SetTarget(0, myMVA+fBoostWeights[0] );
+      evT->SetTarget(0, myMVA+fBoostWeights[0] ); // FIXME
    }
    else{
       for (UInt_t itree=0; itree<fForest.size(); itree++) {
          //
          myMVA += fBoostWeights[itree] * fForest[itree]->CheckEvent(ev,kFALSE);
-         norm  += fBoostWeights[itree];
       }
       //      fRegressionReturnVal->push_back( ( norm > std::numeric_limits<double>::epsilon() ) ? myMVA /= norm : 0 );
-      evT->SetTarget(0, ( norm > std::numeric_limits<double>::epsilon() ) ? myMVA /= norm : 0 );
+      evT->SetTarget(0, myMVA );
    }
 
 
@@ -2646,9 +2680,6 @@ void TMVA::MethodBDT::MakeClassSpecific( std::ostream& fout, const TString& clas
       }
    }
 
-   if (fBoostType!="Grad"){
-      fout << "   double norm  = 0;" << std::endl;
-   }
    fout << "   for (unsigned int itree=0; itree<fForest.size(); itree++){" << std::endl;
    fout << "      "<<nodeName<<" *current = fForest[itree];" << std::endl;
    fout << "      while (current->GetNodeType() == 0) { //intermediate node" << std::endl;
@@ -2660,13 +2691,12 @@ void TMVA::MethodBDT::MakeClassSpecific( std::ostream& fout, const TString& clas
    }else{
       if (fUseYesNoLeaf) fout << "      myMVA += fBoostWeights[itree] *  current->GetNodeType();" << std::endl;
       else               fout << "      myMVA += fBoostWeights[itree] *  current->GetPurity();" << std::endl;
-      fout << "      norm  += fBoostWeights[itree];" << std::endl;
    }
    fout << "   }" << std::endl;
    if (fBoostType=="Grad"){
       fout << "   return 2.0/(1.0+exp(-2.0*myMVA))-1.0;" << std::endl;
    }
-   else fout << "   return myMVA /= norm;" << std::endl;
+   else fout << "   return myMVA;" << std::endl;
    fout << "};" << std::endl << std::endl;
    fout << "void " << className << "::Initialize()" << std::endl;
    fout << "{" << std::endl;
