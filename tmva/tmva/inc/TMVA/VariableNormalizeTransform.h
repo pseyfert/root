@@ -50,7 +50,7 @@ namespace TMVA {
    class VariableNormalizeTransform : public VariableTransformBase {
 
    public:
-  
+
       typedef std::vector<Float_t>       FloatVector;
       typedef std::vector< FloatVector > VectorOfFloatVectors;
       VariableNormalizeTransform( DataSetInfo& dsi );
@@ -83,6 +83,8 @@ namespace TMVA {
 
       //      mutable Event*           fTransformedEvent;
 
+      VectorOfFloatVectors                   fSca;       //! scale = 2./(max-min)
+      VectorOfFloatVectors                   fOff;       //! offset = min*scale+1
       VectorOfFloatVectors                   fMin;       //! Min of source range
       VectorOfFloatVectors                   fMax;       //! Max of source range
 
@@ -91,4 +93,4 @@ namespace TMVA {
 
 } // namespace TMVA
 
-#endif 
+#endif
