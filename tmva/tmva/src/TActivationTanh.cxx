@@ -33,7 +33,6 @@
 
 #include "TMVA/TActivation.h"
 
-#include "TFormula.h"
 #include "TMath.h"
 #include "TString.h"
 
@@ -91,7 +90,7 @@ Double_t TMVA::TActivationTanh::EvalDerivative(Double_t arg)
 
 TString TMVA::TActivationTanh::GetExpression()
 {
-   TString expr = "tanh(x)\t\t (1-tanh()^2)";
+   TString expr = "tanh(x)\t\t (1-tanh(x)^2)";
    return expr;
 }
 

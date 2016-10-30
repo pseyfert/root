@@ -25,8 +25,6 @@
 
 #include "TMVA/TActivation.h"
 
-#include "TFormula.h"
-#include "TMath.h"
 #include "TString.h"
 
 #include <iostream>

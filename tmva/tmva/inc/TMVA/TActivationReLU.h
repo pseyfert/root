@@ -32,9 +32,6 @@
 //                                                                      //
 //////////////////////////////////////////////////////////////////////////
 
-#ifndef ROOT_TFormula
-#include "TFormula.h"
-#endif
 #ifndef ROOT_TString
 #include "TString.h"
 #endif

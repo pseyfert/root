@@ -32,9 +32,6 @@
 //                                                                      //
 //////////////////////////////////////////////////////////////////////////
 
-#ifndef ROOT_TFormula
-#include "TFormula.h"
-#endif
 #ifndef ROOT_TString
 #include "TString.h"
 #endif
@@ -71,9 +68,6 @@ namespace TMVA {
       virtual void MakeFunction(std::ostream& fout, const TString& fncName);
 
    private:
-
-      TFormula* fEqn;                // equation of sigmoid
-      TFormula* fEqnDerivative;      // equation of sigmoid derivative
 
       ClassDef(TActivationSigmoid,0); // Sigmoid activation function for TNeuron
    };
