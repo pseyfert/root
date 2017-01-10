@@ -25,8 +25,6 @@
 #pragma link C++ class TMVA::TNeuronInputAbs+;
 #pragma link C++ class TMVA::Types+;
 #pragma link C++ class TMVA::Ranking+;
-#pragma link C++ class TMVA::RuleFit+;
-#pragma link C++ class TMVA::RuleFitAPI+;
 #pragma link C++ class TMVA::IMethod+;
 #pragma link C++ class TMVA::MsgLogger+;
 #pragma link C++ class TMVA::VariableTransformBase+;

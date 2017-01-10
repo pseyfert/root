@@ -20,7 +20,7 @@ TMVADO       := $(TMVADS:.cxx=.o)
 TMVADH       := $(TMVADS:.cxx=.h)
 
 TMVAH1       := Configurable.h Event.h Factory.h MethodBase.h MethodCompositeBase.h \
-		MethodANNBase.h MethodTMlpANN.h MethodRuleFit.h MethodCuts.h MethodFisher.h \
+		MethodANNBase.h MethodTMlpANN.h MethodCuts.h MethodFisher.h \
 		MethodKNN.h MethodCFMlpANN.h MethodCFMlpANN_Utils.h MethodLikelihood.h \
 		MethodHMatrix.h MethodPDERS.h MethodBDT.h MethodDT.h MethodSVM.h MethodBayesClassifier.h \
 		MethodFDA.h MethodMLP.h MethodCommittee.h MethodBoost.h \
@@ -40,7 +40,7 @@ TMVAH3       := Config.h KDEKernel.h Interval.h LogInterval.h FitterBase.h MCFit
 		CCPruner.h CostComplexityPruneTool.h SVEvent.h OptimizeConfigParameters.h
 TMVAH4       := TNeuron.h TSynapse.h TActivationChooser.h TActivation.h TActivationSigmoid.h TActivationIdentity.h \
 		TActivationTanh.h TActivationReLU.h TActivationRadial.h TNeuronInputChooser.h TNeuronInput.h TNeuronInputSum.h \
-		TNeuronInputSqSum.h TNeuronInputAbs.h Types.h Ranking.h RuleFit.h RuleFitAPI.h IMethod.h MsgLogger.h \
+		TNeuronInputSqSum.h TNeuronInputAbs.h Types.h Ranking.h IMethod.h MsgLogger.h \
 		VariableTransformBase.h VariableIdentityTransform.h VariableDecorrTransform.h VariablePCATransform.h \
 		VariableGaussTransform.h VariableNormalizeTransform.h VariableRearrangeTransform.h ROCCalc.h
 TMVADNN      :=  $(wildcard $(MODDIRI)/TMVA/DNN/*.h) $(wildcard $(MODDIRI)/TMVA/DNN/Architectures/*.h) \

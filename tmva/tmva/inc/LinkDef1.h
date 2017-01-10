@@ -43,7 +43,6 @@
 #pragma link C++ class TMVA::MethodCompositeBase+;
 #pragma link C++ class TMVA::MethodANNBase+;
 #pragma link C++ class TMVA::MethodTMlpANN+;
-#pragma link C++ class TMVA::MethodRuleFit+;
 #pragma link C++ class TMVA::MethodCuts+;
 #pragma link C++ class TMVA::MethodFisher+;
 #pragma link C++ class TMVA::MethodKNN+;

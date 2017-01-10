@@ -12,7 +12,7 @@ if(NOT CMAKE_PROJECT_NAME STREQUAL ROOT)
 endif()
 
 set(headers1 Configurable.h Factory.h  MethodBase.h MethodCompositeBase.h
-	     MethodANNBase.h MethodTMlpANN.h MethodRuleFit.h MethodCuts.h MethodFisher.h
+	     MethodANNBase.h MethodTMlpANN.h MethodCuts.h MethodFisher.h
 	     MethodKNN.h MethodCFMlpANN.h MethodCFMlpANN_Utils.h MethodLikelihood.h
 	     MethodHMatrix.h MethodPDERS.h MethodBDT.h MethodDT.h MethodSVM.h MethodBayesClassifier.h
 	     MethodFDA.h MethodMLP.h MethodBoost.h
@@ -32,7 +32,7 @@ set(headers3 Config.h KDEKernel.h Interval.h LogInterval.h FitterBase.h MCFitter
          CCPruner.h CostComplexityPruneTool.h SVEvent.h OptimizeConfigParameters.h)
 set(headers4 TNeuron.h TSynapse.h TActivationChooser.h TActivation.h TActivationSigmoid.h TActivationIdentity.h
          TActivationTanh.h TActivationRadial.h TActivationReLU.h TNeuronInputChooser.h TNeuronInput.h TNeuronInputSum.h
-	     TNeuronInputSqSum.h TNeuronInputAbs.h Types.h Ranking.h RuleFit.h RuleFitAPI.h IMethod.h MsgLogger.h
+	     TNeuronInputSqSum.h TNeuronInputAbs.h Types.h Ranking.h IMethod.h MsgLogger.h
 	     VariableTransformBase.h VariableIdentityTransform.h VariableDecorrTransform.h VariablePCATransform.h 
 	     VariableGaussTransform.h VariableNormalizeTransform.h VariableRearrangeTransform.h VariableTransform.h ROCCalc.h ROCCurve.h)
 
