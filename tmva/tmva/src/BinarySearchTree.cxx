@@ -165,7 +165,7 @@ void TMVA::BinarySearchTree::Insert( const Event* event )
 /// private internal function to insert a event (node) at the proper position
 
 void TMVA::BinarySearchTree::Insert( const Event *event, 
-                                     Node *node ) 
+                                     Node::NT *node ) 
 {
    fCurrentDepth++;
    fStatisticsIsValid = kFALSE;
@@ -218,7 +218,7 @@ TMVA::BinarySearchTreeNode* TMVA::BinarySearchTree::Search( Event* event ) const
 ////////////////////////////////////////////////////////////////////////////////
 /// Private, recursive, function for searching.
 
-TMVA::BinarySearchTreeNode* TMVA::BinarySearchTree::Search(Event* event, Node* node) const 
+TMVA::BinarySearchTreeNode* TMVA::BinarySearchTree::Search(Event* event, Node::NT* node) const 
 { 
    if (node != NULL) {               // If the node is not NULL...
       // If we have found the node...
@@ -372,7 +372,7 @@ void TMVA::BinarySearchTree::NormalizeTree()
 ////////////////////////////////////////////////////////////////////////////////
 /// clear nodes
 
-void TMVA::BinarySearchTree::Clear( Node* n )
+void TMVA::BinarySearchTree::Clear( Node::NT* n )
 {
    BinarySearchTreeNode* currentNode = (BinarySearchTreeNode*)(n == NULL ? this->GetRoot() : n);
 
@@ -398,7 +398,7 @@ Double_t TMVA::BinarySearchTree::SearchVolume( Volume* volume,
 /// recursively walk through the daughter nodes and add up all weigths of events that 
 /// lie within the given volume
 
-Double_t TMVA::BinarySearchTree::SearchVolume( Node* t, Volume* volume, Int_t depth, 
+Double_t TMVA::BinarySearchTree::SearchVolume( Node::NT* t, Volume* volume, Int_t depth, 
                                                std::vector<const BinarySearchTreeNode*>* events )
 {
    if (t==NULL) return 0;  // Are we at an outer leave?
@@ -446,7 +446,7 @@ Bool_t TMVA::BinarySearchTree::InVolume(const std::vector<Float_t>& event, Volum
 ////////////////////////////////////////////////////////////////////////////////
 /// calculate basic statistics (mean, rms for each variable)
 
-void TMVA::BinarySearchTree::CalcStatistics( Node* n )
+void TMVA::BinarySearchTree::CalcStatistics( Node::NT* n )
 {
    if (fStatisticsIsValid) return;
 

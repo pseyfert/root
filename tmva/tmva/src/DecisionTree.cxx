@@ -243,7 +243,7 @@ TMVA::DecisionTree::~DecisionTree()
 /// descend a tree to find all its leaf nodes, fill max depth reached in the
 /// tree at the same time.
 
-void TMVA::DecisionTree::SetParentTreeInNodes( Node *n )
+void TMVA::DecisionTree::SetParentTreeInNodes( Node::NT *n )
 {
    if (n == NULL) { //default, start at the tree top, then descend recursively
       n = this->GetRoot();
@@ -816,7 +816,7 @@ UInt_t TMVA::DecisionTree::CountLeafNodes( TMVA::Node *n )
 ////////////////////////////////////////////////////////////////////////////////
 /// descend a tree to find all its leaf nodes
 
-void TMVA::DecisionTree::DescendTree( Node* n )
+void TMVA::DecisionTree::DescendTree( Node::NT* n )
 {
    if (n == NULL) { // default, start at the tree top, then descend recursively
       n =  this->GetRoot();
@@ -889,7 +889,7 @@ void TMVA::DecisionTree::PruneNodeInPlace( DecisionTreeNode* node ) {
 
 TMVA::Node* TMVA::DecisionTree::GetNode( ULong_t sequence, UInt_t depth )
 {
-   Node* current = this->GetRoot();
+  Node::NT* current = this->GetRoot();
   
    for (UInt_t i =0;  i < depth; i++) {
       ULong_t tmp = 1 << i;

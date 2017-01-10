@@ -169,13 +169,13 @@ namespace TMVA {
       void SetNodePurityLimit( Double_t p ) { fNodePurityLimit = p; }
       Double_t GetNodePurityLimit( ) const { return fNodePurityLimit; }
 
-      void DescendTree( Node *n = NULL );
-      void SetParentTreeInNodes( Node *n = NULL );
+      void DescendTree( Node::NT *n = NULL );
+      void SetParentTreeInNodes( Node::NT *n = NULL );
         
       // retrieve node from the tree. Its position (up to a maximal tree depth of 64)
       // is coded as a sequence of left-right moves starting from the root, coded as
       // 0-1 bit patterns stored in the "long-integer" together with the depth
-      Node* GetNode( ULong_t sequence, UInt_t depth );
+      Node::NT* GetNode( ULong_t sequence, UInt_t depth );
     
       UInt_t CleanTree(DecisionTreeNode *node=NULL);
      

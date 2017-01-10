@@ -132,7 +132,7 @@ namespace TMVA {
       // destructor
       virtual ~DecisionTreeNode();
 
-      virtual Node* CreateNode() const { return new DecisionTreeNode(); }
+      virtual Node::NT* CreateNode() const { return new DecisionTreeNode(); }
 
       inline void SetNFisherCoeff(Int_t nvars){fFisherCoeff.resize(nvars);}
       inline UInt_t GetNFisherCoeff() const { return fFisherCoeff.size();}
@@ -287,9 +287,9 @@ namespace TMVA {
       inline virtual DecisionTreeNode* GetParent( ) const { return dynamic_cast<DecisionTreeNode*>(fParent); }
 
       // set pointer to the left/right daughter and parent node
-      inline virtual void SetLeft  (Node* l) { fLeft   = dynamic_cast<DecisionTreeNode*>(l);} 
-      inline virtual void SetRight (Node* r) { fRight  = dynamic_cast<DecisionTreeNode*>(r);} 
-      inline virtual void SetParent(Node* p) { fParent = dynamic_cast<DecisionTreeNode*>(p);} 
+      inline virtual void SetLeft  (Node::NT* l) { fLeft   = dynamic_cast<DecisionTreeNode*>(l);} 
+      inline virtual void SetRight (Node::NT* r) { fRight  = dynamic_cast<DecisionTreeNode*>(r);} 
+      inline virtual void SetParent(Node::NT* p) { fParent = dynamic_cast<DecisionTreeNode*>(p);} 
 
 
 

@@ -66,6 +66,7 @@ namespace TMVA {
     
    public:
 
+      typedef Node NT;
       // constructor of a node 
       Node();
       
@@ -78,7 +79,7 @@ namespace TMVA {
       // destructor
       virtual ~Node();
 
-      virtual Node* CreateNode() const = 0;
+      virtual NT* CreateNode() const = 0;
 
       // test event if i{ decends the tree at this node to the right  
       virtual Bool_t GoesRight( const Event& ) const = 0;
@@ -88,14 +89,14 @@ namespace TMVA {
       // test event if it is equal to the event that "makes the node" (just for the "search tree"  
 
       // return pointer to the left/right daughter or parent node
-      inline virtual Node* GetLeft  () const { return fLeft;   }
-      inline virtual Node* GetRight () const { return fRight;  }
-      inline virtual Node* GetParent() const { return fParent; }
+      inline virtual NT* GetLeft  () const { return fLeft;   }
+      inline virtual NT* GetRight () const { return fRight;  }
+      inline virtual NT* GetParent() const { return fParent; }
     
       // set pointer to the left/right daughter or parent node
-      inline virtual void SetLeft  (Node* l) { fLeft   = l;} 
-      inline virtual void SetRight (Node* r) { fRight  = r;} 
-      inline virtual void SetParent(Node* p) { fParent = p;} 
+      inline virtual void SetLeft  (NT* l) { fLeft   = l;} 
+      inline virtual void SetRight (NT* r) { fRight  = r;} 
+      inline virtual void SetParent(NT* p) { fParent = p;} 
     
       //recursively go through the part of the tree below this node and count all daughters
       Int_t  CountMeAndAllDaughters() const;
@@ -137,9 +138,9 @@ namespace TMVA {
 
    protected: 
 
-      Node*   fParent;              // the previous (parent) node
-      Node*   fLeft;                // pointers to the two "daughter" nodes
-      Node*   fRight;               // pointers to the two "daughter" nodes
+      NT*   fParent;              // the previous (parent) node
+      NT*   fLeft;                // pointers to the two "daughter" nodes
+      NT*   fRight;               // pointers to the two "daughter" nodes
 
       char    fPos;                 // position, i.e. it is a left (l) or right (r) daughter 
       UInt_t  fDepth;               // depth of the node within the tree (seen from root node)

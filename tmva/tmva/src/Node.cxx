@@ -175,7 +175,7 @@ void TMVA::Node::ReadXML( void* node,  UInt_t tmva_Version_Code )
 
    void* ch = gTools().GetChild(node);
    while (ch) {
-      Node* n = CreateNode();
+      NT* n = CreateNode();
       n->ReadXML(ch, tmva_Version_Code);
       if (n->GetPos()=='l')     { this->SetLeft(n);  }
       else if(n->GetPos()=='r') { this->SetRight(n); }

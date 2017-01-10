@@ -81,7 +81,7 @@ namespace TMVA {
       // destructor
       virtual ~BinarySearchTree( void );
     
-      virtual Node * CreateNode( UInt_t ) const { return new BinarySearchTreeNode(); }
+      virtual Node::NT * CreateNode( UInt_t ) const { return new BinarySearchTreeNode(); }
       virtual BinaryTree* CreateTree() const { return new BinarySearchTree(); }
       static BinarySearchTree* CreateFromXML(void* node, UInt_t tmva_Version_Code = TMVA_VERSION_CODE);
       virtual const char* ClassName() const { return "BinarySearchTree"; }
@@ -118,8 +118,8 @@ namespace TMVA {
 
       void NormalizeTree ();      
       
-      void CalcStatistics( TMVA::Node* n = 0 );      
-      void Clear         ( TMVA::Node* n = 0 );
+      void CalcStatistics( TMVA::Node::NT* n = 0 );      
+      void Clear         ( TMVA::Node::NT* n = 0 );
 
       // access to mean for signal and background for each variable
       Float_t Mean(Types::ESBType sb, UInt_t var ) { return fMeans[sb==Types::kSignal?0:1][var]; }
@@ -143,9 +143,9 @@ namespace TMVA {
    private:
 
       // add a new  node to the tree (as daughter) 
-      void       Insert( const Event*, Node* );
+      void       Insert( const Event*, Node::NT* );
       // recursively search the nodes for Event
-      BinarySearchTreeNode*      Search( Event*, Node *) const ;
+      BinarySearchTreeNode*      Search( Event*, Node::NT *) const ;
     
       //check of Event variables lie with the volumde
       Bool_t   InVolume    (const std::vector<Float_t>&, Volume* ) const;
@@ -157,7 +157,7 @@ namespace TMVA {
                               std::vector< std::pair< Double_t, const TMVA::Event* > >::iterator, UInt_t );
 
       // recursive search through daughter nodes in weight counting
-      Double_t SearchVolume( Node*, Volume*, Int_t, 
+      Double_t SearchVolume( Node::NT*, Volume*, Int_t, 
                              std::vector<const TMVA::BinarySearchTreeNode*>* events );
       UInt_t fPeriod;            // periode (number of event variables)
       UInt_t fCurrentDepth;      // internal variable, counting the depth of the tree during insertion    
