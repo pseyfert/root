@@ -1021,6 +1021,18 @@ if(builtin_ftgl)
   set(FTGL_LIBRARIES FTGL)
 endif()
 
+#---Check for include-what-you-use ----------------------------------------------------
+if (iwyu)
+  find_program(iwyu_path NAMES include-what-you-use iwyu)
+  if(NOT iwyu_path)
+    if (fail-on-missing)
+      message(FATAL_ERROR "Could not find the program include-what-you-use")
+    else()
+      message(STATUS "Could not find the program include-what-you-use")
+    endif()
+  endif()
+endif()
+
 #---Check for chirp--------------------------------------------------------------------
 if(chirp)
   find_package(chirp)

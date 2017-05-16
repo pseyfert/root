@@ -575,6 +575,10 @@ function(ROOT_LINKER_LIBRARY library)
   set_property(GLOBAL APPEND PROPERTY ROOT_EXPORTED_TARGETS ${library})
   set_target_properties(${library} PROPERTIES OUTPUT_NAME ${library_name})
   set_target_properties(${library} PROPERTIES LINK_INTERFACE_LIBRARIES "${ARG_DEPENDENCIES}")
+  if(iwyu_path)
+    set_target_properties(${library} PROPERTIES CXX_INCLUDE_WHAT_YOU_USE "${iwyu_path}")
+    message(STATUS "requesting IWYU for ${library}")
+  endif()
   # Do not add -Dname_EXPORTS to the command-line when building files in this
   # target. Doing so is actively harmful for the modules build because it
   # creates extra module variants, and not useful because we don't use these
