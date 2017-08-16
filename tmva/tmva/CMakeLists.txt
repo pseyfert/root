@@ -36,7 +36,7 @@ set(headers4 NeuralNet.h TNeuron.h TSynapse.h TActivationChooser.h TActivation.h
 	     VariableTransformBase.h VarTransformHandler.h VariableIdentityTransform.h VariableDecorrTransform.h VariablePCATransform.h
 	     VariableGaussTransform.h VariableNormalizeTransform.h VariableRearrangeTransform.h VariableTransform.h ROCCalc.h ROCCurve.h)
 
-set(headers5 Envelope.h VariableImportance.h CrossValidation.h HyperParameterOptimisation.h Event.h Results.h ResultsClassification.h ResultsRegression.h ResultsMulticlass.h VariableInfo.h ClassInfo.h DataLoader.h DataSet.h DataSetInfo.h DataInputHandler.h DataSetManager.h DataSetFactory.h LossFunction.h)
+set(headers5 Envelope.h VariableImportance.h CrossValidation.h HyperParameterOptimisation.h Event.h Results.h ResultsClassification.h ResultsRegression.h ResultsMulticlass.h VariableInfo.h ClassInfo.h DataLoader.h DataSet.h DataSetInfo.h DataInputHandler.h DataSetManager.h DataSetFactory.h LossFunction.h BranchAdder.h)
 
 #---Need to suffix each header name by TMVA/  -----------------
 foreach(hs headers1 headers2 headers3 headers4 headers5)
@@ -77,12 +77,19 @@ else()
   set(installoptions ${installoptions} FILTER "Cpu")
 endif()
 
+ROOT_GLOB_SOURCES(sources src/*.cxx)
+list(REMOVE_ITEM sources ${CMAKE_SOURCE_DIR}/tmva/tmva/src/BranchAdderExe.cxx)
+
+
 ROOT_STANDARD_LIBRARY_PACKAGE(TMVA
                               HEADERS ${theaders1} ${theaders2} ${theaders3} ${theaders4} ${theaders5}
-                              SOURCES *.cxx ${DNN_FILES} ${DNN_CPU_FILES} DICTIONARY_OPTIONS "-writeEmptyRootPCM"
+                              SOURCES ${sources} ${DNN_FILES} ${DNN_CPU_FILES} DICTIONARY_OPTIONS "-writeEmptyRootPCM"
                               LIBRARIES Core MathCore Matrix ${DNN_CUDA_LIBRARIES} ${DNN_CPU_LIBRARIES}
                               DEPENDENCIES Core RIO Hist Tree TreePlayer MLP Minuit XMLIO
                               INSTALL_OPTIONS ${installoptions})
+
+ROOT_EXECUTABLE(BranchAdderExe BranchAdderExe.cxx
+                LIBRARIES TMVA Core RIO Tree XMLIO)
 
 if(NOT gnuinstall)
   install(DIRECTORY test DESTINATION tmva 

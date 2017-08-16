@@ -4,6 +4,7 @@
 ###################################################################### 
 BINS = TMVAClassification \
         TMVAClassificationCategory \
+        TMVAAdvancedBranchAdder \
         TMVAClassificationApplication \
         TMVAClassificationCategoryApplication \
         TMVARegression \

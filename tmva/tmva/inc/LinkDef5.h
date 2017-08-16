@@ -28,6 +28,8 @@
 #pragma link C++ function TMVA::MovieMaker;                          
 #pragma link C++ defined_in "TMVA/mvaeffs.h";                             
 #pragma link C++ class    TMVA::MethodInfo+;                                
+#pragma link C++ class    TMVA::BranchAdder+;
+#pragma link C++ class    TMVA::BranchAdder::VariableWrapper+;
 #pragma link C++ function TMVA::mvas;                                
 #pragma link C++ function TMVA::mvasMulticlass;                      
 #pragma link C++ function TMVA::mvaweights;                          
