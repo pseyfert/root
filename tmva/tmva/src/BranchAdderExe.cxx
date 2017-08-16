@@ -42,14 +42,19 @@ int main(int argc, char **argv)
 
    int errorcode = 0;
    errorcode |= wrapper.getTree(infile, treename, outfile);
-   if (errorcode) return errorcode;
-   if (5 == args.size()) errorcode |= wrapper.SetTargetBranch(args[4]);
-   if (errorcode) return errorcode;
+   if (errorcode)
+      return errorcode;
+   if (5 == args.size())
+      errorcode |= wrapper.SetTargetBranch(args[4]);
+   if (errorcode)
+      return errorcode;
    errorcode |= wrapper.SetXMLFile(xmlfile);
-   if (errorcode) return errorcode;
+   if (errorcode)
+      return errorcode;
 
    errorcode |= wrapper.Process();
-   if (errorcode) return errorcode;
+   if (errorcode)
+      return errorcode;
    wrapper.Close();
    return errorcode;
 }

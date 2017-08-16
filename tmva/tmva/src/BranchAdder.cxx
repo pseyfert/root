@@ -17,7 +17,8 @@
  * handles the opening of files and retrives the TTree from there.
  *
  * @param infile   filename of the input file. Any protocol that can be handled by TFile::Open should do.
- * @param treename name of the TTree object in the input file to be evaluated (can obtain slashes, anything that TFile::Get can handle should do).
+ * @param treename name of the TTree object in the input file to be evaluated (can obtain slashes, anything that
+ * TFile::Get can handle should do).
  * @param outfile  filename of the output file.
  *
  * @return 0 in case of success. larger integers otherwise.
@@ -97,7 +98,7 @@ int TMVA::BranchAdder::Evaluate()
  */
 int TMVA::BranchAdder::GetEntry(Long64_t e)
 {
-/// don't care about spectators here
+   /// don't care about spectators here
    for (auto b : m_branches) {
       b->GetEntry(e);
    }
@@ -283,7 +284,7 @@ int TMVA::BranchAdder::SetTargetFile(TDirectoryFile *file)
 
 /**
  * @brief Specify the target branch name, which will be created in initFormulas. Checks the validity of the branch name.
- * 
+ *
  * If possible, it is checked if the branch name would create trouble in
  * TTree::Draw or TTree::MakeClass when using the output file.
  *
@@ -348,18 +349,24 @@ int TMVA::BranchAdder::Process()
 {
    int errorcode = 0;
    errorcode |= check_all_initialised();
-   if (errorcode) return errorcode;
+   if (errorcode)
+      return errorcode;
    errorcode |= getVariables(m_xmlfilename);
-   if (errorcode) return errorcode;
+   if (errorcode)
+      return errorcode;
    errorcode |= bookReader(m_xmlfilename);
-   if (errorcode) return errorcode;
+   if (errorcode)
+      return errorcode;
    errorcode |= createTree();
-   if (errorcode) return errorcode;
+   if (errorcode)
+      return errorcode;
    errorcode |= initFormulas(m_targetbranchname, false);
-   if (errorcode) return errorcode;
+   if (errorcode)
+      return errorcode;
    m_outtree->SetBranchStatus("*", 0);
    errorcode |= activateBranches();
-   if (errorcode) return errorcode;
+   if (errorcode)
+      return errorcode;
    Long64_t entries = m_outtree->GetEntries();
    for (Long64_t e = 0; e < entries; ++e) {
       errorcode |= GetEntry(e);
@@ -367,7 +374,8 @@ int TMVA::BranchAdder::Process()
          errorcode |= 0;
       else
          errorcode |= 3;
-      if (errorcode) return errorcode;
+      if (errorcode)
+         return errorcode;
    }
    m_outtree->SetBranchStatus("*", 1);
    if (nullptr != m_outfile) {
@@ -411,8 +419,7 @@ int TMVA::BranchAdder::initFormulas(bool eval_on_in)
 }
 
 TMVA::BranchAdder::BranchAdder()
-   : m_xmlfilename(""), m_targetbranchname(""), m_methodName(""), m_variables(), m_spectators(),
-     m_formulas(0, nullptr),
+   : m_xmlfilename(""), m_targetbranchname(""), m_methodName(""), m_variables(), m_spectators(), m_formulas(0, nullptr),
      m_intree(nullptr), m_outtree(nullptr), m_reader(nullptr), m_branches(), m_response(0.f), m_responseBranch(nullptr),
      m_infile(nullptr), m_outfile(nullptr), m_dirstack(false), m_regression(false)
 {
@@ -420,8 +427,10 @@ TMVA::BranchAdder::BranchAdder()
 
 TMVA::BranchAdder::~BranchAdder()
 {
-   if (m_reader) delete m_reader;
+   if (m_reader)
+      delete m_reader;
    for (auto &var : m_variables) {
-      if (var.ttreeformula) delete var.ttreeformula;
+      if (var.ttreeformula)
+         delete var.ttreeformula;
    }
 }
