@@ -875,14 +875,19 @@ def rootEventselector(sourceList, destFileName, destPathSplit, \
 # End of ROOTEVENTSELECTOR
 ##########
 
+
 ##########
 # ROOTLS
 
 # Ansi characters
 ANSI_BOLD = "\x1B[1m"
 try:
-    ANSI_DIR = "\x1B[{}m".format({ k:v for k,v in (x.split('=') for x in os.getenv('LS_COLORS').split(':') if '=' in x ) }['di'])
-except:
+    ANSI_DIR = "\x1B[{}m".format(
+            {k: v for k, v in (x.split('=')
+             for x in os.getenv('LS_COLORS', '').split(':')
+             if '=' in x)}
+            ['di'])
+except KeyError:
     ANSI_DIR = "\x1B[34m"
 ANSI_GREEN = "\x1B[32m"
 ANSI_END = "\x1B[0m"
