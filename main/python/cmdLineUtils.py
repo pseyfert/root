@@ -880,13 +880,16 @@ def rootEventselector(sourceList, destFileName, destPathSplit, \
 
 # Ansi characters
 ANSI_BOLD = "\x1B[1m"
-ANSI_BLUE = "\x1B[34m"
+try:
+    ANSI_DIR = "\x1B[{}m".format({ k:v for k,v in (x.split('=') for x in os.getenv('LS_COLORS').split(':') if '=' in x ) }['di'])
+except:
+    ANSI_DIR = "\x1B[34m"
 ANSI_GREEN = "\x1B[32m"
 ANSI_END = "\x1B[0m"
 
 # Needed for column width calculation
 ANSI_BOLD_LENGTH = len(ANSI_BOLD+ANSI_END)
-ANSI_BLUE_LENGTH = len(ANSI_BLUE+ANSI_END)
+ANSI_DIR_LENGTH = len(ANSI_DIR+ANSI_END)
 ANSI_GREEN_LENGTH = len(ANSI_GREEN+ANSI_END)
 
 # Terminal and platform booleans
@@ -1097,8 +1100,8 @@ def _rootLsPrintSimpleLs(keyList,indent,oneColumn):
             if not IS_TERMINAL: write( \
                 key.GetName().ljust(col_widths[i%ncol]))
             elif isDirectoryKey(keyList[i]): write( \
-                isSpecial(ANSI_BLUE,key.GetName()).ljust( \
-                    col_widths[i%ncol] + ANSI_BLUE_LENGTH))
+                isSpecial(ANSI_DIR,key.GetName()).ljust( \
+                    col_widths[i%ncol] + ANSI_DIR_LENGTH))
             elif isTreeKey(keyList[i]): write( \
                 isSpecial(ANSI_GREEN,key.GetName()).ljust( \
                     col_widths[i%ncol] + ANSI_GREEN_LENGTH))
@@ -1106,7 +1109,7 @@ def _rootLsPrintSimpleLs(keyList,indent,oneColumn):
         else: # No spaces after the last element of the line or of the list
             if not IS_TERMINAL: write(key.GetName())
             elif isDirectoryKey(keyList[i]):
-                write(isSpecial(ANSI_BLUE, key.GetName()))
+                write(isSpecial(ANSI_DIR, key.GetName()))
             elif isTreeKey(keyList[i]):
                 write(isSpecial(ANSI_GREEN, key.GetName()))
             else: write(key.GetName())
